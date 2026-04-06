@@ -45,6 +45,8 @@ export default {
   exp_subtitle: '7+ лет разработки масштабируемых backend-систем',
   present: 'Наст. время',
   expand_hint: 'Нажмите для подробностей',
+  expand_all: 'Раскрыть все',
+  collapse_all: 'Свернуть все',
   job1_role: 'Senior PHP Developer',
   job1_summary: 'SaaS-платформа для онлайн-бизнеса. Платежная команда: <strong>множество провайдеров</strong>, <strong>микросервисная архитектура</strong>, <strong>~500 ТБ данных.</strong>',
   job1_a1: '<strong>Highload</strong> SaaS: ~500 ТБ данных, платежная команда — ответственность за все <strong>все платежные интеграции</strong>.',

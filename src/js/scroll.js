@@ -320,7 +320,7 @@ function revealVisibleOnInit() {
     // Element is at least partially in viewport
     if (rect.top < wh && rect.bottom > 0) {
       const type = el.dataset.scroll || '';
-      const isContainer = ['stagger', 'cascade-3d', 'bounce-stagger', 'deal-cards', 'terminal-boot'].includes(type);
+      const isContainer = ['stagger', 'cascade-3d', 'bounce-stagger', 'deal-cards', 'terminal-boot', 'payment-flip'].includes(type);
 
       if (isContainer) {
         // Immediately show container and all children (no stagger delay on init)
@@ -361,7 +361,7 @@ export function initScrollAnimations() {
       const el = /** @type {HTMLElement} */ (entry.target);
       const type = el.dataset.scroll || '';
       const isHero = el.closest('#hero-outer');
-      const isContainer = ['stagger', 'cascade-3d', 'bounce-stagger', 'deal-cards', 'terminal-boot'].includes(type);
+      const isContainer = ['stagger', 'cascade-3d', 'bounce-stagger', 'deal-cards', 'terminal-boot', 'payment-flip'].includes(type);
 
       if (entry.isIntersecting) {
         if (isContainer) {

@@ -172,7 +172,8 @@ html.theme-ready * {
 [data-scroll="cascade-3d"],
 [data-scroll="bounce-stagger"],
 [data-scroll="deal-cards"],
-[data-scroll="terminal-boot"] {
+[data-scroll="terminal-boot"],
+[data-scroll="payment-flip"] {
   opacity: 1;
   transform: none;
 }
@@ -215,6 +216,21 @@ html.theme-ready * {
 [data-scroll="cascade-3d"] [data-stagger-child].in-view {
   opacity: 1;
   transform: none;
+}
+
+/* --- Payment-flip children: 3D flip reveal --- */
+[data-scroll="payment-flip"] {
+  perspective: 1000px;
+}
+[data-scroll="payment-flip"] [data-stagger-child] {
+  opacity: 0;
+  transform: rotateY(90deg) scale(0.8);
+  transform-origin: center center;
+  transition: opacity 0.5s var(--ease-out-expo), transform 0.6s var(--spring);
+}
+[data-scroll="payment-flip"] [data-stagger-child].in-view {
+  opacity: 1;
+  transform: rotateY(0) scale(1);
 }
 
 /* --- Deal-cards children: spread from center --- */
@@ -352,6 +368,26 @@ html.theme-ready * {
 @keyframes arch-cascade {
   from { opacity: 0; transform: scale(0.95) translateY(-8px); }
   to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Timeline dot burst pulse on card expand */
+@keyframes dot-burst {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 var(--color-glow); }
+  40% { transform: scale(2); box-shadow: 0 0 20px 8px var(--color-glow); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 var(--color-glow); }
+}
+
+/* Timeline scroll-linked highlight flash */
+@keyframes card-highlight-flash {
+  0% { box-shadow: 0 0 0 0 var(--color-glow); border-color: var(--color-border); }
+  40% { box-shadow: 0 0 24px 4px var(--color-glow); border-color: var(--color-accent); }
+  100% { box-shadow: none; border-color: var(--color-border); }
+}
+
+/* Tech stack badge flip-in on expand */
+@keyframes tech-flip-in {
+  from { opacity: 0; transform: rotateX(90deg) scale(0.8); }
+  to { opacity: 1; transform: rotateX(0) scale(1); }
 }
 
 /* Click ripple */
@@ -583,6 +619,9 @@ html.theme-ready * {
 .about-text.in-view strong:nth-of-type(8) { animation: strong-reveal 0.8s var(--ease-out-expo) 1.45s both; }
 
 /* ========== SKILL CATEGORY ========== */
+.skill-category {
+  transform-style: preserve-3d;
+}
 .skill-category::before {
   content: '';
   position: absolute;
@@ -595,6 +634,7 @@ html.theme-ready * {
 .skill-category:hover::before { opacity: 1; }
 .skill-category:hover {
   backdrop-filter: blur(8px);
+  will-change: transform;
 }
 
 /* Skill icon floating */
@@ -605,6 +645,32 @@ html.theme-ready * {
 .skill-category:nth-child(5) .skill-icon-float { animation-delay: -2.8s; }
 .skill-category:nth-child(6) .skill-icon-float { animation-delay: -3.5s; }
 
+/* Skill pill wave & active states */
+.pill-wave {
+  border-color: var(--color-accent) !important;
+  background: var(--color-glow) !important;
+  color: var(--color-accent) !important;
+  transform: translateY(-1px);
+}
+.pill-active {
+  border-color: var(--color-accent) !important;
+  background: var(--color-glow-strong) !important;
+  color: var(--color-accent) !important;
+  box-shadow: 0 0 8px var(--color-glow), inset 0 0 4px var(--color-glow);
+  transform: translateY(-1px);
+}
+.pill-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-glow-strong);
+  transform: scale(0);
+  animation: pill-ripple-anim 0.4s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes pill-ripple-anim {
+  to { transform: scale(2.5); opacity: 0; }
+}
+
 /* ========== PAYMENT SECTION ========== */
 .payment-section::before {
   content: '';
@@ -614,21 +680,25 @@ html.theme-ready * {
   background: linear-gradient(90deg, var(--color-accent), #14b8a6);
 }
 
-/* ========== TIMELINE ========== */
-.timeline {
+/* ========== SPIRAL TIMELINE ========== */
+.timeline-spiral {
   position: relative;
+  max-width: 850px;
+  margin: 0 auto;
 }
 
-.timeline::before {
-  content: '';
+/* Center line (the "path") */
+.timeline-line {
   position: absolute;
   left: 50%;
-  top: 0; bottom: 0;
+  top: 0;
+  bottom: 0;
   width: 2px;
   background: var(--color-border);
   transform: translateX(-50%);
 }
 
+/* Progress fill (accent, driven by JS) */
 .timeline-progress {
   position: absolute;
   left: 50%;
@@ -642,22 +712,72 @@ html.theme-ready * {
   z-index: 1;
 }
 
-/* Timeline dots pop in when parent enters view */
-.timeline-dot {
-  transition: transform 0.4s var(--spring) 0.3s;
+/* Timeline items: alternating left/right */
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding-bottom: 3rem;
+  perspective: 1200px;
 }
-[data-scroll]:not(.in-view) > .timeline-dot {
-  transform: scale(0);
-}
-.timeline-dot.active { animation: pulse-glow 2s infinite; }
 
+.timeline-left {
+  padding-right: 2rem;
+}
+.timeline-right {
+  margin-left: 50%;
+  padding-left: 2rem;
+}
+
+/* Timeline dots on the center line */
+.timeline-dot {
+  position: absolute;
+  top: 1.5rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-bg-primary);
+  border: 3px solid var(--color-border);
+  z-index: 2;
+  transition: border-color 0.4s var(--spring), background 0.4s var(--spring), transform 0.4s var(--spring), box-shadow 0.4s ease;
+}
+.timeline-left .timeline-dot {
+  right: -8px;
+}
+.timeline-right .timeline-dot {
+  left: -8px;
+}
+
+/* Dot activates when card is "facing" the user */
+.timeline-item.spiral-active .timeline-dot {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  transform: scale(1.4);
+  box-shadow: 0 0 12px var(--color-glow-strong);
+}
+
+/* Timeline card: 3D spiral transform (driven by JS) */
 .timeline-card {
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.4s var(--spring);
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, opacity;
+}
+
+/* Card "facing" glow */
+.timeline-item.spiral-active .timeline-card {
+  border-color: var(--color-border-accent);
+  box-shadow: 0 0 20px var(--color-glow);
 }
 
 .timeline-card.expanded {
   border-color: var(--color-accent);
   box-shadow: 0 0 20px var(--color-glow);
+}
+
+/* Scroll-linked highlight flash (one-shot) */
+.timeline-card.scroll-highlight {
+  animation: card-highlight-flash 0.8s var(--ease-out-expo) forwards;
 }
 
 .timeline-details {
@@ -712,6 +832,59 @@ html.theme-ready * {
 .timeline-card.expanded .arch-microservices > div:nth-child(4) { animation-delay: 550ms; }
 .timeline-card.expanded .arch-microservices > div:nth-child(5) { animation-delay: 600ms; }
 
+/* Tech stack badges flip-in on expand */
+.timeline-details .flex-wrap {
+  perspective: 600px;
+}
+.timeline-card.expanded .timeline-details .flex-wrap > span {
+  animation: tech-flip-in 0.4s var(--spring) both;
+}
+
+/* Mobile: left-path sequential reveal */
+@media (max-width: 767px) {
+  .timeline-spiral {
+    padding-left: 1.5rem;
+  }
+  .timeline-line, .timeline-progress {
+    left: 1.5rem;
+  }
+  .timeline-item,
+  .timeline-left,
+  .timeline-right {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 2rem;
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+  }
+  .timeline-dot {
+    left: calc(1.5rem - 7px) !important;
+    right: auto !important;
+  }
+  /* Start hidden, reveal on scroll */
+  .timeline-item .timeline-card {
+    transform: translateX(-20px) rotateY(25deg);
+    opacity: 0;
+    transform-origin: left center;
+    transition: transform 0.6s var(--ease-out-expo), opacity 0.5s var(--ease-out-expo);
+  }
+  .timeline-item.mobile-revealed .timeline-card {
+    transform: translateX(0) rotateY(0deg);
+    opacity: 1;
+  }
+  /* Dot activates on reveal */
+  .timeline-item.mobile-revealed .timeline-dot {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    transform: scale(1.3);
+    box-shadow: 0 0 10px var(--color-glow-strong);
+  }
+  /* Stagger delays */
+  .timeline-item:nth-child(1) .timeline-card { transition-delay: 0ms; }
+  .timeline-item:nth-child(2) .timeline-card { transition-delay: 80ms; }
+  .timeline-item:nth-child(3) .timeline-card { transition-delay: 80ms; }
+  .timeline-item:nth-child(4) .timeline-card { transition-delay: 80ms; }
+}
 
 /* ========== STRENGTHS ========== */
 .strength-icon {

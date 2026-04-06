@@ -45,6 +45,8 @@ export default {
   exp_subtitle: '7+ years building scalable backend systems',
   present: 'Present',
   expand_hint: 'Click to expand',
+  expand_all: 'Expand All',
+  collapse_all: 'Collapse All',
   job1_role: 'Senior PHP Developer',
   job1_summary: 'SaaS platform for online business. Payment team: <strong>multiple providers</strong>, <strong>microservice architecture</strong>, <strong>~500 TB</strong> data.',
   job1_a1: '<strong>Highload</strong> SaaS: ~500 TB data, payment team responsible for <strong>all payment integrations</strong>.',
