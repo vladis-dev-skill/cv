@@ -497,6 +497,12 @@ function update() {
     const heroH = heroOuter ? heroOuter.offsetHeight : wh;
     backToTopEl.classList.toggle('visible', sy > heroH);
   }
+
+  // --- Download PDF button ---
+  const pdfBtn = document.getElementById('download-pdf');
+  if (pdfBtn) {
+    pdfBtn.classList.toggle('visible', sy > wh * 0.8);
+  }
 }
 
 // ========== BACK-TO-TOP BUTTON ==========

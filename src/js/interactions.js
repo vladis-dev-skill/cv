@@ -45,48 +45,27 @@ function initMagneticButtons() {
 function initContactMagnetic() {
   if (isMobile()) return;
 
-  document.querySelectorAll('.contact-card').forEach(card => {
-    const icon = card.querySelector('.contact-icon');
-    if (!icon) return;
-
-    const iconEl = /** @type {HTMLElement} */ (icon);
+  document.querySelectorAll('.contact-icon-link').forEach(link => {
+    const el = /** @type {HTMLElement} */ (link);
     let rafId = 0;
 
-    card.addEventListener('mousemove', (e) => {
+    el.addEventListener('mousemove', (e) => {
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
-        const rect = card.getBoundingClientRect();
+        const rect = el.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
-        const dx = Math.max(-8, Math.min(8, (e.clientX - cx) * 0.15));
-        const dy = Math.max(-8, Math.min(8, (e.clientY - cy) * 0.15));
-        iconEl.style.transform = `translate(${dx}px, ${dy}px) scale(1.1) rotate(-5deg)`;
-        iconEl.style.transition = 'transform 0.1s ease';
+        const dx = Math.max(-6, Math.min(6, (e.clientX - cx) * 0.2));
+        const dy = Math.max(-6, Math.min(6, (e.clientY - cy) * 0.2));
+        el.style.transform = `translate(${dx}px, ${dy}px) translateY(-3px)`;
+        el.style.transition = 'transform 0.1s ease';
       });
     });
 
-    card.addEventListener('mouseleave', () => {
+    el.addEventListener('mouseleave', () => {
       cancelAnimationFrame(rafId);
-      iconEl.style.transform = '';
-      iconEl.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-    });
-  });
-}
-
-// ========== CONTACT CLICK RIPPLE ==========
-
-function initContactRipple() {
-  document.querySelectorAll('.contact-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-      const ripple = document.createElement('span');
-      ripple.className = 'ripple';
-      const rect = card.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      ripple.style.width = ripple.style.height = `${size}px`;
-      ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
-      ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
-      card.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 600);
+      el.style.transform = '';
+      el.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
     });
   });
 }
@@ -145,7 +124,7 @@ function initSkillPillWave() {
   if (isMobile() || prefersReducedMotion()) return;
 
   document.querySelectorAll('.skill-category').forEach(card => {
-    const pills = card.querySelectorAll('.flex-wrap > span');
+    const pills = card.querySelectorAll('.skill-pill');
 
     card.addEventListener('mouseenter', () => {
       pills.forEach((pill, i) => {
@@ -173,7 +152,7 @@ function initSkillPillWave() {
 // ========== SKILL PILL ACTIVE TOGGLE ==========
 
 function initSkillPillToggle() {
-  document.querySelectorAll('.skill-category .flex-wrap > span').forEach(pill => {
+  document.querySelectorAll('.skill-category .skill-pill').forEach(pill => {
     pill.addEventListener('click', (e) => {
       pill.classList.toggle('pill-active');
 
@@ -342,7 +321,6 @@ function initMobileSpiralReveal(container, items, progressEl) {
 export function initInteractions() {
   initMagneticButtons();
   initContactMagnetic();
-  initContactRipple();
   initStatPillHover();
   initSkillCardTilt();
   initSkillPillWave();

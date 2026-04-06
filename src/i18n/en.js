@@ -78,22 +78,39 @@ export default {
   edu_university: 'Belarusian State University of Informatics and Radioelectronics',
   edu_faculty: 'Faculty of Computer Systems and Networks',
 
+  // Experience Metrics
+  job1_m1: 'Data Processed',
+  job1_m2: 'Payment Providers',
+  job1_m3: 'Query Performance',
+  job2_m1: 'Production DB',
+  job2_m2: 'PHP Migration',
+  job2_m3: 'Test Coverage',
+  job3_m1: 'Team Size',
+  job3_m2: 'Key Projects',
+  job3_m3: 'Development',
+  job4_m1: 'Built from Scratch',
+  job4_m2: 'Pipeline Setup',
+  job4_m3: 'Architecture',
+
   // Strengths
   str_title: 'Strengths',
   str1_name: 'Problem Solving',
-  str1_desc: 'I always prefer practical and efficient approaches to resolving unexpected problems.',
+  str1_metric: '3x query performance',
+  str1_desc: 'Profiled and optimized slow queries across ~500TB PostgreSQL cluster, achieving 3x performance improvement through indexing strategies and Doctrine batch processing.',
   str2_name: 'Adaptability',
-  str2_desc: 'Thanks to my flexibility and readiness, I always respond quickly to changes while maintaining efficiency and professionalism.',
+  str2_metric: 'PHP 5.6 → 8.5',
+  str2_desc: 'Led multiple major PHP and framework version migrations across 4 companies — from legacy PHP 5.6 to cutting-edge 8.5, Symfony 3.4 to 7.4, Laravel 6 to 10.',
   str3_name: 'Communication',
-  str3_desc: 'My ability to effectively interact with Frontend, Backend, and DevOps teams ensures alignment at all project stages.',
+  str3_metric: '25-person team',
+  str3_desc: 'Coordinated cross-team efforts across Frontend, Backend, and DevOps in a 25-engineer team at Basis33, ensuring alignment on complex medical platform architecture.',
   str4_name: 'Mentorship',
-  str4_desc: "I share knowledge and experience, transforming students' potential into measurable achievements in short timeframes.",
+  str4_metric: 'Knowledge sharing',
+  str4_desc: 'Onboard new developers, establish code review practices, and conduct internal tech talks. Transform junior potential into measurable engineering outcomes.',
 
   // Contact
   contact_title: "Let's Connect",
-  contact_subtitle: 'Open to new opportunities and interesting projects',
-  contact_phone_label: 'Phone',
+  contact_status: 'Open to opportunities',
 
-  // Footer
-  footer_text: 'Built with passion.',
+  // PDF
+  btn_pdf: 'Download PDF',
 };

@@ -13,7 +13,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -21,13 +21,13 @@
   <!-- App -->
   <script type="module" src="./src/js/main.js"></script>
 </head>
-<body class="font-[Inter,-apple-system,sans-serif] bg-bg-primary text-text-primary leading-relaxed overflow-x-hidden transition-[background-color,color] duration-400">
+<body class="font-['IBM_Plex_Sans',-apple-system,sans-serif] bg-bg-primary text-text-primary leading-relaxed overflow-x-hidden transition-[background-color,color] duration-400">
 
 <!-- Skip link -->
 <a href="#about" class="skip-link">Skip to content</a>
 
 <!-- ===== NAVBAR ===== -->
-<nav class="navbar fixed top-0 left-0 right-0 z-[1000] h-16 border-b border-border backdrop-blur-[16px]" id="navbar" style="background: rgba(10,15,10,0.85);">
+<nav class="navbar fixed top-0 left-0 right-0 z-[1000] h-16 border-b border-border backdrop-blur-[16px]" id="navbar" style="background: rgba(0,0,0,0.85);">
   <div id="scroll-progress" class="scroll-progress"></div>
   <div class="max-w-[1120px] mx-auto px-[clamp(1rem,4vw,3rem)] flex items-center justify-between h-full">
     <a href="#hero" class="text-[1.4rem] font-extrabold tracking-tight"><span class="gradient-text">VL</span></a>
@@ -73,21 +73,21 @@
       <span class="font-mono text-[clamp(1rem,1.8vw,1.3rem)] text-text-secondary"><span id="typing-text"></span><span class="typing-cursor"></span></span>
     </div>
     <div class="flex gap-4 justify-center flex-wrap mb-10" data-scroll="fade-up" data-hero-depth="0.7" style="transition-delay:450ms">
-      <div class="stat-pill py-2.5 px-5 rounded-full bg-bg-secondary border border-border text-sm flex items-center gap-2">
+      <div class="stat-pill py-2.5 px-5 rounded-full bg-bg-secondary border border-border-accent shadow-[0_0_12px_var(--color-glow)] text-sm flex items-center gap-2">
         <span class="font-bold text-accent font-mono" data-counter="7" data-suffix="+">0</span>
         <span data-i18n="hero_stat_years">Years Experience</span>
       </div>
-      <div class="stat-pill py-2.5 px-5 rounded-full bg-bg-secondary border border-border text-sm flex items-center gap-2">
+      <div class="stat-pill py-2.5 px-5 rounded-full bg-bg-secondary border border-border-accent shadow-[0_0_12px_var(--color-glow)] text-sm flex items-center gap-2">
         <span class="font-bold text-accent font-mono" data-counter="500" data-suffix="TB+">0</span>
         <span data-i18n="hero_stat_data">Data Processed</span>
       </div>
-      <div class="stat-pill py-2.5 px-5 rounded-full bg-bg-secondary border border-border text-sm flex items-center gap-2">
+      <div class="stat-pill py-2.5 px-5 rounded-full bg-bg-secondary border border-border-accent shadow-[0_0_12px_var(--color-glow)] text-sm flex items-center gap-2">
         <i class="fas fa-cubes text-accent"></i>
         <span data-i18n="hero_stat_micro">Microservices</span>
       </div>
     </div>
     <div class="flex gap-4 justify-center flex-wrap" data-scroll="fade-up" data-hero-depth="0.8" style="transition-delay:600ms">
-      <a href="#experience" class="btn-shine inline-flex items-center gap-2 py-3 px-7 rounded-lg font-semibold text-[0.95rem] text-white bg-gradient-to-br from-accent to-[#14b8a6] hover:-translate-y-0.5 hover:shadow-[0_4px_20px_var(--color-glow-strong)] transition-all animation-[pulse-glow_3s_infinite]"><i class="fas fa-briefcase"></i> <span data-i18n="hero_btn_work">View Experience</span></a>
+      <a href="#experience" class="btn-shine inline-flex items-center gap-2 py-3 px-7 rounded-lg font-semibold text-[0.95rem] text-white bg-gradient-to-br from-accent to-[#06b6d4] hover:-translate-y-0.5 hover:shadow-[0_4px_20px_var(--color-glow-strong)] transition-all animation-[pulse-glow_3s_infinite]"><i class="fas fa-briefcase"></i> <span data-i18n="hero_btn_work">View Experience</span></a>
       <a href="#contact" class="inline-flex items-center gap-2 py-3 px-7 rounded-lg font-semibold text-[0.95rem] text-accent border border-border-accent hover:bg-glow hover:border-accent hover:-translate-y-0.5 transition-all"><i class="fas fa-envelope"></i> <span data-i18n="hero_btn_contact">Contact Me</span></a>
     </div>
   </div>
@@ -174,14 +174,14 @@
           <div class="skill-icon-float w-8 h-8 rounded-lg bg-glow flex items-center justify-center text-sm text-accent shrink-0"><i class="fas fa-code"></i></div>
           <div class="text-xs font-semibold uppercase tracking-wider text-accent font-mono" data-i18n="cat_lang">Languages & Frameworks</div>
         </div>
-        <div class="flex flex-wrap gap-1.5">
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">PHP 5.6–8.5</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Symfony 3.4–7.4</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Laravel 6–10</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">API Platform</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Doctrine ORM 2–3</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">REST API</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Swagger / OpenAPI</span>
+        <div class="skill-list flex flex-col gap-1.5">
+          <div class="skill-pill"><span class="skill-name">PHP 5.6–8.5</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Symfony 3.4–7.4</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Laravel 6–10</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">API Platform</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Doctrine ORM 2–3</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">REST API</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Swagger / OpenAPI</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
         </div>
       </div>
       <!-- Databases -->
@@ -190,13 +190,13 @@
           <div class="skill-icon-float w-8 h-8 rounded-lg bg-glow flex items-center justify-center text-sm text-accent shrink-0"><i class="fas fa-database"></i></div>
           <div class="text-xs font-semibold uppercase tracking-wider text-accent font-mono" data-i18n="cat_db">Databases & Caching</div>
         </div>
-        <div class="flex flex-wrap gap-1.5">
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">PostgreSQL 14–18</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">MySQL 5.7–8</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">MongoDB 4–7</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Redis 6–8</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Memcached</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Elasticsearch 8</span>
+        <div class="skill-list flex flex-col gap-1.5">
+          <div class="skill-pill"><span class="skill-name">PostgreSQL 14–18</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">MySQL 5.7–8</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">MongoDB 4–7</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Redis 6–8</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Memcached</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Elasticsearch 8</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
         </div>
       </div>
       <!-- DevOps -->
@@ -205,16 +205,16 @@
           <div class="skill-icon-float w-8 h-8 rounded-lg bg-glow flex items-center justify-center text-sm text-accent shrink-0"><i class="fas fa-cloud"></i></div>
           <div class="text-xs font-semibold uppercase tracking-wider text-accent font-mono" data-i18n="cat_devops">DevOps & Infrastructure</div>
         </div>
-        <div class="flex flex-wrap gap-1.5">
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Docker</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">AWS (ECS, EC2, S3)</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Nginx</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">RabbitMQ</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Kafka</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">CI/CD</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">GitHub Actions</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">GitLab CI</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Linux / UNIX</span>
+        <div class="skill-list flex flex-col gap-1.5">
+          <div class="skill-pill"><span class="skill-name">Docker</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">AWS (ECS, EC2, S3)</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Nginx</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">RabbitMQ</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Kafka</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">CI/CD</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">GitHub Actions</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">GitLab CI</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Linux / UNIX</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
         </div>
       </div>
       <!-- Architecture -->
@@ -223,15 +223,15 @@
           <div class="skill-icon-float w-8 h-8 rounded-lg bg-glow flex items-center justify-center text-sm text-accent shrink-0"><i class="fas fa-sitemap"></i></div>
           <div class="text-xs font-semibold uppercase tracking-wider text-accent font-mono" data-i18n="cat_arch">Architecture & Patterns</div>
         </div>
-        <div class="flex flex-wrap gap-1.5">
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">SOLID</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">GRASP</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">DRY / KISS / YAGNI</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">GoF Patterns</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Microservices</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">DDD</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">CQRS</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Event-Driven</span>
+        <div class="skill-list flex flex-col gap-1.5">
+          <div class="skill-pill"><span class="skill-name">SOLID</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">GRASP</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">DRY / KISS / YAGNI</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">GoF Patterns</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Microservices</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">DDD</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">CQRS</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Event-Driven</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
         </div>
       </div>
       <!-- Testing -->
@@ -240,15 +240,15 @@
           <div class="skill-icon-float w-8 h-8 rounded-lg bg-glow flex items-center justify-center text-sm text-accent shrink-0"><i class="fas fa-vial"></i></div>
           <div class="text-xs font-semibold uppercase tracking-wider text-accent font-mono" data-i18n="cat_testing">Testing & Quality</div>
         </div>
-        <div class="flex flex-wrap gap-1.5">
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">PHPUnit 9–11</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">PHPStan</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Selenium</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">PHP CS Fixer</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">GrumPHP</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">XDebug</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">TDD</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">PER-CS 2.0</span>
+        <div class="skill-list flex flex-col gap-1.5">
+          <div class="skill-pill"><span class="skill-name">PHPUnit 9–11</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">PHPStan</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Selenium</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">PHP CS Fixer</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">GrumPHP</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">XDebug</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">TDD</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">PER-CS 2.0</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
         </div>
       </div>
       <!-- Monitoring -->
@@ -257,13 +257,13 @@
           <div class="skill-icon-float w-8 h-8 rounded-lg bg-glow flex items-center justify-center text-sm text-accent shrink-0"><i class="fas fa-chart-line"></i></div>
           <div class="text-xs font-semibold uppercase tracking-wider text-accent font-mono" data-i18n="cat_monitor">Monitoring & Logging</div>
         </div>
-        <div class="flex flex-wrap gap-1.5">
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Grafana</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Loki</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Sentry</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">Rollbar</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">ELK Stack</span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-bg-tertiary text-text-primary border border-border hover:border-accent hover:bg-glow hover:text-accent hover:-translate-y-px transition-all cursor-pointer relative overflow-hidden">PerconaPMM</span>
+        <div class="skill-list flex flex-col gap-1.5">
+          <div class="skill-pill"><span class="skill-name">Grafana</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Loki</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Sentry</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Rollbar</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">ELK Stack</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">PerconaPMM</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
         </div>
       </div>
     </div>
@@ -271,18 +271,18 @@
     <div class="payment-section mt-8 p-8 bg-bg-card border border-border-accent rounded-xl relative overflow-hidden" data-scroll="payment-flip" data-stagger-delay="70">
       <div class="font-mono text-[0.85rem] text-accent font-semibold mb-4 flex items-center gap-2"><i class="fas fa-shield-halved"></i> <span data-i18n="payment_label">Payment Systems Integration</span></div>
       <div class="flex flex-wrap gap-2.5">
-        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(20,184,166,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Stripe</span>
-        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(20,184,166,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">ApplePay</span>
-        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(20,184,166,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">PayPal</span>
-        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(20,184,166,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">MercadoPago</span>
-        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(20,184,166,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">DLocal</span>
-        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(20,184,166,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Razorpay</span>
-        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(20,184,166,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Mollie</span>
-        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(20,184,166,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Flutterwave</span>
-        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(20,184,166,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">GoCardless</span>
-        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(20,184,166,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Xendit</span>
-        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(20,184,166,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Paystack</span>
-        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(20,184,166,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Secure & Pay</span>
+        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(6,182,212,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Stripe</span>
+        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(6,182,212,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">ApplePay</span>
+        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(6,182,212,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">PayPal</span>
+        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(6,182,212,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">MercadoPago</span>
+        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(6,182,212,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">DLocal</span>
+        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(6,182,212,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Razorpay</span>
+        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(6,182,212,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Mollie</span>
+        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(6,182,212,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Flutterwave</span>
+        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(6,182,212,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">GoCardless</span>
+        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(6,182,212,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Xendit</span>
+        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(6,182,212,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Paystack</span>
+        <span data-stagger-child class="px-4 py-2 rounded-md text-[0.82rem] font-semibold font-mono text-text-primary border border-border-accent bg-gradient-to-br from-[rgba(16,185,129,0.1)] to-[rgba(6,182,212,0.1)] hover:bg-glow-strong hover:-translate-y-0.5 hover:shadow-[0_4px_12px_var(--color-glow)] transition-all">Secure & Pay</span>
       </div>
     </div>
   </div>
@@ -308,9 +308,12 @@
         <div class="timeline-dot"></div>
         <div class="timeline-card bg-bg-card border border-border rounded-xl p-6 cursor-pointer text-left hover:border-border-accent hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all">
           <div class="timeline-header flex justify-between items-start gap-2 mb-3">
-            <div>
-              <div class="text-lg font-bold" data-i18n="job1_role">Senior PHP Developer</div>
-              <div class="text-accent font-semibold text-[0.95rem]">systeme.io</div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-sm shrink-0">S</div>
+              <div>
+                <div class="text-lg font-bold" data-i18n="job1_role">Senior PHP Developer</div>
+                <div class="text-accent font-semibold text-[0.95rem]">systeme.io</div>
+              </div>
             </div>
             <div class="text-right shrink-0 whitespace-nowrap">
               <div class="font-mono text-xs text-text-muted">04/2024 — <span data-i18n="present">Present</span></div>
@@ -320,7 +323,21 @@
           <div class="text-text-secondary text-sm mb-3" data-i18n="job1_summary">SaaS platform for online business. Payment team: <strong>multiple providers</strong>, <strong>microservice architecture</strong>, <strong>~500 TB</strong> data.</div>
           <div class="expand-hint text-xs text-text-muted mt-2 flex items-center gap-1"><i class="fas fa-chevron-down"></i> <span data-i18n="expand_hint">Click to expand</span></div>
           <div class="timeline-details">
-            <ul class="timeline-achievements pt-4 border-t border-border mt-3">
+            <div class="metrics-grid grid grid-cols-3 gap-3 mb-4 pt-4 border-t border-border mt-3">
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">~500TB</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job1_m1">Data Processed</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">12+</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job1_m2">Payment Providers</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">3x</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job1_m3">Query Performance</div>
+              </div>
+            </div>
+            <ul class="timeline-achievements border-t border-border pt-3">
               <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a1"><strong>Highload</strong> SaaS: ~500 TB data, payment team responsible for <strong>all payment integrations</strong>.</li>
               <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a2">Implemented <strong>ApplePay via Stripe</strong>. Decomposed <strong>Flutterwave</strong> from monolith into a standalone <strong>microservice</strong>.</li>
               <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a3">Drove <strong>PHP 8.3 → 8.5</strong> upgrade. Participating in <strong>Symfony 6.4 → 7.4 LTS</strong> migration.</li>
@@ -376,9 +393,12 @@
         <div class="timeline-dot"></div>
         <div class="timeline-card bg-bg-card border border-border rounded-xl p-6 cursor-pointer text-left hover:border-border-accent hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all">
           <div class="timeline-header flex justify-between items-start gap-2 mb-3">
-            <div>
-              <div class="text-lg font-bold">PHP Developer</div>
-              <div class="text-accent font-semibold text-[0.95rem]">Octopays</div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-sm shrink-0">O</div>
+              <div>
+                <div class="text-lg font-bold">PHP Developer</div>
+                <div class="text-accent font-semibold text-[0.95rem]">Octopays</div>
+              </div>
             </div>
             <div class="text-right shrink-0 whitespace-nowrap">
               <div class="font-mono text-xs text-text-muted">03/2023 — 03/2024</div>
@@ -388,7 +408,21 @@
           <div class="text-text-secondary text-sm mb-3" data-i18n="job2_summary">"Mservis" — fintech platform. <strong>Core team</strong>, highload, <strong>2 TB+</strong> database.</div>
           <div class="expand-hint text-xs text-text-muted mt-2 flex items-center gap-1"><i class="fas fa-chevron-down"></i> <span data-i18n="expand_hint">Click to expand</span></div>
           <div class="timeline-details">
-            <ul class="timeline-achievements pt-4 border-t border-border mt-3">
+            <div class="metrics-grid grid grid-cols-3 gap-3 mb-4 pt-4 border-t border-border mt-3">
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">2TB+</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job2_m1">Production DB</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">7→8</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job2_m2">PHP Migration</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">100%</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job2_m3">Test Coverage</div>
+              </div>
+            </div>
+            <ul class="timeline-achievements border-t border-border pt-3">
               <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job2_a1"><strong>Core team</strong> on highload fintech platform. <strong>2 TB+</strong> production DB, real-time transaction processing.</li>
               <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job2_a2">Migrated <strong>PHP 7.4 → 8.2</strong>, <strong>Laravel 9 → 10</strong>. Refactored critical payment pipelines.</li>
               <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job2_a3">Architecture optimization: profiling bottlenecks, query tuning, <strong>Redis</strong> caching strategies.</li>
@@ -413,9 +447,12 @@
         <div class="timeline-dot"></div>
         <div class="timeline-card bg-bg-card border border-border rounded-xl p-6 cursor-pointer text-left hover:border-border-accent hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all">
           <div class="timeline-header flex justify-between items-start gap-2 mb-3">
-            <div>
-              <div class="text-lg font-bold">PHP Developer</div>
-              <div class="text-accent font-semibold text-[0.95rem]">Basis33</div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-sm shrink-0">B</div>
+              <div>
+                <div class="text-lg font-bold">PHP Developer</div>
+                <div class="text-accent font-semibold text-[0.95rem]">Basis33</div>
+              </div>
             </div>
             <div class="text-right shrink-0 whitespace-nowrap">
               <div class="font-mono text-xs text-text-muted">04/2020 — 03/2023</div>
@@ -425,7 +462,21 @@
           <div class="text-text-secondary text-sm mb-3" data-i18n="job3_summary">Web services. Key projects: <strong>DeinArzt</strong> medical platform, <strong>Fsexpert</strong> consultation service. Team of <strong>25</strong>.</div>
           <div class="expand-hint text-xs text-text-muted mt-2 flex items-center gap-1"><i class="fas fa-chevron-down"></i> <span data-i18n="expand_hint">Click to expand</span></div>
           <div class="timeline-details">
-            <ul class="timeline-achievements pt-4 border-t border-border mt-3">
+            <div class="metrics-grid grid grid-cols-3 gap-3 mb-4 pt-4 border-t border-border mt-3">
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">25</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job3_m1">Team Size</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">2</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job3_m2">Key Projects</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">3yr</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job3_m3">Development</div>
+              </div>
+            </div>
+            <ul class="timeline-achievements border-t border-border pt-3">
               <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job3_a1"><strong>DeinArzt</strong> — medical platform, 2 years of development. <strong>Fsexpert</strong> — consultation service with Zoom API.</li>
               <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job3_a2">Team of <strong>25 engineers</strong>. SQL optimization, DB <strong>replication & partitioning</strong>.</li>
             </ul>
@@ -449,9 +500,12 @@
         <div class="timeline-dot"></div>
         <div class="timeline-card bg-bg-card border border-border rounded-xl p-6 cursor-pointer text-left hover:border-border-accent hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all">
           <div class="timeline-header flex justify-between items-start gap-2 mb-3">
-            <div>
-              <div class="text-lg font-bold">PHP Developer</div>
-              <div class="text-accent font-semibold text-[0.95rem]">Sollento Group</div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-[0.7rem] shrink-0">SG</div>
+              <div>
+                <div class="text-lg font-bold">PHP Developer</div>
+                <div class="text-accent font-semibold text-[0.95rem]">Sollento Group</div>
+              </div>
             </div>
             <div class="text-right shrink-0 whitespace-nowrap">
               <div class="font-mono text-xs text-text-muted">02/2019 — 03/2020</div>
@@ -461,7 +515,21 @@
           <div class="text-text-secondary text-sm mb-3" data-i18n="job4_summary">SPA classifieds platform + web scraper. <strong>API from scratch</strong>, CI/CD on GitLab.</div>
           <div class="expand-hint text-xs text-text-muted mt-2 flex items-center gap-1"><i class="fas fa-chevron-down"></i> <span data-i18n="expand_hint">Click to expand</span></div>
           <div class="timeline-details">
-            <ul class="timeline-achievements pt-4 border-t border-border mt-3">
+            <div class="metrics-grid grid grid-cols-3 gap-3 mb-4 pt-4 border-t border-border mt-3">
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">API</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job4_m1">Built from Scratch</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">CI/CD</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job4_m2">Pipeline Setup</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">SOA</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job4_m3">Architecture</div>
+              </div>
+            </div>
+            <ul class="timeline-achievements border-t border-border pt-3">
               <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job4_a1">Built <strong>REST API from scratch</strong>, designed backend architecture on <strong>PostgreSQL</strong>. Set up <strong>CI/CD</strong> on GitLab.</li>
               <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job4_a2">Created <strong>web scraper</strong> for automated data collection. <strong>SOA</strong> architecture, SOLID & GRASP.</li>
             </ul>
@@ -492,33 +560,29 @@
       <h2 class="text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-tight mb-2"><span class="text-accent font-mono font-normal opacity-60">{ </span><span data-i18n="str_title">Strengths</span><span class="text-accent font-mono font-normal opacity-60"> }</span></h2>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" data-scroll="bounce-stagger" data-stagger-delay="150">
-      <div class="strength-card p-6 bg-bg-card border border-border rounded-xl text-center hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow" data-stagger-child>
-        <div class="strength-icon w-12 h-12 rounded-full bg-glow flex items-center justify-center mx-auto mb-4 text-xl text-accent"><i class="fas fa-brain"></i></div>
-        <div class="strength-body">
-          <div class="font-bold mb-2" data-i18n="str1_name">Problem Solving</div>
-          <div class="strength-desc text-sm text-text-secondary leading-relaxed" data-i18n="str1_desc">I always prefer practical and efficient approaches to resolving unexpected problems.</div>
-        </div>
+      <div class="strength-card p-6 bg-bg-card border border-border rounded-xl hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow" data-stagger-child>
+        <div class="strength-icon w-10 h-10 rounded-full bg-glow flex items-center justify-center mb-4 text-lg text-accent"><i class="fas fa-brain"></i></div>
+        <div class="font-bold mb-1" data-i18n="str1_name">Problem Solving</div>
+        <div class="inline-block px-2 py-0.5 rounded-full text-[0.7rem] font-mono font-semibold bg-glow text-accent border border-border-accent mb-3" data-i18n="str1_metric">3x query performance</div>
+        <div class="strength-desc text-sm text-text-secondary leading-relaxed" data-i18n="str1_desc">Profiled and optimized slow queries across ~500TB PostgreSQL cluster, achieving 3x performance improvement through indexing strategies and Doctrine batch processing.</div>
       </div>
-      <div class="strength-card p-6 bg-bg-card border border-border rounded-xl text-center hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow" data-stagger-child>
-        <div class="strength-icon w-12 h-12 rounded-full bg-glow flex items-center justify-center mx-auto mb-4 text-xl text-accent"><i class="fas fa-arrows-rotate"></i></div>
-        <div class="strength-body">
-          <div class="font-bold mb-2" data-i18n="str2_name">Adaptability</div>
-          <div class="strength-desc text-sm text-text-secondary leading-relaxed" data-i18n="str2_desc">Thanks to my flexibility and readiness, I always respond quickly to changes while maintaining efficiency and professionalism.</div>
-        </div>
+      <div class="strength-card p-6 bg-bg-card border border-border rounded-xl hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow" data-stagger-child>
+        <div class="strength-icon w-10 h-10 rounded-full bg-glow flex items-center justify-center mb-4 text-lg text-accent"><i class="fas fa-arrows-rotate"></i></div>
+        <div class="font-bold mb-1" data-i18n="str2_name">Adaptability</div>
+        <div class="inline-block px-2 py-0.5 rounded-full text-[0.7rem] font-mono font-semibold bg-glow text-accent border border-border-accent mb-3" data-i18n="str2_metric">PHP 5.6 → 8.5</div>
+        <div class="strength-desc text-sm text-text-secondary leading-relaxed" data-i18n="str2_desc">Led multiple major PHP and framework version migrations across 4 companies — from legacy PHP 5.6 to cutting-edge 8.5, Symfony 3.4 to 7.4, Laravel 6 to 10.</div>
       </div>
-      <div class="strength-card p-6 bg-bg-card border border-border rounded-xl text-center hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow" data-stagger-child>
-        <div class="strength-icon w-12 h-12 rounded-full bg-glow flex items-center justify-center mx-auto mb-4 text-xl text-accent"><i class="fas fa-comments"></i></div>
-        <div class="strength-body">
-          <div class="font-bold mb-2" data-i18n="str3_name">Communication</div>
-          <div class="strength-desc text-sm text-text-secondary leading-relaxed" data-i18n="str3_desc">My ability to effectively interact with Frontend, Backend, and DevOps teams ensures alignment at all project stages.</div>
-        </div>
+      <div class="strength-card p-6 bg-bg-card border border-border rounded-xl hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow" data-stagger-child>
+        <div class="strength-icon w-10 h-10 rounded-full bg-glow flex items-center justify-center mb-4 text-lg text-accent"><i class="fas fa-comments"></i></div>
+        <div class="font-bold mb-1" data-i18n="str3_name">Communication</div>
+        <div class="inline-block px-2 py-0.5 rounded-full text-[0.7rem] font-mono font-semibold bg-glow text-accent border border-border-accent mb-3" data-i18n="str3_metric">25-person team</div>
+        <div class="strength-desc text-sm text-text-secondary leading-relaxed" data-i18n="str3_desc">Coordinated cross-team efforts across Frontend, Backend, and DevOps in a 25-engineer team at Basis33, ensuring alignment on complex medical platform architecture.</div>
       </div>
-      <div class="strength-card p-6 bg-bg-card border border-border rounded-xl text-center hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow" data-stagger-child>
-        <div class="strength-icon w-12 h-12 rounded-full bg-glow flex items-center justify-center mx-auto mb-4 text-xl text-accent"><i class="fas fa-user-graduate"></i></div>
-        <div class="strength-body">
-          <div class="font-bold mb-2" data-i18n="str4_name">Mentorship</div>
-          <div class="strength-desc text-sm text-text-secondary leading-relaxed" data-i18n="str4_desc">I share knowledge and experience, transforming students' potential into measurable achievements in short timeframes.</div>
-        </div>
+      <div class="strength-card p-6 bg-bg-card border border-border rounded-xl hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow" data-stagger-child>
+        <div class="strength-icon w-10 h-10 rounded-full bg-glow flex items-center justify-center mb-4 text-lg text-accent"><i class="fas fa-user-graduate"></i></div>
+        <div class="font-bold mb-1" data-i18n="str4_name">Mentorship</div>
+        <div class="inline-block px-2 py-0.5 rounded-full text-[0.7rem] font-mono font-semibold bg-glow text-accent border border-border-accent mb-3" data-i18n="str4_metric">Knowledge sharing</div>
+        <div class="strength-desc text-sm text-text-secondary leading-relaxed" data-i18n="str4_desc">Onboard new developers, establish code review practices, and conduct internal tech talks. Transform junior potential into measurable engineering outcomes.</div>
       </div>
     </div>
   </div>
@@ -526,47 +590,35 @@
 
 <hr class="section-divider" data-scroll="reveal-line">
 
-<!-- ===== CONTACT ===== -->
-<section class="py-[clamp(4rem,8vw,7rem)] bg-bg-secondary border-t border-b border-border" id="contact">
-  <div class="max-w-[1120px] mx-auto px-[clamp(1rem,4vw,3rem)]">
-    <div class="text-center mb-14" data-scroll="fade-up">
-      <h2 class="text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-tight mb-2"><span class="text-accent font-mono font-normal opacity-60">{ </span><span data-i18n="contact_title">Let's Connect</span><span class="text-accent font-mono font-normal opacity-60"> }</span></h2>
-      <p class="text-text-secondary text-[1.05rem] max-w-[600px] mx-auto" data-i18n="contact_subtitle">Open to new opportunities and interesting projects</p>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-scroll="deal-cards" data-stagger-delay="120">
-      <a href="tel:+375255055712" class="contact-card block p-6 bg-bg-card border border-border rounded-xl text-center hover-glow" style="--deal-x:120px;--deal-rotate:6deg" data-stagger-child>
-        <div class="contact-icon text-2xl text-accent mb-3 w-12 h-12 rounded-full bg-glow flex items-center justify-center mx-auto transition-all"><i class="fas fa-phone"></i></div>
-        <div class="text-xs text-text-muted uppercase tracking-wider font-mono mb-1" data-i18n="contact_phone_label">Phone</div>
-        <div class="text-[0.95rem] font-semibold">+375 25 505 57 12</div>
-      </a>
-      <a href="mailto:laikovladis@gmail.com" class="contact-card block p-6 bg-bg-card border border-border rounded-xl text-center hover-glow" style="--deal-x:40px;--deal-rotate:3deg" data-stagger-child>
-        <div class="contact-icon text-2xl text-accent mb-3 w-12 h-12 rounded-full bg-glow flex items-center justify-center mx-auto transition-all"><i class="fas fa-envelope"></i></div>
-        <div class="text-xs text-text-muted uppercase tracking-wider font-mono mb-1">Email</div>
-        <div class="text-[0.95rem] font-semibold">laikovladis@gmail.com</div>
-      </a>
-      <a href="https://linkedin.com/in/vlad-laikov" target="_blank" rel="noopener" class="contact-card block p-6 bg-bg-card border border-border rounded-xl text-center hover-glow" style="--deal-x:-40px;--deal-rotate:-3deg" data-stagger-child>
-        <div class="contact-icon text-2xl text-accent mb-3 w-12 h-12 rounded-full bg-glow flex items-center justify-center mx-auto transition-all"><i class="fab fa-linkedin"></i></div>
-        <div class="text-xs text-text-muted uppercase tracking-wider font-mono mb-1">LinkedIn</div>
-        <div class="text-[0.95rem] font-semibold">@vlad-laikov</div>
-      </a>
-      <a href="https://t.me/vladisdev" target="_blank" rel="noopener" class="contact-card block p-6 bg-bg-card border border-border rounded-xl text-center hover-glow" style="--deal-x:-120px;--deal-rotate:-6deg" data-stagger-child>
-        <div class="contact-icon text-2xl text-accent mb-3 w-12 h-12 rounded-full bg-glow flex items-center justify-center mx-auto transition-all"><i class="fab fa-telegram"></i></div>
-        <div class="text-xs text-text-muted uppercase tracking-wider font-mono mb-1">Telegram</div>
-        <div class="text-[0.95rem] font-semibold">@vladisdev</div>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- Floating back-to-top -->
 <div class="back-to-top-wrapper" id="back-to-top">
   <a href="#hero" class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-bg-card border border-border text-text-secondary hover:border-accent hover:text-accent hover:shadow-[0_0_16px_var(--color-glow)] transition-all"><i class="fas fa-chevron-up"></i></a>
 </div>
 
-<!-- ===== FOOTER ===== -->
-<footer class="py-8 text-center text-text-muted text-sm border-t border-border">
+<!-- Floating Download PDF -->
+<a href="/cv-vladislav-laikov.pdf" download class="download-pdf-btn fixed bottom-6 right-20 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-bg-card border border-border-accent text-accent text-sm font-semibold hover:bg-glow hover:shadow-[0_0_16px_var(--color-glow)] transition-all z-[100] opacity-0 translate-y-4 pointer-events-none" id="download-pdf">
+  <i class="fas fa-file-pdf"></i> <span data-i18n="btn_pdf">Download PDF</span>
+</a>
+
+<!-- ===== FOOTER / CONTACT ===== -->
+<footer class="py-12 border-t border-border" id="contact">
   <div class="max-w-[1120px] mx-auto px-[clamp(1rem,4vw,3rem)]">
-    <p>&copy; 2026 Vladislav Laikov. <span data-i18n="footer_text">Built with passion.</span></p>
+    <div class="flex flex-col items-center gap-6" data-scroll="fade-up">
+      <div class="text-center">
+        <h2 class="text-xl font-bold mb-2"><span class="text-accent font-mono font-normal opacity-60">{ </span><span data-i18n="contact_title">Let's Connect</span><span class="text-accent font-mono font-normal opacity-60"> }</span></h2>
+        <div class="flex items-center gap-2 justify-center">
+          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          <span class="text-sm text-text-secondary" data-i18n="contact_status">Open to opportunities</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="mailto:laikovladis@gmail.com" class="contact-icon-link" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://linkedin.com/in/vlad-laikov" target="_blank" rel="noopener" class="contact-icon-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://t.me/vladisdev" target="_blank" rel="noopener" class="contact-icon-link" title="Telegram"><i class="fab fa-telegram"></i></a>
+        <a href="tel:+375255055712" class="contact-icon-link" title="Phone"><i class="fas fa-phone"></i></a>
+      </div>
+      <p class="text-text-muted text-xs mt-4">&copy; 2026 Vladislav Laikov</p>
+    </div>
   </div>
 </footer>
 

@@ -2,18 +2,21 @@
 
 /* ========== THEME TOKENS ========== */
 @theme {
-  --color-bg-primary: #0a0f0a;
-  --color-bg-secondary: #121a14;
-  --color-bg-tertiary: #1a2e1e;
-  --color-bg-card: #141e16;
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #050505;
+  --color-bg-tertiary: #0f1a12;
+  --color-bg-card: #0a0f0a;
   --color-text-primary: #e4e7e4;
   --color-text-secondary: #9ca39c;
   --color-text-muted: #6b736b;
   --color-accent: #10b981;
   --color-accent-hover: #34d399;
   --color-accent-dim: #059669;
+  --color-accent-secondary: #06b6d4;
+  --color-accent-secondary-hover: #22d3ee;
   --color-glow: rgba(16, 185, 129, 0.15);
   --color-glow-strong: rgba(16, 185, 129, 0.3);
+  --color-glow-cyan: rgba(6, 182, 212, 0.15);
   --color-border: rgba(255, 255, 255, 0.06);
   --color-border-accent: rgba(16, 185, 129, 0.2);
   --font-mono: 'JetBrains Mono', monospace;
@@ -39,7 +42,7 @@
 html { scroll-behavior: auto; }
 
 body {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, sans-serif;
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
   line-height: 1.6;
@@ -53,7 +56,7 @@ html.theme-ready * {
 
 /* ========== GRADIENT TEXT ========== */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-accent), #14b8a6);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -443,7 +446,7 @@ html.theme-ready * {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--color-accent), #14b8a6);
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-secondary));
   transform: scaleX(0);
   transform-origin: left;
   z-index: 1001;
@@ -486,6 +489,23 @@ html.theme-ready * {
   pointer-events: none;
 }
 
+/* ========== HERO AURORA GLOW ========== */
+#hero h1 { position: relative; }
+#hero h1::before {
+  content: '';
+  position: absolute;
+  inset: -60% -30%;
+  background: radial-gradient(ellipse at center, rgba(16,185,129,0.12), rgba(6,182,212,0.08), transparent 70%);
+  filter: blur(60px);
+  z-index: -1;
+  animation: aurora-pulse 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes aurora-pulse {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.08); }
+}
+
 .typing-cursor {
   display: inline-block;
   width: 2px;
@@ -494,6 +514,7 @@ html.theme-ready * {
   margin-left: 2px;
   animation: blink 0.8s infinite;
   vertical-align: text-bottom;
+  box-shadow: 0 0 8px var(--color-accent), 0 0 20px var(--color-glow);
 }
 
 .scroll-indicator {
@@ -627,7 +648,7 @@ html.theme-ready * {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--color-accent), #14b8a6);
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-secondary));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -644,6 +665,47 @@ html.theme-ready * {
 .skill-category:nth-child(4) .skill-icon-float { animation-delay: -2.1s; }
 .skill-category:nth-child(5) .skill-icon-float { animation-delay: -2.8s; }
 .skill-category:nth-child(6) .skill-icon-float { animation-delay: -3.5s; }
+
+/* ========== SKILL PILLS WITH PROFICIENCY DOTS ========== */
+.skill-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+.skill-pill:hover {
+  border-color: var(--color-accent);
+  background: var(--color-glow);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+.skill-name { white-space: nowrap; }
+.skill-dots {
+  display: flex;
+  gap: 3px;
+  margin-left: auto;
+  padding-left: 8px;
+  flex-shrink: 0;
+}
+.skill-dots .dot-filled {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--color-accent);
+}
+.skill-dots .dot-dim {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.2;
+}
 
 /* Skill pill wave & active states */
 .pill-wave {
@@ -677,7 +739,7 @@ html.theme-ready * {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--color-accent), #14b8a6);
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-secondary));
 }
 
 /* ========== SPIRAL TIMELINE ========== */
@@ -705,7 +767,7 @@ html.theme-ready * {
   top: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, var(--color-accent), #14b8a6);
+  background: linear-gradient(180deg, var(--color-accent), var(--color-accent-secondary));
   box-shadow: 0 0 8px var(--color-glow-strong), 0 0 20px var(--color-glow);
   transform: translateX(-50%) scaleY(0);
   transform-origin: top;
@@ -801,6 +863,10 @@ html.theme-ready * {
   border-radius: 50%;
   background: var(--color-accent);
 }
+
+/* Experience metric blocks */
+.metric-block { transition: border-color 0.3s, transform 0.3s; }
+.metric-block:hover { border-color: var(--color-border-accent); transform: translateY(-2px); }
 
 .expand-hint i { transition: transform 0.3s ease; }
 .timeline-card.expanded .expand-hint i { transform: rotate(180deg); }
@@ -924,37 +990,35 @@ html.theme-ready * {
   transition: color 0.3s ease;
 }
 
-/* ========== CONTACT CARDS ========== */
-.contact-card {
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.35s var(--spring), box-shadow 0.35s ease, border-color 0.3s ease;
-}
-.contact-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-}
-.contact-card:hover .contact-icon {
-  background: var(--color-accent);
-  color: white;
-  transform: scale(1.1) rotate(-5deg);
-  transition: all 0.3s var(--spring);
-}
-
-/* Click ripple */
-.contact-card .ripple {
-  position: absolute;
+/* ========== CONTACT ICON LINKS ========== */
+.contact-icon-link {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--color-glow-strong);
-  transform: scale(0);
-  animation: ripple-expand 0.5s ease-out forwards;
-  pointer-events: none;
-  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-card);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+.contact-icon-link:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  box-shadow: 0 0 16px var(--color-glow);
+  transform: translateY(-3px);
 }
 
-/* Contact section glow on first enter */
-#contact.section-entered {
-  animation: section-glow 1.5s ease-out both;
+/* ========== DOWNLOAD PDF BUTTON ========== */
+.download-pdf-btn {
+  transition: all 0.4s var(--ease-out-expo);
+}
+.download-pdf-btn.visible {
+  opacity: 1;
+  translate: 0;
+  pointer-events: auto;
 }
 
 /* ========== ELASTIC PRESS ========== */
@@ -967,10 +1031,10 @@ html.theme-ready * {
 
 /* ========== ARCH DIAGRAM ========== */
 .arch-box.gateway {
-  background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(20,184,166,0.15));
+  background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(6,182,212,0.15));
 }
 .arch-box.monolith {
-  background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(20,184,166,0.05));
+  background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(6,182,212,0.05));
 }
 
 /* ========== BACK TO TOP ========== */
