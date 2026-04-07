@@ -184,16 +184,31 @@ function triggerTechFlipIn(card) {
 }
 
 function initTimelineCardToggle() {
-  document.querySelectorAll('.timeline-card').forEach(card => {
+  const allCards = document.querySelectorAll('.timeline-card');
+
+  allCards.forEach(card => {
     card.addEventListener('click', () => {
       const el = /** @type {HTMLElement} */ (card);
-      const item = el.closest('.timeline-item');
-      // Only expand if card is "facing" (spiral-active) or revealed on mobile
-      if (item && !item.classList.contains('spiral-active') && !item.classList.contains('mobile-revealed')) return;
-
       const isExpanding = !el.classList.contains('expanded');
+
+      // Accordion: close all others first
+      if (isExpanding) {
+        allCards.forEach(other => {
+          if (other !== card && other.classList.contains('expanded')) {
+            other.classList.remove('expanded');
+          }
+        });
+      }
+
       el.classList.toggle('expanded');
-      if (isExpanding) triggerTechFlipIn(el);
+
+      if (isExpanding) {
+        triggerTechFlipIn(el);
+        // Scroll card into comfortable reading position
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
     });
   });
 }
@@ -238,9 +253,16 @@ function initSpiralTimeline() {
         const card = /** @type {HTMLElement|null} */ (item.querySelector('.timeline-card'));
         if (!card) return;
 
+        // Skip 3D transforms on expanded cards — keep them flat and readable
+        if (card.classList.contains('expanded')) {
+          card.style.transform = 'perspective(1200px) rotateY(0deg) scale(1) translateZ(0px)';
+          card.style.opacity = '1';
+          item.classList.add('spiral-active');
+          return;
+        }
+
         const rect = item.getBoundingClientRect();
         const cardCenter = rect.top + rect.height / 2;
-        // dist: negative = above sweet spot, positive = below
         const dist = (cardCenter - sweetSpot) / (wh * 0.55);
         const clampedDist = Math.max(-1, Math.min(1, dist));
 
@@ -248,29 +270,26 @@ function initSpiralTimeline() {
         let angle, scale, opacity, tz;
 
         if (clampedDist > 0) {
-          // BELOW center → CLOSED (not yet reached by scroll)
-          // Cards face toward the center line (like closed book pages)
+          // BELOW center → not yet reached
           const closeFactor = Math.min(clampedDist, 1);
-          angle = isLeft ? -closeFactor * 65 : closeFactor * 65;
-          scale = 1 - closeFactor * 0.15;
-          opacity = 1 - closeFactor * 0.75;
-          tz = -closeFactor * 40;
+          angle = isLeft ? -closeFactor * 35 : closeFactor * 35;
+          scale = 1 - closeFactor * 0.1;
+          opacity = 1 - closeFactor * 0.6;
+          tz = -closeFactor * 20;
         } else {
-          // ABOVE center → OPEN (already scrolled past = opened)
-          // Cards stay mostly flat, subtle "opened" tilt outward
+          // ABOVE center → already scrolled past
           const openFactor = Math.min(Math.abs(clampedDist), 1);
-          angle = isLeft ? openFactor * 8 : -openFactor * 8;
-          scale = 1 - openFactor * 0.04;
-          opacity = 1 - openFactor * 0.15;
-          tz = -openFactor * 10;
+          angle = isLeft ? openFactor * 6 : -openFactor * 6;
+          scale = 1 - openFactor * 0.03;
+          opacity = 1 - openFactor * 0.12;
+          tz = -openFactor * 8;
         }
 
         card.style.transformOrigin = isLeft ? 'right center' : 'left center';
         card.style.transform = `perspective(1200px) rotateY(${angle}deg) scale(${scale}) translateZ(${tz}px)`;
-        card.style.opacity = String(Math.max(opacity, 0.15));
+        card.style.opacity = String(Math.max(opacity, 0.2));
 
-        // "Facing" when near center (transitioning open)
-        const isFacing = clampedDist > -0.25 && clampedDist < 0.25;
+        const isFacing = clampedDist > -0.3 && clampedDist < 0.3;
         item.classList.toggle('spiral-active', isFacing);
       });
     });

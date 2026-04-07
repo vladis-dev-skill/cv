@@ -32,6 +32,13 @@ export function applyTheme(theme) {
   }
 
   updateGridTheme(theme);
+
+  const navbar = document.getElementById('navbar');
+  if (navbar) {
+    navbar.style.background = theme === 'light'
+      ? 'rgba(248, 250, 248, 0.88)'
+      : 'rgba(0, 0, 0, 0.85)';
+  }
 }
 
 /** Initialize theme: apply saved preference, enable transitions, bind toggle. */

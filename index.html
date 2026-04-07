@@ -6,6 +6,7 @@
   <title>Vladislav Laikov — Senior PHP Developer</title>
   <meta name="description" content="Senior PHP Backend Developer — 7+ years, scalable architecture, high-load systems, payment platform engineering.">
   <meta name="author" content="Vladislav Laikov">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌨️</text></svg>">
   <meta property="og:title" content="Vladislav Laikov — Senior PHP Developer">
   <meta property="og:description" content="Interactive CV: 7+ years backend, microservices, 500TB+ data processing.">
   <meta property="og:type" content="website">
@@ -27,68 +28,63 @@
 <a href="#about" class="skip-link">Skip to content</a>
 
 <!-- ===== NAVBAR ===== -->
-<nav class="navbar fixed top-0 left-0 right-0 z-[1000] h-16 border-b border-border backdrop-blur-[16px]" id="navbar" style="background: rgba(0,0,0,0.85);">
+<nav class="navbar fixed top-0 left-0 right-0 z-50 h-16 border-b border-border backdrop-blur-[16px] bg-black/85" id="navbar">
   <div id="scroll-progress" class="scroll-progress"></div>
   <div class="max-w-[1120px] mx-auto px-[clamp(1rem,4vw,3rem)] flex items-center justify-between h-full">
     <a href="#hero" class="text-[1.4rem] font-extrabold tracking-tight"><span class="gradient-text">VL</span></a>
     <div class="navbar-links hidden md:flex gap-8 items-center">
       <a href="#about" class="text-text-secondary text-sm font-medium relative py-1 hover:text-text-primary transition-colors" data-i18n="nav_about">About</a>
-      <a href="#skills" class="text-text-secondary text-sm font-medium relative py-1 hover:text-text-primary transition-colors" data-i18n="nav_skills">Skills</a>
       <a href="#experience" class="text-text-secondary text-sm font-medium relative py-1 hover:text-text-primary transition-colors" data-i18n="nav_experience">Experience</a>
+      <a href="#skills" class="text-text-secondary text-sm font-medium relative py-1 hover:text-text-primary transition-colors" data-i18n="nav_skills">Skills</a>
       <a href="#contact" class="text-text-secondary text-sm font-medium relative py-1 hover:text-text-primary transition-colors" data-i18n="nav_contact">Contact</a>
     </div>
     <div class="flex gap-2 items-center">
       <button class="control-btn font-mono text-xs font-semibold w-auto px-2.5 h-[38px] rounded-lg flex items-center justify-center text-text-secondary border border-border-accent hover:border-accent hover:bg-glow hover:text-accent transition-all lang-btn" id="lang-toggle" title="Toggle language" data-i18n="lang_label">EN</button>
       <button class="control-btn w-[38px] h-[38px] rounded-lg flex items-center justify-center text-text-secondary hover:bg-glow hover:text-accent transition-all" id="theme-toggle" title="Toggle theme"><i class="fas fa-moon"></i></button>
-      <div class="hamburger flex md:hidden flex-col gap-[5px] w-6 cursor-pointer" id="hamburger"><span class="w-full h-0.5 bg-text-primary rounded-sm transition-all"></span><span class="w-full h-0.5 bg-text-primary rounded-sm transition-all"></span><span class="w-full h-0.5 bg-text-primary rounded-sm transition-all"></span></div>
+      <div class="hamburger flex md:hidden flex-col gap-[5px] min-w-[44px] min-h-[44px] items-center justify-center cursor-pointer" id="hamburger"><span class="w-6 h-0.5 bg-text-primary rounded-sm transition-all"></span><span class="w-6 h-0.5 bg-text-primary rounded-sm transition-all"></span><span class="w-6 h-0.5 bg-text-primary rounded-sm transition-all"></span></div>
     </div>
   </div>
 </nav>
 
-<!-- Light theme navbar bg -->
-<style>
-  [data-theme="light"] .navbar { background: rgba(248,250,248,0.88) !important; }
-</style>
-
 <!-- Mobile menu -->
-<div class="mobile-menu fixed top-16 left-0 right-0 bottom-0 bg-bg-primary z-[999] p-8 flex-col gap-6 hidden" id="mobile-menu">
-  <a href="#about" class="text-xl font-semibold text-text-secondary py-3 border-b border-border hover:text-accent transition-colors" data-i18n="nav_about">About</a>
-  <a href="#skills" class="text-xl font-semibold text-text-secondary py-3 border-b border-border hover:text-accent transition-colors" data-i18n="nav_skills">Skills</a>
-  <a href="#experience" class="text-xl font-semibold text-text-secondary py-3 border-b border-border hover:text-accent transition-colors" data-i18n="nav_experience">Experience</a>
-  <a href="#contact" class="text-xl font-semibold text-text-secondary py-3 border-b border-border hover:text-accent transition-colors" data-i18n="nav_contact">Contact</a>
+<div class="mobile-menu fixed top-16 left-0 right-0 bottom-0 bg-bg-primary/95 backdrop-blur-xl z-40 p-8 flex-col gap-6 hidden" id="mobile-menu">
+  <a href="#about" class="text-xl font-semibold text-text-secondary py-4 border-b border-border hover:text-accent transition-colors" data-i18n="nav_about">About</a>
+  <a href="#experience" class="text-xl font-semibold text-text-secondary py-4 border-b border-border hover:text-accent transition-colors" data-i18n="nav_experience">Experience</a>
+  <a href="#skills" class="text-xl font-semibold text-text-secondary py-4 border-b border-border hover:text-accent transition-colors" data-i18n="nav_skills">Skills</a>
+  <a href="#contact" class="text-xl font-semibold text-text-secondary py-4 border-b border-border hover:text-accent transition-colors" data-i18n="nav_contact">Contact</a>
 </div>
 
 <!-- ===== HERO ===== -->
 <div id="hero-outer" class="relative" style="height: 150vh;">
 <section class="sticky top-0 min-h-svh flex items-center justify-center text-center relative overflow-hidden pt-16" id="hero">
   <canvas id="grid-canvas" aria-hidden="true"></canvas>
-  <div class="hero-content relative z-[1] p-8">
-    <div class="inline-block font-mono text-[clamp(0.8rem,1.2vw,0.95rem)] text-accent tracking-widest uppercase mb-6 px-4 py-1.5 border border-border-accent rounded-full bg-glow" data-scroll="fade-up" data-hero-depth="0.3" style="transition-delay:0ms">
+  <div class="hero-content relative z-[1] p-4 sm:p-6 md:p-8">
+    <div class="inline-block font-mono text-[clamp(0.8rem,1.2vw,0.95rem)] text-accent tracking-widest uppercase mb-6 px-4 py-1.5 border border-border-accent rounded-full bg-glow" data-scroll="fade-up" data-hero-depth="0.3">
       <i class="fas fa-terminal"></i>&nbsp; Senior Software Developer
     </div>
-    <h1 class="text-[clamp(2.8rem,6vw,4.5rem)] font-extrabold tracking-tighter leading-none mb-5" data-scroll="fade-up" data-hero-depth="0.5" style="transition-delay:150ms">
+    <h1 class="text-[clamp(2.8rem,6vw,4.5rem)] font-extrabold tracking-tighter leading-none mb-5" data-scroll="fade-up" data-hero-depth="0.5">
       <span class="gradient-text" data-i18n="hero_name">Vladislav Laikov</span>
     </h1>
-    <div class="h-9 mb-8 flex items-center justify-center" data-scroll="fade-up" data-hero-depth="0.6" style="transition-delay:300ms">
+    <div class="h-9 mb-8 flex items-center justify-center" data-scroll="fade-up" data-hero-depth="0.6">
       <span class="font-mono text-[clamp(1rem,1.8vw,1.3rem)] text-text-secondary"><span id="typing-text"></span><span class="typing-cursor"></span></span>
     </div>
-    <div class="flex gap-4 justify-center flex-wrap mb-10" data-scroll="fade-up" data-hero-depth="0.7" style="transition-delay:450ms">
-      <div class="stat-pill py-2.5 px-5 rounded-full bg-bg-secondary border border-border-accent shadow-[0_0_12px_var(--color-glow)] text-sm flex items-center gap-2">
+    <div class="flex gap-2 sm:gap-4 justify-center flex-wrap mb-6 sm:mb-10" data-scroll="fade-up" data-hero-depth="0.7">
+      <div class="stat-pill py-2.5 px-5 rounded-full bg-bg-secondary border border-border-accent shadow-[0_0_12px_var(--color-glow)] text-xs sm:text-sm flex items-center gap-2">
         <span class="font-bold text-accent font-mono" data-counter="7" data-suffix="+">0</span>
         <span data-i18n="hero_stat_years">Years Experience</span>
       </div>
-      <div class="stat-pill py-2.5 px-5 rounded-full bg-bg-secondary border border-border-accent shadow-[0_0_12px_var(--color-glow)] text-sm flex items-center gap-2">
+      <div class="stat-pill py-2.5 px-5 rounded-full bg-bg-secondary border border-border-accent shadow-[0_0_12px_var(--color-glow)] text-xs sm:text-sm flex items-center gap-2">
         <span class="font-bold text-accent font-mono" data-counter="500" data-suffix="TB+">0</span>
         <span data-i18n="hero_stat_data">Data Processed</span>
       </div>
-      <div class="stat-pill py-2.5 px-5 rounded-full bg-bg-secondary border border-border-accent shadow-[0_0_12px_var(--color-glow)] text-sm flex items-center gap-2">
+      <div class="stat-pill py-2.5 px-5 rounded-full bg-bg-secondary border border-border-accent shadow-[0_0_12px_var(--color-glow)] text-xs sm:text-sm flex items-center gap-2">
         <i class="fas fa-cubes text-accent"></i>
         <span data-i18n="hero_stat_micro">Microservices</span>
       </div>
     </div>
-    <div class="flex gap-4 justify-center flex-wrap" data-scroll="fade-up" data-hero-depth="0.8" style="transition-delay:600ms">
-      <a href="#experience" class="btn-shine inline-flex items-center gap-2 py-3 px-7 rounded-lg font-semibold text-[0.95rem] text-white bg-gradient-to-br from-accent to-[#06b6d4] hover:-translate-y-0.5 hover:shadow-[0_4px_20px_var(--color-glow-strong)] transition-all animation-[pulse-glow_3s_infinite]"><i class="fas fa-briefcase"></i> <span data-i18n="hero_btn_work">View Experience</span></a>
-      <a href="#contact" class="inline-flex items-center gap-2 py-3 px-7 rounded-lg font-semibold text-[0.95rem] text-accent border border-border-accent hover:bg-glow hover:border-accent hover:-translate-y-0.5 transition-all"><i class="fas fa-envelope"></i> <span data-i18n="hero_btn_contact">Contact Me</span></a>
+    <div class="flex gap-3 sm:gap-4 justify-center flex-wrap" data-scroll="fade-up" data-hero-depth="0.8">
+      <a href="#experience" class="btn-shine inline-flex items-center gap-2 py-2.5 px-5 sm:py-3 sm:px-7 rounded-lg font-semibold text-sm sm:text-[0.95rem] text-white bg-gradient-to-br from-accent to-[#06b6d4] hover:-translate-y-0.5 hover:shadow-[0_4px_20px_var(--color-glow-strong)] transition-all animation-[pulse-glow_3s_infinite]"><i class="fas fa-briefcase"></i> <span data-i18n="hero_btn_work">View Experience</span></a>
+      <a href="#contact" class="inline-flex items-center gap-2 py-2.5 px-5 sm:py-3 sm:px-7 rounded-lg font-semibold text-sm sm:text-[0.95rem] text-accent border border-border-accent hover:bg-glow hover:border-accent hover:-translate-y-0.5 transition-all"><i class="fas fa-envelope"></i> <span data-i18n="hero_btn_contact">Contact Me</span></a>
     </div>
   </div>
   <div class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 text-text-muted text-2xl z-[1]"><i class="fas fa-chevron-down"></i></div>
@@ -99,12 +95,12 @@
 <hr class="section-divider" data-scroll="reveal-line">
 
 <!-- ===== ABOUT ===== -->
-<section class="py-[clamp(4rem,8vw,7rem)]" id="about">
+<section class="py-[clamp(2.5rem,8vw,7rem)]" id="about">
   <div class="max-w-[1120px] mx-auto px-[clamp(1rem,4vw,3rem)]">
-    <div class="text-center mb-14" data-scroll="fade-up">
+    <div class="text-center mb-8 sm:mb-14" data-scroll="fade-up">
       <h2 class="text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-tight mb-2"><span class="text-accent font-mono font-normal opacity-60">{ </span><span data-i18n="about_title">About Me</span><span class="text-accent font-mono font-normal opacity-60"> }</span></h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-start">
       <div>
         <!-- Terminal -->
         <div class="terminal-card font-mono bg-bg-secondary border border-border rounded-xl overflow-hidden mb-6" data-scroll="terminal-boot">
@@ -125,7 +121,7 @@
           </div>
         </div>
         <p class="about-text text-text-secondary text-[1.02rem] leading-7 mb-6" data-scroll="fade-up" data-i18n="about_text">Senior PHP Backend Developer with <strong>7+ years of commercial experience.</strong> Scalable architecture, <strong>high-load systems</strong>, monolith-to-microservice migrations. Deep expertise in Symfony and Laravel. Databases: <strong>PostgreSQL</strong>, MySQL, MongoDB, Redis — schema design, query optimization, replication, partitioning. DevOps: <strong>Docker</strong>, <strong>AWS</strong>, CI/CD, Kafka, RabbitMQ. For the past two years, leading development of systeme.io payment platform — <strong>microservice architecture</strong>, multiple payment provider integrations, processing <strong>500 TB+ of data.</strong></p>
-        <div class="flex flex-wrap gap-4 mt-6" data-scroll="fade-up">
+        <div class="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-4 mt-6" data-scroll="fade-up">
           <div class="about-contact-item flex items-center gap-2 text-sm text-text-secondary"><i class="fas fa-map-marker-alt text-accent w-4 text-center"></i> <span data-i18n="about_location">Minsk, Belarus</span></div>
           <div class="about-contact-item flex items-center gap-2 text-sm text-text-secondary"><i class="fas fa-birthday-cake text-accent w-4 text-center"></i> <span data-i18n="about_age">25 years old</span></div>
           <div class="about-contact-item flex items-center gap-2 text-sm text-text-secondary"><i class="fas fa-language text-accent w-4 text-center"></i> <span data-i18n="about_langs">Russian (Native), English (Intermediate)</span></div>
@@ -160,12 +156,283 @@
 
 <hr class="section-divider" data-scroll="reveal-line">
 
-<!-- ===== SKILLS ===== -->
-<section class="py-[clamp(4rem,8vw,7rem)] bg-bg-secondary" id="skills">
+<!-- ===== EXPERIENCE ===== -->
+<section class="py-[clamp(2.5rem,8vw,7rem)]" id="experience">
   <div class="max-w-[1120px] mx-auto px-[clamp(1rem,4vw,3rem)]">
-    <div class="text-center mb-14" data-scroll="fade-up">
+    <div class="text-center mb-8 sm:mb-14" data-scroll="fade-up">
+      <h2 class="text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-tight mb-2"><span class="text-accent font-mono font-normal opacity-60">{ </span><span data-i18n="exp_title">Work Experience</span><span class="text-accent font-mono font-normal opacity-60"> }</span></h2>
+      <p class="text-text-secondary text-sm sm:text-[1.05rem] max-w-[600px] mx-auto" data-i18n="exp_subtitle">7+ years building scalable backend systems</p>
+    </div>
+
+    <div class="timeline-spiral">
+      <!-- Center line + progress -->
+      <div class="timeline-line"></div>
+      <div class="timeline-progress" id="timeline-progress"></div>
+
+      <!-- Job 1: systeme.io — LEFT -->
+      <div class="timeline-item timeline-left" data-spiral="0">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card bg-bg-card border border-border rounded-xl p-6 cursor-pointer text-left hover:border-border-accent hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all">
+          <div class="timeline-header flex justify-between items-start gap-2 mb-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-sm shrink-0">S</div>
+              <div>
+                <div class="text-lg font-bold" data-i18n="job1_role">Senior PHP Developer</div>
+                <div class="text-accent font-semibold text-[0.95rem]">systeme.io</div>
+              </div>
+            </div>
+            <div class="text-right shrink-0 whitespace-nowrap">
+              <div class="font-mono text-xs text-text-muted">04/2024 — <span data-i18n="present">Present</span></div>
+              <span class="inline-block px-2 py-0.5 rounded-full text-[0.7rem] font-semibold bg-glow text-accent border border-border-accent">Remote</span>
+            </div>
+          </div>
+          <div class="text-text-secondary text-sm mb-3" data-i18n="job1_summary">SaaS platform for online business. Payment team: <strong>multiple providers</strong>, <strong>microservice architecture</strong>, <strong>~500 TB</strong> data.</div>
+          <div class="expand-hint text-xs text-text-muted mt-2 flex items-center gap-1"><i class="fas fa-chevron-down"></i> <span data-i18n="expand_hint">Click to expand</span></div>
+          <div class="timeline-details">
+            <div class="timeline-details-inner">
+            <div class="metrics-grid grid grid-cols-3 gap-3 mb-4 pt-4 border-t border-border mt-3">
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">~500TB</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job1_m1">Data Processed</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">12+</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job1_m2">Payment Providers</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">3x</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job1_m3">Query Performance</div>
+              </div>
+            </div>
+            <ul class="timeline-achievements border-t border-border pt-3">
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a1"><strong>Highload</strong> SaaS: ~500 TB data, payment team responsible for <strong>all payment integrations</strong>.</li>
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a2">Implemented <strong>ApplePay via Stripe</strong>. Decomposed <strong>Flutterwave</strong> from monolith into a standalone <strong>microservice</strong>.</li>
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a3">Drove <strong>PHP 8.3 → 8.5</strong> upgrade. Participating in <strong>Symfony 6.4 → 7.4 LTS</strong> migration.</li>
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a4">Led <strong>PostgreSQL 14 → 18</strong> upgrade via <strong>logical replication</strong> across monolith cluster.</li>
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a5">DB optimization: slow query profiling, indexing strategies, <strong>Doctrine ORM</strong> batch processing.</li>
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a6">Designed <strong>partial refund system</strong> with multi-provider webhook orchestration (<strong>Chain of Responsibility</strong>).</li>
+            </ul>
+            <div class="flex flex-wrap gap-1.5 mt-4">
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PHP 8.3–8.5</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Symfony 6.4 → 7.4</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PostgreSQL 14 → 18</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">MongoDB</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Redis</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Memcached</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">AWS (ECS, S3, CloudFront)</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Docker</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Nginx</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">RabbitMQ</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Kafka</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PgBouncer</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PHPUnit</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Selenium</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">GitHub Actions</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Rollbar</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Grafana</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Loki</span>
+            </div>
+            <!-- Architecture Diagram -->
+            <div class="arch-diagram mt-6 p-6 bg-bg-secondary border border-border rounded-xl">
+              <div class="arch-title font-mono text-xs text-accent mb-4 text-center" data-i18n="arch_title">Payment Platform Architecture</div>
+              <div class="arch-layers flex flex-col items-center gap-2">
+                <div class="arch-box gateway px-4 py-2 rounded-md font-mono text-xs font-medium text-center border border-border-accent text-text-primary w-4/5 max-w-[320px]"><i class="fas fa-globe"></i> API Gateway</div>
+                <div class="w-0.5 h-5 bg-accent opacity-40"></div>
+                <div class="arch-box monolith px-4 py-2 rounded-md font-mono text-xs font-medium text-center border border-border-accent text-text-primary w-4/5 max-w-[320px]"><i class="fas fa-server"></i> Backend Monolith</div>
+                <div class="w-0.5 h-5 bg-accent opacity-40"></div>
+                <div class="font-mono text-[0.65rem] text-text-muted text-center" data-i18n="arch_transport">Message Broker + Cache</div>
+                <div class="w-0.5 h-5 bg-accent opacity-40"></div>
+                <div class="arch-microservices flex flex-wrap justify-center gap-1.5 w-full max-w-[500px]">
+                  <div class="arch-micro px-3 py-1.5 rounded-md font-mono text-[0.68rem] text-center border border-border bg-bg-card text-text-secondary hover:border-accent hover:text-accent transition-all" data-i18n="arch_provider">Provider 1</div>
+                  <div class="arch-micro px-3 py-1.5 rounded-md font-mono text-[0.68rem] text-center border border-border bg-bg-card text-text-secondary hover:border-accent hover:text-accent transition-all" data-i18n="arch_provider2">Provider 2</div>
+                  <div class="arch-micro px-3 py-1.5 rounded-md font-mono text-[0.68rem] text-center border border-border bg-bg-card text-text-secondary hover:border-accent hover:text-accent transition-all" data-i18n="arch_provider3">Provider 3</div>
+                  <div class="arch-micro px-3 py-1.5 rounded-md font-mono text-[0.68rem] text-center border border-border bg-bg-card text-text-secondary">...</div>
+                  <div class="arch-micro px-3 py-1.5 rounded-md font-mono text-[0.68rem] text-center border border-border bg-bg-card text-text-secondary hover:border-accent hover:text-accent transition-all" data-i18n="arch_provider_n">Provider N</div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 2: Octopays — RIGHT -->
+      <div class="timeline-item timeline-right" data-spiral="1">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card bg-bg-card border border-border rounded-xl p-6 cursor-pointer text-left hover:border-border-accent hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all">
+          <div class="timeline-header flex justify-between items-start gap-2 mb-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-sm shrink-0">O</div>
+              <div>
+                <div class="text-lg font-bold">PHP Developer</div>
+                <div class="text-accent font-semibold text-[0.95rem]">Octopays</div>
+              </div>
+            </div>
+            <div class="text-right shrink-0 whitespace-nowrap">
+              <div class="font-mono text-xs text-text-muted">03/2023 — 03/2024</div>
+              <span class="inline-block px-2 py-0.5 rounded-full text-[0.7rem] font-semibold bg-glow text-accent border border-border-accent">Remote</span>
+            </div>
+          </div>
+          <div class="text-text-secondary text-sm mb-3" data-i18n="job2_summary">"Mservis" — fintech platform. <strong>Core team</strong>, highload, <strong>2 TB+</strong> database.</div>
+          <div class="expand-hint text-xs text-text-muted mt-2 flex items-center gap-1"><i class="fas fa-chevron-down"></i> <span data-i18n="expand_hint">Click to expand</span></div>
+          <div class="timeline-details">
+            <div class="timeline-details-inner">
+            <div class="metrics-grid grid grid-cols-3 gap-3 mb-4 pt-4 border-t border-border mt-3">
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">2TB+</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job2_m1">Production DB</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">7→8</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job2_m2">PHP Migration</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">100%</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job2_m3">Test Coverage</div>
+              </div>
+            </div>
+            <ul class="timeline-achievements border-t border-border pt-3">
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job2_a1"><strong>Core team</strong> on highload fintech platform. <strong>2 TB+</strong> production DB, real-time transaction processing.</li>
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job2_a2">Migrated <strong>PHP 7.4 → 8.2</strong>, <strong>Laravel 9 → 10</strong>. Refactored critical payment pipelines.</li>
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job2_a3">Architecture optimization: profiling bottlenecks, query tuning, <strong>Redis</strong> caching strategies.</li>
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job2_a4">Full test coverage (<strong>PHPUnit</strong>), static analysis (<strong>PHPStan</strong>). <strong>ELK</strong>-based observability.</li>
+            </ul>
+            <div class="flex flex-wrap gap-1.5 mt-4">
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PHP 8.2</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Laravel 10</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PostgreSQL</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Redis</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Docker</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Nginx</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Git / Bitbucket</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">ELK</span>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 3: Basis33 — LEFT -->
+      <div class="timeline-item timeline-left" data-spiral="2">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card bg-bg-card border border-border rounded-xl p-6 cursor-pointer text-left hover:border-border-accent hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all">
+          <div class="timeline-header flex justify-between items-start gap-2 mb-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-sm shrink-0">B</div>
+              <div>
+                <div class="text-lg font-bold">PHP Developer</div>
+                <div class="text-accent font-semibold text-[0.95rem]">Basis33</div>
+              </div>
+            </div>
+            <div class="text-right shrink-0 whitespace-nowrap">
+              <div class="font-mono text-xs text-text-muted">04/2020 — 03/2023</div>
+              <span class="inline-block px-2 py-0.5 rounded-full text-[0.7rem] font-semibold bg-glow text-accent border border-border-accent">Remote</span>
+            </div>
+          </div>
+          <div class="text-text-secondary text-sm mb-3" data-i18n="job3_summary">Web services. Key projects: <strong>DeinArzt</strong> medical platform, <strong>Fsexpert</strong> consultation service. Team of <strong>25</strong>.</div>
+          <div class="expand-hint text-xs text-text-muted mt-2 flex items-center gap-1"><i class="fas fa-chevron-down"></i> <span data-i18n="expand_hint">Click to expand</span></div>
+          <div class="timeline-details">
+            <div class="timeline-details-inner">
+            <div class="metrics-grid grid grid-cols-3 gap-3 mb-4 pt-4 border-t border-border mt-3">
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">25</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job3_m1">Team Size</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">2</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job3_m2">Key Projects</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">3yr</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job3_m3">Development</div>
+              </div>
+            </div>
+            <ul class="timeline-achievements border-t border-border pt-3">
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job3_a1"><strong>DeinArzt</strong> — medical platform, 2 years of development. <strong>Fsexpert</strong> — consultation service with Zoom API.</li>
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job3_a2">Team of <strong>25 engineers</strong>. SQL optimization, DB <strong>replication & partitioning</strong>.</li>
+            </ul>
+            <div class="flex flex-wrap gap-1.5 mt-4">
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PHP 7.4</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Symfony 5.3</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">API Platform</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">MySQL</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Memcached</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Docker</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">RabbitMQ</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Nginx</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">GitLab CI/CD</span>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 4: Sollento Group — RIGHT -->
+      <div class="timeline-item timeline-right" data-spiral="3">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card bg-bg-card border border-border rounded-xl p-6 cursor-pointer text-left hover:border-border-accent hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all">
+          <div class="timeline-header flex justify-between items-start gap-2 mb-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-[0.7rem] shrink-0">SG</div>
+              <div>
+                <div class="text-lg font-bold">PHP Developer</div>
+                <div class="text-accent font-semibold text-[0.95rem]">Sollento Group</div>
+              </div>
+            </div>
+            <div class="text-right shrink-0 whitespace-nowrap">
+              <div class="font-mono text-xs text-text-muted">02/2019 — 03/2020</div>
+              <span class="inline-block px-2 py-0.5 rounded-full text-[0.7rem] font-semibold bg-glow text-accent border border-border-accent">Remote</span>
+            </div>
+          </div>
+          <div class="text-text-secondary text-sm mb-3" data-i18n="job4_summary">SPA classifieds platform + web scraper. <strong>API from scratch</strong>, CI/CD on GitLab.</div>
+          <div class="expand-hint text-xs text-text-muted mt-2 flex items-center gap-1"><i class="fas fa-chevron-down"></i> <span data-i18n="expand_hint">Click to expand</span></div>
+          <div class="timeline-details">
+            <div class="timeline-details-inner">
+            <div class="metrics-grid grid grid-cols-3 gap-3 mb-4 pt-4 border-t border-border mt-3">
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">API</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job4_m1">Built from Scratch</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">CI/CD</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job4_m2">Pipeline Setup</div>
+              </div>
+              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
+                <div class="text-lg font-bold font-mono text-accent">SOA</div>
+                <div class="text-[0.7rem] text-text-muted" data-i18n="job4_m3">Architecture</div>
+              </div>
+            </div>
+            <ul class="timeline-achievements border-t border-border pt-3">
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job4_a1">Built <strong>REST API from scratch</strong>, designed backend architecture on <strong>PostgreSQL</strong>. Set up <strong>CI/CD</strong> on GitLab.</li>
+              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job4_a2">Created <strong>web scraper</strong> for automated data collection. <strong>SOA</strong> architecture, SOLID & GRASP.</li>
+            </ul>
+            <div class="flex flex-wrap gap-1.5 mt-4">
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PHP</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Symfony</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Doctrine ORM</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PostgreSQL</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Docker</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Nginx</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">GitLab CI/CD</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Swagger</span>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timeline-spiral -->
+  </div>
+</section>
+
+<hr class="section-divider" data-scroll="reveal-line">
+
+<!-- ===== SKILLS ===== -->
+<section class="py-[clamp(2.5rem,8vw,7rem)] bg-bg-secondary" id="skills">
+  <div class="max-w-[1120px] mx-auto px-[clamp(1rem,4vw,3rem)]">
+    <div class="text-center mb-8 sm:mb-14" data-scroll="fade-up">
       <h2 class="text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-tight mb-2"><span class="text-accent font-mono font-normal opacity-60">{ </span><span data-i18n="skills_title">Skills & Technologies</span><span class="text-accent font-mono font-normal opacity-60"> }</span></h2>
-      <p class="text-text-secondary text-[1.05rem] max-w-[600px] mx-auto" data-i18n="skills_subtitle">Technologies and tools I use to build robust systems</p>
+      <p class="text-text-secondary text-sm sm:text-[1.05rem] max-w-[600px] mx-auto" data-i18n="skills_subtitle">Technologies and tools I use to build robust systems</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-scroll="cascade-3d">
       <!-- Languages & Frameworks -->
@@ -290,273 +557,10 @@
 
 <hr class="section-divider" data-scroll="reveal-line">
 
-<!-- ===== EXPERIENCE ===== -->
-<section class="py-[clamp(4rem,8vw,7rem)]" id="experience">
-  <div class="max-w-[1120px] mx-auto px-[clamp(1rem,4vw,3rem)]">
-    <div class="text-center mb-14" data-scroll="fade-up">
-      <h2 class="text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-tight mb-2"><span class="text-accent font-mono font-normal opacity-60">{ </span><span data-i18n="exp_title">Work Experience</span><span class="text-accent font-mono font-normal opacity-60"> }</span></h2>
-      <p class="text-text-secondary text-[1.05rem] max-w-[600px] mx-auto" data-i18n="exp_subtitle">7+ years building scalable backend systems</p>
-    </div>
-
-    <div class="timeline-spiral">
-      <!-- Center line + progress -->
-      <div class="timeline-line"></div>
-      <div class="timeline-progress" id="timeline-progress"></div>
-
-      <!-- Job 1: systeme.io — LEFT -->
-      <div class="timeline-item timeline-left" data-spiral="0">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card bg-bg-card border border-border rounded-xl p-6 cursor-pointer text-left hover:border-border-accent hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all">
-          <div class="timeline-header flex justify-between items-start gap-2 mb-3">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-sm shrink-0">S</div>
-              <div>
-                <div class="text-lg font-bold" data-i18n="job1_role">Senior PHP Developer</div>
-                <div class="text-accent font-semibold text-[0.95rem]">systeme.io</div>
-              </div>
-            </div>
-            <div class="text-right shrink-0 whitespace-nowrap">
-              <div class="font-mono text-xs text-text-muted">04/2024 — <span data-i18n="present">Present</span></div>
-              <span class="inline-block px-2 py-0.5 rounded-full text-[0.7rem] font-semibold bg-glow text-accent border border-border-accent">Remote</span>
-            </div>
-          </div>
-          <div class="text-text-secondary text-sm mb-3" data-i18n="job1_summary">SaaS platform for online business. Payment team: <strong>multiple providers</strong>, <strong>microservice architecture</strong>, <strong>~500 TB</strong> data.</div>
-          <div class="expand-hint text-xs text-text-muted mt-2 flex items-center gap-1"><i class="fas fa-chevron-down"></i> <span data-i18n="expand_hint">Click to expand</span></div>
-          <div class="timeline-details">
-            <div class="metrics-grid grid grid-cols-3 gap-3 mb-4 pt-4 border-t border-border mt-3">
-              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
-                <div class="text-lg font-bold font-mono text-accent">~500TB</div>
-                <div class="text-[0.7rem] text-text-muted" data-i18n="job1_m1">Data Processed</div>
-              </div>
-              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
-                <div class="text-lg font-bold font-mono text-accent">12+</div>
-                <div class="text-[0.7rem] text-text-muted" data-i18n="job1_m2">Payment Providers</div>
-              </div>
-              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
-                <div class="text-lg font-bold font-mono text-accent">3x</div>
-                <div class="text-[0.7rem] text-text-muted" data-i18n="job1_m3">Query Performance</div>
-              </div>
-            </div>
-            <ul class="timeline-achievements border-t border-border pt-3">
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a1"><strong>Highload</strong> SaaS: ~500 TB data, payment team responsible for <strong>all payment integrations</strong>.</li>
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a2">Implemented <strong>ApplePay via Stripe</strong>. Decomposed <strong>Flutterwave</strong> from monolith into a standalone <strong>microservice</strong>.</li>
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a3">Drove <strong>PHP 8.3 → 8.5</strong> upgrade. Participating in <strong>Symfony 6.4 → 7.4 LTS</strong> migration.</li>
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a4">Led <strong>PostgreSQL 14 → 18</strong> upgrade via <strong>logical replication</strong> across monolith cluster.</li>
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a5">DB optimization: slow query profiling, indexing strategies, <strong>Doctrine ORM</strong> batch processing.</li>
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job1_a6">Designed <strong>partial refund system</strong> with multi-provider webhook orchestration (<strong>Chain of Responsibility</strong>).</li>
-            </ul>
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PHP 8.3–8.5</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Symfony 6.4 → 7.4</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PostgreSQL 14 → 18</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">MongoDB</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Redis</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Memcached</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">AWS (ECS, S3, CloudFront)</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Docker</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Nginx</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">RabbitMQ</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Kafka</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PgBouncer</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PHPUnit</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Selenium</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">GitHub Actions</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Rollbar</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Grafana</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Loki</span>
-            </div>
-            <!-- Architecture Diagram -->
-            <div class="arch-diagram mt-6 p-6 bg-bg-secondary border border-border rounded-xl">
-              <div class="arch-title font-mono text-xs text-accent mb-4 text-center" data-i18n="arch_title">Payment Platform Architecture</div>
-              <div class="arch-layers flex flex-col items-center gap-2">
-                <div class="arch-box gateway px-4 py-2 rounded-md font-mono text-xs font-medium text-center border border-border-accent text-text-primary w-4/5 max-w-[320px]"><i class="fas fa-globe"></i> API Gateway</div>
-                <div class="w-0.5 h-5 bg-accent opacity-40"></div>
-                <div class="arch-box monolith px-4 py-2 rounded-md font-mono text-xs font-medium text-center border border-border-accent text-text-primary w-4/5 max-w-[320px]"><i class="fas fa-server"></i> Backend Monolith</div>
-                <div class="w-0.5 h-5 bg-accent opacity-40"></div>
-                <div class="font-mono text-[0.65rem] text-text-muted text-center" data-i18n="arch_transport">Message Broker + Cache</div>
-                <div class="w-0.5 h-5 bg-accent opacity-40"></div>
-                <div class="arch-microservices flex flex-wrap justify-center gap-1.5 w-full max-w-[500px]">
-                  <div class="arch-micro px-3 py-1.5 rounded-md font-mono text-[0.68rem] text-center border border-border bg-bg-card text-text-secondary hover:border-accent hover:text-accent transition-all" data-i18n="arch_provider">Provider 1</div>
-                  <div class="arch-micro px-3 py-1.5 rounded-md font-mono text-[0.68rem] text-center border border-border bg-bg-card text-text-secondary hover:border-accent hover:text-accent transition-all" data-i18n="arch_provider2">Provider 2</div>
-                  <div class="arch-micro px-3 py-1.5 rounded-md font-mono text-[0.68rem] text-center border border-border bg-bg-card text-text-secondary hover:border-accent hover:text-accent transition-all" data-i18n="arch_provider3">Provider 3</div>
-                  <div class="arch-micro px-3 py-1.5 rounded-md font-mono text-[0.68rem] text-center border border-border bg-bg-card text-text-secondary">...</div>
-                  <div class="arch-micro px-3 py-1.5 rounded-md font-mono text-[0.68rem] text-center border border-border bg-bg-card text-text-secondary hover:border-accent hover:text-accent transition-all" data-i18n="arch_provider_n">Provider N</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Job 2: Octopays — RIGHT -->
-      <div class="timeline-item timeline-right" data-spiral="1">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card bg-bg-card border border-border rounded-xl p-6 cursor-pointer text-left hover:border-border-accent hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all">
-          <div class="timeline-header flex justify-between items-start gap-2 mb-3">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-sm shrink-0">O</div>
-              <div>
-                <div class="text-lg font-bold">PHP Developer</div>
-                <div class="text-accent font-semibold text-[0.95rem]">Octopays</div>
-              </div>
-            </div>
-            <div class="text-right shrink-0 whitespace-nowrap">
-              <div class="font-mono text-xs text-text-muted">03/2023 — 03/2024</div>
-              <span class="inline-block px-2 py-0.5 rounded-full text-[0.7rem] font-semibold bg-glow text-accent border border-border-accent">Remote</span>
-            </div>
-          </div>
-          <div class="text-text-secondary text-sm mb-3" data-i18n="job2_summary">"Mservis" — fintech platform. <strong>Core team</strong>, highload, <strong>2 TB+</strong> database.</div>
-          <div class="expand-hint text-xs text-text-muted mt-2 flex items-center gap-1"><i class="fas fa-chevron-down"></i> <span data-i18n="expand_hint">Click to expand</span></div>
-          <div class="timeline-details">
-            <div class="metrics-grid grid grid-cols-3 gap-3 mb-4 pt-4 border-t border-border mt-3">
-              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
-                <div class="text-lg font-bold font-mono text-accent">2TB+</div>
-                <div class="text-[0.7rem] text-text-muted" data-i18n="job2_m1">Production DB</div>
-              </div>
-              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
-                <div class="text-lg font-bold font-mono text-accent">7→8</div>
-                <div class="text-[0.7rem] text-text-muted" data-i18n="job2_m2">PHP Migration</div>
-              </div>
-              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
-                <div class="text-lg font-bold font-mono text-accent">100%</div>
-                <div class="text-[0.7rem] text-text-muted" data-i18n="job2_m3">Test Coverage</div>
-              </div>
-            </div>
-            <ul class="timeline-achievements border-t border-border pt-3">
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job2_a1"><strong>Core team</strong> on highload fintech platform. <strong>2 TB+</strong> production DB, real-time transaction processing.</li>
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job2_a2">Migrated <strong>PHP 7.4 → 8.2</strong>, <strong>Laravel 9 → 10</strong>. Refactored critical payment pipelines.</li>
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job2_a3">Architecture optimization: profiling bottlenecks, query tuning, <strong>Redis</strong> caching strategies.</li>
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job2_a4">Full test coverage (<strong>PHPUnit</strong>), static analysis (<strong>PHPStan</strong>). <strong>ELK</strong>-based observability.</li>
-            </ul>
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PHP 8.2</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Laravel 10</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PostgreSQL</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Redis</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Docker</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Nginx</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Git / Bitbucket</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">ELK</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Job 3: Basis33 — LEFT -->
-      <div class="timeline-item timeline-left" data-spiral="2">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card bg-bg-card border border-border rounded-xl p-6 cursor-pointer text-left hover:border-border-accent hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all">
-          <div class="timeline-header flex justify-between items-start gap-2 mb-3">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-sm shrink-0">B</div>
-              <div>
-                <div class="text-lg font-bold">PHP Developer</div>
-                <div class="text-accent font-semibold text-[0.95rem]">Basis33</div>
-              </div>
-            </div>
-            <div class="text-right shrink-0 whitespace-nowrap">
-              <div class="font-mono text-xs text-text-muted">04/2020 — 03/2023</div>
-              <span class="inline-block px-2 py-0.5 rounded-full text-[0.7rem] font-semibold bg-glow text-accent border border-border-accent">Remote</span>
-            </div>
-          </div>
-          <div class="text-text-secondary text-sm mb-3" data-i18n="job3_summary">Web services. Key projects: <strong>DeinArzt</strong> medical platform, <strong>Fsexpert</strong> consultation service. Team of <strong>25</strong>.</div>
-          <div class="expand-hint text-xs text-text-muted mt-2 flex items-center gap-1"><i class="fas fa-chevron-down"></i> <span data-i18n="expand_hint">Click to expand</span></div>
-          <div class="timeline-details">
-            <div class="metrics-grid grid grid-cols-3 gap-3 mb-4 pt-4 border-t border-border mt-3">
-              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
-                <div class="text-lg font-bold font-mono text-accent">25</div>
-                <div class="text-[0.7rem] text-text-muted" data-i18n="job3_m1">Team Size</div>
-              </div>
-              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
-                <div class="text-lg font-bold font-mono text-accent">2</div>
-                <div class="text-[0.7rem] text-text-muted" data-i18n="job3_m2">Key Projects</div>
-              </div>
-              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
-                <div class="text-lg font-bold font-mono text-accent">3yr</div>
-                <div class="text-[0.7rem] text-text-muted" data-i18n="job3_m3">Development</div>
-              </div>
-            </div>
-            <ul class="timeline-achievements border-t border-border pt-3">
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job3_a1"><strong>DeinArzt</strong> — medical platform, 2 years of development. <strong>Fsexpert</strong> — consultation service with Zoom API.</li>
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job3_a2">Team of <strong>25 engineers</strong>. SQL optimization, DB <strong>replication & partitioning</strong>.</li>
-            </ul>
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PHP 7.4</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Symfony 5.3</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">API Platform</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">MySQL</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Memcached</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Docker</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">RabbitMQ</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Nginx</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">GitLab CI/CD</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Job 4: Sollento Group — RIGHT -->
-      <div class="timeline-item timeline-right" data-spiral="3">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card bg-bg-card border border-border rounded-xl p-6 cursor-pointer text-left hover:border-border-accent hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all">
-          <div class="timeline-header flex justify-between items-start gap-2 mb-3">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-[0.7rem] shrink-0">SG</div>
-              <div>
-                <div class="text-lg font-bold">PHP Developer</div>
-                <div class="text-accent font-semibold text-[0.95rem]">Sollento Group</div>
-              </div>
-            </div>
-            <div class="text-right shrink-0 whitespace-nowrap">
-              <div class="font-mono text-xs text-text-muted">02/2019 — 03/2020</div>
-              <span class="inline-block px-2 py-0.5 rounded-full text-[0.7rem] font-semibold bg-glow text-accent border border-border-accent">Remote</span>
-            </div>
-          </div>
-          <div class="text-text-secondary text-sm mb-3" data-i18n="job4_summary">SPA classifieds platform + web scraper. <strong>API from scratch</strong>, CI/CD on GitLab.</div>
-          <div class="expand-hint text-xs text-text-muted mt-2 flex items-center gap-1"><i class="fas fa-chevron-down"></i> <span data-i18n="expand_hint">Click to expand</span></div>
-          <div class="timeline-details">
-            <div class="metrics-grid grid grid-cols-3 gap-3 mb-4 pt-4 border-t border-border mt-3">
-              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
-                <div class="text-lg font-bold font-mono text-accent">API</div>
-                <div class="text-[0.7rem] text-text-muted" data-i18n="job4_m1">Built from Scratch</div>
-              </div>
-              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
-                <div class="text-lg font-bold font-mono text-accent">CI/CD</div>
-                <div class="text-[0.7rem] text-text-muted" data-i18n="job4_m2">Pipeline Setup</div>
-              </div>
-              <div class="metric-block text-center p-3 rounded-lg bg-bg-secondary border border-border">
-                <div class="text-lg font-bold font-mono text-accent">SOA</div>
-                <div class="text-[0.7rem] text-text-muted" data-i18n="job4_m3">Architecture</div>
-              </div>
-            </div>
-            <ul class="timeline-achievements border-t border-border pt-3">
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job4_a1">Built <strong>REST API from scratch</strong>, designed backend architecture on <strong>PostgreSQL</strong>. Set up <strong>CI/CD</strong> on GitLab.</li>
-              <li class="relative pl-5 mb-2 text-[0.88rem] text-text-secondary leading-relaxed" data-i18n="job4_a2">Created <strong>web scraper</strong> for automated data collection. <strong>SOA</strong> architecture, SOLID & GRASP.</li>
-            </ul>
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PHP</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Symfony</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Doctrine ORM</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PostgreSQL</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Docker</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Nginx</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">GitLab CI/CD</span>
-              <span class="px-2.5 py-0.5 rounded-full text-[0.72rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Swagger</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /timeline-spiral -->
-  </div>
-</section>
-
-<hr class="section-divider" data-scroll="reveal-line">
-
 <!-- ===== STRENGTHS & EDUCATION ===== -->
-<section class="py-[clamp(4rem,8vw,7rem)]" id="strengths">
+<section class="py-[clamp(2.5rem,8vw,7rem)]" id="strengths">
   <div class="max-w-[1120px] mx-auto px-[clamp(1rem,4vw,3rem)]">
-    <div class="text-center mb-14" data-scroll="fade-up">
+    <div class="text-center mb-8 sm:mb-14" data-scroll="fade-up">
       <h2 class="text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-tight mb-2"><span class="text-accent font-mono font-normal opacity-60">{ </span><span data-i18n="str_title">Strengths</span><span class="text-accent font-mono font-normal opacity-60"> }</span></h2>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" data-scroll="bounce-stagger" data-stagger-delay="150">
@@ -595,10 +599,6 @@
   <a href="#hero" class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-bg-card border border-border text-text-secondary hover:border-accent hover:text-accent hover:shadow-[0_0_16px_var(--color-glow)] transition-all"><i class="fas fa-chevron-up"></i></a>
 </div>
 
-<!-- Floating Download PDF -->
-<a href="/cv-vladislav-laikov.pdf" download class="download-pdf-btn fixed bottom-6 right-20 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-bg-card border border-border-accent text-accent text-sm font-semibold hover:bg-glow hover:shadow-[0_0_16px_var(--color-glow)] transition-all z-[100] opacity-0 translate-y-4 pointer-events-none" id="download-pdf">
-  <i class="fas fa-file-pdf"></i> <span data-i18n="btn_pdf">Download PDF</span>
-</a>
 
 <!-- ===== FOOTER / CONTACT ===== -->
 <footer class="py-12 border-t border-border" id="contact">

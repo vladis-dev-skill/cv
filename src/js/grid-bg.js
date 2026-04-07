@@ -24,6 +24,9 @@ let scrollY = 0;
 let isReducedMotion = false;
 /** @type {boolean} */
 let isInitialized = false;
+/** @type {number} */
+let lastDrawTime = 0;
+const MOBILE_FRAME_INTERVAL = 1000 / 30; // 30fps cap on mobile to save battery
 
 /**
  * @typedef {{
@@ -127,6 +130,16 @@ function triggerPulses() {
 
 function draw() {
   if (!ctx || !dots) return;
+
+  // Throttle to 30fps on mobile (saves battery, mouse interaction is disabled anyway)
+  if (window.innerWidth < 768) {
+    const now = performance.now();
+    if (now - lastDrawTime < MOBILE_FRAME_INTERVAL) {
+      raf = requestAnimationFrame(draw);
+      return;
+    }
+    lastDrawTime = now;
+  }
 
   const w = canvas.width / (Math.min(window.devicePixelRatio || 1, 2));
   const h = canvas.height / (Math.min(window.devicePixelRatio || 1, 2));

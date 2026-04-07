@@ -110,7 +110,4 @@ export default {
   // Contact
   contact_title: 'Давайте свяжемся',
   contact_status: 'Открыт для предложений',
-
-  // PDF
-  btn_pdf: 'Скачать PDF',
 };

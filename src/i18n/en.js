@@ -110,7 +110,4 @@ export default {
   // Contact
   contact_title: "Let's Connect",
   contact_status: 'Open to opportunities',
-
-  // PDF
-  btn_pdf: 'Download PDF',
 };

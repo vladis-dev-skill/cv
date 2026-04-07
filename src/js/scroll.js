@@ -28,10 +28,6 @@ let parallaxEls = [];
 /** @type {HTMLElement[]} */
 let heroDepthEls = [];
 /** @type {HTMLElement | null} */
-let timelineProgressEl = null;
-/** @type {HTMLElement | null} */
-let timelineContainer = null;
-/** @type {HTMLElement | null} */
 let progressBarEl = null;
 /** @type {HTMLElement | null} */
 let backToTopEl = null;
@@ -418,11 +414,12 @@ export function initHoverGlow() {
 
 export function initScrollProgress() {
   heroOuter = document.getElementById('hero-outer');
+  if (heroOuter && window.innerWidth < 768) {
+    heroOuter.style.height = '110vh';
+  }
   heroContentEl = document.querySelector('.hero-content');
   scrollIndicator = document.querySelector('.scroll-indicator');
   parallaxEls = /** @type {HTMLElement[]} */ (Array.from(document.querySelectorAll('[data-scroll="parallax"]')));
-  timelineProgressEl = document.getElementById('timeline-progress');
-  timelineContainer = document.querySelector('.timeline');
   progressBarEl = document.getElementById('scroll-progress');
   backToTopEl = document.getElementById('back-to-top');
   heroDepthEls = /** @type {HTMLElement[]} */ (Array.from(document.querySelectorAll('[data-hero-depth]')));
@@ -483,26 +480,12 @@ function update() {
     el.style.transform = `translateY(${offset}px)`;
   }
 
-  // --- Timeline line draw ---
-  if (timelineProgressEl && timelineContainer) {
-    const rect = timelineContainer.getBoundingClientRect();
-    const start = rect.top + sy;
-    const scrollIn = sy + wh - start;
-    const progress = Math.min(Math.max(scrollIn / rect.height, 0), 1);
-    timelineProgressEl.style.transform = `scaleY(${progress})`;
-  }
-
   // --- Back-to-top ---
   if (backToTopEl) {
     const heroH = heroOuter ? heroOuter.offsetHeight : wh;
     backToTopEl.classList.toggle('visible', sy > heroH);
   }
 
-  // --- Download PDF button ---
-  const pdfBtn = document.getElementById('download-pdf');
-  if (pdfBtn) {
-    pdfBtn.classList.toggle('visible', sy > wh * 0.8);
-  }
 }
 
 // ========== BACK-TO-TOP BUTTON ==========
