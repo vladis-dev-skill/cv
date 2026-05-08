@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Владислав Лайков — Senior PHP Backend Developer</title>
+<meta name="author" content="Vladislav Laikov">
+<meta name="description" content="Senior PHP Backend Developer · 7+ лет · платёжные платформы, микросервисы, highload SaaS. systeme.io.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=block" rel="stylesheet">
+<style>
+  /* =====================================================================
+     CV — Vladislav Laikov · Senior PHP Backend Developer · RU edition
+     Static, two-page A4 PDF source. Mirrors the dynamic landing palette
+     (light variant), Developer Mono pairing (IBM Plex Sans + JetBrains Mono),
+     bracket "{ }" section markers, emerald/cyan accents, dot-grid backdrop.
+     No JS, no external assets except Google Fonts CDN + sibling qr.svg / photo.png.
+     ===================================================================== */
+
+  /* ───── DESIGN TOKENS ─────────────────────────────────────── */
+  :root {
+    /* Surfaces — light theme of the brand (print-safe) */
+    --bg:          #f8faf8;
+    --card:        #ffffff;
+    --bg-soft:     #f0f4f0;
+    --bg-softer:   #e8ede8;
+
+    /* Text */
+    --text:        #18181b;
+    --text-2:      #3f3f46;
+    --text-mute:   #6b7280;
+
+    /* Brand accents (mirror landing) */
+    --accent:      #10b981;
+    --accent-2:    #06b6d4;
+    --accent-dim:  #059669;
+
+    /* Borders & glows */
+    --border:        rgba(0, 0, 0, 0.08);
+    --border-soft:   rgba(0, 0, 0, 0.05);
+    --border-accent: rgba(16, 185, 129, 0.28);
+    --glow:          rgba(16, 185, 129, 0.10);
+
+    /* Type */
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* ───── RESET ─────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: var(--sans);
+    background: var(--bg-softer);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.42;
+    font-size: 9.6pt;
+    /* Force colors to print exactly (Chrome/Edge → PDF) */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ───── PAGE FRAME ────────────────────────────────────────── */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 9mm 11mm 8mm 11mm;
+    background-color: var(--bg);
+    /* Mirror the landing's canvas dot-grid: subtle emerald dots, ~7mm spacing.
+       Inline SVG data URI is more print-reliable than radial-gradient. */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28'><circle cx='14' cy='14' r='1.4' fill='%2310b981' fill-opacity='0.14'/></svg>");
+    background-size: 7mm 7mm;
+    background-repeat: repeat;
+    background-position: 0 0;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 62mm 1fr;
+    gap: 6mm;
+    overflow: hidden;
+    position: relative;
+  }
+  @media screen {
+    /* Visual gap between pages only when previewing in browser. */
+    .page + .page { margin-top: 6mm; }
+  }
+
+  .page-num {
+    position: absolute;
+    right: 11mm;
+    bottom: 4.2mm;
+    font-family: var(--mono);
+    font-size: 6.4pt;
+    color: var(--text-mute);
+    letter-spacing: 0.6px;
+  }
+  .page-num .of { opacity: 0.5; }
+
+  /* ───── COMMON: SECTION TITLE & SIDEBAR BLOCKS ─────────────── */
+  .sec { display: flex; flex-direction: column; }
+  .sec + .sec { margin-top: 3.4mm; }
+
+  .sec-title {
+    font-size: 10.2pt;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 1.6mm;
+    margin-bottom: 1.8mm;
+    letter-spacing: -0.2px;
+  }
+  .sec-title::before {
+    content: '{';
+    font-family: var(--mono);
+    color: var(--accent);
+    opacity: 0.55;
+    font-weight: 400;
+    font-size: 11pt;
+  }
+  .sec-title::after {
+    content: '}';
+    font-family: var(--mono);
+    color: var(--accent);
+    opacity: 0.55;
+    font-weight: 400;
+    font-size: 11pt;
+  }
+
+  /* Sidebar block — slightly card-like */
+  .sb-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3mm 3.2mm;
+    position: relative;
+  }
+  .sb-block + .sb-block { margin-top: 3.2mm; }
+  .sb-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-radius: 8px 8px 0 0;
+  }
+  .sb-title {
+    font-family: var(--mono);
+    font-size: 7.2pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-dim);
+    margin-bottom: 2mm;
+    display: flex;
+    align-items: center;
+    gap: 1.5mm;
+  }
+  .sb-title::before {
+    content: '{'; font-family: var(--mono); color: var(--accent);
+    opacity: 0.6; font-weight: 400;
+  }
+  .sb-title::after {
+    content: '}'; font-family: var(--mono); color: var(--accent);
+    opacity: 0.6; font-weight: 400; margin-left: auto;
+  }
+
+  /* ───── SIDEBAR ────────────────────────────────────────────── */
+  .sidebar { display: flex; flex-direction: column; gap: 3.2mm; }
+
+  /* Photo */
+  .photo-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1.5px solid var(--border-accent);
+    box-shadow: 0 2px 14px rgba(16, 185, 129, 0.12),
+                0 0 0 1px rgba(16, 185, 129, 0.05);
+  }
+  .photo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+                  rgba(16, 185, 129, 0.06) 0%,
+                  transparent 30%,
+                  transparent 70%,
+                  rgba(6, 182, 212, 0.06) 100%);
+    pointer-events: none;
+  }
+  .photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* Contact list */
+  .contact-list { list-style: none; display: flex; flex-direction: column; gap: 1.8mm; }
+  .contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+    font-size: 7.8pt;
+    color: var(--text);
+    line-height: 1.25;
+    word-break: break-word;
+  }
+  .contact-list .ico {
+    flex: 0 0 3.2mm;
+    width: 3.2mm;
+    height: 3.2mm;
+    color: var(--accent-dim);
+  }
+  .contact-list .ico svg { width: 100%; height: 100%; display: block; }
+  .contact-list .val { color: var(--text); word-break: break-word; }
+  .contact-list a { color: var(--text); text-decoration: none; }
+
+  /* Skill chip groups */
+  .skill-group + .skill-group { margin-top: 1.8mm; }
+  .skill-cat {
+    font-family: var(--mono);
+    font-size: 6.4pt;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    letter-spacing: 0.6px;
+    margin-bottom: 0.9mm;
+    font-weight: 600;
+  }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 0.9mm; }
+  .chip {
+    display: inline-block;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.5mm 1.4mm;
+    font-family: var(--mono);
+    font-size: 6.6pt;
+    color: var(--text);
+    line-height: 1.35;
+  }
+  .chip.accent {
+    background: rgba(16, 185, 129, 0.10);
+    border-color: var(--border-accent);
+    color: var(--accent-dim);
+    font-weight: 600;
+  }
+
+  /* Languages mini-bars */
+  .lang-list { display: flex; flex-direction: column; gap: 1.8mm; }
+  .lang-item { display: flex; flex-direction: column; gap: 0.6mm; }
+  .lang-line {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5mm;
+    font-size: 7.6pt;
+  }
+  .lang-line .name { color: var(--text); font-weight: 500; }
+  .lang-line .level {
+    font-family: var(--mono);
+    font-size: 6.6pt;
+    color: var(--text-mute);
+    margin-left: auto;
+  }
+  .lang-bar { height: 2px; background: var(--bg-soft); border-radius: 2px; overflow: hidden; }
+  .lang-bar > span {
+    display: block; height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  }
+
+  /* Sidebar strengths list (page 2) */
+  .strength-list { display: flex; flex-direction: column; gap: 2mm; }
+  .strength-row { display: flex; gap: 2mm; align-items: flex-start; }
+  .strength-ico {
+    flex: 0 0 6mm;
+    width: 6mm; height: 6mm;
+    border-radius: 5px;
+    background: rgba(16, 185, 129, 0.10);
+    border: 1px solid var(--border-accent);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent-dim);
+  }
+  .strength-ico svg { width: 3.4mm; height: 3.4mm; }
+  .strength-body { flex: 1; min-width: 0; }
+  .strength-name {
+    font-size: 7.8pt;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .strength-metric {
+    font-family: var(--mono);
+    font-size: 6.2pt;
+    color: var(--accent-dim);
+    margin-top: 0.4mm;
+    letter-spacing: 0.2px;
+  }
+
+  /* QR block (page 2) */
+  .qr-block { text-align: center; }
+  .qr-block .qr-img {
+    width: 28mm; height: 28mm;
+    margin: 0 auto;
+    padding: 1.6mm;
+    background: var(--card);
+    border: 1px solid var(--border-accent);
+    border-radius: 6px;
+  }
+  .qr-block .qr-img img { width: 100%; height: 100%; display: block; }
+  .qr-block .qr-cap {
+    font-family: var(--mono);
+    font-size: 6.2pt;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-top: 1.6mm;
+  }
+  .qr-block .qr-url {
+    font-family: var(--mono);
+    font-size: 6.6pt;
+    font-weight: 600;
+    color: var(--accent-dim);
+    word-break: break-all;
+    margin-top: 0.6mm;
+    display: block;
+    text-decoration: none;
+  }
+
+  /* Availability pill (sidebar, p.2) */
+  .avail {
+    display: flex;
+    align-items: center;
+    gap: 1.5mm;
+    padding: 1.6mm 2mm;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid var(--border-accent);
+    border-radius: 6px;
+    font-size: 7.4pt;
+    color: var(--accent-dim);
+    font-weight: 600;
+  }
+  .avail .dot {
+    width: 1.8mm; height: 1.8mm;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 1.4px rgba(16, 185, 129, 0.25);
+    flex: 0 0 1.8mm;
+  }
+  .avail .meta {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 6.2pt;
+    color: var(--text-mute);
+    font-weight: 400;
+  }
+
+  /* ───── MAIN COLUMN ────────────────────────────────────────── */
+  .main { display: flex; flex-direction: column; gap: 3.4mm; min-width: 0; }
+
+  /* Header */
+  .hd {
+    display: flex; flex-direction: column; gap: 0.8mm;
+    padding-bottom: 2.4mm;
+    border-bottom: 1px dashed var(--border-accent);
+  }
+  .role-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5mm;
+    font-family: var(--mono);
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--accent-dim);
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid var(--border-accent);
+    padding: 1mm 2.4mm;
+    border-radius: 99px;
+    width: fit-content;
+    margin-bottom: 1.2mm;
+  }
+  .role-tag::before { content: '$'; opacity: 0.7; }
+
+  .hd h1 {
+    /* Plain HTML text with solid emerald color — maximum reliability.
+       History of what was tried and rejected:
+         1. background-clip: text + gradient → Puppeteer bug truncates
+            composite Cyrillic glyphs ("й" onwards), either as solid block
+            or full cutoff. Unfixable with CSS tweaks.
+         2. Inline SVG <text> + linearGradient fill → Puppeteer SVG engine
+            doesn't get access to the web-loaded Cyrillic font, falls back
+            to tofu boxes, looks like a solid gradient rectangle.
+       Solution: solid text + a decorative gradient bar on the left (::before),
+       which keeps brand identity without touching any text-fill tricks. */
+    position: relative;
+    font-size: 24pt;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    line-height: 1.08;
+    color: var(--accent-dim);
+    padding-left: 4mm;
+    margin: 0;
+  }
+  .hd h1::before {
+    /* Slim decorative gradient bar. NO box-shadow — Puppeteer's PDF
+       blur rendering smears the bar into a pale washed-out rectangle. */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10%;
+    bottom: 10%;
+    width: 1mm;
+    background: linear-gradient(180deg, var(--accent), var(--accent-2));
+    border-radius: 0.4mm;
+  }
+  .hd .role {
+    font-family: var(--mono);
+    font-size: 9pt;
+    color: var(--text-2);
+    margin-top: 0.6mm;
+  }
+  .hd .role .accent { color: var(--accent-dim); font-weight: 600; }
+
+  /* Mini header (page 2) */
+  .hd-mini {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4mm;
+    padding-bottom: 1.8mm;
+    border-bottom: 1px dashed var(--border-accent);
+    margin-bottom: 1mm;
+  }
+  .hd-mini .name {
+    font-family: var(--mono);
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.3px;
+  }
+  .hd-mini .name b { color: var(--accent-dim); }
+  .hd-mini .role-mini {
+    font-family: var(--mono);
+    font-size: 6.6pt;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+
+  /* Profile */
+  .summary {
+    font-size: 8.6pt;
+    color: var(--text);
+    line-height: 1.5;
+    text-align: justify;
+  }
+  .summary strong { color: var(--accent-dim); font-weight: 600; }
+
+  /* Hero KPI strip — 3 columns of "anchors" */
+  .anchors {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2mm;
+    margin-top: 0.5mm;
+  }
+  .anchor {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 2.4px solid var(--accent);
+    border-radius: 6px;
+    padding: 1.8mm 2.2mm;
+    position: relative;
+    overflow: hidden;
+  }
+  .anchor::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 14mm; height: 14mm;
+    background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .anchor .a-cat {
+    font-family: var(--mono);
+    font-size: 5.8pt;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.4mm;
+  }
+  .anchor .a-val {
+    font-size: 8.6pt;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.18;
+  }
+  .anchor .a-val .num {
+    font-family: var(--mono);
+    color: var(--accent-dim);
+  }
+  .anchor .a-meta {
+    font-family: var(--mono);
+    font-size: 5.8pt;
+    color: var(--text-mute);
+    margin-top: 0.6mm;
+  }
+
+  /* Experience timeline */
+  .xp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.6mm;
+    position: relative;
+  }
+  .xp-list::before {
+    content: '';
+    position: absolute;
+    left: 2.2mm;
+    top: 1.6mm;
+    bottom: 1.6mm;
+    width: 1.2px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-2));
+    opacity: 0.35;
+  }
+  .xp { position: relative; padding-left: 6mm; }
+  .xp::before {
+    content: '';
+    position: absolute;
+    left: 1.3mm;
+    top: 1.6mm;
+    width: 2.6mm;
+    height: 2.6mm;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1.5px solid var(--accent);
+    box-shadow: 0 0 0 1.3px rgba(16, 185, 129, 0.18);
+  }
+  .xp-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 2mm;
+    flex-wrap: wrap;
+  }
+  .xp-role {
+    font-size: 9.4pt;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .xp-role .at { color: var(--accent-dim); font-weight: 700; }
+  .xp-date {
+    font-family: var(--mono);
+    font-size: 6.8pt;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+  .xp-meta {
+    font-family: var(--mono);
+    font-size: 6.6pt;
+    color: var(--text-mute);
+    margin-top: 0.4mm;
+    margin-bottom: 0.8mm;
+  }
+  .xp-meta .dot { margin: 0 1mm; opacity: 0.5; }
+  .xp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6mm;
+  }
+  .xp-bullets li {
+    font-size: 7.9pt;
+    line-height: 1.42;
+    color: var(--text);
+    padding-left: 2.8mm;
+    position: relative;
+  }
+  .xp-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0; top: 0;
+    color: var(--accent);
+    font-size: 7pt;
+  }
+  .xp-bullets li strong { color: var(--accent-dim); font-weight: 600; }
+
+  .xp-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8mm;
+    margin-top: 1.2mm;
+  }
+  .xp-stack .chip { font-size: 6.2pt; padding: 0.3mm 1.2mm; }
+
+  /* Highlights bento (page 2) */
+  .bento {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2mm;
+  }
+  .bento-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2.2mm 2.6mm;
+    position: relative;
+    overflow: hidden;
+  }
+  .bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    opacity: 0.7;
+  }
+  .bento-head {
+    display: flex;
+    align-items: center;
+    gap: 1.6mm;
+    margin-bottom: 1mm;
+  }
+  .bento-ico {
+    width: 5.4mm; height: 5.4mm;
+    border-radius: 5px;
+    background: rgba(16, 185, 129, 0.10);
+    border: 1px solid var(--border-accent);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent-dim);
+    flex: 0 0 5.4mm;
+  }
+  .bento-ico svg { width: 3.2mm; height: 3.2mm; }
+  .bento-title {
+    font-size: 8pt;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    flex: 1;
+  }
+  .bento-title .tag {
+    display: inline-block;
+    margin-left: 1mm;
+    font-family: var(--mono);
+    font-size: 5.8pt;
+    font-weight: 600;
+    color: var(--accent-dim);
+    background: rgba(16, 185, 129, 0.10);
+    border: 1px solid var(--border-accent);
+    padding: 0.2mm 1mm;
+    border-radius: 99px;
+    vertical-align: 1px;
+  }
+  .bento-desc {
+    font-size: 7.4pt;
+    line-height: 1.42;
+    color: var(--text-2);
+  }
+  .bento-desc strong { color: var(--accent-dim); font-weight: 600; }
+
+  /* Education */
+  .edu {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 2.5px solid var(--accent);
+    border-radius: 4px;
+    padding: 2mm 3mm;
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+  }
+  .edu .edu-body { flex: 1; min-width: 0; }
+  .edu-name {
+    font-size: 8.8pt;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.25;
+  }
+  .edu-name .abbr {
+    color: var(--accent-dim);
+    font-family: var(--mono);
+    font-size: 7.6pt;
+    font-weight: 600;
+  }
+  .edu-meta {
+    font-family: var(--mono);
+    font-size: 6.8pt;
+    color: var(--text-mute);
+    margin-top: 0.6mm;
+  }
+  .edu-tag {
+    font-family: var(--mono);
+    font-size: 6.4pt;
+    color: var(--accent-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid var(--border-accent);
+    padding: 0.6mm 1.6mm;
+    border-radius: 99px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* Print rules ────────────────────────────────────────────── */
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { background: var(--bg); }
+    .page {
+      box-shadow: none;
+      width: 210mm;
+      height: 297mm;
+      margin: 0;
+      page-break-after: always;
+      break-after: page;
+    }
+    .page:last-of-type {
+      page-break-after: auto;
+      break-after: auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- =================================================================== -->
+<!-- ============================ PAGE 1 =============================== -->
+<!-- =================================================================== -->
+<div class="page">
+
+  <!-- ============= LEFT SIDEBAR ============= -->
+  <aside class="sidebar">
+
+    <div class="photo-wrap">
+      <img src="photo.png" alt="Фото Владислава Лайкова">
+    </div>
+
+    <!-- Контакты -->
+    <div class="sb-block">
+      <div class="sb-title">контакты</div>
+      <ul class="contact-list">
+        <li>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+          </span>
+          <span class="val">laikovladis@gmail.com</span>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="val">+375 25 505 57 12</span>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>
+          </span>
+          <span class="val">@vladisdev</span>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </span>
+          <span class="val">linkedin.com/in/vlad-laikov</span>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 7-8 12-8 12s-8-5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span class="val">Минск, Беларусь · UTC+3</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Стек -->
+    <div class="sb-block">
+      <div class="sb-title">стек</div>
+
+      <div class="skill-group">
+        <div class="skill-cat">Языки и фреймворки</div>
+        <div class="chip-row">
+          <span class="chip accent">PHP 5.6–8.5</span>
+          <span class="chip accent">Symfony 3.4–7.4</span>
+          <span class="chip">Laravel 6–10</span>
+          <span class="chip">Doctrine ORM</span>
+          <span class="chip">Symfony Messenger</span>
+          <span class="chip">Symfony Workflow</span>
+          <span class="chip">Composer / PSR</span>
+          <span class="chip">REST</span>
+          <span class="chip">OpenAPI</span>
+          <span class="chip">API Platform</span>
+          <span class="chip">и другое</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-cat">Базы данных и кеширование</div>
+        <div class="chip-row">
+          <span class="chip accent">PostgreSQL 14–18</span>
+          <span class="chip">MySQL 5.7–8</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">Redis</span>
+          <span class="chip">Memcached</span>
+          <span class="chip">Elasticsearch</span>
+          <span class="chip">PgBouncer</span>
+          <span class="chip">и другое</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-cat">DevOps и инфраструктура</div>
+        <div class="chip-row">
+          <span class="chip">Docker</span>
+          <span class="chip">AWS</span>
+          <span class="chip">Nginx</span>
+          <span class="chip">RabbitMQ</span>
+          <span class="chip">Kafka</span>
+          <span class="chip">GitHub Actions</span>
+          <span class="chip">GitLab CI</span>
+          <span class="chip">Linux</span>
+          <span class="chip">Sentry</span>
+          <span class="chip">и другое</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-cat">Архитектура и качество</div>
+        <div class="chip-row">
+          <span class="chip">SOLID</span>
+          <span class="chip">DDD</span>
+          <span class="chip">CQRS</span>
+          <span class="chip">Hexagonal</span>
+          <span class="chip">Microservices</span>
+          <span class="chip">Event-Driven</span>
+          <span class="chip">Idempotency</span>
+          <span class="chip">PHPUnit</span>
+          <span class="chip">PHPStan</span>
+          <span class="chip">TDD</span>
+          <span class="chip">и другое</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Языки -->
+    <div class="sb-block">
+      <div class="sb-title">языки</div>
+      <div class="lang-list">
+        <div class="lang-item">
+          <div class="lang-line"><span class="name">Русский</span><span class="level">Родной</span></div>
+          <div class="lang-bar"><span style="width:100%"></span></div>
+        </div>
+        <div class="lang-item">
+          <div class="lang-line"><span class="name">Английский</span><span class="level">Intermediate</span></div>
+          <div class="lang-bar"><span style="width:60%"></span></div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ============= MAIN ============= -->
+  <main class="main">
+
+    <!-- Header -->
+    <header class="hd">
+      <div class="role-tag">Senior Software Developer</div>
+      <h1>Владислав Лайков</h1>
+      <div class="role">Senior <span class="accent">PHP Backend</span> Developer  ·  7+ лет  ·  Платёжные платформы, highload SaaS и другое</div>
+    </header>
+
+    <!-- Profile -->
+    <section class="sec">
+      <div class="sec-title">Профиль</div>
+      <p class="summary">
+        Senior PHP Backend Developer с <strong>7+ годами коммерческого опыта</strong> построения масштабируемых
+        архитектур и highload-систем. Глубокая экспертиза в <strong>Symfony</strong> и <strong>Laravel</strong>,
+        подтверждённый опыт миграций <strong>монолитов в микросервисы</strong> и апгрейдов PHP/фреймворков
+        длиной в декаду. В настоящее время веду разработку платёжной платформы <strong>systeme.io</strong> —
+        микросервисная архитектура, <strong>12+ интеграций платёжных провайдеров</strong>,
+        обработка <strong>~500&nbsp;ТБ</strong> данных.
+      </p>
+    </section>
+
+    <!-- Hero anchor strip -->
+    <section class="anchors">
+      <div class="anchor">
+        <div class="a-cat">Специализация</div>
+        <div class="a-val">Платёжный эксперт</div>
+        <div class="a-meta"><span class="num">12+</span> интеграций · ApplePay · возвраты</div>
+      </div>
+      <div class="anchor">
+        <div class="a-cat">Опыт миграций</div>
+        <div class="a-val">Эксперт по миграциям</div>
+        <div class="a-meta">PHP <span class="num">5.6 → 8.5</span> · PG <span class="num">14 → 18</span></div>
+      </div>
+      <div class="anchor">
+        <div class="a-cat">Масштаб</div>
+        <div class="a-val">Highload-инженер</div>
+        <div class="a-meta"><span class="num">~500&nbsp;ТБ</span> SaaS · <span class="num">2&nbsp;ТБ+</span> fintech</div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="sec">
+      <div class="sec-title">Опыт работы</div>
+      <div class="xp-list">
+
+        <article class="xp">
+          <div class="xp-head">
+            <div class="xp-role">Senior PHP Developer <span class="at">@ systeme.io</span></div>
+            <div class="xp-date">Апр 2024 — Наст. время · Удалённо</div>
+          </div>
+          <div class="xp-meta">SaaS для онлайн-бизнеса <span class="dot">•</span> ~500 ТБ данных <span class="dot">•</span> 12+ платёжных провайдеров <span class="dot">•</span> Microservices</div>
+          <ul class="xp-bullets">
+            <li>Владею <strong>всеми 12+ платёжными интеграциями</strong> на SaaS, обрабатывающем <strong>~500&nbsp;ТБ</strong>; реализовал <strong>ApplePay через Stripe</strong> end-to-end, открыв мобильный чекаут для рынков US/EU.</li>
+            <li>Выделил <strong>Flutterwave</strong> из монолита в <strong>отдельный микросервис</strong>; спроектировал <strong>движок частичных возвратов</strong> с оркестрацией мульти-провайдерных вебхуков через <strong>Chain of Responsibility</strong>, устранив целый класс багов с потерей возвратов.</li>
+            <li>Провёл апгрейд <strong>PostgreSQL 14 → 18</strong> на кластере монолита через <strong>логическую репликацию без простоя</strong>; инициировал миграции <strong>PHP 8.3 → 8.5</strong> и <strong>Symfony 6.4 → 7.4 LTS</strong>.</li>
+            <li><strong>Совместно с платёжной командой</strong> сократил latency hot-path запросов в <strong>3 раза</strong>: эпик прошёл полный цикл — проектирование, распределение задач между двумя разработчиками, реализация и приёмка. Профилирование медленных запросов, точечные стратегии индексации, batch processing в <strong>Doctrine ORM</strong>.</li>
+            <li>Все ключевые инициативы вели <strong>итеративно и согласованно с командой и стейкхолдерами</strong> — от планирования и ревью архитектуры до релиза и пост-мониторинга. За кадром — десятки точечных улучшений: оптимизации, наблюдаемость, обработка edge-кейсов в платёжных вебхуках.</li>
+          </ul>
+          <div class="xp-stack">
+            <span class="chip">PHP 8.5</span>
+            <span class="chip">Symfony 7</span>
+            <span class="chip">PostgreSQL 18</span>
+            <span class="chip">MongoDB</span>
+            <span class="chip">Redis</span>
+            <span class="chip">AWS</span>
+            <span class="chip">Docker</span>
+            <span class="chip">RabbitMQ</span>
+            <span class="chip">Kafka</span>
+            <span class="chip">Grafana</span>
+            <span class="chip">Loki</span>
+          </div>
+        </article>
+
+        <article class="xp">
+          <div class="xp-head">
+            <div class="xp-role">PHP Developer <span class="at">@ Octopays (Mservis)</span></div>
+            <div class="xp-date">Мар 2023 — Мар 2024 · Удалённо</div>
+          </div>
+          <div class="xp-meta">Команда CORE финтех <span class="dot">•</span> продакшн-БД 2&nbsp;ТБ+ <span class="dot">•</span> Транзакции в реальном времени</div>
+          <ul class="xp-bullets">
+            <li>Core-инженер на highload финтех-платформе с <strong>продакшн-БД 2&nbsp;ТБ+</strong> и обработкой транзакций в реальном времени.</li>
+            <li>Провёл миграции <strong>PHP 7.4 → 8.2</strong> и <strong>Laravel 9 → 10</strong>; рефакторил критичные платёжные пайплайны под type-safety и производительность.</li>
+            <li>Оптимизация архитектуры: профилирование узких мест, тюнинг запросов, стратегии кеширования <strong>Redis</strong>; полное покрытие <strong>PHPUnit</strong>, статанализ <strong>PHPStan</strong>, observability на <strong>ELK</strong>.</li>
+            <li>Участвовал в <strong>смене СУБД с MySQL на PostgreSQL</strong> на критичном контуре платформы: переработка схемы под PostgreSQL-специфичные индексы и типы, <strong>поэтапная миграция данных без потери целостности</strong>, синхронизация легаси-кода с новым диалектом и валидация на проде.</li>
+          </ul>
+          <div class="xp-stack">
+            <span class="chip">PHP 8.2</span>
+            <span class="chip">Laravel 10</span>
+            <span class="chip">MySQL → PostgreSQL</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Redis</span>
+            <span class="chip">Docker</span>
+            <span class="chip">ELK</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div class="page-num">стр. <b>01</b> <span class="of">/ 02</span></div>
+</div>
+
+
+<!-- =================================================================== -->
+<!-- ============================ PAGE 2 =============================== -->
+<!-- =================================================================== -->
+<div class="page">
+
+  <!-- ============= LEFT SIDEBAR ============= -->
+  <aside class="sidebar">
+
+    <!-- Платёжные системы (full chip cloud, page 2) -->
+    <div class="sb-block">
+      <div class="sb-title">платёжные системы</div>
+      <div class="chip-row">
+        <span class="chip accent">Stripe</span>
+        <span class="chip accent">ApplePay</span>
+        <span class="chip accent">Flutterwave</span>
+        <span class="chip accent">Mollie</span>
+        <span class="chip accent">Razorpay</span>
+        <span class="chip">PayPal</span>
+        <span class="chip">MercadoPago</span>
+        <span class="chip">DLocal</span>
+        <span class="chip">GoCardless</span>
+        <span class="chip">Xendit</span>
+        <span class="chip">Paystack</span>
+        <span class="chip">Secure&nbsp;&amp;&nbsp;Pay</span>
+      </div>
+    </div>
+
+    <!-- Сильные стороны -->
+    <div class="sb-block">
+      <div class="sb-title">сильные стороны</div>
+      <div class="strength-list">
+        <div class="strength-row">
+          <div class="strength-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg>
+          </div>
+          <div class="strength-body">
+            <div class="strength-name">Решение задач</div>
+            <div class="strength-metric">3× производительность · кластер ~500 ТБ</div>
+          </div>
+        </div>
+        <div class="strength-row">
+          <div class="strength-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/><path d="M21 22v-6h-6"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/></svg>
+          </div>
+          <div class="strength-body">
+            <div class="strength-name">Адаптивность</div>
+            <div class="strength-metric">PHP 5.6 → 8.5 · 4 компании</div>
+          </div>
+        </div>
+        <div class="strength-row">
+          <div class="strength-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="strength-body">
+            <div class="strength-name">Коммуникация</div>
+            <div class="strength-metric">Кросс-команда из 25 инженеров</div>
+          </div>
+        </div>
+        <div class="strength-row">
+          <div class="strength-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="strength-body">
+            <div class="strength-name">Менторство</div>
+            <div class="strength-metric">Онбординг · code review · тех-доклады</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Доступность -->
+    <div class="sb-block">
+      <div class="sb-title">доступность</div>
+      <div class="avail">
+        <span class="dot"></span>
+        <span>Открыт к предложениям</span>
+        <span class="meta">удалённо</span>
+      </div>
+    </div>
+
+    <!-- QR -->
+    <div class="sb-block qr-block">
+      <div class="sb-title">интерактивное cv</div>
+      <div class="qr-img">
+        <img src="qr.svg" alt="QR-код на интерактивное CV">
+      </div>
+      <div class="qr-cap">отсканируйте или перейдите</div>
+      <a class="qr-url" href="https://vladis-dev-skill.github.io/cv/">vladis-dev-skill.github.io/cv</a>
+    </div>
+
+  </aside>
+
+  <!-- ============= MAIN ============= -->
+  <main class="main">
+
+    <!-- Mini header -->
+    <header class="hd-mini">
+      <div class="name"><b>Владислав Лайков</b> — Senior PHP Backend Developer</div>
+      <div class="role-mini">стр. 02 / 02</div>
+    </header>
+
+    <!-- Опыт работы (продолжение) -->
+    <section class="sec">
+      <div class="sec-title">Опыт работы (прод.)</div>
+      <div class="xp-list">
+
+        <article class="xp">
+          <div class="xp-head">
+            <div class="xp-role">PHP Developer <span class="at">@ Basis33</span></div>
+            <div class="xp-date">Апр 2020 — Мар 2023 · Удалённо</div>
+          </div>
+          <div class="xp-meta">Команда 25 инженеров <span class="dot">•</span> Медицинская платформа DeinArzt <span class="dot">•</span> Fsexpert (Zoom API)</div>
+          <ul class="xp-bullets">
+            <li>Доставил <strong>DeinArzt</strong> — немецкую медицинскую платформу с жёсткими compliance-требованиями (2 года разработки) — и <strong>Fsexpert</strong>, сервис консультаций с интеграцией <strong>Zoom API</strong>.</li>
+            <li>Координировал кросс-функциональную работу в команде из <strong>25 инженеров</strong>; отвечал за оптимизацию SQL и <strong>репликацию и партиционирование</strong> продакшн-кластера.</li>
+          </ul>
+          <div class="xp-stack">
+            <span class="chip">PHP 7.4</span>
+            <span class="chip">Symfony 5.3</span>
+            <span class="chip">API Platform</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">RabbitMQ</span>
+            <span class="chip">Docker</span>
+            <span class="chip">GitLab CI/CD</span>
+          </div>
+        </article>
+
+        <article class="xp">
+          <div class="xp-head">
+            <div class="xp-role">PHP Developer <span class="at">@ Sollento Group</span></div>
+            <div class="xp-date">Фев 2019 — Мар 2020 · Удалённо</div>
+          </div>
+          <div class="xp-meta">SPA-объявления + скрапер <span class="dot">•</span> SOA-архитектура</div>
+          <ul class="xp-bullets">
+            <li>Построил <strong>REST API с нуля</strong>, спроектировал backend-архитектуру на <strong>PostgreSQL</strong>, настроил полноценный <strong>CI/CD</strong>-пайплайн на GitLab.</li>
+            <li>Создал автоматический <strong>web-скрапер</strong> для агрегации объявлений; структурировал кодовую базу как <strong>SOA</strong> по принципам SOLID и GRASP.</li>
+          </ul>
+          <div class="xp-stack">
+            <span class="chip">PHP</span>
+            <span class="chip">Symfony</span>
+            <span class="chip">Doctrine</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Swagger</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Самое интересное bento -->
+    <section class="sec">
+      <div class="sec-title">Самое интересное</div>
+      <div class="bento">
+
+        <div class="bento-card">
+          <div class="bento-head">
+            <div class="bento-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <div class="bento-title">ApplePay через Stripe <span class="tag">systeme.io</span></div>
+          </div>
+          <div class="bento-desc">
+            Реализовал end-to-end интеграцию <strong>ApplePay</strong> через Stripe, открыв <strong>мобильный чекаут</strong> для рынков US/EU на SaaS-платформе <strong>~500&nbsp;ТБ</strong>.
+          </div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-head">
+            <div class="bento-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <div class="bento-title">Декомпозиция микросервиса <span class="tag">flutterwave</span></div>
+          </div>
+          <div class="bento-desc">
+            Выделил <strong>Flutterwave</strong> из монолита в отдельный <strong>микросервис</strong> с собственным деплоем, очередью и observability-стеком.
+          </div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-head">
+            <div class="bento-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <div class="bento-title">Апгрейд PostgreSQL 14 → 18 <span class="tag">без простоя</span></div>
+          </div>
+          <div class="bento-desc">
+            Провёл апгрейд кластера <strong>PostgreSQL 14 → 18</strong> на монолите через <strong>логическую репликацию</strong> — без maintenance-окна, без инцидентов в проде.
+          </div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-head">
+            <div class="bento-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.5 0 4.78 1.02 6.42 2.66"/><path d="M22 4 12 14.01l-3-3"/></svg>
+            </div>
+            <div class="bento-title">Движок частичных возвратов <span class="tag">12+ провайдеров</span></div>
+          </div>
+          <div class="bento-desc">
+            Спроектировал <strong>мульти-провайдерную</strong> систему частичных возвратов с оркестрацией вебхуков через <strong>Chain of Responsibility</strong>, устранив целый класс багов с потерей возвратов.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Образование -->
+    <section class="sec">
+      <div class="sec-title">Образование</div>
+      <div class="edu">
+        <div class="edu-body">
+          <div class="edu-name">Белорусский государственный университет информатики и радиоэлектроники <span class="abbr">(БГУИР)</span></div>
+          <div class="edu-meta">Факультет компьютерных систем и сетей · Минск, Беларусь</div>
+        </div>
+        <span class="edu-tag">Computer Science</span>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="page-num">стр. <b>02</b> <span class="of">/ 02</span></div>
+</div>
+
+</body>
+</html>

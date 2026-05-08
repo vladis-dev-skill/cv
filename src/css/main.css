@@ -1419,3 +1419,12 @@ html.theme-ready * {
   outline-offset: 2px;
 }
 :focus:not(:focus-visible) { outline: none; }
+
+/* ========== PAYMENT PILL ACCENT ========== */
+.payment-pill-accent {
+  background: linear-gradient(135deg, rgba(16,185,129,0.28), rgba(6,182,212,0.28)) !important;
+  border-color: var(--color-accent, #10b981) !important;
+  color: var(--color-text-primary, #fff) !important;
+  box-shadow: 0 0 0 1px var(--color-accent, #10b981) inset, 0 4px 16px rgba(16,185,129,0.18);
+  font-weight: 700;
+}
