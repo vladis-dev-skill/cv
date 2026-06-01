@@ -723,7 +723,7 @@
 <body>
 
 <!-- =================================================================== -->
-<!-- ============================ PAGE 1 =============================== -->
+<!-- ===================== SINGLE PAGE (A4, 1 of 1) ==================== -->
 <!-- =================================================================== -->
 <div class="page">
 
@@ -766,7 +766,7 @@
           <span class="ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 7-8 12-8 12s-8-5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </span>
-          <span class="val">Минск, Беларусь · UTC+3</span>
+          <span class="val">Минск, Беларусь · UTC+3 · remote</span>
         </li>
       </ul>
     </div>
@@ -782,60 +782,39 @@
           <span class="chip accent">Symfony 3.4–7.4</span>
           <span class="chip">Laravel 6–10</span>
           <span class="chip">Doctrine ORM</span>
-          <span class="chip">Symfony Messenger</span>
-          <span class="chip">Symfony Workflow</span>
-          <span class="chip">Composer / PSR</span>
-          <span class="chip">REST</span>
-          <span class="chip">OpenAPI</span>
+          <span class="chip">Messenger</span>
           <span class="chip">API Platform</span>
-          <span class="chip">и другое</span>
+          <span class="chip">REST / OpenAPI</span>
+          <span class="chip">Go</span>
         </div>
       </div>
 
       <div class="skill-group">
-        <div class="skill-cat">Базы данных и кеширование</div>
+        <div class="skill-cat">Данные и инфраструктура</div>
         <div class="chip-row">
           <span class="chip accent">PostgreSQL 14–18</span>
-          <span class="chip">MySQL 5.7–8</span>
+          <span class="chip">MySQL</span>
           <span class="chip">MongoDB</span>
           <span class="chip">Redis</span>
-          <span class="chip">Memcached</span>
-          <span class="chip">Elasticsearch</span>
-          <span class="chip">PgBouncer</span>
-          <span class="chip">и другое</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-cat">DevOps и инфраструктура</div>
-        <div class="chip-row">
           <span class="chip">Docker</span>
           <span class="chip">AWS</span>
-          <span class="chip">Nginx</span>
           <span class="chip">RabbitMQ</span>
           <span class="chip">Kafka</span>
-          <span class="chip">GitHub Actions</span>
-          <span class="chip">GitLab CI</span>
-          <span class="chip">Linux</span>
-          <span class="chip">Sentry</span>
-          <span class="chip">и другое</span>
+          <span class="chip">CI/CD</span>
         </div>
       </div>
 
       <div class="skill-group">
         <div class="skill-cat">Архитектура и качество</div>
         <div class="chip-row">
-          <span class="chip">SOLID</span>
           <span class="chip">DDD</span>
           <span class="chip">CQRS</span>
+          <span class="chip">Event-Driven</span>
           <span class="chip">Hexagonal</span>
           <span class="chip">Microservices</span>
-          <span class="chip">Event-Driven</span>
-          <span class="chip">Idempotency</span>
-          <span class="chip">PHPUnit</span>
-          <span class="chip">PHPStan</span>
-          <span class="chip">TDD</span>
-          <span class="chip">и другое</span>
+          <span class="chip">SOLID</span>
+          <span class="chip">PHPUnit / PHPStan</span>
+          <span class="chip accent">AI-assisted dev</span>
         </div>
       </div>
     </div>
@@ -855,6 +834,16 @@
       </div>
     </div>
 
+    <!-- QR — интерактивное портфолио -->
+    <div class="sb-block qr-block">
+      <div class="sb-title">портфолио</div>
+      <div class="qr-img">
+        <img src="qr.svg" alt="QR-код на интерактивное портфолио">
+      </div>
+      <div class="qr-cap">все проекты, метрики и стек →</div>
+      <a class="qr-url" href="https://vladis-dev-skill.github.io/cv/">vladis-dev-skill.github.io/cv</a>
+    </div>
+
   </aside>
 
   <!-- ============= MAIN ============= -->
@@ -871,15 +860,12 @@
     <section class="sec">
       <div class="sec-title">Профиль</div>
       <p class="summary">
-        Senior backend-инженер, который строит, масштабирует и <strong>владеет</strong> системами, от которых
-        зависит бизнес — <strong>7+ лет</strong> на <strong>PHP / Symfony</strong> в SaaS, финтехе, медицине и
-        веб-платформах. Глубоко там, где это важно, и <strong>адаптивен по умолчанию</strong>: прошёл
-        <strong>PHP 5.6 → 8.5</strong>, Symfony 3.4 → 7.4, Laravel 6 → 10, работал с PostgreSQL, MySQL, MongoDB
-        и миграциями MySQL → PostgreSQL. Силён в <strong>масштабируемой архитектуре</strong>,
-        <strong>highload-системах</strong>, REST API, DDD/SOLID, производительности БД и тестировании.
-        Последнее время веду backend платформы <strong>systeme.io</strong> — микросервисная архитектура,
-        интеграции платёжных провайдеров, <strong>~50&nbsp;ТБ</strong> данных. <strong>Не привязан к домену</strong>
-        и открыт к remote-ролям по всему миру — постоянная величина не сфера, а подход: ownership от и до.
+        Senior backend-инженер: строю, масштабирую и <strong>владею</strong> системами, от которых зависит
+        бизнес — <strong>7+ лет</strong> на <strong>PHP / Symfony</strong> в SaaS, финтехе, медицине и
+        веб-платформах. <strong>Адаптивен по умолчанию</strong> (PHP 5.6 → 8.5, 4 компании, любой домен);
+        сильнее всего в <strong>масштабируемой архитектуре</strong>, <strong>highload</strong> и
+        производительности БД. Сейчас веду backend <strong>systeme.io</strong> — микросервисы, платёжные
+        интеграции, <strong>~50&nbsp;ТБ</strong> данных. <strong>Не привязан к домену</strong>, открыт к remote.
       </p>
     </section>
 
@@ -891,7 +877,7 @@
         <div class="a-meta"><span class="num">4</span> компании · SaaS · финтех · медицина</div>
       </div>
       <div class="anchor">
-        <div class="a-cat">Опыт миграций</div>
+        <div class="a-cat">Миграции</div>
         <div class="a-val">Эксперт по миграциям</div>
         <div class="a-meta">PHP <span class="num">5.6 → 8.5</span> · PG <span class="num">14 → 18</span></div>
       </div>
@@ -912,13 +898,11 @@
             <div class="xp-role">Senior Backend Engineer (PHP/Symfony) <span class="at">@ systeme.io</span></div>
             <div class="xp-date">Апр 2024 — Наст. время · Удалённо</div>
           </div>
-          <div class="xp-meta">SaaS для онлайн-бизнеса <span class="dot">•</span> ~50 ТБ данных <span class="dot">•</span> 12+ платёжных провайдеров <span class="dot">•</span> Microservices</div>
+          <div class="xp-meta">SaaS для онлайн-бизнеса <span class="dot">•</span> ~50 ТБ <span class="dot">•</span> 12+ платёжных провайдеров <span class="dot">•</span> Microservices</div>
           <ul class="xp-bullets">
-            <li>Владею <strong>всеми 12+ платёжными интеграциями</strong> на SaaS, обрабатывающем <strong>~50&nbsp;ТБ</strong>; реализовал <strong>ApplePay через Stripe</strong> end-to-end, открыв мобильный чекаут для рынков US/EU.</li>
-            <li>Выделил <strong>Flutterwave</strong> из монолита в <strong>отдельный микросервис</strong>; спроектировал <strong>движок частичных возвратов</strong> с оркестрацией мульти-провайдерных вебхуков через <strong>Chain of Responsibility</strong>, устранив целый класс багов с потерей возвратов.</li>
-            <li>Провёл апгрейд <strong>PostgreSQL 14 → 18</strong> на кластере монолита через <strong>логическую репликацию без простоя</strong>; инициировал миграции <strong>PHP 8.3 → 8.5</strong> и <strong>Symfony 6.4 → 7.4 LTS</strong>.</li>
-            <li><strong>Совместно с платёжной командой</strong> сократил latency hot-path запросов в <strong>3 раза</strong>: эпик прошёл полный цикл — проектирование, распределение задач между двумя разработчиками, реализация и приёмка. Профилирование медленных запросов, точечные стратегии индексации, batch processing в <strong>Doctrine ORM</strong>.</li>
-            <li>Все ключевые инициативы вели <strong>итеративно и согласованно с командой и стейкхолдерами</strong> — от планирования и ревью архитектуры до релиза и пост-мониторинга. За кадром — десятки точечных улучшений: оптимизации, наблюдаемость, обработка edge-кейсов в платёжных вебхуках.</li>
+            <li>Владею <strong>всеми 12+ платёжными интеграциями</strong> на SaaS <strong>~50&nbsp;ТБ</strong>; реализовал <strong>ApplePay через Stripe</strong> end-to-end — мобильный чекаут для US/EU.</li>
+            <li>Выделил <strong>Flutterwave</strong> из монолита в <strong>микросервис</strong>; спроектировал <strong>движок частичных возвратов</strong> с оркестрацией вебхуков через <strong>Chain of Responsibility</strong>.</li>
+            <li>Апгрейд <strong>PostgreSQL 14 → 18</strong> без простоя (логическая репликация); миграции <strong>PHP 8.3 → 8.5</strong> и <strong>Symfony 6.4 → 7.4 LTS</strong>; latency hot-path <strong>−3×</strong> совместно с платёжной командой.</li>
           </ul>
           <div class="xp-stack">
             <span class="chip">PHP 8.5</span>
@@ -927,11 +911,9 @@
             <span class="chip">MongoDB</span>
             <span class="chip">Redis</span>
             <span class="chip">AWS</span>
-            <span class="chip">Docker</span>
             <span class="chip">RabbitMQ</span>
             <span class="chip">Kafka</span>
-            <span class="chip">Grafana</span>
-            <span class="chip">Loki</span>
+            <span class="chip">Grafana / Loki</span>
           </div>
         </article>
 
@@ -940,148 +922,30 @@
             <div class="xp-role">Backend Engineer (PHP) <span class="at">@ Octopays (Mservis)</span></div>
             <div class="xp-date">Мар 2023 — Мар 2024 · Удалённо</div>
           </div>
-          <div class="xp-meta">Команда CORE финтех <span class="dot">•</span> продакшн-БД 2&nbsp;ТБ+ <span class="dot">•</span> Транзакции в реальном времени</div>
+          <div class="xp-meta">Команда CORE финтех <span class="dot">•</span> прод-БД 2&nbsp;ТБ+ <span class="dot">•</span> транзакции в реальном времени</div>
           <ul class="xp-bullets">
-            <li>Core-инженер на highload финтех-платформе с <strong>продакшн-БД 2&nbsp;ТБ+</strong> и обработкой транзакций в реальном времени.</li>
-            <li>Провёл миграции <strong>PHP 7.4 → 8.2</strong> и <strong>Laravel 9 → 10</strong>; рефакторил критичные платёжные пайплайны под type-safety и производительность.</li>
-            <li>Оптимизация архитектуры: профилирование узких мест, тюнинг запросов, стратегии кеширования <strong>Redis</strong>; полное покрытие <strong>PHPUnit</strong>, статанализ <strong>PHPStan</strong>, observability на <strong>ELK</strong>.</li>
-            <li>Участвовал в <strong>смене СУБД с MySQL на PostgreSQL</strong> на критичном контуре платформы: переработка схемы под PostgreSQL-специфичные индексы и типы, <strong>поэтапная миграция данных без потери целостности</strong>, синхронизация легаси-кода с новым диалектом и валидация на проде.</li>
+            <li>Core-инженер highload финтех-платформы: <strong>2&nbsp;ТБ+</strong> прод-БД, обработка транзакций в реальном времени, событийная архитектура на <strong>Kafka</strong>.</li>
+            <li>Миграции <strong>PHP 7.4 → 8.2</strong> и <strong>Laravel 9 → 10</strong>, смена СУБД <strong>MySQL → PostgreSQL</strong> на критичном контуре; <strong>PHPUnit</strong>, <strong>PHPStan</strong>, observability на <strong>ELK</strong>.</li>
           </ul>
           <div class="xp-stack">
             <span class="chip">PHP 8.2</span>
             <span class="chip">Laravel 10</span>
             <span class="chip">MySQL → PostgreSQL</span>
-            <span class="chip">PostgreSQL</span>
             <span class="chip">Redis</span>
+            <span class="chip">Kafka</span>
             <span class="chip">Docker</span>
             <span class="chip">ELK</span>
           </div>
         </article>
-
-      </div>
-    </section>
-
-  </main>
-
-  <div class="page-num">стр. <b>01</b> <span class="of">/ 02</span></div>
-</div>
-
-
-<!-- =================================================================== -->
-<!-- ============================ PAGE 2 =============================== -->
-<!-- =================================================================== -->
-<div class="page">
-
-  <!-- ============= LEFT SIDEBAR ============= -->
-  <aside class="sidebar">
-
-    <!-- Платёжные системы (full chip cloud, page 2) -->
-    <div class="sb-block">
-      <div class="sb-title">платёжные системы</div>
-      <div class="chip-row">
-        <span class="chip accent">Stripe</span>
-        <span class="chip accent">ApplePay</span>
-        <span class="chip accent">Flutterwave</span>
-        <span class="chip accent">Mollie</span>
-        <span class="chip accent">Razorpay</span>
-        <span class="chip">PayPal</span>
-        <span class="chip">MercadoPago</span>
-        <span class="chip">DLocal</span>
-        <span class="chip">GoCardless</span>
-        <span class="chip">Xendit</span>
-        <span class="chip">Paystack</span>
-        <span class="chip">Secure&nbsp;&amp;&nbsp;Pay</span>
-      </div>
-    </div>
-
-    <!-- Сильные стороны -->
-    <div class="sb-block">
-      <div class="sb-title">сильные стороны</div>
-      <div class="strength-list">
-        <div class="strength-row">
-          <div class="strength-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/><path d="M21 22v-6h-6"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/></svg>
-          </div>
-          <div class="strength-body">
-            <div class="strength-name">Адаптивность</div>
-            <div class="strength-metric">PHP 5.6 → 8.5 · 4 компании · любой домен</div>
-          </div>
-        </div>
-        <div class="strength-row">
-          <div class="strength-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg>
-          </div>
-          <div class="strength-body">
-            <div class="strength-name">Решение задач</div>
-            <div class="strength-metric">3× производительность · кластер ~50 ТБ</div>
-          </div>
-        </div>
-        <div class="strength-row">
-          <div class="strength-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div class="strength-body">
-            <div class="strength-name">Коммуникация</div>
-            <div class="strength-metric">Кросс-команда из 25 инженеров</div>
-          </div>
-        </div>
-        <div class="strength-row">
-          <div class="strength-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          </div>
-          <div class="strength-body">
-            <div class="strength-name">Менторство</div>
-            <div class="strength-metric">Онбординг · code review · тех-доклады</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Доступность -->
-    <div class="sb-block">
-      <div class="sb-title">доступность</div>
-      <div class="avail">
-        <span class="dot"></span>
-        <span>Открыт к remote-предложениям — любой домен</span>
-        <span class="meta">удалённо</span>
-      </div>
-    </div>
-
-    <!-- QR -->
-    <div class="sb-block qr-block">
-      <div class="sb-title">интерактивное cv</div>
-      <div class="qr-img">
-        <img src="qr.svg" alt="QR-код на интерактивное CV">
-      </div>
-      <div class="qr-cap">отсканируйте или перейдите</div>
-      <a class="qr-url" href="https://vladis-dev-skill.github.io/cv/">vladis-dev-skill.github.io/cv</a>
-    </div>
-
-  </aside>
-
-  <!-- ============= MAIN ============= -->
-  <main class="main">
-
-    <!-- Mini header -->
-    <header class="hd-mini">
-      <div class="name"><b>Владислав Лайков</b> — Senior Backend Engineer (PHP/Symfony)</div>
-      <div class="role-mini">стр. 02 / 02</div>
-    </header>
-
-    <!-- Опыт работы (продолжение) -->
-    <section class="sec">
-      <div class="sec-title">Опыт работы (прод.)</div>
-      <div class="xp-list">
 
         <article class="xp">
           <div class="xp-head">
             <div class="xp-role">Backend Engineer (PHP) <span class="at">@ Basis33</span></div>
             <div class="xp-date">Апр 2020 — Мар 2023 · Удалённо</div>
           </div>
-          <div class="xp-meta">Команда 25 инженеров <span class="dot">•</span> Медицинская платформа DeinArzt <span class="dot">•</span> Fsexpert (Zoom API)</div>
+          <div class="xp-meta">Команда 25 инженеров <span class="dot">•</span> DeinArzt (медицина) <span class="dot">•</span> Fsexpert (Zoom API)</div>
           <ul class="xp-bullets">
-            <li>Доставил <strong>DeinArzt</strong> — немецкую медицинскую платформу с жёсткими compliance-требованиями (2 года разработки) — и <strong>Fsexpert</strong>, сервис консультаций с интеграцией <strong>Zoom API</strong>.</li>
-            <li>Координировал кросс-функциональную работу в команде из <strong>25 инженеров</strong>; отвечал за оптимизацию SQL и <strong>репликацию и партиционирование</strong> продакшн-кластера.</li>
+            <li>Доставил <strong>DeinArzt</strong> (немецкая медплатформа, 2 года, жёсткий compliance) и <strong>Fsexpert</strong> (Zoom API) в команде из <strong>25 инженеров</strong>; SQL-оптимизация, <strong>репликация и партиционирование</strong> прод-кластера.</li>
           </ul>
           <div class="xp-stack">
             <span class="chip">PHP 7.4</span>
@@ -1089,7 +953,6 @@
             <span class="chip">API Platform</span>
             <span class="chip">MySQL</span>
             <span class="chip">RabbitMQ</span>
-            <span class="chip">Docker</span>
             <span class="chip">GitLab CI/CD</span>
           </div>
         </article>
@@ -1101,8 +964,7 @@
           </div>
           <div class="xp-meta">SPA-объявления + скрапер <span class="dot">•</span> SOA-архитектура</div>
           <ul class="xp-bullets">
-            <li>Построил <strong>REST API с нуля</strong>, спроектировал backend-архитектуру на <strong>PostgreSQL</strong>, настроил полноценный <strong>CI/CD</strong>-пайплайн на GitLab.</li>
-            <li>Создал автоматический <strong>web-скрапер</strong> для агрегации объявлений; структурировал кодовую базу как <strong>SOA</strong> по принципам SOLID и GRASP.</li>
+            <li>Построил <strong>REST API с нуля</strong> на <strong>PostgreSQL</strong>, настроил <strong>CI/CD</strong> на GitLab, создал web-скрапер; структурировал кодовую базу как <strong>SOA</strong> по SOLID и GRASP.</li>
           </ul>
           <div class="xp-stack">
             <span class="chip">PHP</span>
@@ -1113,62 +975,6 @@
             <span class="chip">Swagger</span>
           </div>
         </article>
-
-      </div>
-    </section>
-
-    <!-- Самое интересное bento -->
-    <section class="sec">
-      <div class="sec-title">Самое интересное</div>
-      <div class="bento">
-
-        <div class="bento-card">
-          <div class="bento-head">
-            <div class="bento-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-            </div>
-            <div class="bento-title">ApplePay через Stripe <span class="tag">systeme.io</span></div>
-          </div>
-          <div class="bento-desc">
-            Реализовал end-to-end интеграцию <strong>ApplePay</strong> через Stripe, открыв <strong>мобильный чекаут</strong> для рынков US/EU на SaaS-платформе <strong>~50&nbsp;ТБ</strong>.
-          </div>
-        </div>
-
-        <div class="bento-card">
-          <div class="bento-head">
-            <div class="bento-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-            </div>
-            <div class="bento-title">Декомпозиция микросервиса <span class="tag">flutterwave</span></div>
-          </div>
-          <div class="bento-desc">
-            Выделил <strong>Flutterwave</strong> из монолита в отдельный <strong>микросервис</strong> с собственным деплоем, очередью и observability-стеком.
-          </div>
-        </div>
-
-        <div class="bento-card">
-          <div class="bento-head">
-            <div class="bento-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-            </div>
-            <div class="bento-title">Апгрейд PostgreSQL 14 → 18 <span class="tag">без простоя</span></div>
-          </div>
-          <div class="bento-desc">
-            Провёл апгрейд кластера <strong>PostgreSQL 14 → 18</strong> на монолите через <strong>логическую репликацию</strong> — без maintenance-окна, без инцидентов в проде.
-          </div>
-        </div>
-
-        <div class="bento-card">
-          <div class="bento-head">
-            <div class="bento-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.5 0 4.78 1.02 6.42 2.66"/><path d="M22 4 12 14.01l-3-3"/></svg>
-            </div>
-            <div class="bento-title">Движок частичных возвратов <span class="tag">12+ провайдеров</span></div>
-          </div>
-          <div class="bento-desc">
-            Спроектировал <strong>мульти-провайдерную</strong> систему частичных возвратов с оркестрацией вебхуков через <strong>Chain of Responsibility</strong>, устранив целый класс багов с потерей возвратов.
-          </div>
-        </div>
 
       </div>
     </section>
@@ -1187,7 +993,7 @@
 
   </main>
 
-  <div class="page-num">стр. <b>02</b> <span class="of">/ 02</span></div>
+  <div class="page-num">Владислав Лайков <span class="of">· Senior Backend Engineer · PHP/Symfony</span></div>
 </div>
 
 </body>

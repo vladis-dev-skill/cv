@@ -756,6 +756,28 @@ html.theme-ready * {
   opacity: 1;
 }
 
+/* Projects: collapsible (hidden by default, expand on click) — reuses the
+   0fr→1fr grid trick so no JS height measurement is needed. */
+.projects-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.45s ease, opacity 0.4s ease;
+}
+.projects-collapse.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.projects-collapse-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+.projects-toggle i { transition: transform 0.3s ease; }
+.projects-toggle[aria-expanded="true"] i { transform: rotate(180deg); }
+.projects-toggle .label-hide { display: none; }
+.projects-toggle[aria-expanded="true"] .label-show { display: none; }
+.projects-toggle[aria-expanded="true"] .label-hide { display: inline; }
+
 .timeline-achievements li::before {
   content: '';
   position: absolute;

@@ -145,6 +145,19 @@ function initSkillPillToggle() {
   });
 }
 
+// ========== PROJECTS: COLLAPSE TOGGLE ==========
+
+function initProjectsToggle() {
+  const btn = document.getElementById('projects-toggle');
+  const panel = document.getElementById('projects-collapse');
+  if (!btn || !panel) return;
+
+  btn.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+}
+
 // ========== TIMELINE: CARD CLICK TOGGLE ==========
 
 /**
@@ -302,6 +315,7 @@ export function initInteractions() {
   initStatPillHover();
   initSkillPillWave();
   initSkillPillToggle();
+  initProjectsToggle();
   initTimelineCardToggle();
   initSpiralTimeline();
 }

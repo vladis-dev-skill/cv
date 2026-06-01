@@ -35,6 +35,7 @@
     <div class="navbar-links hidden md:flex gap-8 items-center">
       <a href="#about" class="text-text-secondary text-sm font-medium relative py-1 hover:text-text-primary transition-colors" data-i18n="nav_about">About</a>
       <a href="#experience" class="text-text-secondary text-sm font-medium relative py-1 hover:text-text-primary transition-colors" data-i18n="nav_experience">Experience</a>
+      <a href="#projects" class="text-text-secondary text-sm font-medium relative py-1 hover:text-text-primary transition-colors" data-i18n="nav_projects">Projects</a>
       <a href="#skills" class="text-text-secondary text-sm font-medium relative py-1 hover:text-text-primary transition-colors" data-i18n="nav_skills">Skills</a>
       <a href="#contact" class="text-text-secondary text-sm font-medium relative py-1 hover:text-text-primary transition-colors" data-i18n="nav_contact">Contact</a>
     </div>
@@ -50,6 +51,7 @@
 <div class="mobile-menu fixed top-16 left-0 right-0 bottom-0 bg-bg-primary/95 backdrop-blur-xl z-40 p-8 flex-col gap-6 hidden" id="mobile-menu">
   <a href="#about" class="text-xl font-semibold text-text-secondary py-4 border-b border-border hover:text-accent transition-colors" data-i18n="nav_about">About</a>
   <a href="#experience" class="text-xl font-semibold text-text-secondary py-4 border-b border-border hover:text-accent transition-colors" data-i18n="nav_experience">Experience</a>
+  <a href="#projects" class="text-xl font-semibold text-text-secondary py-4 border-b border-border hover:text-accent transition-colors" data-i18n="nav_projects">Projects</a>
   <a href="#skills" class="text-xl font-semibold text-text-secondary py-4 border-b border-border hover:text-accent transition-colors" data-i18n="nav_skills">Skills</a>
   <a href="#contact" class="text-xl font-semibold text-text-secondary py-4 border-b border-border hover:text-accent transition-colors" data-i18n="nav_contact">Contact</a>
 </div>
@@ -113,7 +115,7 @@
             <div data-terminal-line><span class="text-accent">$ </span><span class="text-text-primary">whoami</span></div>
             <div data-terminal-line class="opacity-80">vladislav-laikov</div>
             <div data-terminal-line class="mt-2"><span class="text-accent">$ </span><span class="text-text-primary">cat role.txt</span></div>
-            <div data-terminal-line class="opacity-80">Senior PHP Backend Developer</div>
+            <div data-terminal-line class="opacity-80">Senior Backend Engineer (PHP/Symfony)</div>
             <div data-terminal-line class="mt-2"><span class="text-accent">$ </span><span class="text-text-primary">echo $EXPERIENCE</span></div>
             <div data-terminal-line class="opacity-80">7+ years commercial</div>
             <div data-terminal-line class="mt-2"><span class="text-accent">$ </span><span class="text-text-primary">cat specialization.txt</span></div>
@@ -177,7 +179,7 @@
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-lg bg-glow border border-border-accent flex items-center justify-center font-mono font-bold text-accent text-sm shrink-0">S</div>
               <div>
-                <div class="text-lg font-bold" data-i18n="job1_role">Senior PHP Developer</div>
+                <div class="text-lg font-bold" data-i18n="job1_role">Senior Backend Engineer (PHP/Symfony)</div>
                 <div class="text-accent font-semibold text-[0.95rem]">systeme.io</div>
               </div>
             </div>
@@ -430,6 +432,125 @@
 
 <hr class="section-divider" data-scroll="reveal-line">
 
+<!-- ===== PROJECTS ===== -->
+<section class="py-[clamp(2.5rem,8vw,7rem)]" id="projects">
+  <div class="max-w-[1120px] mx-auto px-[clamp(1rem,4vw,3rem)]">
+    <div class="text-center mb-6 sm:mb-8" data-scroll="fade-up">
+      <h2 class="text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-tight mb-2"><span class="text-accent font-mono font-normal opacity-60">{ </span><span data-i18n="proj_title">Projects & Side Work</span><span class="text-accent font-mono font-normal opacity-60"> }</span></h2>
+      <p class="text-text-secondary text-sm sm:text-[1.05rem] max-w-[640px] mx-auto mb-5" data-i18n="proj_subtitle">Beyond the day job — where I push architecture, full-stack and polyglot breadth on my own terms.</p>
+      <button type="button" id="projects-toggle" class="projects-toggle inline-flex items-center gap-2 py-2.5 px-5 rounded-lg font-semibold text-sm text-accent border border-border-accent hover:bg-glow hover:border-accent hover:-translate-y-0.5 transition-all" aria-expanded="false" aria-controls="projects-collapse">
+        <span class="label-show" data-i18n="proj_toggle_show">Show projects</span>
+        <span class="label-hide" data-i18n="proj_toggle_hide">Hide projects</span>
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    </div>
+    <div class="projects-collapse" id="projects-collapse">
+    <div class="projects-collapse-inner">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
+
+      <!-- GraceYouth -->
+      <div class="project-card group p-6 bg-bg-card border border-border rounded-xl relative overflow-hidden hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <div class="text-lg font-bold">GraceYouth</div>
+          <span class="px-2 py-0.5 rounded-full text-[0.66rem] font-mono font-semibold bg-glow text-accent border border-border-accent" data-i18n="proj_grace_tag">DDD · CQRS · FSD</span>
+        </div>
+        <div class="text-sm text-text-secondary leading-relaxed mb-4" data-i18n="proj_grace_desc">Community platform with <strong>4 DDD bounded contexts</strong>, command/query buses on Symfony Messenger, and a Feature-Sliced frontend — architecture enforced by <strong>deptrac</strong> & eslint-boundaries.</div>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Symfony 8</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PHP 8.5</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Vue 3 (FSD)</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">PostgreSQL 18</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">deptrac</span>
+        </div>
+      </div>
+
+      <!-- CodeArena -->
+      <div class="project-card group p-6 bg-bg-card border border-border rounded-xl relative overflow-hidden hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <div class="text-lg font-bold">CodeArena</div>
+          <span class="px-2 py-0.5 rounded-full text-[0.66rem] font-mono font-semibold bg-glow text-accent border border-border-accent" data-i18n="proj_arena_tag">EdTech · Realtime</span>
+        </div>
+        <div class="text-sm text-text-secondary leading-relaxed mb-4" data-i18n="proj_arena_desc">Learn-to-code platform that runs code <strong>in the browser</strong> — Monaco editor, <strong>xterm</strong> terminal emulation, live collaboration over Centrifuge WebSocket.</div>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Symfony 7.4</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Vue 3 + Vike</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Monaco</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">xterm</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">WebSocket</span>
+        </div>
+      </div>
+
+      <!-- ShuShu.by -->
+      <div class="project-card group p-6 bg-bg-card border border-border rounded-xl relative overflow-hidden hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <div class="text-lg font-bold">ShuShu.by</div>
+          <span class="px-2 py-0.5 rounded-full text-[0.66rem] font-mono font-semibold bg-glow text-accent border border-border-accent" data-i18n="proj_shushu_tag">Realtime PWA</span>
+        </div>
+        <div class="text-sm text-text-secondary leading-relaxed mb-4" data-i18n="proj_shushu_desc">Social gifting platform — <strong>realtime</strong> via Centrifugo, installable <strong>PWA</strong> (Workbox), Telegram bot, OAuth, gamification. 115 services, 36 entities.</div>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Symfony 7.4</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Vue 3 PWA</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Centrifugo</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Telegram</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Playwright</span>
+        </div>
+      </div>
+
+      <!-- Nesty.by -->
+      <div class="project-card group p-6 bg-bg-card border border-border rounded-xl relative overflow-hidden hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <div class="text-lg font-bold">Nesty.by</div>
+          <span class="px-2 py-0.5 rounded-full text-[0.66rem] font-mono font-semibold bg-glow text-accent border border-border-accent" data-i18n="proj_nesty_tag">Mobile-first</span>
+        </div>
+        <div class="text-sm text-text-secondary leading-relaxed mb-4" data-i18n="proj_nesty_desc">Rental marketplace with <strong>maps</strong> (Leaflet) and a hybrid mobile app — an Angular + Ionic frontend packaged for iOS/Android via <strong>Capacitor</strong>.</div>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Symfony 7.1</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Angular 19</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Ionic</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Capacitor</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Leaflet</span>
+        </div>
+      </div>
+
+      <!-- travelgo -->
+      <div class="project-card group p-6 bg-bg-card border border-border rounded-xl relative overflow-hidden hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <div class="text-lg font-bold">travelgo</div>
+          <span class="px-2 py-0.5 rounded-full text-[0.66rem] font-mono font-semibold bg-glow text-accent border border-border-accent" data-i18n="proj_travel_tag">Polyglot · PHP + Go</span>
+        </div>
+        <div class="text-sm text-text-secondary leading-relaxed mb-4" data-i18n="proj_travel_desc">Travel marketplace: <strong>Go microservices</strong> (Echo) for price search with rate-limiting, multi-vendor integrations, a Next.js web app and a <strong>React Native</strong> mobile app.</div>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Laravel 10</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Go (Echo)</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Next.js</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">React Native</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Traefik</span>
+        </div>
+      </div>
+
+      <!-- Mentorship -->
+      <div class="project-card group p-6 bg-bg-card border border-border rounded-xl relative overflow-hidden hover:border-border-accent hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all hover-glow">
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <div class="text-lg font-bold" data-i18n="proj_mentor_name">Mentorship</div>
+          <span class="px-2 py-0.5 rounded-full text-[0.66rem] font-mono font-semibold bg-glow text-accent border border-border-accent" data-i18n="proj_mentor_tag">Mid → Senior</span>
+        </div>
+        <div class="text-sm text-text-secondary leading-relaxed mb-4" data-i18n="proj_mentor_desc">I mentor PHP developers from mid to <strong>senior</strong> level with a structured program — concept curriculum, mock interviews, code review and weak-spot tracking, with <strong>AI-assisted</strong> spec→build→QA cycles.</div>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">DDD</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">CQRS</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">System Design</span>
+          <span class="px-2.5 py-0.5 rounded-full text-[0.7rem] font-mono bg-bg-tertiary text-text-secondary border border-border">Interview Prep</span>
+        </div>
+      </div>
+
+    </div>
+    </div><!-- /projects-collapse-inner -->
+    </div><!-- /projects-collapse -->
+  </div>
+</section>
+
+<hr class="section-divider" data-scroll="reveal-line">
+
 <!-- ===== SKILLS ===== -->
 <section class="py-[clamp(2.5rem,8vw,7rem)] bg-bg-secondary" id="skills">
   <div class="max-w-[1120px] mx-auto px-[clamp(1rem,4vw,3rem)]">
@@ -455,7 +576,7 @@
           <div class="skill-pill"><span class="skill-name">REST API</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
           <div class="skill-pill"><span class="skill-name">Swagger / OpenAPI</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
           <div class="skill-pill"><span class="skill-name">API Platform</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
-          <div class="skill-pill"><span class="skill-name">и другое</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Rector</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
         </div>
       </div>
       <!-- Databases -->
@@ -472,7 +593,7 @@
           <div class="skill-pill"><span class="skill-name">Memcached</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
           <div class="skill-pill"><span class="skill-name">Elasticsearch 8</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
           <div class="skill-pill"><span class="skill-name">PgBouncer</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
-          <div class="skill-pill"><span class="skill-name">и другое</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Doctrine DBAL</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
         </div>
       </div>
       <!-- DevOps -->
@@ -492,7 +613,7 @@
           <div class="skill-pill"><span class="skill-name">GitLab CI</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
           <div class="skill-pill"><span class="skill-name">Linux / UNIX</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
           <div class="skill-pill"><span class="skill-name">Sentry</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
-          <div class="skill-pill"><span class="skill-name">и другое</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Prometheus</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
         </div>
       </div>
       <!-- Architecture -->
@@ -512,7 +633,7 @@
           <div class="skill-pill"><span class="skill-name">Event-Driven</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
           <div class="skill-pill"><span class="skill-name">Hexagonal / Clean</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
           <div class="skill-pill"><span class="skill-name">Idempotency</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
-          <div class="skill-pill"><span class="skill-name">и другое</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">deptrac</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
         </div>
       </div>
       <!-- Testing -->
@@ -543,6 +664,39 @@
           <div class="skill-pill"><span class="skill-name">Sentry</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
           <div class="skill-pill"><span class="skill-name">Rollbar</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
           <div class="skill-pill"><span class="skill-name">ELK Stack</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+        </div>
+      </div>
+      <!-- Frontend & Mobile -->
+      <div class="skill-category hover-glow p-5 bg-bg-card border border-border rounded-xl relative overflow-hidden hover:border-border-accent hover:-translate-y-0.5 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all" data-stagger-child>
+        <div class="flex items-center gap-2.5 mb-3">
+          <div class="skill-icon-float w-8 h-8 rounded-lg bg-glow flex items-center justify-center text-sm text-accent shrink-0"><i class="fas fa-laptop-code"></i></div>
+          <div class="text-xs font-semibold uppercase tracking-wider text-accent font-mono" data-i18n="cat_frontend">Frontend & Mobile</div>
+        </div>
+        <div class="skill-list flex flex-col gap-1.5">
+          <div class="skill-pill"><span class="skill-name">TypeScript</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Vue 3 / Pinia</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Angular / Ionic</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Next.js / React</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">React Native</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Capacitor (iOS/Android)</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Tailwind / Vite</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">PWA (Workbox)</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+        </div>
+      </div>
+      <!-- AI-augmented Engineering -->
+      <div class="skill-category hover-glow p-5 bg-bg-card border border-border-accent rounded-xl relative overflow-hidden hover:border-accent hover:-translate-y-0.5 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all" data-stagger-child>
+        <div class="flex items-center gap-2.5 mb-3">
+          <div class="skill-icon-float w-8 h-8 rounded-lg bg-glow flex items-center justify-center text-sm text-accent shrink-0"><i class="fas fa-robot"></i></div>
+          <div class="text-xs font-semibold uppercase tracking-wider text-accent font-mono" data-i18n="cat_ai">AI-augmented Engineering</div>
+        </div>
+        <div class="skill-list flex flex-col gap-1.5">
+          <div class="skill-pill"><span class="skill-name">Claude Code / Agents</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Agentic workflows</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Spec-driven dev</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">AI code review & QA</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">MCP integrations</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Prompt engineering</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
+          <div class="skill-pill"><span class="skill-name">Cursor / Copilot</span><span class="skill-dots"><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-filled"></span><span class="dot-dim"></span></span></div>
         </div>
       </div>
     </div>
