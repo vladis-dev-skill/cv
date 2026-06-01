@@ -132,34 +132,6 @@ html.theme-ready * {
   transform: scale(0.9);
 }
 
-/* --- swing-left (Experience timeline) --- */
-[data-scroll="swing-left"] {
-  opacity: 0;
-  transform: perspective(600px) rotateY(25deg);
-  transform-origin: right center;
-  filter: blur(2px);
-  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--spring), filter 0.5s ease;
-}
-[data-scroll="swing-left"].in-view {
-  opacity: 1;
-  transform: perspective(600px) rotateY(0);
-  filter: blur(0);
-}
-
-/* --- swing-right (Experience timeline) --- */
-[data-scroll="swing-right"] {
-  opacity: 0;
-  transform: perspective(600px) rotateY(-25deg);
-  transform-origin: left center;
-  filter: blur(2px);
-  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--spring), filter 0.5s ease;
-}
-[data-scroll="swing-right"].in-view {
-  opacity: 1;
-  transform: perspective(600px) rotateY(0);
-  filter: blur(0);
-}
-
 /* --- reveal-line (section dividers) --- */
 [data-scroll="reveal-line"] {
   opacity: 1;
@@ -173,11 +145,8 @@ html.theme-ready * {
 
 /* --- Container types: always visible, children animate --- */
 [data-scroll="stagger"],
-[data-scroll="cascade-3d"],
 [data-scroll="bounce-stagger"],
-[data-scroll="deal-cards"],
-[data-scroll="terminal-boot"],
-[data-scroll="payment-flip"] {
+[data-scroll="terminal-boot"] {
   opacity: 1;
   transform: none;
 }
@@ -194,56 +163,13 @@ html.theme-ready * {
   animation: crt-boot 0.5s ease-out;
 }
 
-/* --- Cascade-3d: perspective on container --- */
-[data-scroll="cascade-3d"] {
-  perspective: 800px;
-}
-
-/* --- Stagger children: start hidden --- */
+/* --- Stagger children: start hidden, simple fade-up --- */
 [data-stagger-child] {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
 }
 [data-stagger-child].in-view {
-  opacity: 1;
-  transform: none;
-}
-
-/* --- Cascade-3d children: 3D rotation --- */
-[data-scroll="cascade-3d"] [data-stagger-child] {
-  opacity: 0;
-  transform: rotateX(-15deg) translateY(-30px);
-  transform-origin: top center;
-  transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--spring);
-}
-[data-scroll="cascade-3d"] [data-stagger-child].in-view {
-  opacity: 1;
-  transform: none;
-}
-
-/* --- Payment-flip children: 3D flip reveal --- */
-[data-scroll="payment-flip"] {
-  perspective: 1000px;
-}
-[data-scroll="payment-flip"] [data-stagger-child] {
-  opacity: 0;
-  transform: rotateY(90deg) scale(0.8);
-  transform-origin: center center;
-  transition: opacity 0.5s var(--ease-out-expo), transform 0.6s var(--spring);
-}
-[data-scroll="payment-flip"] [data-stagger-child].in-view {
-  opacity: 1;
-  transform: rotateY(0) scale(1);
-}
-
-/* --- Deal-cards children: spread from center --- */
-[data-scroll="deal-cards"] [data-stagger-child] {
-  opacity: 0;
-  transform: translateX(var(--deal-x, 0)) translateY(20px) rotate(var(--deal-rotate, 0deg)) scale(0.9);
-  transition: opacity 0.6s var(--ease-out-expo), transform 0.7s var(--spring);
-}
-[data-scroll="deal-cards"] [data-stagger-child].in-view {
   opacity: 1;
   transform: none;
 }
@@ -333,11 +259,6 @@ html.theme-ready * {
   50% { box-shadow: 0 0 20px 4px var(--color-glow); }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
 @keyframes slide-down {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -388,26 +309,15 @@ html.theme-ready * {
   100% { box-shadow: none; border-color: var(--color-border); }
 }
 
-/* Tech stack badge flip-in on expand */
+/* Tech stack badge fade-in on expand (flat, no 3D flip) */
 @keyframes tech-flip-in {
-  from { opacity: 0; transform: rotateX(90deg) scale(0.8); }
-  to { opacity: 1; transform: rotateX(0) scale(1); }
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Click ripple */
 @keyframes ripple-expand {
   to { transform: scale(4); opacity: 0; }
-}
-
-/* Rotating conic border (Strengths) */
-@property --angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes rotate-border {
-  to { --angle: 360deg; }
 }
 
 /* Terminal green flash on line appear */
@@ -595,12 +505,12 @@ html.theme-ready * {
   z-index: 1;
 }
 
-/* Terminal 3D hover tilt */
+/* Terminal hover: subtle lift */
 .terminal-card {
   transition: transform 0.3s var(--spring), box-shadow 0.3s ease;
 }
 .terminal-card:hover {
-  transform: perspective(800px) rotateX(2deg) rotateY(-1deg);
+  transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -644,9 +554,6 @@ html.theme-ready * {
 .about-text.in-view strong:nth-of-type(8) { animation: strong-reveal 0.8s var(--ease-out-expo) 1.45s both; }
 
 /* ========== SKILL CATEGORY ========== */
-.skill-category {
-  transform-style: preserve-3d;
-}
 .skill-category::before {
   content: '';
   position: absolute;
@@ -657,14 +564,10 @@ html.theme-ready * {
   transition: opacity 0.3s ease;
 }
 .skill-category:hover::before { opacity: 1; }
-.skill-category:hover {
-  backdrop-filter: blur(8px);
-  will-change: transform;
-}
 
-/* Skill icon floating */
+/* Skill icon: subtle lift on card hover */
 .skill-icon-float { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
-.skill-category:hover .skill-icon-float { animation: float 2s ease-in-out infinite; }
+.skill-category:hover .skill-icon-float { transform: scale(1.1); }
 
 /* ========== SKILL PILLS WITH PROFICIENCY DOTS ========== */
 .skill-pill {
@@ -779,7 +682,6 @@ html.theme-ready * {
   position: relative;
   width: 50%;
   padding-bottom: 3rem;
-  perspective: 1200px;
 }
 
 .timeline-left {
@@ -817,13 +719,10 @@ html.theme-ready * {
   box-shadow: 0 0 12px var(--color-glow-strong);
 }
 
-/* Timeline card: 3D spiral transform (driven by JS) */
+/* Timeline card: gentle scroll-linked focus dim/scale (driven by JS, flat — no 3D) */
 .timeline-card {
-  transform-style: preserve-3d;
-  transform-origin: center center;
-  backface-visibility: hidden;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform, opacity;
+  will-change: opacity;
 }
 
 /* Card "facing" glow */
@@ -835,8 +734,6 @@ html.theme-ready * {
 .timeline-card.expanded {
   border-color: var(--color-accent);
   box-shadow: 0 0 24px var(--color-glow);
-  transform: perspective(1200px) rotateY(0deg) scale(1) translateZ(0px) !important;
-  opacity: 1 !important;
 }
 
 /* Scroll-linked highlight flash (one-shot) */
@@ -877,16 +774,16 @@ html.theme-ready * {
 .expand-hint i { transition: transform 0.3s ease; }
 .timeline-card.expanded .expand-hint i { transform: rotate(180deg); }
 
-/* Expanded achievements cascade */
+/* Expanded achievements cascade — starts as the panel opens, gentle steps */
 .timeline-card.expanded .timeline-achievements li {
   animation: achieve-in 0.4s var(--ease-out-expo) both;
 }
-.timeline-card.expanded .timeline-achievements li:nth-child(1) { animation-delay: 0ms; }
-.timeline-card.expanded .timeline-achievements li:nth-child(2) { animation-delay: 60ms; }
-.timeline-card.expanded .timeline-achievements li:nth-child(3) { animation-delay: 120ms; }
-.timeline-card.expanded .timeline-achievements li:nth-child(4) { animation-delay: 180ms; }
-.timeline-card.expanded .timeline-achievements li:nth-child(5) { animation-delay: 240ms; }
-.timeline-card.expanded .timeline-achievements li:nth-child(6) { animation-delay: 300ms; }
+.timeline-card.expanded .timeline-achievements li:nth-child(1) { animation-delay: 150ms; }
+.timeline-card.expanded .timeline-achievements li:nth-child(2) { animation-delay: 210ms; }
+.timeline-card.expanded .timeline-achievements li:nth-child(3) { animation-delay: 270ms; }
+.timeline-card.expanded .timeline-achievements li:nth-child(4) { animation-delay: 330ms; }
+.timeline-card.expanded .timeline-achievements li:nth-child(5) { animation-delay: 390ms; }
+.timeline-card.expanded .timeline-achievements li:nth-child(6) { animation-delay: 450ms; }
 
 /* Expanded arch diagram cascade */
 .timeline-card.expanded .arch-box {
@@ -904,12 +801,9 @@ html.theme-ready * {
 .timeline-card.expanded .arch-microservices > div:nth-child(4) { animation-delay: 550ms; }
 .timeline-card.expanded .arch-microservices > div:nth-child(5) { animation-delay: 600ms; }
 
-/* Tech stack badges flip-in on expand */
-.timeline-details .flex-wrap {
-  perspective: 600px;
-}
+/* Tech stack badges fade-in on expand */
 .timeline-card.expanded .timeline-details .flex-wrap > span {
-  animation: tech-flip-in 0.4s var(--spring) both;
+  animation: tech-flip-in 0.4s var(--ease-out-expo) both;
 }
 
 /* Mobile: left-path sequential reveal */
@@ -935,13 +829,12 @@ html.theme-ready * {
   }
   /* Start hidden, reveal on scroll */
   .timeline-item .timeline-card {
-    transform: translateX(-20px) rotateY(25deg);
+    transform: translateX(-16px);
     opacity: 0;
-    transform-origin: left center;
     transition: transform 0.6s var(--ease-out-expo), opacity 0.5s var(--ease-out-expo);
   }
   .timeline-item.mobile-revealed .timeline-card {
-    transform: translateX(0) rotateY(0deg);
+    transform: translateX(0);
     opacity: 1;
   }
   /* Dot activates on reveal */
@@ -1080,24 +973,10 @@ html.theme-ready * {
   transition: transform 0.3s var(--spring);
 }
 
-/* Rotating conic border on strength cards */
+/* Strength cards: clip the hover glow to the card bounds */
 .strength-card {
   position: relative;
   overflow: hidden;
-}
-.strength-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: conic-gradient(from var(--angle, 0deg), transparent 60%, var(--color-glow-strong) 80%, transparent 100%);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-.strength-card.in-view::before {
-  animation: rotate-border 8s linear infinite;
-  opacity: 0.5;
 }
 
 /* Strength card text hover */
@@ -1180,42 +1059,6 @@ html.theme-ready * {
     text-align: left !important;
   }
   .timeline-dot { left: 24px !important; right: auto !important; }
-
-  /* Swing: fallback to fade-up on mobile (single-column, rotateY is meaningless) */
-  [data-scroll="swing-left"],
-  [data-scroll="swing-right"] {
-    transform: translateY(30px);
-    transform-origin: center;
-    filter: none;
-  }
-  [data-scroll="swing-left"].in-view,
-  [data-scroll="swing-right"].in-view {
-    transform: none;
-    filter: none;
-  }
-}
-
-@media (max-width: 768px) {
-  /* Simplify 3D cascade on mobile */
-  [data-scroll="cascade-3d"] [data-stagger-child] {
-    transform: rotateX(-8deg) translateY(-15px);
-  }
-  [data-scroll="cascade-3d"] [data-stagger-child].in-view {
-    transform: none;
-  }
-
-  /* Simplify deal-cards on mobile: no rotation, just fade-up */
-  [data-scroll="deal-cards"] [data-stagger-child] {
-    transform: translateY(30px) scale(0.95);
-  }
-  [data-scroll="deal-cards"] [data-stagger-child].in-view {
-    transform: none;
-  }
-
-  /* Disable rotating border on mobile */
-  .strength-card::before { display: none; }
-
-  /* GPA ring no will-change on mobile */
 }
 
 @media (max-width: 480px) {

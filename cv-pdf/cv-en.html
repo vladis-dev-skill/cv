@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Владислав Лайков — Senior Backend Engineer (PHP/Symfony)</title>
+<title>Vladislav Laikov — Senior Backend Engineer (PHP/Symfony)</title>
 <meta name="author" content="Vladislav Laikov">
-<meta name="description" content="Senior Backend Engineer · PHP/Symfony · 7+ лет · high-load системы, архитектура, ownership. Адаптивен к любому домену.">
+<meta name="description" content="Senior Backend Engineer · PHP/Symfony · 7+ years · high-load systems, architecture, ownership. Adaptable to any domain.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=block" rel="stylesheet">
 <style>
   /* =====================================================================
-     CV — Vladislav Laikov · Senior PHP Backend Developer · RU edition
+     CV — Vladislav Laikov · Senior Backend Engineer · EN edition
      Static, two-page A4 PDF source. Mirrors the dynamic landing palette
      (light variant), Developer Mono pairing (IBM Plex Sans + JetBrains Mono),
      bracket "{ }" section markers, emerald/cyan accents, dot-grid backdrop.
@@ -380,15 +380,8 @@
 
   .hd h1 {
     /* Plain HTML text with solid emerald color — maximum reliability.
-       History of what was tried and rejected:
-         1. background-clip: text + gradient → Puppeteer bug truncates
-            composite Cyrillic glyphs ("й" onwards), either as solid block
-            or full cutoff. Unfixable with CSS tweaks.
-         2. Inline SVG <text> + linearGradient fill → Puppeteer SVG engine
-            doesn't get access to the web-loaded Cyrillic font, falls back
-            to tofu boxes, looks like a solid gradient rectangle.
-       Solution: solid text + a decorative gradient bar on the left (::before),
-       which keeps brand identity without touching any text-fill tricks. */
+       (See RU edition for the full rationale behind avoiding gradient
+       text-fill / SVG tricks under Puppeteer.) */
     position: relative;
     font-size: 24pt;
     font-weight: 700;
@@ -399,8 +392,6 @@
     margin: 0;
   }
   .hd h1::before {
-    /* Slim decorative gradient bar. NO box-shadow — Puppeteer's PDF
-       blur rendering smears the bar into a pale washed-out rectangle. */
     content: '';
     position: absolute;
     left: 0;
@@ -731,12 +722,12 @@
   <aside class="sidebar">
 
     <div class="photo-wrap">
-      <img src="photo.png" alt="Фото Владислава Лайкова">
+      <img src="photo.png" alt="Photo of Vladislav Laikov">
     </div>
 
-    <!-- Контакты -->
+    <!-- Contact -->
     <div class="sb-block">
-      <div class="sb-title">контакты</div>
+      <div class="sb-title">contact</div>
       <ul class="contact-list">
         <li>
           <span class="ico" aria-hidden="true">
@@ -766,17 +757,17 @@
           <span class="ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 7-8 12-8 12s-8-5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </span>
-          <span class="val">Минск, Беларусь · UTC+3</span>
+          <span class="val">Minsk, Belarus · UTC+3</span>
         </li>
       </ul>
     </div>
 
-    <!-- Стек -->
+    <!-- Stack -->
     <div class="sb-block">
-      <div class="sb-title">стек</div>
+      <div class="sb-title">stack</div>
 
       <div class="skill-group">
-        <div class="skill-cat">Языки и фреймворки</div>
+        <div class="skill-cat">Languages &amp; Frameworks</div>
         <div class="chip-row">
           <span class="chip accent">PHP 5.6–8.5</span>
           <span class="chip accent">Symfony 3.4–7.4</span>
@@ -788,12 +779,12 @@
           <span class="chip">REST</span>
           <span class="chip">OpenAPI</span>
           <span class="chip">API Platform</span>
-          <span class="chip">и другое</span>
+          <span class="chip">and more</span>
         </div>
       </div>
 
       <div class="skill-group">
-        <div class="skill-cat">Базы данных и кеширование</div>
+        <div class="skill-cat">Databases &amp; Caching</div>
         <div class="chip-row">
           <span class="chip accent">PostgreSQL 14–18</span>
           <span class="chip">MySQL 5.7–8</span>
@@ -802,12 +793,12 @@
           <span class="chip">Memcached</span>
           <span class="chip">Elasticsearch</span>
           <span class="chip">PgBouncer</span>
-          <span class="chip">и другое</span>
+          <span class="chip">and more</span>
         </div>
       </div>
 
       <div class="skill-group">
-        <div class="skill-cat">DevOps и инфраструктура</div>
+        <div class="skill-cat">DevOps &amp; Infrastructure</div>
         <div class="chip-row">
           <span class="chip">Docker</span>
           <span class="chip">AWS</span>
@@ -818,12 +809,12 @@
           <span class="chip">GitLab CI</span>
           <span class="chip">Linux</span>
           <span class="chip">Sentry</span>
-          <span class="chip">и другое</span>
+          <span class="chip">and more</span>
         </div>
       </div>
 
       <div class="skill-group">
-        <div class="skill-cat">Архитектура и качество</div>
+        <div class="skill-cat">Architecture &amp; Quality</div>
         <div class="chip-row">
           <span class="chip">SOLID</span>
           <span class="chip">DDD</span>
@@ -835,21 +826,21 @@
           <span class="chip">PHPUnit</span>
           <span class="chip">PHPStan</span>
           <span class="chip">TDD</span>
-          <span class="chip">и другое</span>
+          <span class="chip">and more</span>
         </div>
       </div>
     </div>
 
-    <!-- Языки -->
+    <!-- Languages -->
     <div class="sb-block">
-      <div class="sb-title">языки</div>
+      <div class="sb-title">languages</div>
       <div class="lang-list">
         <div class="lang-item">
-          <div class="lang-line"><span class="name">Русский</span><span class="level">Родной</span></div>
+          <div class="lang-line"><span class="name">Russian</span><span class="level">Native</span></div>
           <div class="lang-bar"><span style="width:100%"></span></div>
         </div>
         <div class="lang-item">
-          <div class="lang-line"><span class="name">Английский</span><span class="level">Intermediate</span></div>
+          <div class="lang-line"><span class="name">English</span><span class="level">Intermediate</span></div>
           <div class="lang-bar"><span style="width:60%"></span></div>
         </div>
       </div>
@@ -863,62 +854,63 @@
     <!-- Header -->
     <header class="hd">
       <div class="role-tag">Senior Backend Engineer</div>
-      <h1>Владислав Лайков</h1>
-      <div class="role">Senior <span class="accent">Backend Engineer</span>  ·  PHP / Symfony  ·  7+ лет  ·  high-load, архитектура и любые сложные домены</div>
+      <h1>Vladislav Laikov</h1>
+      <div class="role">Senior <span class="accent">Backend Engineer</span>  ·  PHP / Symfony  ·  7+ years  ·  high-load, architecture &amp; any complex domain</div>
     </header>
 
     <!-- Profile -->
     <section class="sec">
-      <div class="sec-title">Профиль</div>
+      <div class="sec-title">Profile</div>
       <p class="summary">
-        Senior backend-инженер, который строит, масштабирует и <strong>владеет</strong> системами, от которых
-        зависит бизнес — <strong>7+ лет</strong> на <strong>PHP / Symfony</strong> в SaaS, финтехе, медицине и
-        веб-платформах. Глубоко там, где это важно, и <strong>адаптивен по умолчанию</strong>: прошёл
-        <strong>PHP 5.6 → 8.5</strong>, Symfony 3.4 → 7.4, Laravel 6 → 10, работал с PostgreSQL, MySQL, MongoDB
-        и миграциями MySQL → PostgreSQL. Силён в <strong>масштабируемой архитектуре</strong>,
-        <strong>highload-системах</strong>, REST API, DDD/SOLID, производительности БД и тестировании.
-        Последнее время веду backend платформы <strong>systeme.io</strong> — микросервисная архитектура,
-        интеграции платёжных провайдеров, <strong>~50&nbsp;ТБ</strong> данных. <strong>Не привязан к домену</strong>
-        и открыт к remote-ролям по всему миру — постоянная величина не сфера, а подход: ownership от и до.
+        Senior backend engineer who builds, scales, and <strong>owns</strong> the systems businesses depend on
+        — <strong>7+ years</strong> in <strong>PHP / Symfony</strong> across SaaS, FinTech, healthcare and web
+        platforms. Deep where it counts, and <strong>adaptable by default</strong>: shipped across
+        <strong>PHP 5.6 → 8.5</strong>, Symfony 3.4 → 7.4 and Laravel 6 → 10, with PostgreSQL, MySQL, MongoDB
+        and MySQL → PostgreSQL migrations. Strong in <strong>scalable architecture</strong>,
+        <strong>high-load systems</strong>, REST APIs, DDD/SOLID, database performance and testing.
+        Most recently leading backend work on the <strong>systeme.io</strong> platform — microservice
+        architecture, multiple payment-provider integrations, <strong>~50&nbsp;TB</strong> of data.
+        I'm <strong>domain-agnostic by choice</strong> and open to remote roles worldwide — the constant
+        isn't the domain, it's how I work: ownership end-to-end.
       </p>
     </section>
 
     <!-- Hero anchor strip -->
     <section class="anchors">
       <div class="anchor">
-        <div class="a-cat">Профиль</div>
-        <div class="a-val">Адаптивный senior</div>
-        <div class="a-meta"><span class="num">4</span> компании · SaaS · финтех · медицина</div>
+        <div class="a-cat">Profile</div>
+        <div class="a-val">Adaptable senior</div>
+        <div class="a-meta"><span class="num">4</span> companies · SaaS · FinTech · healthcare</div>
       </div>
       <div class="anchor">
-        <div class="a-cat">Опыт миграций</div>
-        <div class="a-val">Эксперт по миграциям</div>
+        <div class="a-cat">Migrations</div>
+        <div class="a-val">Migration expert</div>
         <div class="a-meta">PHP <span class="num">5.6 → 8.5</span> · PG <span class="num">14 → 18</span></div>
       </div>
       <div class="anchor">
-        <div class="a-cat">Масштаб</div>
-        <div class="a-val">Highload-инженер</div>
-        <div class="a-meta"><span class="num">~50&nbsp;ТБ</span> SaaS · <span class="num">2&nbsp;ТБ+</span> fintech</div>
+        <div class="a-cat">Scale</div>
+        <div class="a-val">High-load engineer</div>
+        <div class="a-meta"><span class="num">~50&nbsp;TB</span> SaaS · <span class="num">2&nbsp;TB+</span> fintech</div>
       </div>
     </section>
 
     <!-- Experience -->
     <section class="sec">
-      <div class="sec-title">Опыт работы</div>
+      <div class="sec-title">Experience</div>
       <div class="xp-list">
 
         <article class="xp">
           <div class="xp-head">
             <div class="xp-role">Senior Backend Engineer (PHP/Symfony) <span class="at">@ systeme.io</span></div>
-            <div class="xp-date">Апр 2024 — Наст. время · Удалённо</div>
+            <div class="xp-date">Apr 2024 — Present · Remote</div>
           </div>
-          <div class="xp-meta">SaaS для онлайн-бизнеса <span class="dot">•</span> ~50 ТБ данных <span class="dot">•</span> 12+ платёжных провайдеров <span class="dot">•</span> Microservices</div>
+          <div class="xp-meta">SaaS for online business <span class="dot">•</span> ~50 TB data <span class="dot">•</span> 12+ payment providers <span class="dot">•</span> Microservices</div>
           <ul class="xp-bullets">
-            <li>Владею <strong>всеми 12+ платёжными интеграциями</strong> на SaaS, обрабатывающем <strong>~50&nbsp;ТБ</strong>; реализовал <strong>ApplePay через Stripe</strong> end-to-end, открыв мобильный чекаут для рынков US/EU.</li>
-            <li>Выделил <strong>Flutterwave</strong> из монолита в <strong>отдельный микросервис</strong>; спроектировал <strong>движок частичных возвратов</strong> с оркестрацией мульти-провайдерных вебхуков через <strong>Chain of Responsibility</strong>, устранив целый класс багов с потерей возвратов.</li>
-            <li>Провёл апгрейд <strong>PostgreSQL 14 → 18</strong> на кластере монолита через <strong>логическую репликацию без простоя</strong>; инициировал миграции <strong>PHP 8.3 → 8.5</strong> и <strong>Symfony 6.4 → 7.4 LTS</strong>.</li>
-            <li><strong>Совместно с платёжной командой</strong> сократил latency hot-path запросов в <strong>3 раза</strong>: эпик прошёл полный цикл — проектирование, распределение задач между двумя разработчиками, реализация и приёмка. Профилирование медленных запросов, точечные стратегии индексации, batch processing в <strong>Doctrine ORM</strong>.</li>
-            <li>Все ключевые инициативы вели <strong>итеративно и согласованно с командой и стейкхолдерами</strong> — от планирования и ревью архитектуры до релиза и пост-мониторинга. За кадром — десятки точечных улучшений: оптимизации, наблюдаемость, обработка edge-кейсов в платёжных вебхуках.</li>
+            <li>Own <strong>all 12+ payment integrations</strong> on a SaaS processing <strong>~50&nbsp;TB</strong>; implemented <strong>ApplePay via Stripe</strong> end-to-end, opening mobile checkout for US/EU markets — <strong>a pattern reusable beyond payments</strong>.</li>
+            <li>Decomposed <strong>Flutterwave</strong> from the monolith into a <strong>standalone microservice</strong>; designed a <strong>partial-refund engine</strong> with multi-provider webhook orchestration via <strong>Chain of Responsibility</strong>, eliminating a whole class of lost-refund bugs.</li>
+            <li>Led a <strong>PostgreSQL 14 → 18</strong> upgrade across the monolith cluster via <strong>zero-downtime logical replication</strong>; drove <strong>PHP 8.3 → 8.5</strong> and <strong>Symfony 6.4 → 7.4 LTS</strong> migrations.</li>
+            <li><strong>Together with the payments team</strong>, cut hot-path query latency by <strong>3×</strong>: full epic cycle — design, task split between two engineers, implementation and acceptance. Slow-query profiling, targeted indexing, <strong>Doctrine ORM</strong> batch processing.</li>
+            <li>Ran every major initiative <strong>iteratively and aligned with team and stakeholders</strong> — from planning and architecture review through release and post-deploy monitoring.</li>
           </ul>
           <div class="xp-stack">
             <span class="chip">PHP 8.5</span>
@@ -938,14 +930,14 @@
         <article class="xp">
           <div class="xp-head">
             <div class="xp-role">Backend Engineer (PHP) <span class="at">@ Octopays (Mservis)</span></div>
-            <div class="xp-date">Мар 2023 — Мар 2024 · Удалённо</div>
+            <div class="xp-date">Mar 2023 — Mar 2024 · Remote</div>
           </div>
-          <div class="xp-meta">Команда CORE финтех <span class="dot">•</span> продакшн-БД 2&nbsp;ТБ+ <span class="dot">•</span> Транзакции в реальном времени</div>
+          <div class="xp-meta">Fintech CORE team <span class="dot">•</span> 2&nbsp;TB+ production DB <span class="dot">•</span> Real-time transactions</div>
           <ul class="xp-bullets">
-            <li>Core-инженер на highload финтех-платформе с <strong>продакшн-БД 2&nbsp;ТБ+</strong> и обработкой транзакций в реальном времени.</li>
-            <li>Провёл миграции <strong>PHP 7.4 → 8.2</strong> и <strong>Laravel 9 → 10</strong>; рефакторил критичные платёжные пайплайны под type-safety и производительность.</li>
-            <li>Оптимизация архитектуры: профилирование узких мест, тюнинг запросов, стратегии кеширования <strong>Redis</strong>; полное покрытие <strong>PHPUnit</strong>, статанализ <strong>PHPStan</strong>, observability на <strong>ELK</strong>.</li>
-            <li>Участвовал в <strong>смене СУБД с MySQL на PostgreSQL</strong> на критичном контуре платформы: переработка схемы под PostgreSQL-специфичные индексы и типы, <strong>поэтапная миграция данных без потери целостности</strong>, синхронизация легаси-кода с новым диалектом и валидация на проде.</li>
+            <li>Core engineer on a high-load fintech platform with a <strong>2&nbsp;TB+ production DB</strong> and real-time transaction processing.</li>
+            <li>Ran <strong>PHP 7.4 → 8.2</strong> and <strong>Laravel 9 → 10</strong> migrations; refactored critical payment pipelines for type-safety and performance.</li>
+            <li>Architecture optimization: bottleneck profiling, query tuning, <strong>Redis</strong> caching; full <strong>PHPUnit</strong> coverage, <strong>PHPStan</strong> static analysis, observability on <strong>ELK</strong>.</li>
+            <li>Contributed to a <strong>MySQL → PostgreSQL migration</strong> on a critical platform contour: schema redesign for PostgreSQL-specific indexes and types, <strong>phased data migration with full integrity</strong>, legacy-code adaptation to the new dialect, and production validation.</li>
           </ul>
           <div class="xp-stack">
             <span class="chip">PHP 8.2</span>
@@ -963,7 +955,7 @@
 
   </main>
 
-  <div class="page-num">стр. <b>01</b> <span class="of">/ 02</span></div>
+  <div class="page-num">p. <b>01</b> <span class="of">/ 02</span></div>
 </div>
 
 
@@ -975,9 +967,9 @@
   <!-- ============= LEFT SIDEBAR ============= -->
   <aside class="sidebar">
 
-    <!-- Платёжные системы (full chip cloud, page 2) -->
+    <!-- Payment systems (full chip cloud, page 2) -->
     <div class="sb-block">
-      <div class="sb-title">платёжные системы</div>
+      <div class="sb-title">payment systems</div>
       <div class="chip-row">
         <span class="chip accent">Stripe</span>
         <span class="chip accent">ApplePay</span>
@@ -994,17 +986,17 @@
       </div>
     </div>
 
-    <!-- Сильные стороны -->
+    <!-- Strengths -->
     <div class="sb-block">
-      <div class="sb-title">сильные стороны</div>
+      <div class="sb-title">strengths</div>
       <div class="strength-list">
         <div class="strength-row">
           <div class="strength-ico">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/><path d="M21 22v-6h-6"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/></svg>
           </div>
           <div class="strength-body">
-            <div class="strength-name">Адаптивность</div>
-            <div class="strength-metric">PHP 5.6 → 8.5 · 4 компании · любой домен</div>
+            <div class="strength-name">Adaptability</div>
+            <div class="strength-metric">PHP 5.6 → 8.5 · 4 companies · any domain</div>
           </div>
         </div>
         <div class="strength-row">
@@ -1012,8 +1004,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg>
           </div>
           <div class="strength-body">
-            <div class="strength-name">Решение задач</div>
-            <div class="strength-metric">3× производительность · кластер ~50 ТБ</div>
+            <div class="strength-name">Problem Solving</div>
+            <div class="strength-metric">3× performance · ~50 TB cluster</div>
           </div>
         </div>
         <div class="strength-row">
@@ -1021,8 +1013,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <div class="strength-body">
-            <div class="strength-name">Коммуникация</div>
-            <div class="strength-metric">Кросс-команда из 25 инженеров</div>
+            <div class="strength-name">Communication</div>
+            <div class="strength-metric">Cross-team of 25 engineers</div>
           </div>
         </div>
         <div class="strength-row">
@@ -1030,30 +1022,30 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           </div>
           <div class="strength-body">
-            <div class="strength-name">Менторство</div>
-            <div class="strength-metric">Онбординг · code review · тех-доклады</div>
+            <div class="strength-name">Mentorship</div>
+            <div class="strength-metric">Onboarding · code review · tech talks</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Доступность -->
+    <!-- Availability -->
     <div class="sb-block">
-      <div class="sb-title">доступность</div>
+      <div class="sb-title">availability</div>
       <div class="avail">
         <span class="dot"></span>
-        <span>Открыт к remote-предложениям — любой домен</span>
-        <span class="meta">удалённо</span>
+        <span>Open to remote opportunities — any domain</span>
+        <span class="meta">remote</span>
       </div>
     </div>
 
     <!-- QR -->
     <div class="sb-block qr-block">
-      <div class="sb-title">интерактивное cv</div>
+      <div class="sb-title">interactive cv</div>
       <div class="qr-img">
-        <img src="qr.svg" alt="QR-код на интерактивное CV">
+        <img src="qr.svg" alt="QR code to the interactive CV">
       </div>
-      <div class="qr-cap">отсканируйте или перейдите</div>
+      <div class="qr-cap">scan or visit</div>
       <a class="qr-url" href="https://vladis-dev-skill.github.io/cv/">vladis-dev-skill.github.io/cv</a>
     </div>
 
@@ -1064,24 +1056,24 @@
 
     <!-- Mini header -->
     <header class="hd-mini">
-      <div class="name"><b>Владислав Лайков</b> — Senior Backend Engineer (PHP/Symfony)</div>
-      <div class="role-mini">стр. 02 / 02</div>
+      <div class="name"><b>Vladislav Laikov</b> — Senior Backend Engineer (PHP/Symfony)</div>
+      <div class="role-mini">p. 02 / 02</div>
     </header>
 
-    <!-- Опыт работы (продолжение) -->
+    <!-- Experience (continued) -->
     <section class="sec">
-      <div class="sec-title">Опыт работы (прод.)</div>
+      <div class="sec-title">Experience (cont.)</div>
       <div class="xp-list">
 
         <article class="xp">
           <div class="xp-head">
             <div class="xp-role">Backend Engineer (PHP) <span class="at">@ Basis33</span></div>
-            <div class="xp-date">Апр 2020 — Мар 2023 · Удалённо</div>
+            <div class="xp-date">Apr 2020 — Mar 2023 · Remote</div>
           </div>
-          <div class="xp-meta">Команда 25 инженеров <span class="dot">•</span> Медицинская платформа DeinArzt <span class="dot">•</span> Fsexpert (Zoom API)</div>
+          <div class="xp-meta">Team of 25 engineers <span class="dot">•</span> DeinArzt medical platform <span class="dot">•</span> Fsexpert (Zoom API)</div>
           <ul class="xp-bullets">
-            <li>Доставил <strong>DeinArzt</strong> — немецкую медицинскую платформу с жёсткими compliance-требованиями (2 года разработки) — и <strong>Fsexpert</strong>, сервис консультаций с интеграцией <strong>Zoom API</strong>.</li>
-            <li>Координировал кросс-функциональную работу в команде из <strong>25 инженеров</strong>; отвечал за оптимизацию SQL и <strong>репликацию и партиционирование</strong> продакшн-кластера.</li>
+            <li>Shipped <strong>DeinArzt</strong> (medical) and <strong>Fsexpert</strong> (consultations) — <strong>two very different domains</strong>, both delivered to production. DeinArzt: a German medical platform with strict compliance (2 years of development); Fsexpert: a consultation service with <strong>Zoom API</strong> integration.</li>
+            <li>Coordinated cross-functional work in a <strong>25-engineer team</strong>; owned SQL optimization and <strong>replication &amp; partitioning</strong> of the production cluster.</li>
           </ul>
           <div class="xp-stack">
             <span class="chip">PHP 7.4</span>
@@ -1097,12 +1089,12 @@
         <article class="xp">
           <div class="xp-head">
             <div class="xp-role">Backend Engineer (PHP) <span class="at">@ Sollento Group</span></div>
-            <div class="xp-date">Фев 2019 — Мар 2020 · Удалённо</div>
+            <div class="xp-date">Feb 2019 — Mar 2020 · Remote</div>
           </div>
-          <div class="xp-meta">SPA-объявления + скрапер <span class="dot">•</span> SOA-архитектура</div>
+          <div class="xp-meta">SPA classifieds + scraper <span class="dot">•</span> SOA architecture</div>
           <ul class="xp-bullets">
-            <li>Построил <strong>REST API с нуля</strong>, спроектировал backend-архитектуру на <strong>PostgreSQL</strong>, настроил полноценный <strong>CI/CD</strong>-пайплайн на GitLab.</li>
-            <li>Создал автоматический <strong>web-скрапер</strong> для агрегации объявлений; структурировал кодовую базу как <strong>SOA</strong> по принципам SOLID и GRASP.</li>
+            <li>Built a <strong>REST API from scratch</strong>, designed the backend architecture on <strong>PostgreSQL</strong>, set up a full <strong>CI/CD</strong> pipeline on GitLab.</li>
+            <li>Created an automated <strong>web scraper</strong> for listing aggregation; structured the codebase as <strong>SOA</strong> following SOLID and GRASP principles.</li>
           </ul>
           <div class="xp-stack">
             <span class="chip">PHP</span>
@@ -1117,9 +1109,9 @@
       </div>
     </section>
 
-    <!-- Самое интересное bento -->
+    <!-- Highlights bento -->
     <section class="sec">
-      <div class="sec-title">Самое интересное</div>
+      <div class="sec-title">Highlights</div>
       <div class="bento">
 
         <div class="bento-card">
@@ -1127,10 +1119,10 @@
             <div class="bento-ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
             </div>
-            <div class="bento-title">ApplePay через Stripe <span class="tag">systeme.io</span></div>
+            <div class="bento-title">ApplePay via Stripe <span class="tag">systeme.io</span></div>
           </div>
           <div class="bento-desc">
-            Реализовал end-to-end интеграцию <strong>ApplePay</strong> через Stripe, открыв <strong>мобильный чекаут</strong> для рынков US/EU на SaaS-платформе <strong>~50&nbsp;ТБ</strong>.
+            Built an end-to-end <strong>ApplePay</strong> integration via Stripe, opening <strong>mobile checkout</strong> for US/EU markets on a <strong>~50&nbsp;TB</strong> SaaS platform.
           </div>
         </div>
 
@@ -1139,10 +1131,10 @@
             <div class="bento-ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
             </div>
-            <div class="bento-title">Декомпозиция микросервиса <span class="tag">flutterwave</span></div>
+            <div class="bento-title">Microservice decomposition <span class="tag">flutterwave</span></div>
           </div>
           <div class="bento-desc">
-            Выделил <strong>Flutterwave</strong> из монолита в отдельный <strong>микросервис</strong> с собственным деплоем, очередью и observability-стеком.
+            Extracted <strong>Flutterwave</strong> from the monolith into a standalone <strong>microservice</strong> with its own deploy, queue and observability stack.
           </div>
         </div>
 
@@ -1151,10 +1143,10 @@
             <div class="bento-ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
             </div>
-            <div class="bento-title">Апгрейд PostgreSQL 14 → 18 <span class="tag">без простоя</span></div>
+            <div class="bento-title">PostgreSQL 14 → 18 upgrade <span class="tag">zero-downtime</span></div>
           </div>
           <div class="bento-desc">
-            Провёл апгрейд кластера <strong>PostgreSQL 14 → 18</strong> на монолите через <strong>логическую репликацию</strong> — без maintenance-окна, без инцидентов в проде.
+            Upgraded the monolith's <strong>PostgreSQL 14 → 18</strong> cluster via <strong>logical replication</strong> — no maintenance window, no production incidents.
           </div>
         </div>
 
@@ -1163,23 +1155,23 @@
             <div class="bento-ico">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.5 0 4.78 1.02 6.42 2.66"/><path d="M22 4 12 14.01l-3-3"/></svg>
             </div>
-            <div class="bento-title">Движок частичных возвратов <span class="tag">12+ провайдеров</span></div>
+            <div class="bento-title">Partial-refund engine <span class="tag">12+ providers</span></div>
           </div>
           <div class="bento-desc">
-            Спроектировал <strong>мульти-провайдерную</strong> систему частичных возвратов с оркестрацией вебхуков через <strong>Chain of Responsibility</strong>, устранив целый класс багов с потерей возвратов.
+            Designed a <strong>multi-provider</strong> partial-refund system orchestrating webhooks via <strong>Chain of Responsibility</strong>, eliminating a whole class of lost-refund bugs.
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Образование -->
+    <!-- Education -->
     <section class="sec">
-      <div class="sec-title">Образование</div>
+      <div class="sec-title">Education</div>
       <div class="edu">
         <div class="edu-body">
-          <div class="edu-name">Белорусский государственный университет информатики и радиоэлектроники <span class="abbr">(БГУИР)</span></div>
-          <div class="edu-meta">Факультет компьютерных систем и сетей · Минск, Беларусь</div>
+          <div class="edu-name">Belarusian State University of Informatics and Radioelectronics <span class="abbr">(BSUIR)</span></div>
+          <div class="edu-meta">Faculty of Computer Systems and Networks · Minsk, Belarus</div>
         </div>
         <span class="edu-tag">Computer Science</span>
       </div>
@@ -1187,7 +1179,7 @@
 
   </main>
 
-  <div class="page-num">стр. <b>02</b> <span class="of">/ 02</span></div>
+  <div class="page-num">p. <b>02</b> <span class="of">/ 02</span></div>
 </div>
 
 </body>

@@ -87,36 +87,10 @@ function initStatPillHover() {
   });
 }
 
-// ========== SKILL CARD 3D TILT ==========
+// ========== SHARED ==========
 
 const prefersReducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function initSkillCardTilt() {
-  if (isMobile() || prefersReducedMotion()) return;
-
-  document.querySelectorAll('.skill-category').forEach(card => {
-    const el = /** @type {HTMLElement} */ (card);
-    let rafId = 0;
-
-    el.addEventListener('mousemove', (e) => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        const rect = el.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        el.style.transform = `perspective(800px) rotateY(${x * 10}deg) rotateX(${y * -10}deg) translateY(-2px)`;
-        el.style.transition = 'transform 0.1s ease';
-      });
-    });
-
-    el.addEventListener('mouseleave', () => {
-      cancelAnimationFrame(rafId);
-      el.style.transform = '';
-      el.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-    });
-  });
-}
 
 // ========== SKILL PILL WAVE ON CARD HOVER ==========
 
@@ -174,12 +148,13 @@ function initSkillPillToggle() {
 // ========== TIMELINE: CARD CLICK TOGGLE ==========
 
 /**
- * Trigger staggered flip-in delays on tech stack badges.
+ * Stagger the tech-stack badge fade-in so it tracks the panel opening
+ * (small, synchronized delays — no big offset that desyncs from the grid reveal).
  * @param {Element} card
  */
 function triggerTechFlipIn(card) {
   card.querySelectorAll('.timeline-details .flex-wrap > span').forEach((badge, i) => {
-    /** @type {HTMLElement} */ (badge).style.animationDelay = `${350 + i * 40}ms`;
+    /** @type {HTMLElement} */ (badge).style.animationDelay = `${120 + i * 25}ms`;
   });
 }
 
@@ -213,7 +188,7 @@ function initTimelineCardToggle() {
   });
 }
 
-// ========== SPIRAL TIMELINE: SCROLL-LINKED 3D ROTATION ==========
+// ========== TIMELINE: SCROLL-LINKED FOCUS (gentle dim/scale, no 3D) ==========
 
 function initSpiralTimeline() {
   const container = document.querySelector('.timeline-spiral');
@@ -253,44 +228,28 @@ function initSpiralTimeline() {
         const card = /** @type {HTMLElement|null} */ (item.querySelector('.timeline-card'));
         if (!card) return;
 
-        // Skip 3D transforms on expanded cards — keep them flat and readable
+        // Expanded card stays fully focused and flat — never dimmed.
         if (card.classList.contains('expanded')) {
-          card.style.transform = 'perspective(1200px) rotateY(0deg) scale(1) translateZ(0px)';
           card.style.opacity = '1';
+          card.style.transform = 'scale(1)';
           item.classList.add('spiral-active');
           return;
         }
 
+        // Distance from the viewport sweet spot, 0 (centered) → 1 (far).
         const rect = item.getBoundingClientRect();
         const cardCenter = rect.top + rect.height / 2;
         const dist = (cardCenter - sweetSpot) / (wh * 0.55);
-        const clampedDist = Math.max(-1, Math.min(1, dist));
+        const factor = Math.min(Math.abs(dist), 1);
 
-        const isLeft = item.classList.contains('timeline-left');
-        let angle, scale, opacity, tz;
+        // Gentle focus: centered card is crisp, off-center cards dim and shrink
+        // slightly. No rotation / perspective / translateZ — flat and cheap.
+        const opacity = Math.max(1 - factor * 0.5, 0.5);
+        const scale = 1 - factor * 0.04;
+        card.style.opacity = String(opacity);
+        card.style.transform = `scale(${scale})`;
 
-        if (clampedDist > 0) {
-          // BELOW center → not yet reached
-          const closeFactor = Math.min(clampedDist, 1);
-          angle = isLeft ? -closeFactor * 35 : closeFactor * 35;
-          scale = 1 - closeFactor * 0.1;
-          opacity = 1 - closeFactor * 0.6;
-          tz = -closeFactor * 20;
-        } else {
-          // ABOVE center → already scrolled past
-          const openFactor = Math.min(Math.abs(clampedDist), 1);
-          angle = isLeft ? openFactor * 6 : -openFactor * 6;
-          scale = 1 - openFactor * 0.03;
-          opacity = 1 - openFactor * 0.12;
-          tz = -openFactor * 8;
-        }
-
-        card.style.transformOrigin = isLeft ? 'right center' : 'left center';
-        card.style.transform = `perspective(1200px) rotateY(${angle}deg) scale(${scale}) translateZ(${tz}px)`;
-        card.style.opacity = String(Math.max(opacity, 0.2));
-
-        const isFacing = clampedDist > -0.3 && clampedDist < 0.3;
-        item.classList.toggle('spiral-active', isFacing);
+        item.classList.toggle('spiral-active', factor < 0.3);
       });
     });
   }
@@ -341,7 +300,6 @@ export function initInteractions() {
   initMagneticButtons();
   initContactMagnetic();
   initStatPillHover();
-  initSkillCardTilt();
   initSkillPillWave();
   initSkillPillToggle();
   initTimelineCardToggle();

@@ -257,21 +257,11 @@ function staggerEnter(el, type) {
   const childSel = '[data-stagger-child]';
   const children = el.querySelectorAll(childSel);
 
+  const baseDelay = parseInt(el.dataset.staggerDelay) || 80;
+
   children.forEach((child, i) => {
     const childEl = /** @type {HTMLElement} */ (child);
-    let delay;
-
-    if (type === 'cascade-3d') {
-      const row = Math.floor(i / 3);
-      const col = i % 3;
-      delay = row * 180 + col * 90;
-      childEl.style.setProperty('--stagger-i', String(i));
-    } else {
-      const baseDelay = parseInt(el.dataset.staggerDelay) || 80;
-      delay = i * baseDelay;
-    }
-
-    childEl.style.transitionDelay = `${delay}ms`;
+    childEl.style.transitionDelay = `${i * baseDelay}ms`;
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         childEl.classList.add('in-view');
@@ -316,7 +306,7 @@ function revealVisibleOnInit() {
     // Element is at least partially in viewport
     if (rect.top < wh && rect.bottom > 0) {
       const type = el.dataset.scroll || '';
-      const isContainer = ['stagger', 'cascade-3d', 'bounce-stagger', 'deal-cards', 'terminal-boot', 'payment-flip'].includes(type);
+      const isContainer = ['stagger', 'bounce-stagger', 'terminal-boot'].includes(type);
 
       if (isContainer) {
         // Immediately show container and all children (no stagger delay on init)
@@ -357,7 +347,7 @@ export function initScrollAnimations() {
       const el = /** @type {HTMLElement} */ (entry.target);
       const type = el.dataset.scroll || '';
       const isHero = el.closest('#hero-outer');
-      const isContainer = ['stagger', 'cascade-3d', 'bounce-stagger', 'deal-cards', 'terminal-boot', 'payment-flip'].includes(type);
+      const isContainer = ['stagger', 'bounce-stagger', 'terminal-boot'].includes(type);
 
       if (entry.isIntersecting) {
         if (isContainer) {

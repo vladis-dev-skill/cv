@@ -22,6 +22,7 @@ function easeOutBack(t) {
 function animateCounter(el) {
   const target = parseInt(el.dataset.counter);
   const suffix = el.dataset.suffix || '';
+  const prefix = el.dataset.prefix || '';
   const duration = 2000;
   const start = performance.now();
 
@@ -31,7 +32,7 @@ function animateCounter(el) {
     const progress = Math.min(elapsed / duration, 1);
     const easing = target < 50 ? easeOutBack : easeOutCubic;
     const current = Math.min(Math.round(easing(progress) * target), target);
-    el.textContent = current + suffix;
+    el.textContent = prefix + current + suffix;
     if (progress < 1) requestAnimationFrame(update);
   }
 
