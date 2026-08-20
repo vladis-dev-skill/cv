@@ -1,0 +1,1180 @@
+<title>Резюме за 19 секунд</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<style>
+/* ───────────────────────────────────────────────────────────
+   Резюме за 19 секунд — часть I
+   Визуальный мир: вычитанная рукопись. Бумага, наборный текст,
+   красная ручка редактора на полях, тайм-коды как пометки
+   на полях исходника.
+   ─────────────────────────────────────────────────────────── */
+
+:root{
+  --paper:#FCFAF8;
+  --surface:#FFFFFF;
+  --surface-2:#F6F1EC;
+  --ink:#1A1512;
+  --ink-2:#4A423D;
+  --ink-3:#7C726B;
+  --rule:#E4DCD4;
+  --rule-soft:#EFE8E1;
+
+  --accent:#B3261E;
+  --accent-ink:#8E1C16;
+  --accent-soft:#FAEDEB;
+
+  --keep:#1B6B48;
+  --keep-soft:#E7F2EC;
+  --cut:#B3261E;
+  --cut-soft:#FAEDEB;
+  --warn:#8A5A00;
+  --warn-soft:#FBF2E0;
+
+  --shadow:0 1px 2px rgba(26,21,18,.05), 0 8px 24px -16px rgba(26,21,18,.22);
+
+  --sans:'Golos Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --serif:'Literata', Georgia, 'Times New Roman', serif;
+  --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --measure:36rem;
+  --pad:clamp(1.1rem, 4vw, 2.5rem);
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#141110;
+    --surface:#1C1917;
+    --surface-2:#241F1C;
+    --ink:#F1EAE4;
+    --ink-2:#C4BAB2;
+    --ink-3:#8F847C;
+    --rule:#332C28;
+    --rule-soft:#262120;
+
+    --accent:#FF8C7C;
+    --accent-ink:#FFA99C;
+    --accent-soft:#361D1A;
+
+    --keep:#6FD3A0;
+    --keep-soft:#12281E;
+    --cut:#FF8C7C;
+    --cut-soft:#361D1A;
+    --warn:#E7B45C;
+    --warn-soft:#2E2313;
+
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141110;
+  --surface:#1C1917;
+  --surface-2:#241F1C;
+  --ink:#F1EAE4;
+  --ink-2:#C4BAB2;
+  --ink-3:#8F847C;
+  --rule:#332C28;
+  --rule-soft:#262120;
+
+  --accent:#FF8C7C;
+  --accent-ink:#FFA99C;
+  --accent-soft:#361D1A;
+
+  --keep:#6FD3A0;
+  --keep-soft:#12281E;
+  --cut:#FF8C7C;
+  --cut-soft:#361D1A;
+  --warn:#E7B45C;
+  --warn-soft:#2E2313;
+
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ───── каркас ───── */
+.wrap{max-width:78rem;margin:0 auto;padding:0 var(--pad) 6rem}
+.col{max-width:var(--measure)}
+
+h1,h2,h3,h4,.eyebrow,.num,.chip,.pill,.tag,nav,button,th{font-family:var(--sans)}
+
+h1{
+  font-size:clamp(2.6rem,7.5vw,4.6rem);
+  line-height:.98;
+  letter-spacing:-.035em;
+  font-weight:800;
+  margin:0;
+  text-wrap:balance;
+}
+h2{
+  font-size:clamp(1.5rem,3.4vw,2.1rem);
+  line-height:1.12;
+  letter-spacing:-.025em;
+  font-weight:750;
+  margin:0;
+  text-wrap:balance;
+}
+h3{
+  font-size:1.06rem;
+  line-height:1.3;
+  letter-spacing:-.012em;
+  font-weight:700;
+  margin:0;
+}
+h4{
+  font-size:.78rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:var(--ink-3);
+  margin:0;
+}
+p{margin:0}
+strong{font-weight:600;color:var(--ink)}
+em{font-style:italic}
+a{color:var(--accent-ink);text-underline-offset:.18em;text-decoration-thickness:from-font}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+.eyebrow{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:700;color:var(--accent);
+}
+
+/* ───── обложка ───── */
+.cover{
+  padding:clamp(3rem,9vw,6rem) 0 clamp(2.2rem,5vw,3.4rem);
+  border-bottom:2px solid var(--ink);
+}
+.cover .lead{
+  font-size:clamp(1.06rem,2.1vw,1.24rem);
+  color:var(--ink-2);
+  max-width:34rem;
+  margin-top:1.5rem;
+}
+.covermeta{
+  display:flex;flex-wrap:wrap;gap:.5rem .9rem;
+  margin-top:2rem;font-family:var(--mono);font-size:.72rem;
+  color:var(--ink-3);
+}
+.covermeta span{
+  border:1px solid var(--rule);border-radius:2px;
+  padding:.28rem .55rem;background:var(--surface);
+}
+
+/* ───── тезис ───── */
+.thesis{
+  margin:clamp(2.4rem,6vw,4rem) 0;
+  display:grid;gap:1.6rem;
+  grid-template-columns:1fr;
+}
+@media (min-width:56rem){
+  .thesis{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:3rem;align-items:start}
+}
+.bignum{
+  font-family:var(--sans);
+  font-size:clamp(4.5rem,14vw,8rem);
+  font-weight:800;letter-spacing:-.05em;line-height:.82;
+  color:var(--accent);
+}
+.bignum small{display:block;font-size:.145em;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:.7rem;font-weight:700}
+
+.readers{display:grid;gap:.7rem;margin-top:1.4rem}
+.reader{
+  display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:baseline;
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  padding:.85rem 1rem;
+}
+.reader b{font-family:var(--sans);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.reader span{font-size:.94rem;color:var(--ink-2)}
+
+/* ───── оглавление ───── */
+.toc{
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding:1.6rem 0;margin:0 0 clamp(2rem,5vw,3.5rem);
+}
+.toc ol{
+  list-style:none;margin:0;padding:0;
+  display:grid;gap:.15rem .5rem;
+  grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));
+  counter-reset:toc;
+}
+.toc a{
+  display:flex;gap:.7rem;align-items:baseline;
+  font-family:var(--sans);font-size:.9rem;font-weight:500;
+  color:var(--ink-2);text-decoration:none;padding:.34rem .4rem;border-radius:3px;
+}
+.toc a:hover{background:var(--surface-2);color:var(--ink)}
+.toc a i{font-family:var(--mono);font-style:normal;font-size:.74rem;color:var(--accent);min-width:1.5rem}
+
+/* ───── секции ───── */
+section{
+  padding-top:clamp(2.6rem,6vw,4.4rem);
+  scroll-margin-top:1.5rem;
+}
+.shead{
+  display:grid;gap:.55rem;
+  padding-bottom:1.5rem;margin-bottom:1.8rem;
+  border-bottom:1px solid var(--rule);
+}
+.shead .snum{
+  font-family:var(--mono);font-size:.74rem;font-weight:700;
+  color:var(--accent);letter-spacing:.1em;
+}
+.shead p{color:var(--ink-2);max-width:var(--measure);font-size:.98rem}
+
+.body>*+*{margin-top:1.15rem}
+.body{max-width:var(--measure)}
+.body p{color:var(--ink-2)}
+.body h3{margin-top:2.2rem;color:var(--ink)}
+.body h3+p{margin-top:.6rem}
+
+/* ───── правило ───── */
+.rules{display:grid;gap:1rem;margin-top:1.6rem}
+.rule{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-left:3px solid var(--accent);
+  border-radius:3px;
+  padding:1.15rem 1.25rem;
+  box-shadow:var(--shadow);
+}
+.rule>header{display:flex;gap:.75rem;align-items:baseline;margin-bottom:.55rem}
+.rule .rn{
+  font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--accent);
+  letter-spacing:.06em;flex:none;
+}
+.rule h3{font-size:1.02rem}
+.rule p{font-size:.95rem;color:var(--ink-2)}
+.rule p+p{margin-top:.6rem}
+.rule .why{
+  font-family:var(--sans);font-size:.88rem;color:var(--ink-2);
+  background:var(--surface-2);border-radius:3px;padding:.6rem .75rem;margin-top:.7rem;
+}
+.rule .why b{color:var(--ink);font-weight:650}
+
+/* ───── цитата с тайм-кодом ───── */
+.q{
+  margin:1.5rem 0;padding:0 0 0 1.1rem;
+  border-left:2px solid var(--accent);
+}
+.q p{font-family:var(--serif);font-style:italic;color:var(--ink);font-size:.99rem}
+.q footer{
+  margin-top:.5rem;font-family:var(--mono);font-size:.7rem;color:var(--ink-3);
+  letter-spacing:.03em;
+}
+.tc{
+  font-family:var(--mono);font-size:.68rem;font-weight:500;
+  color:var(--accent);background:var(--accent-soft);
+  padding:.1rem .35rem;border-radius:2px;white-space:nowrap;
+}
+
+/* ───── было / стало ───── */
+.diff{
+  display:grid;gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:3px;overflow:hidden;
+  margin-top:1.3rem;
+}
+@media (min-width:44rem){.diff{grid-template-columns:1fr 1fr}}
+.diff>div{background:var(--surface);padding:1rem 1.1rem}
+.diff h4{margin-bottom:.6rem}
+.diff .was h4{color:var(--cut)}
+.diff .now h4{color:var(--keep)}
+.diff p,.diff li{font-size:.92rem;color:var(--ink-2)}
+.diff ul{margin:0;padding-left:1.05rem;display:grid;gap:.42rem}
+.diff .was p,.diff .was li{color:var(--ink-3)}
+.diff code,.diff .mono{font-family:var(--mono);font-size:.84em}
+
+/* ───── таблицы ───── */
+.tablewrap{overflow-x:auto;margin-top:1.4rem;border:1px solid var(--rule);border-radius:3px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:34rem;font-size:.9rem}
+th,td{text-align:left;padding:.7rem .9rem;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+th{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:700;background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+td{color:var(--ink-2)}
+td.mono,th.mono{font-family:var(--mono);font-size:.82rem}
+td b{color:var(--ink)}
+
+/* ───── пилюли ───── */
+.pill{
+  display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;padding:.16rem .45rem;border-radius:2px;white-space:nowrap;
+}
+.pill.cut{background:var(--cut-soft);color:var(--cut)}
+.pill.keep{background:var(--keep-soft);color:var(--keep)}
+.pill.add{background:var(--keep-soft);color:var(--keep)}
+.pill.fix{background:var(--warn-soft);color:var(--warn)}
+
+/* ───── блок «стек» ───── */
+.stackdemo{
+  font-family:var(--sans);font-size:.92rem;line-height:1.75;
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  padding:1.1rem 1.2rem;margin-top:1.3rem;color:var(--ink-2);
+}
+.stackdemo .cat{
+  display:block;font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:700;margin:1rem 0 .15rem;
+}
+.stackdemo .cat:first-child{margin-top:0}
+.stackdemo b{color:var(--ink);font-weight:700}
+.stackdemo .strike{text-decoration:line-through;color:var(--ink-3);opacity:.7}
+
+/* ───── чек-лист ───── */
+.check{display:grid;gap:.1rem;margin-top:1.4rem;max-width:44rem}
+.check label{
+  display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:start;
+  padding:.6rem .7rem;border-radius:3px;cursor:pointer;font-size:.94rem;
+  font-family:var(--sans);color:var(--ink-2);
+}
+.check label:hover{background:var(--surface-2)}
+.check input{
+  appearance:none;width:1.05rem;height:1.05rem;margin:.22rem 0 0;
+  border:1.5px solid var(--ink-3);border-radius:2px;background:var(--surface);
+  display:grid;place-content:center;cursor:pointer;flex:none;
+}
+.check input::after{
+  content:"";width:.55rem;height:.3rem;border-left:2px solid var(--paper);
+  border-bottom:2px solid var(--paper);transform:rotate(-45deg) scale(0);
+  transition:transform .12s ease;
+}
+.check input:checked{background:var(--keep);border-color:var(--keep)}
+.check input:checked::after{transform:rotate(-45deg) scale(1)}
+.check input:checked+span{color:var(--ink-3);text-decoration:line-through}
+.check .grp{
+  font-family:var(--sans);font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--accent);font-weight:700;margin:1.5rem 0 .35rem;padding-left:.7rem;
+}
+.check .grp:first-child{margin-top:0}
+
+/* ───── заметка ───── */
+.note{
+  border:1px solid var(--rule);border-radius:3px;
+  background:var(--surface-2);padding:1.05rem 1.15rem;margin-top:1.4rem;
+}
+.note h4{color:var(--warn);margin-bottom:.5rem}
+.note p{font-size:.92rem;color:var(--ink-2)}
+.note p+p{margin-top:.55rem}
+.note.hard h4{color:var(--accent)}
+
+/* ───── анатомия референса ───── */
+.anat{display:grid;gap:.85rem;margin-top:1.5rem}
+.anat li{
+  list-style:none;display:grid;grid-template-columns:auto 1fr;gap:1rem;
+  border-bottom:1px solid var(--rule-soft);padding-bottom:.85rem;
+}
+.anat li:last-child{border-bottom:0}
+.anat .lbl{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);font-weight:700;padding-top:.22rem;min-width:6.5rem;
+}
+.anat p{font-size:.93rem;color:var(--ink-2)}
+.anat b{color:var(--ink)}
+
+/* ───── банк формулировок ───── */
+.bank{display:grid;gap:.55rem;margin-top:1.3rem;padding:0;list-style:none}
+.bank li{
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  padding:.75rem .9rem;font-size:.93rem;color:var(--ink-2);
+  font-family:var(--serif);
+}
+.bank li b{color:var(--ink);font-weight:600}
+.bank .lvl{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-3);display:block;margin-bottom:.3rem;
+}
+
+footer.doc{
+  margin-top:5rem;padding-top:2rem;border-top:2px solid var(--ink);
+  font-family:var(--mono);font-size:.72rem;color:var(--ink-3);line-height:1.9;
+}
+footer.doc a{color:var(--ink-3)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+html{scroll-behavior:smooth}
+</style>
+
+<div class="wrap">
+
+<header class="cover">
+  <p class="eyebrow">Часть I из II · разбор от 19 августа 2026</p>
+  <h1>Резюме за<br>19 секунд</h1>
+  <p class="lead">Полный разбор того, как собрать PDF-резюме, которое проходит первичный отсев. Всё, что сказано в 36-минутном видео-разборе — правило за правилом, без потерь.</p>
+  <div class="covermeta">
+    <span>источник: видеоразбор 36:03</span>
+    <span>референс: CV Павла Хромченко, Senior PHP</span>
+    <span>объект разбора: cv.pdf Антона Салявы</span>
+    <span>часть II → профиль на HeadHunter</span>
+  </div>
+</header>
+
+<div class="thesis">
+  <div>
+    <div class="bignum">18,9<small>секунды на резюме</small></div>
+  </div>
+  <div>
+    <h2>Одно резюме, два читателя</h2>
+    <p style="margin-top:.9rem;color:var(--ink-2)">Столько в среднем рекрутер тратит на одно резюме. За это время он решает: писать тебе или не писать. Он не вчитывается — он сканирует. Поэтому резюме делится на два слоя, и каждый слой написан для своего человека.</p>
+    <div class="readers">
+      <div class="reader"><b>Слой 1 · жирное</b><span>Читает рекрутер или HR за 19 секунд. Сюда попадают: должность, ключевые технологии, громкие цифры достижений.</span></div>
+      <div class="reader"><b>Слой 2 · обычное</b><span>Читает тимлид или техлид — уже перед созвоном, с чашкой кофе, за пять минут. Сюда попадают детали, стек, формулировки достижений.</span></div>
+    </div>
+    <div class="q">
+      <p>«У него мозг работает как комбайн. Он просто за 18 секунд оценивает твоё резюме. Он не будет вчитываться во всё».</p>
+      <footer><span class="tc">16:28</span></footer>
+    </div>
+  </div>
+</div>
+
+<nav class="toc" aria-label="Содержание">
+  <h4 style="margin-bottom:.9rem">Содержание</h4>
+  <ol>
+    <li><a href="#form"><i>01</i>Форма: убираем сайдбар</a></li>
+    <li><a href="#head"><i>02</i>Шапка</a></li>
+    <li><a href="#contacts"><i>03</i>Контакты и Telegram</a></li>
+    <li><a href="#city"><i>04</i>Город</a></li>
+    <li><a href="#about"><i>05</i>О себе</a></li>
+    <li><a href="#skills"><i>06</i>Навыки</a></li>
+    <li><a href="#exp"><i>07</i>Опыт работы</a></li>
+    <li><a href="#gap"><i>08</i>Дыра в стаже и легенда перехода</a></li>
+    <li><a href="#bottom"><i>09</i>Низ документа</a></li>
+    <li><a href="#ref"><i>10</i>Анатомия референса</a></li>
+    <li><a href="#beforeafter"><i>11</i>Разбор «до / после»</a></li>
+    <li><a href="#bank"><i>12</i>Банк формулировок</a></li>
+    <li><a href="#redflags"><i>13</i>Красные флаги</a></li>
+    <li><a href="#checklist"><i>14</i>Чек-лист перед отправкой</a></li>
+  </ol>
+</nav>
+
+<!-- ══════════════ 01 ══════════════ -->
+<section id="form">
+  <div class="shead">
+    <span class="snum">01</span>
+    <h2>Форма: убираем сайдбар</h2>
+    <p>Первое и самое крупное изменение. Не косметика — от него зависит, сколько текста вообще влезет в документ.</p>
+  </div>
+
+  <div class="body">
+    <p>Текущее резюме собрано в две колонки: слева тёмный сайдбар с фото, контактами, стеком, языками и образованием; справа — узкая колонка с опытом. Из-за этого опыт работы набран мелким шрифтом и сжат по ширине.</p>
+    <p>Решение: <strong>одна колонка на всю ширину страницы</strong>. Никакого сайдбара.</p>
+  </div>
+
+  <div class="rules">
+    <article class="rule">
+      <header><span class="rn">R01</span><h3>Всё идёт сплошняком по всей ширине листа</h3></header>
+      <p>Одна колонка. Текст занимает всю ширину, кроме узких полей по краям.</p>
+      <p class="why"><b>Зачем:</b> помещается больше опыта работы — особенно на последнем месте, которое и есть главный блок резюме. И навыки со стеком влезают целиком сразу после блока «О себе».</p>
+    </article>
+
+    <article class="rule">
+      <header><span class="rn">R02</span><h3>Порядок блоков сверху вниз</h3></header>
+      <p>Шапка → <strong>О себе</strong> → <strong>Навыки</strong> → <strong>Опыт работы</strong> → Образование.</p>
+      <p class="why"><b>Зачем:</b> рекрутер за 19 секунд должен сначала увидеть, кто ты и на чём пишешь, и только потом — где работал. Стек, спрятанный внизу или сбоку, не читают.</p>
+    </article>
+
+    <article class="rule">
+      <header><span class="rn">R03</span><h3>Дизайн уходит на второй план</h3></header>
+      <p>Цвета, подчёркивания, круглые фото, чипы-таблетки, декоративные рамки — всё это не помогает. Резюме должно быть <strong>простым и приятным для чтения</strong>.</p>
+      <div class="q">
+        <p>«Всем плевать на дизайн, на цвета, на эти подчёркивания какие-то, вот эти вот AI-шные — всё это ерунда».</p>
+        <footer><span class="tc">01:37</span></footer>
+      </div>
+      <p class="why"><b>Важно:</b> «минималистично» ≠ «некрасиво». Минималистичное резюме выглядит дороже — потому что читается без усилий.</p>
+    </article>
+
+    <article class="rule">
+      <header><span class="rn">R04</span><h3>Ключевое — жирным</h3></header>
+      <p>Жирным выделяются технологии, с которыми ты реально работал глубоко, и цифры достижений. Всё остальное — обычным начертанием.</p>
+      <p class="why"><b>Зачем:</b> жирное прочитает рекрутер за 19 секунд. Не жирное прочитает тимлид перед созвоном. Это два разных читателя и два разных слоя одного документа.</p>
+    </article>
+
+    <article class="rule">
+      <header><span class="rn">R05</span><h3>Итоговый объём — две страницы</h3></header>
+      <p>Не одна и не четыре. Две страницы A4.</p>
+      <p class="why"><b>Почему так выходит:</b> без сайдбара текст идёт плотнее, но детально расписанное последнее место работы занимает много. Референс Павла — ровно две страницы.</p>
+    </article>
+  </div>
+
+  <div class="note">
+    <h4>Не путать сайдбар с полями подписей</h4>
+    <p>В резюме-референсе слева есть узкая колонка, но в ней нет контента — только подписи разделов: «О СЕБЕ», «НАВЫКИ», «ОПЫТ РАБОТЫ», «ОБРАЗОВАНИЕ». Текст при этом идёт одной широкой колонкой. Это поля рукописи, а не вторая колонка. Такой приём оставлять можно.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 02 ══════════════ -->
+<section id="head">
+  <div class="shead">
+    <span class="snum">02</span>
+    <h2>Шапка</h2>
+    <p>Первые два сантиметра листа. Здесь решается, будет ли прочитано остальное.</p>
+  </div>
+
+  <div class="rules">
+    <article class="rule">
+      <header><span class="rn">R06</span><h3>Должность — крупно. Не мельче имени по значимости</h3></header>
+      <p>Сейчас имя и фамилия набраны огромным кеглем, а должность — крохотным, её почти не видно. Это перевёрнутая логика: рекрутер ищет не человека по имени, а роль.</p>
+      <div class="q">
+        <p>«Написано просто "Backend Developer", потом еле заметным текстом "PHP / Symfony". А должно быть большим текстом написано: Senior PHP-разработчик, Symfony».</p>
+        <footer><span class="tc">04:05</span></footer>
+      </div>
+    </article>
+
+    <article class="rule">
+      <header><span class="rn">R07</span><h3>Слово «Senior» должно быть в документе</h3></header>
+      <p>В текущем резюме нигде не написано, что речь о сеньоре. Это надо исправить в двух местах: <strong>в шапке</strong> и <strong>в названии должности на последнем месте работы</strong>.</p>
+      <p class="why"><b>Зачем:</b> грейд не выводится читателем из текста. Если ты его не назвал — тебя отнесут туда, куда захотят, и обычно ниже.</p>
+    </article>
+
+    <article class="rule">
+      <header><span class="rn">R08</span><h3>Symfony и Laravel — оба</h3></header>
+      <p>В шапке и в навыках указывать <strong>оба фреймворка</strong>. Symfony первым (под него готовился), Laravel вторым.</p>
+      <div class="q">
+        <p>«Это сразу даёт тебе плюс сотню-полторы вакансий».</p>
+        <footer><span class="tc">05:23</span></footer>
+      </div>
+      <p class="why"><b>Почему это не обман:</b> описание вакансии пишет рекрутер или HR, а не техлид. HR может не знать, что реально происходит в компании. Устраиваешься на Laravel — приходишь на Symfony, и наоборот; это половина случаев. Указывая оба, ты просто перестаёшь терять вакансии на этапе фильтра.</p>
+    </article>
+  </div>
+
+  <div class="diff">
+    <div class="was">
+      <h4>Было</h4>
+      <p style="font-size:1.5rem;font-weight:700;font-family:var(--sans);line-height:1.1">Антон Салява</p>
+      <p class="mono" style="margin-top:.5rem;font-size:.78rem">Backend Developer · PHP / Symfony · 5+ лет</p>
+      <p style="margin-top:.8rem;font-size:.86rem">Имя огромное, роль почти не видна. Грейд не назван. Laravel нет.</p>
+    </div>
+    <div class="now">
+      <h4>Стало</h4>
+      <p style="font-size:1.5rem;font-weight:800;font-family:var(--sans);line-height:1.1;letter-spacing:-.02em">Антон Салява</p>
+      <p style="margin-top:.4rem;font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--ink)">Senior PHP-разработчик <span style="font-weight:400;color:var(--ink-2)">· Symfony / Laravel · highload и распределённые системы</span></p>
+      <p style="margin-top:.8rem;font-size:.86rem">Роль читается с расстояния. Грейд назван. Оба фреймворка в фильтре.</p>
+    </div>
+  </div>
+
+  <div class="body">
+    <h3>Строка доменов</h3>
+    <p>Под контактами — одна строка с областями, в которых ты работал: <span class="mono" style="font-family:var(--mono);font-size:.85rem">финтех · телеком · highload · SaaS · e-commerce · MedTech</span>. Дешёвый и очень заметный сигнал «я уже видел разные предметные области».</p>
+
+    <h3>Фото</h3>
+    <p>В референсе — маленькое прямоугольное деловое фото в правом верхнем углу. Не круглая аватарка на тёмном фоне во всю ширину сайдбара. Фото не должно занимать место, которое нужно тексту.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 03 ══════════════ -->
+<section id="contacts">
+  <div class="shead">
+    <span class="snum">03</span>
+    <h2>Контакты и рабочий Telegram</h2>
+    <p>Порядок контактов — не мелочь. Это выбор канала, в котором пройдёт весь поиск работы.</p>
+  </div>
+
+  <div class="body">
+    <p>Правильный порядок в одну строку:</p>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th class="mono">№</th><th>Контакт</th><th>Почему здесь</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">1</td><td><b>Telegram</b> — ссылкой или через @ник</td><td>Основной способ связи. Быстро, удобно, вся переписка в одном месте.</td></tr>
+        <tr><td class="mono">2</td><td><b>Номер телефона</b></td><td>Добавляет доверия. Кто не указал телефон — «серая лошадка». Белорусский номер проблем не создаёт.</td></tr>
+        <tr><td class="mono">3</td><td>Почта</td><td>Обязательна, но никто не начинает общение с письма.</td></tr>
+        <tr><td class="mono">4</td><td>LinkedIn</td><td>В самый конец. Полезен, но на первичный отсев не влияет.</td></tr>
+        <tr><td class="mono">5</td><td>Город и формат</td><td>Например: «Москва · удалённо». См. раздел 04.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="rules">
+    <article class="rule">
+      <header><span class="rn">R09</span><h3>Отдельная SIM-карта и отдельный Telegram под поиск работы</h3></header>
+      <p>Купить симку <strong>без абонентской платы</strong>. Заплатить один раз за подключение (порядка 10 рублей) — и пользоваться постоянно. На неё завести отдельный аккаунт в Telegram.</p>
+      <p class="why"><b>Зачем:</b> аккаунт чистый, туда приходят только отклики. Ничего не теряется в личных чатах, всё легко отслеживать.</p>
+    </article>
+
+    <article class="rule">
+      <header><span class="rn">R10</span><h3>Не брать временный номер с онлайн-сервиса</h3></header>
+      <p>Соблазн есть, но так делать не надо.</p>
+      <p class="why"><b>Почему:</b> когда Telegram попросит повторно подтвердить номер — а он попросит, — подтвердить будет нечем, и аккаунт со всей перепиской откликов потеряется.</p>
+    </article>
+  </div>
+
+  <div class="note">
+    <h4>Почему мессенджер вообще важен</h4>
+    <p>Поиск работы — это по большей части переписка с HR: переобсуждение условий, переносы созвонов, планирование новых. Собеседование бывает из двух этапов, бывает из четырёх. Всё это надо где-то вести, и удобнее всего — в одном чистом мессенджере.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 04 ══════════════ -->
+<section id="city">
+  <div class="shead">
+    <span class="snum">04</span>
+    <h2>Город</h2>
+    <p>Одно поле, которое заметно меняет поток откликов.</p>
+  </div>
+
+  <div class="rules">
+    <article class="rule">
+      <header><span class="rn">R11</span><h3>Указывать Москву</h3></header>
+      <p>Не Минск, не Калининград. <strong>Москва.</strong></p>
+      <div class="q">
+        <p>«Вначале указали Калининград, а потом я передумал, указал Москву — и у нас как-то сразу пободрее пошли отклики. Потому что большинство контор сидит в Москве».</p>
+        <footer><span class="tc">07:33</span> · личный опыт разбирающего</footer>
+      </div>
+      <p class="why"><b>Логика:</b> город работает как фильтр в поиске. Москва даёт максимальный охват. Дальше, уже в переписке, формат работы раскручивается в нужную сторону — удалёнка, ГПХ и так далее.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════ 05 ══════════════ -->
+<section id="about">
+  <div class="shead">
+    <span class="snum">05</span>
+    <h2>О себе</h2>
+    <p>Четыре–шесть строк, которые читают всегда. Сейчас это самое слабое место документа.</p>
+  </div>
+
+  <div class="body">
+    <p>Текущий текст — «обычное сухое описание, как пишут 90% сеньоров»: перечисление того, чем ты занимаешься. Оно не отвечает на единственный вопрос, который у читателя есть: <strong>какие проблемы ты решил</strong>.</p>
+    <p>Нужны максимальные достижения. Это не хвастовство — это способ не потеряться среди сотни таких же.</p>
+  </div>
+
+  <h3 style="margin-top:2rem;font-family:var(--sans)">Формула блока</h3>
+  <ul class="anat">
+    <li><span class="lbl">Строка 1</span><p><b>Кто ты и сколько лет.</b> «9,5 лет коммерческой разработки на PHP» / «Backend-разработчик, 5+ лет». Плюс одно предложение о специализации.</p></li>
+    <li><span class="lbl">Строка 2</span><p><b>Громкое достижение №1.</b> Например: затащил в проект серьёзную автоматизацию бизнес-процессов, которая сэкономила заказчику N часов или денег.</p></li>
+    <li><span class="lbl">Строка 3</span><p><b>Громкое достижение №2.</b> Например: перенёс структуру базы данных на новые рельсы с нулевым даунтаймом — без просадок по производительности, а лучше с ускорением.</p></li>
+    <li><span class="lbl">Строка 4</span><p><b>Инфраструктура — сам.</b> Одно-два предложения: не боишься настроить DevOps-процессы, CI/CD, автоматизировать инфраструктурную рутину.</p></li>
+  </ul>
+
+  <div class="note hard">
+    <h4>Почему инфраструктура в конце блока обязательна</h4>
+    <p>Разбирающий провёл анализ рынка перед тем, как собирать своё резюме. Вывод: «просто PHP-разработчик», «просто Java-разработчик», «просто Python-разработчик» уже слабо востребованы. Нужны те, кто наполовину закрывает и DevOps.</p>
+    <p>Реально ты этим заниматься не будешь. Но <strong>Docker и Kubernetes должны быть написаны в резюме обязательно</strong> — сейчас это нужно всем, и в этом надо разбираться.</p>
+  </div>
+
+  <div class="diff">
+    <div class="was">
+      <h4>Было — сухо и как у всех</h4>
+      <p style="font-size:.88rem">«Backend-разработчик: 5+ лет создаю серверные системы и Web API. Основной стек — PHP / Symfony с Doctrine: проектирую архитектуру и слои под рост нагрузки, вытягиваю производительность на уровне запросов и индексов, держу код под тестами…»</p>
+      <p style="margin-top:.7rem;font-size:.85rem"><span class="pill cut">проблема</span> Перечисление занятий. Ни одной решённой проблемы, ни одной цифры.</p>
+    </div>
+    <div class="now">
+      <h4>Стало — так устроен референс</h4>
+      <p style="font-size:.88rem">«9,5 лет коммерческой разработки на PHP. Специализация — системы, которые уже работают под нагрузкой и которые нельзя останавливать: перевод базы на десятки терабайт на новую структуру без остановки продакшена, миграция real-time-контура highload-платформы на новый транспорт, вынос тяжёлых операций из синхронного цикла в очереди. Инфраструктуру веду сам — Docker, Kubernetes, брокеры сообщений, репликация, мониторинг».</p>
+      <p style="margin-top:.7rem;font-size:.85rem"><span class="pill keep">работает</span> Два громких достижения + инфраструктура. Каждое — это тема для получаса разговора на собеседовании.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 06 ══════════════ -->
+<section id="skills">
+  <div class="shead">
+    <span class="snum">06</span>
+    <h2>Навыки</h2>
+    <p>Разбивка на категории в текущем резюме сделана правильно. Дальше — построчный разбор содержимого.</p>
+  </div>
+
+  <div class="body">
+    <p>Категории оставляем: <strong>Языки и фреймворки · Хранилища и данные · Инфраструктура · Распределённые системы</strong>. В текущем резюме четвёртой категории нет, а «Архитектура и качество» смешивает разное — это надо перебрать.</p>
+  </div>
+
+  <h3 style="margin-top:2.2rem;font-family:var(--sans)">Как писать версии</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Правило</th><th class="mono">Плохо</th><th class="mono">Хорошо</th></tr></thead>
+      <tbody>
+        <tr><td>Диапазон — через тире, не через слэш</td><td class="mono">Symfony 5.3 / 6</td><td class="mono">Symfony 4.4—7</td></tr>
+        <tr><td>Никаких «иксов»</td><td class="mono">PHP 7.4 / 8.x</td><td class="mono">PHP 7.4—8.4</td></tr>
+        <tr><td>Laravel — отдельно после Symfony</td><td class="mono">—</td><td class="mono">Laravel 10—13</td></tr>
+        <tr><td>Doctrine без уточнения</td><td class="mono">Doctrine ORM</td><td class="mono">Doctrine</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="body">
+    <p style="margin-top:1rem;font-size:.92rem">Про версию PHP: на момент разбора актуальна 8.4, 8.5 только-только появилась. Написать «7.4—8.4» безопасно. Про Laravel в разборе прозвучало «10—13» — перед публикацией стоит свериться с текущей мажорной версией, чтобы не написать несуществующую.</p>
+    <p style="font-size:.92rem">Про Doctrine есть отдельная причина: <strong>на HeadHunter в навыках пишется просто «Doctrine»</strong>, и формулировки в PDF и на HH должны совпадать.</p>
+  </div>
+
+  <h3 style="margin-top:2.4rem;font-family:var(--sans)">Категория 1 · Языки и фреймворки</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Действие</th><th>Что</th><th>Комментарий</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill keep">оставить</span></td><td class="mono">PHP 7.4—8.4</td><td>Жирным. Диапазон без иксов.</td></tr>
+        <tr><td><span class="pill keep">оставить</span></td><td class="mono">Symfony 4.4—7</td><td>Жирным. Первым фреймворком.</td></tr>
+        <tr><td><span class="pill add">добавить</span></td><td class="mono">Laravel 10—13</td><td>Жирным. Сразу после Symfony. Даёт +сотню-полторы вакансий.</td></tr>
+        <tr><td><span class="pill keep">оставить</span></td><td class="mono">Doctrine</td><td>Без «ORM».</td></tr>
+        <tr><td><span class="pill add">добавить</span></td><td class="mono">Go</td><td>В конец. Вакансии «PHP / Go» часто такие, что на Go ещё ничего не написано — только собираются.</td></tr>
+        <tr><td><span class="pill keep">оставить</span></td><td class="mono">C# / .NET</td><td>В конце — «это очень хорошо».</td></tr>
+        <tr><td><span class="pill fix">переставить</span></td><td class="mono">API Platform</td><td>Ближе к концу или в самый конец. «Это не достижение».</td></tr>
+        <tr><td><span class="pill add">добавить</span></td><td class="mono">ООП, SOLID</td><td>Два ключевых слова-триггера. Жирным.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:2.4rem;font-family:var(--sans)">Категория 2 · Хранилища и данные</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Действие</th><th>Что</th><th>Комментарий</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill keep">оставить</span></td><td class="mono">PostgreSQL</td><td>Жирным. «Отлично».</td></tr>
+        <tr><td><span class="pill keep">оставить</span></td><td class="mono">MySQL</td><td>Обычным.</td></tr>
+        <tr><td><span class="pill cut">убрать</span></td><td class="mono">MS SQL</td><td><b>Убрать полностью. Это красный флаг.</b> «Это вообще нельзя писать».</td></tr>
+        <tr><td><span class="pill keep">оставить</span></td><td class="mono">Redis</td><td>Жирным. «Отлично».</td></tr>
+        <tr><td><span class="pill add">добавить</span></td><td class="mono">ClickHouse</td><td>Сразу после Redis. Жирным. «Сейчас это мейнстрим».</td></tr>
+        <tr><td><span class="pill add">добавить</span></td><td class="mono">MongoDB</td><td>Как подтверждение, что работал хотя бы с одной полноценной NoSQL-базой. Redis тоже NoSQL, но этого мало.</td></tr>
+        <tr><td><span class="pill add">добавить</span></td><td>Фразы: проектирование схем, индексы и планы запросов, партиционирование, репликация</td><td>«Старая школа». Это любят видеть. Пишутся короткими фразами через запятую, обычным начертанием.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:2.4rem;font-family:var(--sans)">Категория 3 · Инфраструктура</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Действие</th><th>Что</th><th>Комментарий</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill keep">оставить</span></td><td class="mono">Docker</td><td>Жирным. Первым.</td></tr>
+        <tr><td><span class="pill add">добавить</span></td><td class="mono">Kubernetes</td><td><b>Обязательно.</b> Жирным. Сразу после Docker.</td></tr>
+        <tr><td><span class="pill add">добавить</span></td><td class="mono">Linux</td><td>Жирным. После Kubernetes.</td></tr>
+        <tr><td><span class="pill keep">оставить</span></td><td class="mono">Nginx, CI/CD</td><td>Обычным, после Linux.</td></tr>
+        <tr><td><span class="pill add">добавить</span></td><td class="mono">Prometheus, Grafana, Sentry, ELK (Elasticsearch, Kibana, Logstash)</td><td>«Было бы неплохо». Мониторинг и логи — сильный сигнал, что человек живёт рядом с продакшеном.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:2.4rem;font-family:var(--sans)">Категория 4 · Распределённые системы</h3>
+  <div class="body">
+    <p>Этой категории в текущем резюме нет — надо завести. Сюда: <strong>Kafka</strong>, <strong>RabbitMQ</strong>, микросервисная архитектура, REST API, gRPC, WebSocket, идемпотентность, retry, DLQ. Kafka и RabbitMQ — жирным, RabbitMQ выделить как минимум.</p>
+    <p style="font-size:.92rem;color:var(--ink-3)">Оговорка из разбора: писать сюда термины, которых не понимаешь, нельзя. Подробнее — правило R19 в разделе «Опыт работы».</p>
+  </div>
+
+  <h3 style="margin-top:2.4rem;font-family:var(--sans)">Что убрать из навыков полностью</h3>
+  <div class="rules">
+    <article class="rule">
+      <header><span class="rn">R12</span><h3>Категория «AI и инструменты» — вон</h3></header>
+      <p>Claude Code, AI-ассистенты, MCP — этого в навыках быть не должно.</p>
+      <p class="why"><b>Куда переносим:</b> в последнее место работы, одним абзацем. И не «писал в Claude Code, вайб-кодил», а «затаскивал серьёзную автоматизацию бизнес-процессов» — отдельный сервис, который что-то реально автоматизировал.</p>
+    </article>
+    <article class="rule">
+      <header><span class="rn">R13</span><h3>Блок «Языки» с полосками уровня — вон</h3></header>
+      <p>Русский родной указывать не нужно — это очевидно. Английский пишется одной короткой строкой внизу резюме: <span class="mono" style="font-family:var(--mono);font-size:.85rem">английский B1</span>.</p>
+    </article>
+  </div>
+
+  <h3 style="margin-top:2.4rem;font-family:var(--sans)">Что выделять жирным — точный список</h3>
+  <div class="stackdemo">
+    <span class="cat">Языки и фреймворки</span>
+    <b>PHP 7.4—8.4</b>, <b>Symfony 4.4—7</b>, <b>Laravel 10—13</b>, Doctrine, Go, C# / .NET, API&nbsp;Platform · <b>ООП</b>, <b>SOLID</b>, Composer
+    <span class="cat">Хранилища и данные</span>
+    <b>PostgreSQL</b>, MySQL, <b>Redis</b>, <b>ClickHouse</b>, MongoDB · проектирование схем, индексы и планы запросов, партиционирование, репликация <span class="strike">MS SQL</span>
+    <span class="cat">Инфраструктура</span>
+    <b>Docker</b>, <b>Kubernetes</b>, <b>Linux</b>, Nginx, GitLab CI, CI/CD, Prometheus, Grafana, Sentry, ELK
+    <span class="cat">Распределённые системы</span>
+    <b>Kafka</b>, <b>RabbitMQ</b>, микросервисная архитектура, REST API, gRPC, WebSocket · идемпотентность, retry, DLQ · PHPUnit, рефакторинг
+  </div>
+  <div class="body">
+    <p style="margin-top:.9rem;font-size:.9rem;color:var(--ink-3)">Зачёркнутое — то, что удаляется. Жирное — то, что прочитает рекрутер за 19 секунд.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 07 ══════════════ -->
+<section id="exp">
+  <div class="shead">
+    <span class="snum">07</span>
+    <h2>Опыт работы</h2>
+    <p>Главный блок резюме. Сейчас он собран неправильно на всех уровнях: пропорции, структура карточки, содержание пунктов.</p>
+  </div>
+
+  <h3 style="font-family:var(--sans)">Пропорции: правило пирамиды</h3>
+  <div class="body">
+    <p>Сейчас первое (самое давнее) и последнее места работы занимают примерно одинаковый объём. Должно быть строго наоборот.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Место работы</th><th>Объём</th><th>Что туда идёт</th></tr></thead>
+      <tbody>
+        <tr><td><b>Последнее (текущее)</b></td><td>Максимально детально. Больше половины всего блока опыта</td><td>Все главные достижения. Сюда садишься думать всерьёз — можно с ИИ-ассистентом, можно посмотреть чужие резюме. Здесь должно быть то, что человек реально может.</td></tr>
+        <tr><td>Предыдущее</td><td>Средне, заметно короче</td><td>Работа с данными и производительностью. Сюда же добавляется Go или Python в стек.</td></tr>
+        <tr><td>Самое раннее</td><td>Минимум</td><td>«На него всем плевать, как правило». Максимально коротко, не затягивать.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:2.4rem;font-family:var(--sans)">Структура карточки — одинаковая для всех мест</h3>
+  <ul class="anat">
+    <li><span class="lbl">1 · шапка</span><p><b>Должность · Компания · формат</b> и справа <b>даты</b>. Должность на последнем месте — обязательно «Senior PHP-разработчик».</p></li>
+    <li><span class="lbl">2 · контора</span><p><b>2–3 предложения о компании:</b> чем занималась, что за проекты. Например: «заказная разработка полного цикла для западных заказчиков; два проекта — highload-сервис с большой кодовой базой и кастомная B2B-платформа».</p></li>
+    <li><span class="lbl">3 · стек</span><p><b>Отдельная строка «Стек:»</b> и перечень технологий, ключевые — жирным. Не теги, не чипы, не подписи мелким шрифтом внизу карточки.</p></li>
+    <li><span class="lbl">4 · достижения</span><p><b>Абзацы или пункты</b> о том, что ты сделал именно здесь. Первым — самое сочное.</p></li>
+  </ul>
+
+  <div class="rules">
+    <article class="rule">
+      <header><span class="rn">R14</span><h3>Стек пишется строкой, а не тегами</h3></header>
+      <p>В текущем резюме стек оформлен маленькими тегами под карточкой. Разбирающий заметил их только со второго раза.</p>
+      <div class="q">
+        <p>«Никто не будет смотреть на эти теги. Я вообще их еле увидел сейчас только. Стек должен быть написан отдельно: "Стек:", двоеточие, и жирненьким выделен весь стек».</p>
+        <footer><span class="tc">27:05</span></footer>
+      </div>
+    </article>
+
+    <article class="rule">
+      <header><span class="rn">R15</span><h3>Стек на последнем месте работы покрывает максимум потребностей рынка</h3></header>
+      <p>Работодатель смотрит именно на последний стек — считается, что это то, что ты помнишь и чем владеешь сейчас.</p>
+      <p class="why"><b>Что это значит на практике:</b> PHP, Symfony, Laravel, PostgreSQL, Redis, RabbitMQ, Kafka, Docker, Kubernetes — всё это должно оказаться в стеке последнего места, а не разбросано по разным годам.</p>
+    </article>
+
+    <article class="rule">
+      <header><span class="rn">R16</span><h3>Названия проектов не пишем. Никогда</h3></header>
+      <p>«DeinArzt», «Fsexpert», «Nesty» — убрать. Вместо этого — описание домена: <strong>медицинская SaaS-платформа</strong>, <strong>медицинский B2B-сервис</strong>, <strong>поисковая SPA-платформа объявлений</strong>.</p>
+      <div class="q">
+        <p>«Это красный флаг. Потому что они сразу же попробуют найти — и ничего не найдут. Это будет делать не HR, а тимлид, который готовится за пять минут до созвона: открывает резюме, тыкает, смотрит… а там какое-то несуществующее нечто. У меня такое просто было».</p>
+        <footer><span class="tc">20:22</span></footer>
+      </div>
+      <p class="why"><b>Как объяснить, если спросят:</b> «Я подписывал NDA, не имею права распространять информацию». Одна фраза — и вопрос закрыт. Никто не спросит, почему ты не назвал проект.</p>
+    </article>
+
+    <article class="rule">
+      <header><span class="rn">R17</span><h3>Первым пунктом — самое сочное достижение</h3></header>
+      <p>Не хронология, не «сначала расскажу контекст». Сразу лучшее.</p>
+    </article>
+
+    <article class="rule">
+      <header><span class="rn">R18</span><h3>Не писать то, что делают все подряд</h3></header>
+      <p>«Развернул проект с нуля» — это не достижение. Это делает любой. И это то, чем ты будешь заниматься первую неделю на новом месте в любом случае.</p>
+    </article>
+
+    <article class="rule">
+      <header><span class="rn">R19</span><h3>Не писать то, что не сможешь защитить на собеседовании</h3></header>
+      <p>Граница простая.</p>
+      <p class="why"><b>Нельзя:</b> если ты не знаешь, что такое retry с экспоненциальным backoff и dead-letter очередь, — не пиши их.<br><b>Можно:</b> если ты хотя бы слышал термин и имеешь примерное представление — например, идемпотентность — пиши: «обработчик идемпотентен по ключу сообщения». Это интересно, это реально спрашивают на собеседованиях, и это реально хотят видеть.</p>
+    </article>
+  </div>
+
+  <h3 style="margin-top:2.4rem;font-family:var(--sans)">Разбор текущих пунктов последнего места работы</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Пункт как написан сейчас</th><th>Вердикт</th><th>Почему</th></tr></thead>
+      <tbody>
+        <tr><td>«Написал робота-парсера: адаптер-стратегия на каждый источник, нормализация, дедупликация…»</td><td><span class="pill fix">в конец</span></td><td>Поинтереснее остальных, но тоже не достижение. Если хочется — оставить последним пунктом.</td></tr>
+        <tr><td>«Спроектировал и поднял backend с нуля»</td><td><span class="pill cut">убрать</span></td><td>Не достижение. «Это тебе сделает любой вайб-кодер».</td></tr>
+        <tr><td>«Разделил систему на два процесса — API-сервис и парсер-воркер»</td><td><span class="pill cut">убрать</span></td><td>Слишком просто, ни о чём.</td></tr>
+        <tr><td>«Собрал каркас для локального и серверного разворачивания»</td><td><span class="pill cut">убрать</span></td><td>Самый слабый пункт из всех.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note hard">
+    <h4>Итоговый диагноз</h4>
+    <p>«Здесь нет ничего, что отличало бы Антона от конкурентов. Обычный чувак. И вообще немножко джуновский опыт — джун-плюс». Причём это <strong>последнее</strong> место работы, то есть главный блок резюме.</p>
+    <p>Вместо этого туда должны попасть настоящие достижения: профилирование и устранение серьёзных проблем производительности, кеширование с продуманной инвалидацией, оптимизация тяжёлых запросов и отчётов, работа с партиционированием таблиц.</p>
+  </div>
+
+  <div class="note">
+    <h4>Отдельно: где сейчас лежит лучший абзац резюме</h4>
+    <p>Во <strong>втором</strong> месте работы (Basis33) написано: «Разбирал узкие места на уровне доступа к данным: читал EXPLAIN, убирал N+1 через fetch join, добавлял точечные индексы, кешировал горячие выборки в Redis; работал с БД, где были настроены репликация и партиционирование».</p>
+    <p>Оценка разбирающего: «Офигенно написано. Это классный абзац, это хотят видеть в первых рядах». Проблема одна — <strong>до второго места работы никто не дочитает</strong>. Абзац надо поднимать на последнее место работы.</p>
+  </div>
+
+  <h3 style="margin-top:2.4rem;font-family:var(--sans)">Второе место работы: добавить Go или Python</h3>
+  <div class="body">
+    <p>В стек второго места стоит добавить Go или Python. Компании по историческим причинам держат в проекте кусок на Python или Go и очень хотят видеть, что человек хоть где-то с этим сталкивался.</p>
+    <div class="q">
+      <p>«Они ссутся, когда слышат такие названия».</p>
+      <footer><span class="tc">30:52</span></footer>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2.4rem;font-family:var(--sans)">Название компании на последнем месте работы</h3>
+  <div class="body">
+    <p>Если ты хочешь быть открыт к вакансиям с <strong>официальным трудоустройством, офисом в Минске и гибридом</strong> — а таких вакансий сейчас много, — последним местом работы указывай <strong>реальное название компании</strong>, где ты сейчас трудоустроен. Внутри карточки расписывай как считаешь нужным.</p>
+    <div class="q">
+      <p>«Я сегодня раскинул около 20 откликов и штук 10–12 сочных вакансий Middle+/Senior пропустил только потому, что не рассматриваю Минск и официальное трудоустройство. Белорусских компаний на рынке, на удивление, сейчас много».</p>
+      <footer><span class="tc">18:00</span></footer>
+    </div>
+  </div>
+
+  <div class="note hard">
+    <h4>О проверках — как это устроено на самом деле</h4>
+    <p>Позиция разбирающего: содержание карточек никто не проверяет. Что вы там делали, кем работали, на чём писали — этим не занимаются. Пробивают только серьёзные конторы, и только <strong>на этапе трудоустройства</strong>: не на этапе отсева резюме и не на этапе собеседования. Из личного опыта: резюме не совпадало с трудовой, служба безопасности всё равно пропустила.</p>
+    <p style="border-top:1px solid var(--rule);padding-top:.6rem;margin-top:.7rem"><b>Что стоит держать в голове.</b> Проверяемо и стоит дорого при расхождении: название компании, даты, должность в трудовой — их сверяют при оформлении, особенно в банках, госструктурах и крупных корпорациях. Непроверяемо: формулировки достижений внутри карточки. И отдельно — правило R19 остаётся главным ограничителем: всё написанное придётся защищать вживую на техническом собеседовании.</p>
+  </div>
+
+  <h3 style="margin-top:2.4rem;font-family:var(--sans)">Блок «Проектная занятость · финтех»</h3>
+  <div class="body">
+    <p>Оставить можно. До него обычно не дочитывают, но если дочитают — на собеседовании это объясняется как «параллельно вкатывался в платежи, интересно развиваться в этом направлении». Структуру блока привести к общему шаблону карточки.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 08 ══════════════ -->
+<section id="gap">
+  <div class="shead">
+    <span class="snum">08</span>
+    <h2>Дыра в стаже и легенда перехода</h2>
+    <p>Между августом 2021 и декабрём 2022 — 16 месяцев без работы (армия). Плюс переход с C# на PHP, который надо чем-то объяснить.</p>
+  </div>
+
+  <h3 style="font-family:var(--sans)">Легенда перехода C# → PHP</h3>
+  <div class="diff">
+    <div class="was">
+      <h4>Плохая версия</h4>
+      <p>«Ушёл в армию, вернулся — а там всё изменилось, и я перешёл в PHP».</p>
+      <p style="margin-top:.7rem;font-size:.86rem"><b>Почему плохо:</b> «стрёмная история, не любят такие». И главное — им безразлично, что ты скажешь: они подумают, что ты всё забыл.</p>
+    </div>
+    <div class="now">
+      <h4>Хорошие версии</h4>
+      <ul>
+        <li><b>Вариант A:</b> компания перешла на другой стек, начали потихоньку писать на PHP — вкатился вместе с проектом.</li>
+        <li><b>Вариант B (лучше):</b> веб-разработка показалась более перспективным направлением, решил уйти в веб осознанно.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:2.4rem;font-family:var(--sans)">Что делать с 16 месяцами</h3>
+  <div class="rules">
+    <article class="rule">
+      <header><span class="rn">R20</span><h3>Схема «два документа»</h3></header>
+      <p><strong>На HeadHunter</strong> дыру закрыть: как будто работа в предыдущей компании длилась до декабря 2022 и переход был без простоя.<br><strong>В PDF-резюме</strong> — оставить как есть.</p>
+      <p class="why"><b>Что это даёт:</b> полный доступ ко всем собеседованиям — тебя не отсеивают на HH из-за 16 месяцев простоя. А если вопрос всё-таки дойдёт до разговора, есть готовая отговорка: «заполнял HeadHunter по резюме и случайно ошибся, в резюме всё актуально».</p>
+    </article>
+    <article class="rule">
+      <header><span class="rn">R21</span><h3>Если целишься в минский офис с официальным оформлением — дыру лучше оставить как есть</h3></header>
+      <p>Там есть вероятность, что служба безопасности проверит период и спросит: «где вы были 16 месяцев?». Если в документах дыра совпадает с действительностью, ответ есть.</p>
+    </article>
+    <article class="rule">
+      <header><span class="rn">R22</span><h3>Тему армии не поднимать самому</h3></header>
+      <p>До собеседования дыру, скорее всего, никто не заметит — если не попадётся особо скрупулёзный HR. Если не спросят — не говорить вообще. Если спросят — отвечать по заранее проработанной легенде.</p>
+    </article>
+  </div>
+  <div class="note">
+    <h4>Честная оговорка</h4>
+    <p>Схема R20 — это осознанное расхождение между двумя документами. Оно работает на этапе отсева и обычно не всплывает. Риск локализован в одном месте: официальное оформление в компании с реальной службой безопасности, где сверяют трудовую. Решение здесь принимает Антон, зная цену вопроса.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 09 ══════════════ -->
+<section id="bottom">
+  <div class="shead">
+    <span class="snum">09</span>
+    <h2>Низ документа</h2>
+    <p>Три строчки, которые закрывают резюме.</p>
+  </div>
+  <ul class="anat">
+    <li><span class="lbl">Образование</span><p>В самом низу. <b>БГУИР, факультет компьютерных систем и сетей, инженер-программист (бакалавр), 2017–2021</b> — оценка разбирающего: «отлично, супер вообще». Отдельно отмечено: учился до 21 года — «свой человек».</p></li>
+    <li><span class="lbl">Английский</span><p>Одна короткая строка: <b>английский B1</b>. Без полосок уровня, без диаграмм.</p></li>
+    <li><span class="lbl">Русский</span><p>Не указывать. Это очевидно.</p></li>
+  </ul>
+</section>
+
+<!-- ══════════════ 10 ══════════════ -->
+<section id="ref">
+  <div class="shead">
+    <span class="snum">10</span>
+    <h2>Анатомия референса</h2>
+    <p>Резюме Павла Хромченко, Senior PHP — тот документ, который в разборе назван образцом. Вот из чего он собран.</p>
+  </div>
+
+  <div class="note">
+    <h4>Главное предупреждение</h4>
+    <p>Брать за основу — да. Копировать один в один — нет. Прямая цитата: «только полностью один в один не делай, пожалуйста».</p>
+  </div>
+
+  <ul class="anat" style="margin-top:1.8rem">
+    <li><span class="lbl">Формат</span><p>Две страницы A4. Одна колонка контента на всю ширину. Слева — узкие поля с подписями разделов. Белый фон, чёрный текст, красный только для двух-трёх флагманских достижений.</p></li>
+    <li><span class="lbl">Шапка</span><p>Имя крупно. Прямо под ним <b>крупной строкой</b>: «Senior PHP-разработчик · Symfony / Laravel · highload и распределённые системы». Строка контактов: Telegram → телефон → почта → город. Маленькое деловое фото справа.</p></li>
+    <li><span class="lbl">Домены</span><p>Отдельная строка: «финтех · телеком · highload · SaaS · e-commerce · MedTech».</p></li>
+    <li><span class="lbl">О себе</span><p>Два абзаца. Первый — годы опыта, специализация и три конкретных достижения. Второй — «инфраструктуру веду сам» и упоминание тимлидства.</p></li>
+    <li><span class="lbl">Навыки</span><p>Четыре подкатегории с подписями. Внутри — перечисление через запятую, ключевое жирным, плюс короткие фразы-навыки («миграции без даунтайма», «идемпотентность, retry, DLQ, outbox»).</p></li>
+    <li><span class="lbl">Опыт</span><p>Три места. Первое (текущее) — семь пунктов, занимает почти всю первую страницу. Второе — пять пунктов. Третье — три коротких. Ровно та пирамида, о которой идёт речь в разделе 07.</p></li>
+    <li><span class="lbl">Карточка</span><p>Должность и даты → строка «Компания · формат» → 2–3 предложения о компании → строка «Стек:» с жирными ключевыми → пункты достижений.</p></li>
+    <li><span class="lbl">Проекты</span><p>Ни одного названия продукта. Везде описания: «международная B2B SaaS-платформа деловых коммуникаций», «американская аутсорс-компания заказной разработки». Числа при этом есть и они конкретные: 250 млн сообщений в год, 1000+ операторов, 150+ стран, команда из 12 senior-разработчиков.</p></li>
+    <li><span class="lbl">Акценты</span><p>Красным выделено ровно три пункта на весь документ — по одному-два флагманских достижения на место работы. Остальное чёрное. Так глаз находит главное за секунды.</p></li>
+    <li><span class="lbl">Низ</span><p>Образование одной строкой: вуз, факультет, годы, квалификация, «английский B1». Всё.</p></li>
+  </ul>
+</section>
+
+<!-- ══════════════ 11 ══════════════ -->
+<section id="beforeafter">
+  <div class="shead">
+    <span class="snum">11</span>
+    <h2>Разбор «до / после»</h2>
+    <p>Сводка всех изменений по текущему резюме Антона — в одной таблице.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Элемент</th><th>Было</th><th>Стало</th></tr></thead>
+      <tbody>
+        <tr><td><b>Макет</b></td><td>Тёмный сайдбар слева + узкая колонка справа</td><td>Одна колонка на всю ширину, две страницы</td></tr>
+        <tr><td><b>Должность в шапке</b></td><td>«Backend Developer», мелким «PHP / Symfony»</td><td>Крупно: «Senior PHP-разработчик · Symfony / Laravel»</td></tr>
+        <tr><td><b>Грейд</b></td><td>Не упомянут нигде</td><td>Senior в шапке и в должности на последнем месте</td></tr>
+        <tr><td><b>Laravel</b></td><td>Нет</td><td>Есть, вторым после Symfony</td></tr>
+        <tr><td><b>Контакты</b></td><td>Почта → Telegram → LinkedIn, телефона нет</td><td>Telegram → телефон → почта → LinkedIn</td></tr>
+        <tr><td><b>Город</b></td><td>UTC+3 · remote</td><td>Москва · удалённо</td></tr>
+        <tr><td><b>О себе</b></td><td>Перечисление занятий, ни одного достижения</td><td>Кто ты → достижение → достижение → инфраструктура сам</td></tr>
+        <tr><td><b>Версии</b></td><td>PHP 7.4 / 8.x, Symfony 5.3 / 6</td><td>PHP 7.4—8.4, Symfony 4.4—7, Laravel 10—13</td></tr>
+        <tr><td><b>MS SQL</b></td><td>В навыках</td><td>Удалён — красный флаг</td></tr>
+        <tr><td><b>ClickHouse, MongoDB, Kubernetes, Linux, Go, ООП/SOLID</b></td><td>Нет</td><td>Добавлены</td></tr>
+        <tr><td><b>Мониторинг</b></td><td>Нет</td><td>Prometheus, Grafana, Sentry, ELK</td></tr>
+        <tr><td><b>«AI и инструменты»</b></td><td>Отдельная категория навыков</td><td>Удалена; AI-автоматизация — абзацем в последнем месте работы</td></tr>
+        <tr><td><b>Стек в карточке</b></td><td>Мелкие теги под текстом</td><td>Строка «Стек:» с жирными ключевыми технологиями</td></tr>
+        <tr><td><b>Названия проектов</b></td><td>DeinArzt, Fsexpert, Nesty</td><td>Убраны. Вместо них — описание домена</td></tr>
+        <tr><td><b>Пропорции опыта</b></td><td>Первое и последнее место одинаковы по объёму</td><td>Последнее — максимум, предыдущее — средне, раннее — минимум</td></tr>
+        <tr><td><b>Абзац про EXPLAIN / N+1 / индексы</b></td><td>Во втором месте работы</td><td>Поднят в последнее место работы</td></tr>
+        <tr><td><b>Языки (полоски уровня)</b></td><td>Русский родной ●●●●●, Английский B1 ●●●●●</td><td>Одна строка «английский B1» внизу</td></tr>
+        <tr><td><b>Образование</b></td><td>В сайдбаре</td><td>В самом низу документа</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════ 12 ══════════════ -->
+<section id="bank">
+  <div class="shead">
+    <span class="snum">12</span>
+    <h2>Банк формулировок</h2>
+    <p>Готовые заготовки для пунктов достижений — из разбора и из референса. Брать только то, что сможешь защитить вживую.</p>
+  </div>
+
+  <h3 style="font-family:var(--sans)">Уровень «безопасно» — если хотя бы слышал термин</h3>
+  <ul class="bank">
+    <li><span class="lvl">производительность</span>Разбирал узкие места на уровне доступа к данным: читал <b>EXPLAIN</b>, убирал <b>N+1</b> через fetch join, добавлял точечные индексы, кешировал горячие выборки в <b>Redis</b>.</li>
+    <li><span class="lvl">очереди</span>Обработчики <b>идемпотентны по ключу сообщения</b> — повторная доставка не создаёт дубль.</li>
+    <li><span class="lvl">данные</span>Работал с БД, где настроены <b>репликация и партиционирование</b>; проектировал схемы под поиск и фильтры.</li>
+    <li><span class="lvl">качество</span>Покрывал доменную логику unit-тестами, эндпоинты — функциональными на фикстурах; правил код по замечаниям <b>PHPStan</b> и <b>CS Fixer</b> в пайплайне.</li>
+    <li><span class="lvl">инфраструктура</span>Переводил приложения в <b>Docker</b> и <b>Kubernetes</b>, собирал и перестраивал пайплайны <b>CI/CD</b>.</li>
+  </ul>
+
+  <h3 style="margin-top:2rem;font-family:var(--sans)">Уровень «сочно» — то, что реально отличает от конкурентов</h3>
+  <ul class="bank">
+    <li><span class="lvl">нагрузка</span><b>Профилирование и устранение узких мест</b> под нагрузкой: кеширование с продуманной инвалидацией, оптимизация тяжёлых запросов и отчётов, работа с блокировками и гонками, <b>партиционирование растущих таблиц</b>.</li>
+    <li><span class="lvl">миграции</span>Перевод продакшена на новую структуру базы <b>без остановки сервиса</b>: расширение схемы без ломающих DDL, поток изменений через очередь, чанковый бэкфилл истории с чекпоинтом курсора, переключение чтения фича-флагом.</li>
+    <li><span class="lvl">очереди</span>Вынос тяжёлых операций — нотификаций, синхронизаций, генерации документов — <b>из синхронного HTTP-цикла в очереди</b>: отдельные транспорты под классы задач, приоритеты, ретраи, dead-letter очередь.</li>
+    <li><span class="lvl">AI-автоматизация</span>Внедрял <b>агентную автоматизацию бизнес-процессов заказчика</b>: отдельный сервис, который автоматизировал рутину и сэкономил заказчику часы работы. Backend и API-gateway на Symfony, воркеры — отдельным процессом.</li>
+    <li><span class="lvl">легаси</span>Читаю чужой код без документации и восстанавливаю по нему бизнес-логику: рефакторю поэтапно, без переписывания с нуля и без регрессий в прод-критичных местах.</li>
+    <li><span class="lvl">эксплуатация</span>Разбор инцидентов до первопричины, мониторинг и алерты, устойчивость интеграций к отказам внешних API.</li>
+  </ul>
+
+  <div class="note hard" style="margin-top:1.8rem">
+    <h4>Красная линия</h4>
+    <p>Пиши только то, о чём хотя бы слышал и имеешь смутное представление. Если не знаешь, что такое retry с экспоненциальным backoff и dead-letter очередь — не пиши. Прежде чем поставить формулировку в резюме, проверь себя вопросом: «смогу я про это говорить пять минут на собеседовании?».</p>
+  </div>
+</section>
+
+<!-- ══════════════ 13 ══════════════ -->
+<section id="redflags">
+  <div class="shead">
+    <span class="snum">13</span>
+    <h2>Красные флаги</h2>
+    <p>То, что портит резюме сильнее, чем помогает всё остальное вместе взятое.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Флаг</th><th>Что происходит в голове читателя</th></tr></thead>
+      <tbody>
+        <tr><td><b>MS SQL в навыках</b></td><td>«Это вообще жопа. Это красный флаг». Убрать полностью.</td></tr>
+        <tr><td><b>Название проекта</b></td><td>Тимлид гуглит перед созвоном, не находит — и дальше читает резюме с недоверием.</td></tr>
+        <tr><td><b>«Развернул с нуля», «собрал каркас», «разделил на два процесса»</b></td><td>Читается как джун-плюс. На последнем месте работы — особенно.</td></tr>
+        <tr><td><b>Нет слова Senior</b></td><td>Грейд занижают по умолчанию.</td></tr>
+        <tr><td><b>Нет телефона</b></td><td>«Серая лошадка» — меньше доверия.</td></tr>
+        <tr><td><b>Только Symfony без Laravel</b></td><td>Автоматическая потеря сотни-полутора вакансий на фильтре.</td></tr>
+        <tr><td><b>Стек тегами / мелким шрифтом</b></td><td>Просто не будет прочитан.</td></tr>
+        <tr><td><b>Термины, которые не сможешь объяснить</b></td><td>Разваливается на первом же техническом вопросе. Хуже, чем не написать.</td></tr>
+        <tr><td><b>Нет Docker и Kubernetes</b></td><td>«Просто PHP-разработчик» — сейчас востребован слабо.</td></tr>
+        <tr><td><b>История «ушёл в армию, вернулся, всё изменилось»</b></td><td>Слышат «всё забыл», что бы ты ни говорил.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════ 14 ══════════════ -->
+<section id="checklist">
+  <div class="shead">
+    <span class="snum">14</span>
+    <h2>Чек-лист перед отправкой</h2>
+    <p>Пройти сверху вниз. Если хоть один пункт не отмечен — резюме ещё не готово.</p>
+  </div>
+
+  <div class="check">
+    <p class="grp">Форма</p>
+    <label><input type="checkbox"><span>Сайдбара нет, текст идёт одной колонкой на всю ширину</span></label>
+    <label><input type="checkbox"><span>Ровно две страницы A4</span></label>
+    <label><input type="checkbox"><span>Порядок блоков: шапка → о себе → навыки → опыт → образование</span></label>
+    <label><input type="checkbox"><span>Ключевые технологии выделены жирным</span></label>
+    <label><input type="checkbox"><span>Никаких декоративных цветов, подчёркиваний и чипов</span></label>
+
+    <p class="grp">Шапка</p>
+    <label><input type="checkbox"><span>Должность набрана крупно, читается с расстояния</span></label>
+    <label><input type="checkbox"><span>В шапке написано «Senior PHP-разработчик»</span></label>
+    <label><input type="checkbox"><span>Указаны и Symfony, и Laravel</span></label>
+    <label><input type="checkbox"><span>Есть строка доменов (финтех · SaaS · e-commerce и т. д.)</span></label>
+    <label><input type="checkbox"><span>Фото маленькое, деловое, справа</span></label>
+
+    <p class="grp">Контакты</p>
+    <label><input type="checkbox"><span>Telegram на первом месте</span></label>
+    <label><input type="checkbox"><span>Заведён отдельный Telegram на симку без абонплаты</span></label>
+    <label><input type="checkbox"><span>Указан номер телефона</span></label>
+    <label><input type="checkbox"><span>LinkedIn в самом конце строки контактов</span></label>
+    <label><input type="checkbox"><span>Город — Москва</span></label>
+
+    <p class="grp">О себе</p>
+    <label><input type="checkbox"><span>Есть два конкретных громких достижения</span></label>
+    <label><input type="checkbox"><span>В конце сказано, что инфраструктуру ведёшь сам</span></label>
+    <label><input type="checkbox"><span>Нет общих фраз без результата</span></label>
+
+    <p class="grp">Навыки</p>
+    <label><input type="checkbox"><span>Четыре категории: языки и фреймворки · хранилища · инфраструктура · распределённые системы</span></label>
+    <label><input type="checkbox"><span>Версии диапазонами через тире, без «x» и слэшей</span></label>
+    <label><input type="checkbox"><span>MS SQL удалён</span></label>
+    <label><input type="checkbox"><span>Есть Kubernetes и Linux</span></label>
+    <label><input type="checkbox"><span>Есть ClickHouse и MongoDB</span></label>
+    <label><input type="checkbox"><span>Есть ООП и SOLID</span></label>
+    <label><input type="checkbox"><span>Есть Go и C# в конце списка языков</span></label>
+    <label><input type="checkbox"><span>Есть фразы про схемы, индексы, планы запросов, партиционирование, репликацию</span></label>
+    <label><input type="checkbox"><span>Есть мониторинг: Prometheus, Grafana, Sentry, ELK</span></label>
+    <label><input type="checkbox"><span>Категории «AI и инструменты» нет</span></label>
+    <label><input type="checkbox"><span>Doctrine написан без «ORM»</span></label>
+    <label><input type="checkbox"><span>API Platform стоит ближе к концу</span></label>
+
+    <p class="grp">Опыт работы</p>
+    <label><input type="checkbox"><span>Последнее место расписано детальнее всех остальных вместе</span></label>
+    <label><input type="checkbox"><span>Должность на последнем месте — «Senior PHP-разработчик»</span></label>
+    <label><input type="checkbox"><span>У каждой карточки одинаковая структура: должность → компания → 2–3 предложения → «Стек:» → достижения</span></label>
+    <label><input type="checkbox"><span>Стек написан строкой, а не тегами, ключевое жирным</span></label>
+    <label><input type="checkbox"><span>Ни одного названия проекта</span></label>
+    <label><input type="checkbox"><span>Первым пунктом идёт самое сильное достижение</span></label>
+    <label><input type="checkbox"><span>Убраны «поднял с нуля», «собрал каркас», «разделил на два процесса»</span></label>
+    <label><input type="checkbox"><span>Абзац про EXPLAIN / N+1 / индексы перенесён на последнее место работы</span></label>
+    <label><input type="checkbox"><span>AI-автоматизация описана абзацем в последнем месте работы</span></label>
+    <label><input type="checkbox"><span>Во втором месте работы добавлен Go или Python</span></label>
+    <label><input type="checkbox"><span>Каждый пункт можно защитить пять минут на собеседовании</span></label>
+
+    <p class="grp">Низ и легенды</p>
+    <label><input type="checkbox"><span>Образование в самом низу</span></label>
+    <label><input type="checkbox"><span>Английский B1 одной строкой, русский не указан</span></label>
+    <label><input type="checkbox"><span>Готова легенда перехода C# → PHP (не про армию)</span></label>
+    <label><input type="checkbox"><span>Решено, что делать с 16-месячной дырой</span></label>
+    <label><input type="checkbox"><span>Формулировки в PDF и на HeadHunter совпадают</span></label>
+  </div>
+</section>
+
+<footer class="doc">
+  Часть I из II. Источник — видеоразбор от 19.08.2026, 36 мин 03 с, полная расшифровка.<br>
+  Референс — CV Павла Хромченко, Senior PHP-разработчик, 2 страницы.<br>
+  Объект разбора — cv.pdf Антона Салявы (репозиторий Mentor / Антон / CV).<br>
+  Тайм-коды в цитатах указывают позицию в исходной записи.<br>
+  Часть II — заполнение профиля на HeadHunter.
+</footer>
+
+</div>

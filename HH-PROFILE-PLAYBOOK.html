@@ -1,0 +1,744 @@
+<title>Фильтры HeadHunter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<style>
+/* ───────────────────────────────────────────────────────────
+   Фильтры HeadHunter — часть II
+   Та же наборная система, что и в части I, но вторая ручка
+   редактора: синие чернила вместо красных. Мир анкеты —
+   поля, галочки, выпадающие списки.
+   ─────────────────────────────────────────────────────────── */
+
+:root{
+  --paper:#FBFAF9;
+  --surface:#FFFFFF;
+  --surface-2:#F1F3F7;
+  --ink:#15181C;
+  --ink-2:#434A54;
+  --ink-3:#727A85;
+  --rule:#DCE0E7;
+  --rule-soft:#EAEDF2;
+
+  --accent:#1B4F8C;
+  --accent-ink:#15406F;
+  --accent-soft:#E8EFF7;
+
+  --keep:#1B6B48;
+  --keep-soft:#E7F2EC;
+  --cut:#B3261E;
+  --cut-soft:#FAEDEB;
+  --warn:#8A5A00;
+  --warn-soft:#FBF2E0;
+
+  --shadow:0 1px 2px rgba(21,24,28,.05), 0 8px 24px -16px rgba(21,24,28,.22);
+
+  --sans:'Golos Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --serif:'Literata', Georgia, 'Times New Roman', serif;
+  --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --measure:36rem;
+  --pad:clamp(1.1rem, 4vw, 2.5rem);
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101317;
+    --surface:#181C21;
+    --surface-2:#1F242B;
+    --ink:#E9EDF2;
+    --ink-2:#B4BCC6;
+    --ink-3:#828B96;
+    --rule:#2A3038;
+    --rule-soft:#21262C;
+
+    --accent:#7FB2E8;
+    --accent-ink:#9CC5F0;
+    --accent-soft:#152738;
+
+    --keep:#6FD3A0;
+    --keep-soft:#12281E;
+    --cut:#FF8C7C;
+    --cut-soft:#361D1A;
+    --warn:#E7B45C;
+    --warn-soft:#2E2313;
+
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101317;
+  --surface:#181C21;
+  --surface-2:#1F242B;
+  --ink:#E9EDF2;
+  --ink-2:#B4BCC6;
+  --ink-3:#828B96;
+  --rule:#2A3038;
+  --rule-soft:#21262C;
+
+  --accent:#7FB2E8;
+  --accent-ink:#9CC5F0;
+  --accent-soft:#152738;
+
+  --keep:#6FD3A0;
+  --keep-soft:#12281E;
+  --cut:#FF8C7C;
+  --cut-soft:#361D1A;
+  --warn:#E7B45C;
+  --warn-soft:#2E2313;
+
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{max-width:78rem;margin:0 auto;padding:0 var(--pad) 6rem}
+
+h1,h2,h3,h4,.eyebrow,.chip,.pill,nav,th,.fieldname{font-family:var(--sans)}
+
+h1{font-size:clamp(2.5rem,7vw,4.4rem);line-height:1;letter-spacing:-.035em;font-weight:800;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.12;letter-spacing:-.025em;font-weight:750;margin:0;text-wrap:balance}
+h3{font-size:1.06rem;line-height:1.3;letter-spacing:-.012em;font-weight:700;margin:0}
+h4{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--ink-3);margin:0}
+p{margin:0}
+strong{font-weight:600;color:var(--ink)}
+a{color:var(--accent-ink);text-underline-offset:.18em}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+.eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+
+.cover{padding:clamp(3rem,9vw,6rem) 0 clamp(2.2rem,5vw,3.4rem);border-bottom:2px solid var(--ink)}
+.cover .lead{font-size:clamp(1.06rem,2.1vw,1.24rem);color:var(--ink-2);max-width:34rem;margin-top:1.5rem}
+.covermeta{display:flex;flex-wrap:wrap;gap:.5rem .9rem;margin-top:2rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-3)}
+.covermeta span{border:1px solid var(--rule);border-radius:2px;padding:.28rem .55rem;background:var(--surface)}
+
+/* ───── воронка ───── */
+.funnel{
+  margin:clamp(2.4rem,6vw,4rem) 0;
+  display:grid;gap:1.6rem;grid-template-columns:1fr;
+}
+@media (min-width:56rem){.funnel{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:3rem;align-items:start}}
+.stages{display:grid;gap:.55rem;counter-reset:st}
+.stage{
+  display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center;
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  padding:.8rem 1rem;box-shadow:var(--shadow);
+}
+.stage .sn{font-family:var(--mono);font-size:.7rem;font-weight:700;color:var(--accent)}
+.stage b{font-family:var(--sans);font-size:.95rem;font-weight:650;color:var(--ink);display:block}
+.stage span{font-size:.85rem;color:var(--ink-3);display:block;font-family:var(--sans)}
+.stage .who{
+  font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.07em;
+  color:var(--ink-3);border:1px solid var(--rule);border-radius:2px;padding:.15rem .4rem;white-space:nowrap;
+}
+.stage.first{border-left:3px solid var(--accent)}
+
+/* ───── оглавление ───── */
+.toc{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1.6rem 0;margin:0 0 clamp(2rem,5vw,3.5rem)}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:.15rem .5rem;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr))}
+.toc a{display:flex;gap:.7rem;align-items:baseline;font-family:var(--sans);font-size:.9rem;font-weight:500;color:var(--ink-2);text-decoration:none;padding:.34rem .4rem;border-radius:3px}
+.toc a:hover{background:var(--surface-2);color:var(--ink)}
+.toc a i{font-family:var(--mono);font-style:normal;font-size:.74rem;color:var(--accent);min-width:1.5rem}
+
+section{padding-top:clamp(2.6rem,6vw,4.4rem);scroll-margin-top:1.5rem}
+.shead{display:grid;gap:.55rem;padding-bottom:1.5rem;margin-bottom:1.8rem;border-bottom:1px solid var(--rule)}
+.shead .snum{font-family:var(--mono);font-size:.74rem;font-weight:700;color:var(--accent);letter-spacing:.1em}
+.shead p{color:var(--ink-2);max-width:var(--measure);font-size:.98rem}
+
+.body{max-width:var(--measure)}
+.body>*+*{margin-top:1.15rem}
+.body p{color:var(--ink-2)}
+.body h3{margin-top:2.2rem;color:var(--ink);font-family:var(--sans)}
+.body h3+p{margin-top:.6rem}
+
+/* ───── карточка поля анкеты ───── */
+.fields{display:grid;gap:.85rem;margin-top:1.6rem}
+.field{
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.field>header{
+  display:flex;flex-wrap:wrap;gap:.5rem .8rem;align-items:baseline;
+  padding:.7rem 1.05rem;background:var(--surface-2);border-bottom:1px solid var(--rule);
+}
+.fieldname{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--ink-3)}
+.fieldval{font-family:var(--mono);font-size:.88rem;font-weight:500;color:var(--accent-ink);flex:1 1 12rem}
+.field .fbody{padding:.9rem 1.05rem}
+.field p{font-size:.93rem;color:var(--ink-2)}
+.field p+p{margin-top:.55rem}
+.field .why{font-family:var(--sans);font-size:.88rem;color:var(--ink-2);background:var(--surface-2);border-radius:3px;padding:.6rem .75rem;margin-top:.7rem}
+.field .why b{color:var(--ink);font-weight:650}
+
+/* ───── правило ───── */
+.rules{display:grid;gap:1rem;margin-top:1.6rem}
+.rule{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:3px;padding:1.15rem 1.25rem;box-shadow:var(--shadow)}
+.rule>header{display:flex;gap:.75rem;align-items:baseline;margin-bottom:.55rem}
+.rule .rn{font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:.06em;flex:none}
+.rule h3{font-size:1.02rem}
+.rule p{font-size:.95rem;color:var(--ink-2)}
+.rule p+p{margin-top:.6rem}
+.rule .why{font-family:var(--sans);font-size:.88rem;color:var(--ink-2);background:var(--surface-2);border-radius:3px;padding:.6rem .75rem;margin-top:.7rem}
+.rule .why b{color:var(--ink);font-weight:650}
+
+.q{margin:1.5rem 0;padding:0 0 0 1.1rem;border-left:2px solid var(--accent)}
+.q p{font-style:italic;color:var(--ink);font-size:.99rem}
+.q footer{margin-top:.5rem;font-family:var(--mono);font-size:.7rem;color:var(--ink-3);letter-spacing:.03em}
+.tc{font-family:var(--mono);font-size:.68rem;font-weight:500;color:var(--accent);background:var(--accent-soft);padding:.1rem .35rem;border-radius:2px;white-space:nowrap}
+
+.tablewrap{overflow-x:auto;margin-top:1.4rem;border:1px solid var(--rule);border-radius:3px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:34rem;font-size:.9rem}
+th,td{text-align:left;padding:.7rem .9rem;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+th{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:700;background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+td{color:var(--ink-2)}
+td.mono,th.mono{font-family:var(--mono);font-size:.82rem}
+td b{color:var(--ink)}
+
+.pill{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.16rem .45rem;border-radius:2px;white-space:nowrap;font-family:var(--sans)}
+.pill.cut{background:var(--cut-soft);color:var(--cut)}
+.pill.keep{background:var(--keep-soft);color:var(--keep)}
+.pill.fix{background:var(--warn-soft);color:var(--warn)}
+.pill.on{background:var(--accent-soft);color:var(--accent-ink)}
+
+.note{border:1px solid var(--rule);border-radius:3px;background:var(--surface-2);padding:1.05rem 1.15rem;margin-top:1.4rem}
+.note h4{color:var(--warn);margin-bottom:.5rem}
+.note p{font-size:.92rem;color:var(--ink-2)}
+.note p+p{margin-top:.55rem}
+.note.hard h4{color:var(--accent)}
+.note.open h4{color:var(--ink-3)}
+
+.check{display:grid;gap:.1rem;margin-top:1.4rem;max-width:44rem}
+.check label{display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:start;padding:.6rem .7rem;border-radius:3px;cursor:pointer;font-size:.94rem;font-family:var(--sans);color:var(--ink-2)}
+.check label:hover{background:var(--surface-2)}
+.check input{appearance:none;width:1.05rem;height:1.05rem;margin:.22rem 0 0;border:1.5px solid var(--ink-3);border-radius:2px;background:var(--surface);display:grid;place-content:center;cursor:pointer;flex:none}
+.check input::after{content:"";width:.55rem;height:.3rem;border-left:2px solid var(--paper);border-bottom:2px solid var(--paper);transform:rotate(-45deg) scale(0);transition:transform .12s ease}
+.check input:checked{background:var(--keep);border-color:var(--keep)}
+.check input:checked::after{transform:rotate(-45deg) scale(1)}
+.check input:checked+span{color:var(--ink-3);text-decoration:line-through}
+.check .grp{font-family:var(--sans);font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:1.5rem 0 .35rem;padding-left:.7rem}
+.check .grp:first-child{margin-top:0}
+
+.anat{display:grid;gap:.85rem;margin-top:1.5rem;padding:0}
+.anat li{list-style:none;display:grid;grid-template-columns:auto 1fr;gap:1rem;border-bottom:1px solid var(--rule-soft);padding-bottom:.85rem}
+.anat li:last-child{border-bottom:0}
+.anat .lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:700;padding-top:.22rem;min-width:6.5rem}
+.anat p{font-size:.93rem;color:var(--ink-2)}
+.anat b{color:var(--ink)}
+
+footer.doc{margin-top:5rem;padding-top:2rem;border-top:2px solid var(--ink);font-family:var(--mono);font-size:.72rem;color:var(--ink-3);line-height:1.9}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+
+<div class="wrap">
+
+<header class="cover">
+  <p class="eyebrow">Часть II из II · разбор от 19 августа 2026</p>
+  <h1>Фильтры<br>HeadHunter</h1>
+  <p class="lead">Как заполнить профиль так, чтобы тебя вообще показали работодателю. Профиль на HH — это то же резюме плюс десяток полей, каждое из которых работает как фильтр в поиске.</p>
+  <div class="covermeta">
+    <span>источник: видеоразбор 36:03</span>
+    <span>раздел про HH: 07:51 · 08:54 · 34:08–36:03</span>
+    <span>основано на личном опыте разбирающего</span>
+    <span>часть I → PDF-резюме</span>
+  </div>
+</header>
+
+<div class="funnel">
+  <div>
+    <h2>Главное правило</h2>
+    <p style="margin-top:.9rem;color:var(--ink-2)">HeadHunter составляется практически точно так же, как PDF-резюме. Все правила из части I действуют здесь без изменений. Разница в одном: <strong>перед человеком твой профиль читает фильтр</strong>.</p>
+    <p style="margin-top:.9rem;color:var(--ink-2)">Фильтр не умеет думать. Он сравнивает значения полей. Если ты поставил галочку «только удалённая работа», ты выпал из выдачи по гибриду, по проектной работе и по частичной занятости — независимо от того, насколько ты подходишь.</p>
+    <div class="q">
+      <p>«Пишем максимальные варианты работы, потому что фильтры HeadHunter будут отсеивать тебя, если ты написал только удалёнку».</p>
+      <footer><span class="tc">08:59</span></footer>
+    </div>
+  </div>
+  <div>
+    <h4 style="margin-bottom:.9rem">Через что проходит профиль</h4>
+    <div class="stages">
+      <div class="stage first"><span class="sn">01</span><div><b>Фильтр поиска</b><span>Город, занятость, график, гражданство, ключевые навыки</span></div><span class="who">машина</span></div>
+      <div class="stage"><span class="sn">02</span><div><b>Первичный просмотр</b><span>Должность, последнее место, стек — то, что жирным</span></div><span class="who">рекрутер</span></div>
+      <div class="stage"><span class="sn">03</span><div><b>Разбор перед созвоном</b><span>Достижения, детали, названия компаний</span></div><span class="who">тимлид</span></div>
+      <div class="stage"><span class="sn">04</span><div><b>Переговоры об условиях</b><span>Формат, оформление, вилка</span></div><span class="who">HR</span></div>
+      <div class="stage"><span class="sn">05</span><div><b>Проверка документов</b><span>Трудовая, даты, компании — только здесь</span></div><span class="who">СБ</span></div>
+    </div>
+    <p style="margin-top:1rem;font-size:.88rem;color:var(--ink-3);font-family:var(--sans)">Части I и II работают на разных этапах: настройки полей решают первый, текст — второй и третий.</p>
+  </div>
+</div>
+
+<nav class="toc" aria-label="Содержание">
+  <h4 style="margin-bottom:.9rem">Содержание</h4>
+  <ol>
+    <li><a href="#sync"><i>01</i>Связь с PDF-резюме</a></li>
+    <li><a href="#position"><i>02</i>Желаемая должность</a></li>
+    <li><a href="#geo"><i>03</i>Город и переезд</a></li>
+    <li><a href="#employment"><i>04</i>Занятость и график</a></li>
+    <li><a href="#citizen"><i>05</i>Гражданство</a></li>
+    <li><a href="#contacts"><i>06</i>Контакты</a></li>
+    <li><a href="#exp"><i>07</i>Опыт работы</a></li>
+    <li><a href="#skills"><i>08</i>Ключевые навыки</a></li>
+    <li><a href="#edu"><i>09</i>Образование и языки</a></li>
+    <li><a href="#confirm"><i>10</i>Подтверждение навыков</a></li>
+    <li><a href="#visibility"><i>11</i>Видимость резюме</a></li>
+    <li><a href="#gap"><i>12</i>Дыра в стаже</a></li>
+    <li><a href="#tactics"><i>13</i>Отклики и переговоры</a></li>
+    <li><a href="#checklist"><i>14</i>Чек-лист запуска</a></li>
+    <li><a href="#open"><i>15</i>Что осталось решить</a></li>
+  </ol>
+</nav>
+
+<!-- ══════════════ 01 ══════════════ -->
+<section id="sync">
+  <div class="shead">
+    <span class="snum">01</span>
+    <h2>Связь с PDF-резюме</h2>
+    <p>Два документа, один текст. Профиль на HH не пишется заново.</p>
+  </div>
+
+  <div class="body">
+    <p>Порядок работы такой: сначала собирается PDF-резюме по части I, потом его содержимое переносится на HeadHunter. Не наоборот.</p>
+  </div>
+
+  <div class="rules">
+    <article class="rule">
+      <header><span class="rn">H01</span><h3>Опыт работы переносится практически один в один</h3></header>
+      <p>Те же должности, те же даты, те же описания компаний, тот же стек, те же формулировки достижений.</p>
+      <p class="why"><b>Зачем:</b> если рекрутер смотрит профиль на HH, а потом получает PDF — расхождения выглядят как небрежность или как попытка что-то скрыть. Плюс одна работа вместо двух.</p>
+    </article>
+    <article class="rule">
+      <header><span class="rn">H02</span><h3>Формулировки навыков должны совпадать буквально</h3></header>
+      <p>Именно поэтому в PDF пишется <span style="font-family:var(--mono);font-size:.88rem">Doctrine</span>, а не <span style="font-family:var(--mono);font-size:.88rem">Doctrine ORM</span> — на HeadHunter в справочнике навыков это «Doctrine».</p>
+    </article>
+  </div>
+
+  <div class="note hard">
+    <h4>Единственное сознательное расхождение</h4>
+    <p>Оно ровно одно и описано в разделе 12: дыра в стаже. На HH её закрывают, в PDF — оставляют. Всё остальное должно совпадать.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 02 ══════════════ -->
+<section id="position">
+  <div class="shead">
+    <span class="snum">02</span>
+    <h2>Желаемая должность</h2>
+    <p>Поле, по которому тебя ищут. Оно же — заголовок карточки в выдаче.</p>
+  </div>
+
+  <div class="fields">
+    <article class="field">
+      <header><span class="fieldname">Должность</span><span class="fieldval">Senior PHP-разработчик (Symfony / Laravel)</span></header>
+      <div class="fbody">
+        <p>Три вещи в одной строке: <strong>грейд</strong>, <strong>язык</strong>, <strong>оба фреймворка</strong>.</p>
+        <p class="why"><b>Почему грейд обязателен:</b> без слова Senior тебя по умолчанию отнесут ниже. Оно должно стоять и в желаемой должности, и в названии должности на последнем месте работы.<br><b>Почему оба фреймворка:</b> +сотня-полторы вакансий, которые иначе просто не увидят твой профиль. Описание вакансии часто пишет HR, который не знает, что реально в проекте: устраиваешься на Laravel — попадаешь на Symfony, и наоборот. Это половина случаев.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════ 03 ══════════════ -->
+<section id="geo">
+  <div class="shead">
+    <span class="snum">03</span>
+    <h2>Город и переезд</h2>
+    <p>Самое результативное поле анкеты по соотношению «одно действие → рост откликов».</p>
+  </div>
+
+  <div class="fields">
+    <article class="field">
+      <header><span class="fieldname">Город проживания</span><span class="fieldval">Москва</span></header>
+      <div class="fbody">
+        <p>Не Минск и не Калининград. Москва.</p>
+        <div class="q">
+          <p>«Вначале указали Калининград, а потом я передумал, указал Москву — и у нас как-то сразу пободрее пошли отклики. Потому что большинство контор сидит в Москве».</p>
+          <footer><span class="tc">07:33</span></footer>
+        </div>
+        <p class="why"><b>Механика:</b> работодатель фильтрует по региону. Москва — самый широкий регион по числу вакансий. Формат работы обсуждается потом, в переписке.</p>
+      </div>
+    </article>
+
+    <article class="field">
+      <header><span class="fieldname">Район / точный адрес</span><span class="fieldval">не заполнять</span></header>
+      <div class="fbody"><p>Указывать район или точное местоположение не обязательно. Достаточно города.</p></div>
+    </article>
+
+    <article class="field">
+      <header><span class="fieldname">Командировки</span><span class="fieldval">готов к командировкам</span></header>
+      <div class="fbody">
+        <p>Отметить обязательно.</p>
+        <p class="why"><b>Почему:</b> это отдельный фильтр. «Не готов» отсекает часть вакансий ещё до того, как кто-то прочитал профиль. Реальных командировок в удалённой backend-работе почти не бывает.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════ 04 ══════════════ -->
+<section id="employment">
+  <div class="shead">
+    <span class="snum">04</span>
+    <h2>Занятость и график</h2>
+    <p>Главный источник потерь охвата. Здесь отмечается всё.</p>
+  </div>
+
+  <div class="body">
+    <p>Стратегия одна: <strong>максимальный охват на входе, свои условия — на выходе</strong>. Ты соглашаешься на все варианты в анкете, чтобы попасть в максимум выдач, а конкретные условия раскручиваешь уже в переговорах.</p>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Поле</th><th>Что отмечать</th><th>Что будет, если не отметить</th></tr></thead>
+      <tbody>
+        <tr><td><b>Тип занятости</b></td><td><span class="pill on">все варианты</span> полная, частичная, проектная, стажировка</td><td>Выпадаешь из выдачи по проектным и частичным вакансиям</td></tr>
+        <tr><td><b>График работы</b></td><td><span class="pill on">все варианты</span> полный день, гибкий, удалённая, сменный, вахтовый</td><td>Ставишь только «удалённая» — теряешь весь гибрид и весь офис</td></tr>
+        <tr><td><b>Переезд</b></td><td>Готов / готов к командировкам</td><td>Отсекает вакансии с релокацией и офисом</td></tr>
+        <tr><td><b>Оформление</b></td><td>Все доступные варианты</td><td>Теряешь вакансии с ГПХ и самозанятостью</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="rules">
+    <article class="rule">
+      <header><span class="rn">H03</span><h3>Это не хитрость, а вынужденная необходимость</h3></header>
+      <div class="q">
+        <p>«Это не наглый какой-то лайфхак. Это просто вынужденная необходимость так делать, потому что иначе ты просто лишаешь себя большого количества вакансий».</p>
+        <footer><span class="tc">10:58</span></footer>
+      </div>
+      <p class="why"><b>Что происходит дальше:</b> после собеседования с HR или после технического этапа, когда тебе уже готовы делать оффер, начинается разговор об условиях. Как минимум в половине случаев компании готовы договариваться: ГПХ, самозанятость, удалёнка вместо гибрида, вместо посещения офиса.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════ 05 ══════════════ -->
+<section id="citizen">
+  <div class="shead">
+    <span class="snum">05</span>
+    <h2>Гражданство</h2>
+    <p>Поле, которого принято бояться. Бояться не надо.</p>
+  </div>
+
+  <div class="fields">
+    <article class="field">
+      <header><span class="fieldname">Гражданство</span><span class="fieldval">Беларусь + Россия</span></header>
+      <div class="fbody">
+        <p>На HeadHunter указывается <strong>два гражданства</strong> — белорусское и российское.</p>
+        <div class="q">
+          <p>«В HeadHunter указываешь два гражданства. То есть белорусское и российское гражданство. Это не надо бояться».</p>
+          <footer><span class="tc">09:27</span></footer>
+        </div>
+        <p class="why"><b>Механика та же:</b> многие российские вакансии фильтруются по наличию гражданства РФ или разрешения на работу. Без этого поля профиль не попадает в выдачу вообще — независимо от опыта.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="note">
+    <h4>Что стоит понимать</h4>
+    <p>Это поле относится к той же категории, что и «закрытая дыра в стаже»: оно работает на этапе фильтра и обычно не всплывает. Но в отличие от формулировок в описании опыта, гражданство подтверждается документом при оформлении. Если оформление официальное и в российскую компанию — эта строка проверяема. Решение принимается с открытыми глазами.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 06 ══════════════ -->
+<section id="contacts">
+  <div class="shead">
+    <span class="snum">06</span>
+    <h2>Контакты</h2>
+    <p>Те же три канала, что и в PDF, в том же порядке приоритета.</p>
+  </div>
+
+  <div class="fields">
+    <article class="field">
+      <header><span class="fieldname">Telegram</span><span class="fieldval">обязательно · предпочтительный способ связи</span></header>
+      <div class="fbody">
+        <p>Отдельный аккаунт, заведённый на симку без абонентской платы. Не временный номер с онлайн-сервиса — его нельзя будет переподтвердить, и вся переписка по откликам пропадёт.</p>
+        <p class="why"><b>Зачем отдельный:</b> поиск работы — это в основном переписка с HR: переносы созвонов, уточнение условий, планирование этапов. Собеседование бывает из двух этапов, бывает из четырёх. В чистом аккаунте ничего не теряется.</p>
+      </div>
+    </article>
+    <article class="field">
+      <header><span class="fieldname">Телефон</span><span class="fieldval">указать</span></header>
+      <div class="fbody"><p>Телефон добавляет доверия. Кто не указал — «серая лошадка». Белорусский номер проблем не создаёт.</p></div>
+    </article>
+    <article class="field">
+      <header><span class="fieldname">Почта</span><span class="fieldval">указать</span></header>
+      <div class="fbody"><p>Нужна, но общение по ней почти не идёт.</p></div>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════ 07 ══════════════ -->
+<section id="exp">
+  <div class="shead">
+    <span class="snum">07</span>
+    <h2>Опыт работы</h2>
+    <p>Переносится из PDF-резюме. Все правила части I действуют здесь полностью.</p>
+  </div>
+
+  <ul class="anat">
+    <li><span class="lbl">Пирамида</span><p><b>Последнее место — максимально детально</b>, предыдущее — средне, самое раннее — минимум. Не наоборот.</p></li>
+    <li><span class="lbl">Должность</span><p>На последнем месте — <b>«Senior PHP-разработчик»</b>. Слово Senior должно быть в тексте.</p></li>
+    <li><span class="lbl">Компания</span><p>Если рассматриваешь официальное трудоустройство и офис — <b>реальное название текущей компании</b>. Внутри описание составляешь сам.</p></li>
+    <li><span class="lbl">Структура</span><p>2–3 предложения о компании → строка <b>«Стек:»</b> → пункты достижений. Первым пунктом — самое сильное.</p></li>
+    <li><span class="lbl">Проекты</span><p><b>Названия продуктов не указывать вообще.</b> Вместо «DeinArzt» — «медицинская SaaS-платформа». Аргумент, если спросят: подписан NDA.</p></li>
+    <li><span class="lbl">Стек</span><p>Стек последнего места должен покрывать максимум потребностей рынка: PHP, Symfony, Laravel, PostgreSQL, Redis, RabbitMQ, Kafka, Docker, Kubernetes.</p></li>
+    <li><span class="lbl">Чего не писать</span><p>«Развернул с нуля», «собрал каркас», «разделил на два процесса» — это читается как джун-плюс и работает против тебя.</p></li>
+    <li><span class="lbl">Красная линия</span><p>Ничего, что не сможешь защитить вживую. Не знаешь, что такое dead-letter очередь — не пиши её.</p></li>
+  </ul>
+
+  <div class="note hard">
+    <h4>Где именно тебя проверят</h4>
+    <p>Содержание карточек на HH не проверяет никто: ни рекрутер на отборе, ни тимлид на собеседовании. Проверка бывает только на этапе трудоустройства и только в серьёзных конторах — банки, госструктуры, крупные корпорации. Проверяют при этом документы: название компании, даты, должность в трудовой. Формулировки достижений не проверяет никто и никогда — их проверяет только твой собственный технический уровень на созвоне.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 08 ══════════════ -->
+<section id="skills">
+  <div class="shead">
+    <span class="snum">08</span>
+    <h2>Ключевые навыки</h2>
+    <p>Отдельное поле HH со своим справочником. Здесь фильтр работает по точным совпадениям.</p>
+  </div>
+
+  <div class="body">
+    <p>Список берётся из PDF-резюме, но записывается так, как навык называется в справочнике HeadHunter. Ниже — итоговый набор из части I.</p>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Группа</th><th class="mono">Что вносить</th></tr></thead>
+      <tbody>
+        <tr><td><b>Языки и фреймворки</b></td><td class="mono">PHP · Symfony · Laravel · Doctrine · Go · C# · .NET · API Platform · ООП · SOLID · Composer</td></tr>
+        <tr><td><b>Хранилища и данные</b></td><td class="mono">PostgreSQL · MySQL · Redis · ClickHouse · MongoDB · проектирование схем БД · оптимизация запросов · индексы · партиционирование · репликация</td></tr>
+        <tr><td><b>Инфраструктура</b></td><td class="mono">Docker · Kubernetes · Linux · Nginx · GitLab CI · CI/CD · Prometheus · Grafana · Sentry · ELK</td></tr>
+        <tr><td><b>Распределённые системы</b></td><td class="mono">Kafka · RabbitMQ · микросервисная архитектура · REST API · gRPC · WebSocket · PHPUnit</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="rules">
+    <article class="rule">
+      <header><span class="rn">H04</span><h3>MS SQL не вносить</h3></header>
+      <p>Красный флаг из части I действует и здесь. Убрать полностью.</p>
+    </article>
+    <article class="rule">
+      <header><span class="rn">H05</span><h3>AI-инструменты в навыки не вносить</h3></header>
+      <p>Ни Claude Code, ни «AI-ассистенты», ни MCP. Опыт с AI описывается абзацем в последнем месте работы — и не как «вайб-кодил», а как «внедрял автоматизацию бизнес-процессов заказчика».</p>
+    </article>
+    <article class="rule">
+      <header><span class="rn">H06</span><h3>Версии — в описании опыта, не в навыках</h3></header>
+      <p>Диапазоны вида «PHP 7.4—8.4», «Symfony 4.4—7», «Laravel 10—13» пишутся в строке «Стек:» внутри места работы. В поле ключевых навыков остаётся чистое название технологии — так его находит фильтр.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════ 09 ══════════════ -->
+<section id="edu">
+  <div class="shead">
+    <span class="snum">09</span>
+    <h2>Образование и языки</h2>
+    <p>Заполняется по факту, много времени не занимает.</p>
+  </div>
+  <div class="fields">
+    <article class="field">
+      <header><span class="fieldname">Образование</span><span class="fieldval">БГУИР · ФКСиС · инженер-программист (бакалавр) · 2017–2021</span></header>
+      <div class="fbody"><p>Заполнить полностью. Профильный технический вуз и бакалавриат — сильная строка, в разборе оценена как «отлично, супер вообще».</p></div>
+    </article>
+    <article class="field">
+      <header><span class="fieldname">Языки</span><span class="fieldval">Английский — B1</span></header>
+      <div class="fbody"><p>Мелочь, но указать стоит. Русский родной указывается автоматически и отдельного внимания не требует.</p></div>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════ 10 ══════════════ -->
+<section id="confirm">
+  <div class="shead">
+    <span class="snum">10</span>
+    <h2>Подтверждение навыков</h2>
+    <p>Отдельная механика HeadHunter, которую стоит пройти.</p>
+  </div>
+
+  <div class="rules">
+    <article class="rule">
+      <header><span class="rn">H07</span><h3>Пройти подтверждение навыков</h3></header>
+      <p>Это встроенное тестирование HH, по итогам которого на профиле появляется отметка о подтверждённых навыках. Займёт примерно <strong>полтора часа</strong>.</p>
+      <div class="q">
+        <p>«Есть такая штука в HeadHunter — подтверждение навыков. Я советую подтвердить навыки. Это полтора часа времени займёт у вас».</p>
+        <footer><span class="tc">35:48</span> · на этой фразе запись обрывается</footer>
+      </div>
+      <p class="why"><b>Оговорка из разбора:</b> «не знаю, насколько это сильно влияет, но мне почему-то кажется, что влияет». Полтора часа — небольшая цена за отметку, которой нет у большинства конкурентов.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════════ 11 ══════════════ -->
+<section id="visibility">
+  <div class="shead">
+    <span class="snum">11</span>
+    <h2>Видимость резюме</h2>
+    <p>Единственная настройка, где нет универсально правильного ответа. Решение зависит от одного обстоятельства.</p>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Вариант</th><th>Когда выбирать</th><th>Что даёт</th></tr></thead>
+      <tbody>
+        <tr><td><b>Видно всем</b></td><td>Если сейчас не работаешь или не боишься, что текущий работодатель увидит</td><td>Максимальный охват: тебя находят сами рекрутеры, а не только те, к кому ты откликнулся</td></tr>
+        <tr><td><b>Видно только тем, кому откликнулся</b></td><td>Если работаешь и не нужны лишние вопросы</td><td>Безопасность. Так настроено у самого разбирающего — именно по этой причине</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="body">
+    <p style="margin-top:1.2rem">Формулировка из разбора: «Если Антон готов открыть резюме для всех, то лучше открыть — это создаст больше охвата. У меня резюме закрыто, моё резюме видят только те, куда я откликнулся, потому что я сейчас работаю и мне не нужны лишние проблемы».</p>
+  </div>
+</section>
+
+<!-- ══════════════ 12 ══════════════ -->
+<section id="gap">
+  <div class="shead">
+    <span class="snum">12</span>
+    <h2>Дыра в стаже</h2>
+    <p>16 месяцев между августом 2021 и декабрём 2022. Единственное место, где HH и PDF расходятся сознательно.</p>
+  </div>
+
+  <div class="rules">
+    <article class="rule">
+      <header><span class="rn">H08</span><h3>На HeadHunter дыру закрыть</h3></header>
+      <p>Указать, что работа в предыдущей компании продолжалась до декабря 2022 и переход в следующую был без простоя.</p>
+      <p class="why"><b>Что это даёт:</b> полный доступ ко всем собеседованиям. Профиль не отсеивают на этапе фильтра из-за 16 месяцев простоя.</p>
+    </article>
+    <article class="rule">
+      <header><span class="rn">H09</span><h3>В PDF-резюме оставить как есть</h3></header>
+      <p>Готовая отговорка, если расхождение заметят: «заполнял HeadHunter по резюме и случайно ошибся — в резюме всё актуально».</p>
+    </article>
+    <article class="rule">
+      <header><span class="rn">H10</span><h3>Тему армии не поднимать самому</h3></header>
+      <p>До собеседования дыру, скорее всего, никто не заметит. Спросят — отвечать по легенде перехода из части I: <strong>не «ушёл в армию и вернулся»</strong>, а «компания переходила на PHP» или «веб-разработка показалась перспективнее».</p>
+      <p class="why"><b>Почему армия — плохой ответ:</b> им безразлично, что ты скажешь. Они услышат «всё забыл».</p>
+    </article>
+  </div>
+
+  <div class="note">
+    <h4>Исключение</h4>
+    <p>Если целишься именно в минский офис с официальным оформлением, где служба безопасности сверяет трудовую, — дыру лучше оставить и в HH тоже. Тогда «где вы были 16 месяцев» имеет честный ответ, а расхождение документов не всплывёт.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 13 ══════════════ -->
+<section id="tactics">
+  <div class="shead">
+    <span class="snum">13</span>
+    <h2>Отклики и переговоры</h2>
+    <p>Что происходит после того, как профиль заполнен.</p>
+  </div>
+
+  <ul class="anat">
+    <li><span class="lbl">Объём</span><p>Ориентир из разбора: <b>около 20 откликов за день</b> — это нормальный рабочий темп. За тот же день было пропущено 10–12 «сочных» вакансий Middle+/Senior только из-за того, что не рассматривался минский офис и официальное трудоустройство.</p></li>
+    <li><span class="lbl">Рынок</span><p><b>Белорусских компаний на рынке сейчас неожиданно много.</b> Если готов к офису и официальному оформлению — это заметный дополнительный поток вакансий.</p></li>
+    <li><span class="lbl">Фильтрация</span><p>Отклики всё равно нужно фильтровать: широкие настройки профиля дают охват, а не готовые совпадения.</p></li>
+    <li><span class="lbl">Переговоры</span><p>Условия обсуждаются <b>после</b> HR-собеседования или после технического этапа, когда компания уже готова делать оффер. Тогда и раскручиваешь: ГПХ вместо штата, самозанятость, удалёнку вместо гибрида. В половине случаев соглашаются.</p></li>
+    <li><span class="lbl">Канал</span><p>Всё общение — в отдельном Telegram. Собеседование бывает из двух этапов, бывает из четырёх; переносы и переобсуждения — норма.</p></li>
+  </ul>
+</section>
+
+<!-- ══════════════ 14 ══════════════ -->
+<section id="checklist">
+  <div class="shead">
+    <span class="snum">14</span>
+    <h2>Чек-лист запуска</h2>
+    <p>Порядок действий. Пункт 1 обязателен: без готового PDF заполнять HH бессмысленно.</p>
+  </div>
+
+  <div class="check">
+    <p class="grp">Подготовка</p>
+    <label><input type="checkbox"><span>PDF-резюме собрано по части I и проверено по её чек-листу</span></label>
+    <label><input type="checkbox"><span>Заведён отдельный Telegram на симку без абонентской платы</span></label>
+    <label><input type="checkbox"><span>Принято решение по дыре в стаже (закрывать на HH или нет)</span></label>
+
+    <p class="grp">Анкета</p>
+    <label><input type="checkbox"><span>Желаемая должность: Senior PHP-разработчик (Symfony / Laravel)</span></label>
+    <label><input type="checkbox"><span>Город — Москва</span></label>
+    <label><input type="checkbox"><span>Район / точный адрес не заполнены</span></label>
+    <label><input type="checkbox"><span>Отмечено «готов к командировкам»</span></label>
+    <label><input type="checkbox"><span>Отмечены все типы занятости</span></label>
+    <label><input type="checkbox"><span>Отмечены все графики работы, включая офис и гибрид</span></label>
+    <label><input type="checkbox"><span>Указаны два гражданства</span></label>
+
+    <p class="grp">Контакты</p>
+    <label><input type="checkbox"><span>Telegram указан и отмечен как предпочтительный способ связи</span></label>
+    <label><input type="checkbox"><span>Указан номер телефона</span></label>
+    <label><input type="checkbox"><span>Указана почта</span></label>
+
+    <p class="grp">Содержание</p>
+    <label><input type="checkbox"><span>Опыт работы перенесён из PDF один в один</span></label>
+    <label><input type="checkbox"><span>Последнее место расписано детальнее остальных</span></label>
+    <label><input type="checkbox"><span>В должности на последнем месте есть слово Senior</span></label>
+    <label><input type="checkbox"><span>Ни одного названия проекта</span></label>
+    <label><input type="checkbox"><span>Стек последнего места покрывает максимум рынка</span></label>
+    <label><input type="checkbox"><span>Ключевые навыки внесены по справочнику HH</span></label>
+    <label><input type="checkbox"><span>MS SQL не внесён</span></label>
+    <label><input type="checkbox"><span>AI-инструменты не внесены в навыки</span></label>
+    <label><input type="checkbox"><span>Doctrine — без «ORM»</span></label>
+    <label><input type="checkbox"><span>Заполнено образование</span></label>
+    <label><input type="checkbox"><span>Указан английский B1</span></label>
+
+    <p class="grp">Финальные настройки</p>
+    <label><input type="checkbox"><span>Пройдено подтверждение навыков (~1,5 часа)</span></label>
+    <label><input type="checkbox"><span>Выбран режим видимости резюме</span></label>
+    <label><input type="checkbox"><span>Текст на HH и в PDF совпадает везде, кроме сознательного расхождения по дыре</span></label>
+    <label><input type="checkbox"><span>Готовы ответы на вопросы про переход C# → PHP и про 16 месяцев</span></label>
+  </div>
+</section>
+
+<!-- ══════════════ 15 ══════════════ -->
+<section id="open">
+  <div class="shead">
+    <span class="snum">15</span>
+    <h2>Что осталось решить</h2>
+    <p>Границы источника. Это вопросы, которых в разборе не было, — здесь они просто зафиксированы, чтобы не потерялись.</p>
+  </div>
+
+  <div class="body">
+    <p>Запись обрывается на фразе про подтверждение навыков — разговор в этом месте не был закончен. Следующие темы в 36 минутах не обсуждались, и ответы на них выдумывать не стоит:</p>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Вопрос</th><th>Статус</th></tr></thead>
+      <tbody>
+        <tr><td>Зарплатные ожидания: указывать вилку или оставить поле пустым</td><td><span class="pill fix">не обсуждалось</span></td></tr>
+        <tr><td>Сопроводительные письма к откликам: шаблон или без них</td><td><span class="pill fix">не обсуждалось</span></td></tr>
+        <tr><td>Несколько резюме под разные роли (Symfony / Laravel / Go)</td><td><span class="pill fix">не обсуждалось</span></td></tr>
+        <tr><td>Частота обновления резюме для подъёма в выдаче</td><td><span class="pill fix">не обсуждалось</span></td></tr>
+        <tr><td>Фото в профиле HH</td><td><span class="pill fix">не обсуждалось</span></td></tr>
+        <tr><td>Точная актуальная мажорная версия Laravel на момент публикации</td><td><span class="pill fix">свериться перед вводом</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note open">
+    <h4>Продолжение</h4>
+    <p>Разбор профиля на HeadHunter вживую в записи не состоялся: на 35-й минуте начался вход в аккаунт, и запись закончилась. Всё, что выше, — это то, что было проговорено. Практический разбор заполненного профиля стоит вынести в отдельную встречу.</p>
+  </div>
+</section>
+
+<footer class="doc">
+  Часть II из II. Источник — видеоразбор от 19.08.2026, 36 мин 03 с, полная расшифровка.<br>
+  Блоки про HeadHunter: 07:51–09:52, 10:20–11:05, 33:05–33:55, 34:08–36:03.<br>
+  Основано на личном опыте разбирающего: «я сам сейчас только начал отклики раскидывать».<br>
+  Тайм-коды в цитатах указывают позицию в исходной записи.<br>
+  Часть I — сборка PDF-резюме.
+</footer>
+
+</div>

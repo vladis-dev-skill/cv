@@ -2,990 +2,425 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Vladislav Laikov — Senior Backend Engineer (PHP/Symfony)</title>
+<title>Vladislav Laikov — Senior PHP Developer (Symfony / Laravel)</title>
 <meta name="author" content="Vladislav Laikov">
-<meta name="description" content="Senior Backend Engineer · PHP/Symfony · 7+ years · high-load systems, architecture, ownership. Adaptable to any domain.">
+<meta name="description" content="Senior PHP Developer · Symfony / Laravel · 7+ years · distributed systems, high load, payments domain.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=block" rel="stylesheet">
 <style>
   /* =====================================================================
-     CV — Vladislav Laikov · Senior Backend Engineer · EN edition
-     Static, two-page A4 PDF source. Mirrors the dynamic landing palette
-     (light variant), Developer Mono pairing (IBM Plex Sans + JetBrains Mono),
-     bracket "{ }" section markers, emerald/cyan accents, dot-grid backdrop.
-     No JS, no external assets except Google Fonts CDN + sibling qr.svg / photo.png.
+     CV — Vladislav Laikov · Senior PHP Developer · EN
+     Раскладка по референсу VisualCV: круглое фото слева + крупное имя,
+     сквозная вертикальная линия-таймлайн с точками, даты и подписи
+     разделов в левом жёлобе, подзаголовки компаний акцентом с разрядкой,
+     сплошной гуманистический санс без моноширинного.
+     Правила и стратегия — из CV-PDF-PLAYBOOK.html: одна колонка контента
+     (жёлоб несёт только подписи и даты), порядок блоков, «Стек:» строкой,
+     жирным ключевое, две страницы A4, без названий проектов,
+     Senior в шапке и в должностях, Symfony + Laravel, английский B1 внизу.
+     Палитра унаследована от лендинга: emerald + cyan на белом.
      ===================================================================== */
 
-  /* ───── DESIGN TOKENS ─────────────────────────────────────── */
   :root {
-    /* Surfaces — light theme of the brand (print-safe) */
-    --bg:          #f8faf8;
-    --card:        #ffffff;
-    --bg-soft:     #f0f4f0;
-    --bg-softer:   #e8ede8;
+    --paper:  #ffffff;
+    --ink:    #16181d;
+    --ink-2:  #2f343b;
+    --mute:   #6a707a;
+    --faint:  #9aa1a9;
+    --accent: #059669;
+    --accent-soft: #10b981;
+    --cyan:   #0e7490;
+    --rule:   #dfe4e0;
 
-    /* Text */
-    --text:        #18181b;
-    --text-2:      #3f3f46;
-    --text-mute:   #6b7280;
+    --sans: 'Open Sans', -apple-system, 'Segoe UI', sans-serif;
 
-    /* Brand accents (mirror landing) */
-    --accent:      #10b981;
-    --accent-2:    #06b6d4;
-    --accent-dim:  #059669;
-
-    /* Borders & glows */
-    --border:        rgba(0, 0, 0, 0.08);
-    --border-soft:   rgba(0, 0, 0, 0.05);
-    --border-accent: rgba(16, 185, 129, 0.28);
-    --glow:          rgba(16, 185, 129, 0.10);
-
-    /* Type */
-    --mono: 'JetBrains Mono', ui-monospace, monospace;
-    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --gutter: 34mm;
+    --gap:    6mm;
   }
 
-  /* ───── RESET ─────────────────────────────────────────────── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   html, body {
+    background: #e9ebe9;
     font-family: var(--sans);
-    background: var(--bg-softer);
-    color: var(--text);
+    color: var(--ink-2);
+    font-size: 10.4px;
+    line-height: 1.46;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    line-height: 1.42;
-    font-size: 9.6pt;
-    /* Force colors to print exactly (Chrome/Edge → PDF) */
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    text-rendering: geometricPrecision;
   }
 
-  /* ───── PAGE FRAME ────────────────────────────────────────── */
   .page {
     width: 210mm;
     height: 297mm;
-    padding: 9mm 11mm 8mm 11mm;
-    background-color: var(--bg);
-    /* Mirror the landing's canvas dot-grid: subtle emerald dots, ~7mm spacing.
-       Inline SVG data URI is more print-reliable than radial-gradient. */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28'><circle cx='14' cy='14' r='1.4' fill='%2310b981' fill-opacity='0.14'/></svg>");
-    background-size: 7mm 7mm;
-    background-repeat: repeat;
-    background-position: 0 0;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 62mm 1fr;
-    gap: 6mm;
+    background: var(--paper);
+    padding: 12mm 14mm 9mm 14mm;
+    position: relative;
     overflow: hidden;
-    position: relative;
   }
-  @media screen {
-    /* Visual gap between pages only when previewing in browser. */
-    .page + .page { margin-top: 6mm; }
+  .page + .page { margin-top: 6mm; }
+
+  b, strong { font-weight: 700; color: var(--ink); }
+
+  /* ───────────── ШАПКА ───────────── */
+  .head { display: flex; align-items: center; gap: 7mm; }
+  .avatar {
+    width: 24mm; height: 24mm;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    flex: none;
+    border: 1px solid var(--rule);
   }
-
-  .page-num {
-    position: absolute;
-    right: 11mm;
-    bottom: 4.2mm;
-    font-family: var(--mono);
-    font-size: 6.4pt;
-    color: var(--text-mute);
-    letter-spacing: 0.6px;
-  }
-  .page-num .of { opacity: 0.5; }
-
-  /* ───── COMMON: SECTION TITLE & SIDEBAR BLOCKS ─────────────── */
-  .sec { display: flex; flex-direction: column; }
-  .sec + .sec { margin-top: 3.4mm; }
-
-  .sec-title {
-    font-size: 10.2pt;
+  .head-main { flex: 1; min-width: 0; }
+  .name {
+    font-size: 29px;
     font-weight: 700;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 1.6mm;
-    margin-bottom: 1.8mm;
-    letter-spacing: -0.2px;
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: -0.02em;
   }
-  .sec-title::before {
-    content: '{';
-    font-family: var(--mono);
-    color: var(--accent);
-    opacity: 0.55;
-    font-weight: 400;
-    font-size: 11pt;
+  .role {
+    margin-top: 1.5mm;
+    line-height: 1.15;
   }
-  .sec-title::after {
-    content: '}';
-    font-family: var(--mono);
-    color: var(--accent);
-    opacity: 0.55;
-    font-weight: 400;
-    font-size: 11pt;
-  }
-
-  /* Sidebar block — slightly card-like */
-  .sb-block {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 3mm 3.2mm;
-    position: relative;
-  }
-  .sb-block + .sb-block { margin-top: 3.2mm; }
-  .sb-block::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
-    border-radius: 8px 8px 0 0;
-  }
-  .sb-title {
-    font-family: var(--mono);
-    font-size: 7.2pt;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--accent-dim);
-    margin-bottom: 2mm;
-    display: flex;
-    align-items: center;
-    gap: 1.5mm;
-  }
-  .sb-title::before {
-    content: '{'; font-family: var(--mono); color: var(--accent);
-    opacity: 0.6; font-weight: 400;
-  }
-  .sb-title::after {
-    content: '}'; font-family: var(--mono); color: var(--accent);
-    opacity: 0.6; font-weight: 400; margin-left: auto;
-  }
-
-  /* ───── SIDEBAR ────────────────────────────────────────────── */
-  .sidebar { display: flex; flex-direction: column; gap: 3.2mm; }
-
-  /* Photo */
-  .photo-wrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1.5px solid var(--border-accent);
-    box-shadow: 0 2px 14px rgba(16, 185, 129, 0.12),
-                0 0 0 1px rgba(16, 185, 129, 0.05);
-  }
-  .photo-wrap::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg,
-                  rgba(16, 185, 129, 0.06) 0%,
-                  transparent 30%,
-                  transparent 70%,
-                  rgba(6, 182, 212, 0.06) 100%);
-    pointer-events: none;
-  }
-  .photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-  /* Contact list */
-  .contact-list { list-style: none; display: flex; flex-direction: column; gap: 1.8mm; }
-  .contact-list li {
-    display: flex;
-    align-items: center;
-    gap: 2mm;
-    font-size: 7.8pt;
-    color: var(--text);
-    line-height: 1.25;
-    word-break: break-word;
-  }
-  .contact-list .ico {
-    flex: 0 0 3.2mm;
-    width: 3.2mm;
-    height: 3.2mm;
-    color: var(--accent-dim);
-  }
-  .contact-list .ico svg { width: 100%; height: 100%; display: block; }
-  .contact-list .val { color: var(--text); word-break: break-word; }
-  .contact-list a { color: var(--text); text-decoration: none; }
-
-  /* Skill chip groups */
-  .skill-group + .skill-group { margin-top: 1.8mm; }
-  .skill-cat {
-    font-family: var(--mono);
-    font-size: 6.4pt;
-    text-transform: uppercase;
-    color: var(--accent-dim);
-    letter-spacing: 0.6px;
-    margin-bottom: 0.9mm;
-    font-weight: 600;
-  }
-  .chip-row { display: flex; flex-wrap: wrap; gap: 0.9mm; }
-  .chip {
-    display: inline-block;
-    background: var(--bg-soft);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 0.5mm 1.4mm;
-    font-family: var(--mono);
-    font-size: 6.6pt;
-    color: var(--text);
-    line-height: 1.35;
-  }
-  .chip.accent {
-    background: rgba(16, 185, 129, 0.10);
-    border-color: var(--border-accent);
-    color: var(--accent-dim);
-    font-weight: 600;
-  }
-
-  /* Languages mini-bars */
-  .lang-list { display: flex; flex-direction: column; gap: 1.8mm; }
-  .lang-item { display: flex; flex-direction: column; gap: 0.6mm; }
-  .lang-line {
-    display: flex;
-    align-items: baseline;
-    gap: 1.5mm;
-    font-size: 7.6pt;
-  }
-  .lang-line .name { color: var(--text); font-weight: 500; }
-  .lang-line .level {
-    font-family: var(--mono);
-    font-size: 6.6pt;
-    color: var(--text-mute);
-    margin-left: auto;
-  }
-  .lang-bar { height: 2px; background: var(--bg-soft); border-radius: 2px; overflow: hidden; }
-  .lang-bar > span {
-    display: block; height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  }
-
-  /* Sidebar strengths list (page 2) */
-  .strength-list { display: flex; flex-direction: column; gap: 2mm; }
-  .strength-row { display: flex; gap: 2mm; align-items: flex-start; }
-  .strength-ico {
-    flex: 0 0 6mm;
-    width: 6mm; height: 6mm;
-    border-radius: 5px;
-    background: rgba(16, 185, 129, 0.10);
-    border: 1px solid var(--border-accent);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--accent-dim);
-  }
-  .strength-ico svg { width: 3.4mm; height: 3.4mm; }
-  .strength-body { flex: 1; min-width: 0; }
-  .strength-name {
-    font-size: 7.8pt;
+  .role .big {
+    font-size: 21px;
     font-weight: 700;
-    color: var(--text);
-    line-height: 1.2;
+    color: var(--accent);
+    letter-spacing: -0.005em;
   }
-  .strength-metric {
-    font-family: var(--mono);
-    font-size: 6.2pt;
-    color: var(--accent-dim);
-    margin-top: 0.4mm;
-    letter-spacing: 0.2px;
-  }
-
-  /* QR block (page 2) */
-  .qr-block { text-align: center; }
-  .qr-block .qr-img {
-    width: 28mm; height: 28mm;
-    margin: 0 auto;
-    padding: 1.6mm;
-    background: var(--card);
-    border: 1px solid var(--border-accent);
-    border-radius: 6px;
-  }
-  .qr-block .qr-img img { width: 100%; height: 100%; display: block; }
-  .qr-block .qr-cap {
-    font-family: var(--mono);
-    font-size: 6.2pt;
-    color: var(--text-mute);
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    margin-top: 1.6mm;
-  }
-  .qr-block .qr-url {
-    font-family: var(--mono);
-    font-size: 6.6pt;
-    font-weight: 600;
-    color: var(--accent-dim);
-    word-break: break-all;
-    margin-top: 0.6mm;
+  .role .thin {
     display: block;
-    text-decoration: none;
+    margin-top: 0.7mm;
+    font-size: 12.2px;
+    color: var(--mute);
+    font-weight: 400;
+    letter-spacing: 0.025em;
+  }
+  .contacts {
+    margin-top: 1.9mm;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1mm 4.6mm;
+    font-size: 9.8px;
+    color: var(--ink-2);
+  }
+  .ct { display: inline-flex; align-items: center; gap: 1.5mm; white-space: nowrap; }
+  .ct svg { width: 10px; height: 10px; fill: var(--accent-soft); flex: none; }
+
+  .head-rule { margin-top: 3.2mm; border-top: 1px solid var(--rule); }
+
+  /* ───────────── ИНТРО И «СГИБ» ───────────── */
+  /* Без плашки: разворот держится одной непрерывной линией, которая
+     складывается в V ровно там, где начинается вертикальный рельс.
+     Стыковать нечего — значит, нечему и разъехаться. */
+  .intro { padding: 3.4mm 0 0; }
+  .intro-lead { font-size: 11.3px; line-height: 1.48; }
+  .intro-sub { margin-top: 2.6mm; font-size: 11.1px; font-weight: 700; color: var(--ink); }
+  .intro ul { margin-top: 1.4mm; padding-left: 4.4mm; }
+  .intro li { font-size: 10.6px; line-height: 1.46; margin-top: 1mm; }
+  .intro li::marker { color: var(--accent); }
+
+  .fold {
+    display: block;
+    width: 184mm;              /* ровно ширина контента: 210 − 13 − 13 */
+    height: 4mm;
+    margin-top: 3.4mm;
+    overflow: visible;
+  }
+  .fold path {
+    fill: none;
+    stroke: var(--rule);
+    stroke-width: 0.26;          /* 0.26mm ≈ 1px — та же волосяная линия, что и везде */
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
-  /* Availability pill (sidebar, p.2) */
-  .avail {
-    display: flex;
-    align-items: center;
-    gap: 1.5mm;
-    padding: 1.6mm 2mm;
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px solid var(--border-accent);
-    border-radius: 6px;
-    font-size: 7.4pt;
-    color: var(--accent-dim);
-    font-weight: 600;
+  /* ───────────── ЖЁЛОБ + СКВОЗНАЯ ЛИНИЯ ───────────── */
+  .rail { position: relative; padding-top: 0; }
+  .rail::before {
+    content: '';
+    position: absolute;
+    left: var(--gutter);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--rule);
   }
-  .avail .dot {
-    width: 1.8mm; height: 1.8mm;
+  .row { display: flex; }
+  .gut {
+    width: var(--gutter);
+    flex: none;
+    padding-right: 4mm;
+    padding-top: 0.3mm;
+  }
+  .lbl {
+    font-size: 9.4px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    line-height: 1.32;
+  }
+  .dt {
+    font-size: 10px;
+    color: var(--mute);
+    white-space: nowrap;
+  }
+  .lbl + .dt { margin-top: 2.4mm; }
+  .cell {
+    flex: 1;
+    min-width: 0;
+    padding-left: var(--gap);
+    padding-bottom: 4.4mm;
+    position: relative;
+  }
+  .dot {
+    position: absolute;
+    left: -3.5px;
+    top: 3.2px;
+    width: 8px; height: 8px;
     border-radius: 50%;
     background: var(--accent);
-    box-shadow: 0 0 0 1.4px rgba(16, 185, 129, 0.25);
-    flex: 0 0 1.8mm;
-  }
-  .avail .meta {
-    margin-left: auto;
-    font-family: var(--mono);
-    font-size: 6.2pt;
-    color: var(--text-mute);
-    font-weight: 400;
+    box-shadow: 0 0 0 2.5px var(--paper);
   }
 
-  /* ───── MAIN COLUMN ────────────────────────────────────────── */
-  .main { display: flex; flex-direction: column; gap: 3.4mm; min-width: 0; }
+  /* ───────────── КОМПЕТЕНЦИИ / НАВЫКИ ───────────── */
+  .core { font-size: 10.7px; color: var(--ink); font-weight: 600; }
+  .core + .core { margin-top: 1.6mm; }
+  .core .k { color: var(--mute); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; font-size: 9px; }
+  .core .dom { font-weight: 400; color: var(--mute); }
+  .core .dom b { color: var(--accent); font-weight: 700; }
+  .skill { font-size: 10.3px; line-height: 1.46; }
+  .skill + .skill { margin-top: 1.8mm; }
+  .skill .k { font-weight: 700; color: var(--ink); }
+  .skill .soft { color: #8b9299; font-size: 9.7px; }
 
-  /* Header */
-  .hd {
-    display: flex; flex-direction: column; gap: 0.8mm;
-    padding-bottom: 2.4mm;
-    border-bottom: 1px dashed var(--border-accent);
-  }
-  .role-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 1.5mm;
-    font-family: var(--mono);
-    font-size: 7pt;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--accent-dim);
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px solid var(--border-accent);
-    padding: 1mm 2.4mm;
-    border-radius: 99px;
-    width: fit-content;
-    margin-bottom: 1.2mm;
-  }
-  .role-tag::before { content: '$'; opacity: 0.7; }
-
-  .hd h1 {
-    /* Plain HTML text with solid emerald color — maximum reliability.
-       (See RU edition for the full rationale behind avoiding gradient
-       text-fill / SVG tricks under Puppeteer.) */
-    position: relative;
-    font-size: 24pt;
-    font-weight: 700;
-    letter-spacing: -0.3px;
-    line-height: 1.08;
-    color: var(--accent-dim);
-    padding-left: 4mm;
-    margin: 0;
-  }
-  .hd h1::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 10%;
-    bottom: 10%;
-    width: 1mm;
-    background: linear-gradient(180deg, var(--accent), var(--accent-2));
-    border-radius: 0.4mm;
-  }
-  .hd .role {
-    font-family: var(--mono);
-    font-size: 9pt;
-    color: var(--text-2);
-    margin-top: 0.6mm;
-  }
-  .hd .role .accent { color: var(--accent-dim); font-weight: 600; }
-
-  /* Mini header (page 2) */
-  .hd-mini {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 4mm;
-    padding-bottom: 1.8mm;
-    border-bottom: 1px dashed var(--border-accent);
-    margin-bottom: 1mm;
-  }
-  .hd-mini .name {
-    font-family: var(--mono);
-    font-size: 8pt;
-    font-weight: 600;
-    color: var(--text);
-    letter-spacing: 0.3px;
-  }
-  .hd-mini .name b { color: var(--accent-dim); }
-  .hd-mini .role-mini {
-    font-family: var(--mono);
-    font-size: 6.6pt;
-    color: var(--text-mute);
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-  }
-
-  /* Profile */
-  .summary {
-    font-size: 8.6pt;
-    color: var(--text);
-    line-height: 1.5;
-    text-align: justify;
-  }
-  .summary strong { color: var(--accent-dim); font-weight: 600; }
-
-  /* Hero KPI strip — 3 columns of "anchors" */
-  .anchors {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2mm;
-    margin-top: 0.5mm;
-  }
-  .anchor {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-left: 2.4px solid var(--accent);
-    border-radius: 6px;
-    padding: 1.8mm 2.2mm;
-    position: relative;
-    overflow: hidden;
-  }
-  .anchor::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 14mm; height: 14mm;
-    background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.08), transparent 70%);
-    pointer-events: none;
-  }
-  .anchor .a-cat {
-    font-family: var(--mono);
-    font-size: 5.8pt;
-    text-transform: uppercase;
-    color: var(--text-mute);
-    letter-spacing: 0.5px;
-    margin-bottom: 0.4mm;
-  }
-  .anchor .a-val {
-    font-size: 8.6pt;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.18;
-  }
-  .anchor .a-val .num {
-    font-family: var(--mono);
-    color: var(--accent-dim);
-  }
-  .anchor .a-meta {
-    font-family: var(--mono);
-    font-size: 5.8pt;
-    color: var(--text-mute);
-    margin-top: 0.6mm;
-  }
-
-  /* Experience timeline */
-  .xp-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2.6mm;
-    position: relative;
-  }
-  .xp-list::before {
-    content: '';
-    position: absolute;
-    left: 2.2mm;
-    top: 1.6mm;
-    bottom: 1.6mm;
-    width: 1.2px;
-    background: linear-gradient(180deg, var(--accent), var(--accent-2));
-    opacity: 0.35;
-  }
-  .xp { position: relative; padding-left: 6mm; }
-  .xp::before {
-    content: '';
-    position: absolute;
-    left: 1.3mm;
-    top: 1.6mm;
-    width: 2.6mm;
-    height: 2.6mm;
-    border-radius: 50%;
-    background: var(--card);
-    border: 1.5px solid var(--accent);
-    box-shadow: 0 0 0 1.3px rgba(16, 185, 129, 0.18);
-  }
-  .xp-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 2mm;
-    flex-wrap: wrap;
-  }
-  .xp-role {
-    font-size: 9.4pt;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.2;
-  }
-  .xp-role .at { color: var(--accent-dim); font-weight: 700; }
-  .xp-date {
-    font-family: var(--mono);
-    font-size: 6.8pt;
-    color: var(--text-mute);
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    white-space: nowrap;
-  }
-  .xp-meta {
-    font-family: var(--mono);
-    font-size: 6.6pt;
-    color: var(--text-mute);
+  /* ───────────── ОПЫТ ───────────── */
+  .j-role { font-size: 12.6px; font-weight: 700; color: var(--ink); }
+  .j-co {
     margin-top: 0.4mm;
-    margin-bottom: 0.8mm;
-  }
-  .xp-meta .dot { margin: 0 1mm; opacity: 0.5; }
-  .xp-bullets {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6mm;
-  }
-  .xp-bullets li {
-    font-size: 7.9pt;
-    line-height: 1.42;
-    color: var(--text);
-    padding-left: 2.8mm;
-    position: relative;
-  }
-  .xp-bullets li::before {
-    content: '▸';
-    position: absolute;
-    left: 0; top: 0;
+    font-size: 11.1px;
+    font-weight: 600;
     color: var(--accent);
-    font-size: 7pt;
+    letter-spacing: 0.07em;
   }
-  .xp-bullets li strong { color: var(--accent-dim); font-weight: 600; }
+  .j-about { margin-top: 1.6mm; font-size: 10.4px; line-height: 1.44; color: var(--mute); }
+  .j-about b { color: var(--ink-2); }
+  .stack { margin-top: 1.8mm; font-size: 10.3px; line-height: 1.44; }
+  .stack .k { font-weight: 700; color: var(--ink); letter-spacing: 0.02em; }
+  ul.b { margin-top: 2.2mm; padding-left: 4.4mm; }
+  ul.b li { font-size: 10.35px; line-height: 1.45; }
+  ul.b li + li { margin-top: 1.4mm; }
+  ul.b li::marker { color: #b5bcb7; }
+  ul.b li.key::marker { color: var(--accent); }
 
-  .xp-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8mm;
-    margin-top: 1.2mm;
-  }
-  .xp-stack .chip { font-size: 6.2pt; padding: 0.3mm 1.2mm; }
+  /* ───────────── НИЗ ───────────── */
+  .edu-deg { font-size: 11.8px; font-weight: 700; color: var(--ink); }
+  .edu-fac { margin-top: 0.6mm; font-size: 11.1px; font-weight: 600; color: var(--accent); letter-spacing: 0.07em; }
+  .meta { margin-top: 2.2mm; font-size: 10.7px; }
+  .link { color: var(--cyan); font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .qr { width: 16mm; height: 16mm; opacity: 0.9; flex: none; }
+  .edu-wrap { display: flex; align-items: flex-start; justify-content: space-between; gap: 7mm; }
 
-  /* Highlights bento (page 2) */
-  .bento {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2mm;
-  }
-  .bento-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 2.2mm 2.6mm;
-    position: relative;
-    overflow: hidden;
-  }
-  .bento-card::before {
-    content: '';
+  .foot {
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
-    opacity: 0.7;
-  }
-  .bento-head {
-    display: flex;
-    align-items: center;
-    gap: 1.6mm;
-    margin-bottom: 1mm;
-  }
-  .bento-ico {
-    width: 5.4mm; height: 5.4mm;
-    border-radius: 5px;
-    background: rgba(16, 185, 129, 0.10);
-    border: 1px solid var(--border-accent);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--accent-dim);
-    flex: 0 0 5.4mm;
-  }
-  .bento-ico svg { width: 3.2mm; height: 3.2mm; }
-  .bento-title {
-    font-size: 8pt;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.2;
-    flex: 1;
-  }
-  .bento-title .tag {
-    display: inline-block;
-    margin-left: 1mm;
-    font-family: var(--mono);
-    font-size: 5.8pt;
-    font-weight: 600;
-    color: var(--accent-dim);
-    background: rgba(16, 185, 129, 0.10);
-    border: 1px solid var(--border-accent);
-    padding: 0.2mm 1mm;
-    border-radius: 99px;
-    vertical-align: 1px;
-  }
-  .bento-desc {
-    font-size: 7.4pt;
-    line-height: 1.42;
-    color: var(--text-2);
-  }
-  .bento-desc strong { color: var(--accent-dim); font-weight: 600; }
-
-  /* Education */
-  .edu {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-left: 2.5px solid var(--accent);
-    border-radius: 4px;
-    padding: 2mm 3mm;
-    display: flex;
-    align-items: center;
-    gap: 3mm;
-  }
-  .edu .edu-body { flex: 1; min-width: 0; }
-  .edu-name {
-    font-size: 8.8pt;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.25;
-  }
-  .edu-name .abbr {
-    color: var(--accent-dim);
-    font-family: var(--mono);
-    font-size: 7.6pt;
-    font-weight: 600;
-  }
-  .edu-meta {
-    font-family: var(--mono);
-    font-size: 6.8pt;
-    color: var(--text-mute);
-    margin-top: 0.6mm;
-  }
-  .edu-tag {
-    font-family: var(--mono);
-    font-size: 6.4pt;
-    color: var(--accent-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px solid var(--border-accent);
-    padding: 0.6mm 1.6mm;
-    border-radius: 99px;
-    flex-shrink: 0;
-    white-space: nowrap;
+    left: 14mm; right: 14mm; bottom: 5.5mm;
+    display: flex; justify-content: space-between;
+    font-size: 8.6px;
+    color: var(--faint);
+    letter-spacing: 0.04em;
   }
 
-  /* Print rules ────────────────────────────────────────────── */
   @page { size: A4; margin: 0; }
   @media print {
-    html, body { background: var(--bg); }
+    html, body { background: var(--paper); }
     .page {
-      box-shadow: none;
+      margin: 0;
       width: 210mm;
       height: 297mm;
-      margin: 0;
       page-break-after: always;
       break-after: page;
     }
-    .page:last-of-type {
-      page-break-after: auto;
-      break-after: auto;
-    }
+    .page + .page { margin-top: 0; }
+    .page:last-of-type { page-break-after: auto; break-after: auto; }
   }
-</style>
-</head>
+</style></head>
 <body>
 
-<!-- =================================================================== -->
-<!-- ===================== SINGLE PAGE (A4, 1 of 1) ==================== -->
-<!-- =================================================================== -->
-<div class="page">
+<!-- ═══════════════════════ PAGE 1 ═══════════════════════ -->
+<section class="page">
 
-  <!-- ============= LEFT SIDEBAR ============= -->
-  <aside class="sidebar">
-
-    <div class="photo-wrap">
-      <img src="photo.png" alt="Photo of Vladislav Laikov">
-    </div>
-
-    <!-- Contact -->
-    <div class="sb-block">
-      <div class="sb-title">contact</div>
-      <ul class="contact-list">
-        <li>
-          <span class="ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-          </span>
-          <span class="val">vladislikedev@gmail.com</span>
-        </li>
-        <li>
-          <span class="ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </span>
-          <span class="val">+375 25 505 57 12</span>
-        </li>
-        <li>
-          <span class="ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>
-          </span>
-          <span class="val">t.me/vladis_like</span>
-        </li>
-        <li>
-          <span class="ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </span>
-          <span class="val">linkedin.com/in/vlad-laikov-php</span>
-        </li>
-        <li>
-          <span class="ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 7-8 12-8 12s-8-5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </span>
-          <span class="val">Minsk, Belarus · UTC+3 · remote</span>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Stack -->
-    <div class="sb-block">
-      <div class="sb-title">stack</div>
-
-      <div class="skill-group">
-        <div class="skill-cat">Languages &amp; Frameworks</div>
-        <div class="chip-row">
-          <span class="chip accent">PHP 5.6–8.5</span>
-          <span class="chip accent">Symfony 3.4–7.4</span>
-          <span class="chip">Laravel 6–10</span>
-          <span class="chip">Doctrine ORM</span>
-          <span class="chip">Messenger</span>
-          <span class="chip">API Platform</span>
-          <span class="chip">REST / OpenAPI</span>
-          <span class="chip">Go</span>
-        </div>
+  <header class="head">
+    <img class="avatar" src="photo.png" alt="Vladislav Laikov">
+    <div class="head-main">
+      <h1 class="name">Vladislav Laikov</h1>
+      <div class="role"><span class="big">Senior PHP Developer</span><span class="thin">Symfony / Laravel · distributed systems &amp; high load</span></div>
+      <div class="contacts">
+        <span class="ct"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 2.9 11.6c-1 .4-1 1.8.1 2.1l4.7 1.5 1.8 5.5c.3.8 1.3 1 1.9.4l2.6-2.5 4.7 3.4c.7.5 1.7.1 1.9-.7l3.1-15.1c.2-1-.8-1.8-1.8-1.9zM9.6 14.6l-.4 3.7-1.3-4 9.6-6-7.9 6.3z"/></svg>t.me/vladis_like</span>
+        <span class="ct"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .5 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.5-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>+375 25 505 57 12</span>
+        <span class="ct"><svg viewBox="0 0 24 24"><path d="M3 5h18c.6 0 1 .5 1 1v12c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V6c0-.5.4-1 1-1zm17 3.2L12 13 4 8.2V17h16V8.2zM19.2 7H4.8L12 11.3 19.2 7z"/></svg>vladislikedev@gmail.com</span>
+        <span class="ct"><svg viewBox="0 0 24 24"><path d="M5 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9.5h4V21H3V9.5zm6.2 0H13v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.5 4.7 5.8V21h-4v-5.4c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21h-4V9.5z"/></svg>linkedin.com/in/vlad-laikov-php</span>
+        <span class="ct"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>Remote · UTC+3</span>
       </div>
+    </div>
+  </header>
+  <div class="head-rule"></div>
 
-      <div class="skill-group">
-        <div class="skill-cat">Data &amp; Infrastructure</div>
-        <div class="chip-row">
-          <span class="chip accent">PostgreSQL 14–18</span>
-          <span class="chip">MySQL</span>
-          <span class="chip">MongoDB</span>
-          <span class="chip">Redis</span>
-          <span class="chip">Docker</span>
-          <span class="chip">AWS</span>
-          <span class="chip">RabbitMQ</span>
-          <span class="chip">Kafka</span>
-          <span class="chip">CI/CD</span>
-        </div>
-      </div>
+  <div class="intro">
+    <p class="intro-lead">
+      Senior backend engineer, <b>7+ years on PHP / Symfony</b>. For the last <b>3.5 years</b> my home ground has been the <b>money path of a product</b>: payments, balances and integrations; <b>12+ payment providers</b> shipped to production.
+    </p>
+    <div class="intro-sub">My strengths are:</div>
+    <ul>
+      <li><b>Payment idempotency.</b> I design so a payment cannot be lost, duplicated or spent twice: uniqueness enforced by the database, lock ordering instead of retries layered over the symptom, internal and external states that never diverge</li>
+      <li><b>Change on live production without a maintenance window.</b> Major database and framework upgrades, a dialect switch, carving services out of a monolith — staged and reversible, on a ~<b>50 TB</b> cluster and a <b>2 TB+</b> production database</li>
+      <li><b>Infrastructure is not someone else's job.</b> <b>Docker</b> and <b>Kubernetes</b>, <b>RabbitMQ</b> and <b>Kafka</b>, replication and sharding, <b>GitLab CI</b> / <b>GitHub Actions</b> pipelines, alerting in <b>Grafana</b> — I carry an epic from the architectural decision to the graphs in production</li>
+    </ul>
+  </div>
 
-      <div class="skill-group">
-        <div class="skill-cat">Architecture &amp; Quality</div>
-        <div class="chip-row">
-          <span class="chip">DDD</span>
-          <span class="chip">CQRS</span>
-          <span class="chip">Event-Driven</span>
-          <span class="chip">Hexagonal</span>
-          <span class="chip">Microservices</span>
-          <span class="chip">SOLID</span>
-          <span class="chip">PHPUnit / PHPStan</span>
-          <span class="chip accent">AI-assisted dev</span>
-        </div>
+  <svg class="fold" viewBox="0 0 184 4" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0.6 H31.2 L34 4 L36.8 0.6 H184"/></svg>
+
+  <div class="rail">
+
+    <div class="row">
+      <div class="gut"><div class="lbl">Profile</div></div>
+      <div class="cell" style="padding-bottom:3mm">
+        
+        <div class="core"><span class="k">Core competencies:</span> payment integrations and billing · PHP / Symfony · Laravel · PostgreSQL · high-load and distributed systems</div>
+        <div class="core"><span class="k">Domains:</span> <span class="dom"><b>payments &amp; billing</b> · <b>fintech core</b> · SaaS · MedTech · classifieds · outsourcing</span></div>
       </div>
     </div>
 
-    <!-- Languages -->
-    <div class="sb-block">
-      <div class="sb-title">languages</div>
-      <div class="lang-list">
-        <div class="lang-item">
-          <div class="lang-line"><span class="name">Russian</span><span class="level">Native</span></div>
-          <div class="lang-bar"><span style="width:100%"></span></div>
-        </div>
-        <div class="lang-item">
-          <div class="lang-line"><span class="name">English</span><span class="level">Intermediate</span></div>
-          <div class="lang-bar"><span style="width:60%"></span></div>
+    <div class="row">
+      <div class="gut"><div class="lbl">Skills</div></div>
+      <div class="cell">
+        
+        <div class="skill"><span class="k">Languages &amp; frameworks:</span> <b>PHP 5.6—8.4</b>, <b>Symfony 3.4—7.4</b>, <b>Laravel 6—13</b>, Doctrine, API Platform, Symfony Messenger, <b>Go</b>, Composer / PSR, <b>OOP</b>, <b>SOLID</b> <span class="soft">· GRASP, GoF patterns, DDD, CQRS, Hexagonal</span></div>
+        <div class="skill"><span class="k">Data &amp; database performance:</span> <b>PostgreSQL 14—18</b>, MySQL 5.7—8, <b>Redis</b>, <b>MongoDB</b>, <b>ClickHouse</b>, Elasticsearch, PgBouncer <span class="soft">· query plans and composite indexes, partitioning of growing tables, sharding, logical replication, upgrades under load</span></div>
+        <div class="skill"><span class="k">Infrastructure &amp; operations:</span> <b>Docker</b>, <b>Kubernetes</b>, <b>Linux</b>, <b>AWS</b> (ECS, EC2, S3), Nginx, <b>GitLab CI</b>, GitHub Actions, <b>Grafana / Loki</b>, Prometheus, Sentry, ELK <span class="soft">· metrics, logs, alerting, incident analysis down to root cause</span></div>
+        <div class="skill"><span class="k">Distributed systems &amp; real-time:</span> <b>Kafka</b>, <b>RabbitMQ</b>, Symfony Messenger, <b>Mercure</b>, <b>Centrifugo</b>, WebSocket, microservices, REST API / OpenAPI <span class="soft">· webhook intake and orchestration, idempotent handlers, retries and DLQ, outbox, saga</span></div>
+        <div class="skill"><span class="k">Quality &amp; testing:</span> <b>PHPUnit</b>, <b>PHPStan</b> (level 9), Rector, CS Fixer, GrumPHP, deptrac <span class="soft">· code review, staged legacy refactoring without rewrites, tests against real databases</span></div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="gut">
+        <div class="lbl">Experience</div>
+        <div class="dt">Apr 2024 — Jun 2026</div>
+      </div>
+      <div class="cell" style="padding-bottom:0">
+        <span class="dot"></span>
+        <div class="j-role">Senior PHP Developer · payments team</div>
+        <div class="j-co">systeme.io — international SaaS platform · Remote</div>
+        <p class="j-about">Funnels, courses, email marketing, payment acceptance. <b>Payments team</b> — the domain where a mistake costs money directly: ~<b>50 TB</b> of data, <b>12+ providers</b>, microservices around a monolith.</p>
+        <p class="stack"><span class="k">Stack:</span> <b>PHP 8.3—8.5</b>, <b>Symfony 6.4—7.4</b>, <b>Doctrine</b>, <b>PostgreSQL 14—18</b>, <b>MongoDB</b>, <b>Redis</b>, <b>RabbitMQ</b>, <b>Kafka</b>, <b>Docker</b>, <b>AWS</b>, <b>Grafana / Loki</b>, PHPStan level 9, GrumPHP</p>
+        <ul class="b">
+          <li class="key">Ran a major <b>PostgreSQL 14 → 18</b> upgrade on a ~<b>50 TB</b> cluster without pausing payment acceptance: logical replication, drift driven to zero before cut-over, one contour switched at a time with the option to step back at any point.</li>
+          <li class="key">Owned <b>all 12+ payment integrations</b> on the platform. Delivered <b>Apple Pay via Stripe</b> end-to-end and extracted one provider <b>from the monolith into a standalone microservice</b> — its own database, its own deployment, a shared contract bundle: a new provider plugs in without touching the core.</li>
+          <li class="key">Designed a <b>partial-refund engine</b>: the business gave a one-line requirement — I defined the granularity (order-item level), four webhook routing scenarios, a guarded status machine and over-refund protection.</li>
+          <li>Built payment webhook intake so that <b>no money event is ever dropped or applied twice</b>: the raw payload is stored before processing, a guard on the event key, signature verification, retries over 30 days, and a bypass path during database maintenance.</li>
+          <li>With the team, <b>cut hot-path query latency 3×</b>: profiling, indexing strategies, batch processing in <b>Doctrine</b>. Owned the epic end-to-end — design, splitting work across two developers, acceptance.</li>
+          <li>Ran <b>PHP 8.3 → 8.5</b> and <b>Symfony 6.4 → 7.4 LTS</b> migrations on live production. Discipline through tooling: <b>PHPStan level 9</b>, a hard CI gate on every PR, real PostgreSQL and Redis in tests instead of mocks.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot"><span>Vladislav Laikov · Senior PHP Developer</span><span>1 / 2</span></div>
+</section>
+
+<!-- ═══════════════════════ PAGE 2 ═══════════════════════ -->
+<section class="page">
+  <div class="rail" style="padding-top:0">
+
+    <div class="row">
+      <div class="gut"><div class="dt">Mar 2023 — Mar 2024</div></div>
+      <div class="cell">
+        <span class="dot"></span>
+        <div class="j-role">PHP Developer · CORE team</div>
+        <div class="j-co">Octopays (Mservis) — fintech platform · Remote</div>
+        <p class="j-about">Payment transaction processing and card payouts. Core team, <b>2 TB+</b> production database, real-time transaction processing, event-driven architecture.</p>
+        <p class="stack"><span class="k">Stack:</span> <b>PHP 7.4—8.2</b>, <b>Laravel 9—10</b>, <b>PostgreSQL</b>, MySQL, <b>Redis</b>, <b>Kafka</b>, <b>Docker</b>, ELK, <b>PHPUnit</b>, <b>PHPStan</b></p>
+        <ul class="b">
+          <li class="key">Balances with an <b>in-flight reserve</b>: money promised to pending operations cannot be spent twice under parallel requests. Payout idempotency enforced by a <b>unique database index</b> — the database rejects the duplicate, not the application code.</li>
+          <li class="key">Eliminated <b>deadlocks</b> on parallel balance recalculation through <b>lock ordering and targeted FOR UPDATE</b> under READ COMMITTED — prevention at the access-pattern level, not a retry wrapper over the symptom.</li>
+          <li>Financial module: a transaction moves through about ten internal statuses while the merchant sees a simple pending / success / fail — built so that internal and external state never diverge.</li>
+          <li>Took part in the <b>MySQL → PostgreSQL</b> switch on a critical contour: reworking the schema for PG-specific types and indexes, staged data migration with no loss of integrity, aligning legacy code with the new dialect, and validation in production.</li>
+          <li><b>Laravel 9 → 10</b> migration, refactoring of critical payment pipelines, test coverage (<b>PHPUnit</b>), static analysis (<b>PHPStan</b>), observability on <b>ELK</b>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="gut"><div class="dt">Apr 2020 — Mar 2023</div></div>
+      <div class="cell">
+        <span class="dot"></span>
+        <div class="j-role">PHP Developer</div>
+        <div class="j-co">Basis33 — outsourcing for EU clients · Remote</div>
+        <p class="j-about">A team of <b>25 engineers</b>. I ran two products in unrelated domains, both shipped to production: a <b>German medical platform</b> — two years, strict compliance, appointment booking and calendars — and a <b>video consultation service</b> integrated with the Zoom API.</p>
+        <p class="stack"><span class="k">Stack:</span> <b>PHP 7.4</b>, <b>Symfony 5.3</b>, API Platform, <b>MySQL</b>, <b>RabbitMQ</b>, Redis, Docker, GitLab CI/CD</p>
+        <ul class="b">
+          <li>Sped up the heavy screens of the medical platform: pulled query plans, unfolded <b>N+1</b> into explicit joins, picked composite indexes matching the real filters, moved hot result sets into <b>Redis</b> with invalidation driven by domain events. The production cluster ran with <b>replication and partitioning</b> — read paths went to the replica.</li>
+          <li>Kept contracts aligned between Frontend, Backend and DevOps: on a medical platform a mismatched contract costs more than a bug in the code.</li>
+          <li>Two unfamiliar domains back to back, both taken to production: stepping into someone else's problem space is routine for me, not an exception.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="gut"><div class="dt">Feb 2019 — Mar 2020</div></div>
+      <div class="cell">
+        <span class="dot"></span>
+        <div class="j-role">PHP Developer</div>
+        <div class="j-co">Sollento Group — classifieds and data collection · Remote</div>
+        <p class="j-about">Search-driven SPA classifieds platform and an automated data collection service.</p>
+        <p class="stack"><span class="k">Stack:</span> <b>PHP</b>, <b>Symfony</b>, Doctrine, <b>PostgreSQL</b>, Docker, Swagger, GitLab CI</p>
+        <ul class="b">
+          <li>Built the backend of a classifieds platform: a domain model shaped for search and filtering in <b>PostgreSQL</b>, a versioned <b>REST contract</b> documented in Swagger, automated builds and deployment through <b>GitLab CI</b>. The first place where I owned a system rather than individual tickets.</li>
+          <li>Wrote a collector pulling listings from external sources to keep the catalogue populated; laid out the codebase as <b>SOA</b> following SOLID and GRASP.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="gut"><div class="lbl">Beyond<br>work</div></div>
+      <div class="cell">
+        <span class="dot"></span>
+        <ul class="b" style="margin-top:0">
+          <li>I run my own products from idea and architecture through to production deployment, with no team behind me: a community platform on <b>DDD / CQRS</b> with context boundaries enforced by <b>deptrac</b>, an EdTech platform executing code in the browser with real-time collaboration, and a travel marketplace with <b>Go</b> microservices. Frontend and mobile — Vue 3, Next.js, React Native.</li>
+          <li><b>I mentor PHP developers from mid to senior</b>: concept maps, code review, mock interviews, weak-spot tracking; AI-assisted spec → code → QA loops are part of the process.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="gut">
+        <div class="lbl">Education</div>
+        <div class="dt">Minsk, Belarus</div>
+      </div>
+      <div class="cell" style="padding-bottom:0">
+        <span class="dot"></span>
+        <div class="edu-wrap">
+          <div>
+            <div class="edu-deg">Belarusian State University of Informatics and Radioelectronics</div>
+            <div class="edu-fac">Faculty of Computer Systems and Networks — Computer Science</div>
+            <p class="meta">English — <b>B1</b> &nbsp;·&nbsp; Portfolio with projects, metrics and stack — <span class="link">vladis-dev-skill.github.io/cv</span></p>
+          </div>
+          <img class="qr" src="qr.svg" alt="QR — portfolio">
         </div>
       </div>
     </div>
 
-    <!-- QR — interactive portfolio -->
-    <div class="sb-block qr-block">
-      <div class="sb-title">portfolio</div>
-      <div class="qr-img">
-        <img src="qr.svg" alt="QR code to the interactive portfolio">
-      </div>
-      <div class="qr-cap">all projects, metrics &amp; stack →</div>
-      <a class="qr-url" href="https://vladis-dev-skill.github.io/cv/">vladis-dev-skill.github.io/cv</a>
-    </div>
+  </div>
 
-  </aside>
-
-  <!-- ============= MAIN ============= -->
-  <main class="main">
-
-    <!-- Header -->
-    <header class="hd">
-      <div class="role-tag">Senior Backend Engineer</div>
-      <h1>Vladislav Laikov</h1>
-      <div class="role">Senior <span class="accent">Backend Engineer</span>  ·  PHP / Symfony  ·  7+ years  ·  high-load, architecture &amp; any complex domain</div>
-    </header>
-
-    <!-- Profile -->
-    <section class="sec">
-      <div class="sec-title">Profile</div>
-      <p class="summary">
-        Senior backend engineer: I build, scale, and <strong>own</strong> the systems businesses depend on
-        — <strong>7+ years</strong> in <strong>PHP</strong> across SaaS, FinTech, healthcare and web
-        platforms. <strong>Adaptable by default</strong> (PHP 5.6 → 8.5, 4 companies, any domain); strongest in
-        <strong>scalable architecture</strong>, <strong>high-load</strong> and database performance. Currently
-        leading backend on <strong>systeme.io</strong> — microservices, payment integrations,
-        <strong>~50&nbsp;TB</strong> of data. <strong>Domain-agnostic by choice</strong>, open to remote.
-      </p>
-    </section>
-
-    <!-- Hero anchor strip -->
-    <section class="anchors">
-      <div class="anchor">
-        <div class="a-cat">Profile</div>
-        <div class="a-val">Adaptable senior</div>
-        <div class="a-meta"><span class="num">4</span> companies · SaaS · FinTech · healthcare</div>
-      </div>
-      <div class="anchor">
-        <div class="a-cat">Migrations</div>
-        <div class="a-val">Migration expert</div>
-        <div class="a-meta">PHP <span class="num">5.6 → 8.5</span> · PG <span class="num">14 → 18</span></div>
-      </div>
-      <div class="anchor">
-        <div class="a-cat">Scale</div>
-        <div class="a-val">High-load engineer</div>
-        <div class="a-meta"><span class="num">~50&nbsp;TB</span> SaaS · <span class="num">2&nbsp;TB+</span> fintech</div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section class="sec">
-      <div class="sec-title">Experience</div>
-      <div class="xp-list">
-
-        <article class="xp">
-          <div class="xp-head">
-            <div class="xp-role">Senior Backend Engineer (PHP/Symfony) <span class="at">@ systeme.io</span></div>
-            <div class="xp-date">Apr 2024 — Present · Remote</div>
-          </div>
-          <div class="xp-meta">SaaS for online business <span class="dot">•</span> ~50 TB <span class="dot">•</span> 12+ payment providers <span class="dot">•</span> Microservices</div>
-          <ul class="xp-bullets">
-            <li>Own <strong>all 12+ payment integrations</strong> on a SaaS processing <strong>~50&nbsp;TB</strong>; built <strong>ApplePay via Stripe</strong> end-to-end — mobile checkout for US/EU markets.</li>
-            <li>Decomposed <strong>Flutterwave</strong> from the monolith into a <strong>microservice</strong>; designed a <strong>partial-refund engine</strong> orchestrating multi-provider webhooks via <strong>Chain of Responsibility</strong>.</li>
-            <li>Led a <strong>PostgreSQL 14 → 18</strong> zero-downtime upgrade (logical replication); drove <strong>PHP 8.3 → 8.5</strong> and <strong>Symfony 6.4 → 7.4 LTS</strong>; cut hot-path latency <strong>3×</strong> with the payments team.</li>
-          </ul>
-          <div class="xp-stack">
-            <span class="chip">PHP 8.5</span>
-            <span class="chip">Symfony 7</span>
-            <span class="chip">PostgreSQL 18</span>
-            <span class="chip">MongoDB</span>
-            <span class="chip">Redis</span>
-            <span class="chip">AWS</span>
-            <span class="chip">RabbitMQ</span>
-            <span class="chip">Kafka</span>
-            <span class="chip">Grafana / Loki</span>
-          </div>
-        </article>
-
-        <article class="xp">
-          <div class="xp-head">
-            <div class="xp-role">Backend Engineer (PHP) <span class="at">@ Octopays (Mservis)</span></div>
-            <div class="xp-date">Mar 2023 — Mar 2024 · Remote</div>
-          </div>
-          <div class="xp-meta">Fintech CORE team <span class="dot">•</span> 2&nbsp;TB+ production DB <span class="dot">•</span> real-time transactions</div>
-          <ul class="xp-bullets">
-            <li>Core engineer on a high-load fintech platform: <strong>2&nbsp;TB+</strong> production DB, real-time transaction processing, event-driven on <strong>Kafka</strong>.</li>
-            <li>Ran <strong>PHP 7.4 → 8.2</strong> and <strong>Laravel 9 → 10</strong> migrations, a <strong>MySQL → PostgreSQL</strong> switch on a critical contour; <strong>PHPUnit</strong>, <strong>PHPStan</strong>, observability on <strong>ELK</strong>.</li>
-          </ul>
-          <div class="xp-stack">
-            <span class="chip">PHP 8.2</span>
-            <span class="chip">Laravel 10</span>
-            <span class="chip">MySQL → PostgreSQL</span>
-            <span class="chip">Redis</span>
-            <span class="chip">Kafka</span>
-            <span class="chip">Docker</span>
-            <span class="chip">ELK</span>
-          </div>
-        </article>
-
-        <article class="xp">
-          <div class="xp-head">
-            <div class="xp-role">Backend Engineer (PHP) <span class="at">@ Basis33</span></div>
-            <div class="xp-date">Apr 2020 — Mar 2023 · Remote</div>
-          </div>
-          <div class="xp-meta">Team of 25 engineers <span class="dot">•</span> DeinArzt (medical) <span class="dot">•</span> Fsexpert (Zoom API)</div>
-          <ul class="xp-bullets">
-            <li>Shipped <strong>DeinArzt</strong> (German medical platform, 2 years, strict compliance) and <strong>Fsexpert</strong> (Zoom API) in a <strong>25-engineer team</strong>; SQL optimization, <strong>replication &amp; partitioning</strong> of the production cluster.</li>
-          </ul>
-          <div class="xp-stack">
-            <span class="chip">PHP 7.4</span>
-            <span class="chip">Symfony 5.3</span>
-            <span class="chip">API Platform</span>
-            <span class="chip">MySQL</span>
-            <span class="chip">RabbitMQ</span>
-            <span class="chip">GitLab CI/CD</span>
-          </div>
-        </article>
-
-        <article class="xp">
-          <div class="xp-head">
-            <div class="xp-role">Backend Engineer (PHP) <span class="at">@ Sollento Group</span></div>
-            <div class="xp-date">Feb 2019 — Mar 2020 · Remote</div>
-          </div>
-          <div class="xp-meta">SPA classifieds + scraper <span class="dot">•</span> SOA architecture</div>
-          <ul class="xp-bullets">
-            <li>Built a <strong>REST API from scratch</strong> on <strong>PostgreSQL</strong>, set up <strong>CI/CD</strong> on GitLab, created a web scraper; structured the codebase as <strong>SOA</strong> following SOLID and GRASP.</li>
-          </ul>
-          <div class="xp-stack">
-            <span class="chip">PHP</span>
-            <span class="chip">Symfony</span>
-            <span class="chip">Doctrine</span>
-            <span class="chip">PostgreSQL</span>
-            <span class="chip">Docker</span>
-            <span class="chip">Swagger</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section class="sec">
-      <div class="sec-title">Education</div>
-      <div class="edu">
-        <div class="edu-body">
-          <div class="edu-name">Belarusian State University of Informatics and Radioelectronics <span class="abbr">(BSUIR)</span></div>
-          <div class="edu-meta">Faculty of Computer Systems and Networks · Minsk, Belarus</div>
-        </div>
-        <span class="edu-tag">Computer Science</span>
-      </div>
-    </section>
-
-  </main>
-
-  <div class="page-num">Vladislav Laikov <span class="of">· Senior Backend Engineer · PHP/Symfony</span></div>
-</div>
+  <div class="foot"><span>Vladislav Laikov · Senior PHP Developer</span><span>2 / 2</span></div>
+</section>
 
 </body>
 </html>
