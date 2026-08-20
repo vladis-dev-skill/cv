@@ -50,6 +50,30 @@ export default {
   prof_dom_k: 'Domains',
   prof_dom_v: '<b>payments &amp; billing</b> · <b>fintech core</b> · SaaS · MedTech · classifieds · outsourcing',
 
+  // ── Key cases
+  sec_cases: 'Key cases',
+  cases_lead: 'Three epics where the shape of the solution was mine to define, not the ticket\'s.',
+  case_k_task: 'Problem',
+  case_k_sol: 'Approach',
+  case_k_res: 'Outcome',
+
+  case1_t: 'PostgreSQL 14 → 18 on a ~50 TB cluster with no maintenance window',
+  case1_task: 'The database major version was out of date, and the monolith cluster serves payment acceptance — it cannot be stopped, not even at night.',
+  case1_sol: 'Logical replication into the new cluster, drift driven to zero before cut-over, one contour switched at a time with the way back preserved.',
+  case1_res: 'Zero minutes of downtime, payment acceptance never paused, rollback available at every step.',
+
+  case2_t: 'A partial-refund engine on top of a composite payment',
+  case2_task: 'The business gave a one-line requirement — “we need partial refunds”. Granularity, routing and protection against a repeated refund were all absent from the brief.',
+  case2_sol: 'I defined the shape myself: refunds at order-item level, four routing scenarios for a single webhook, a guarded status machine, and cumulative over-refund protection that accounts for refunds still in flight.',
+  case2_res: 'Refunds stopped being all-or-nothing. I marked the boundary explicitly: refunding a whole payment was left as an open TODO rather than quietly half-built.',
+
+  case3_t: '12+ payment providers behind a single contract',
+  case3_task: 'Every new integration required edits to the monolith core — and therefore risked regressions in providers that already worked.',
+  case3_sol: 'A shared bundle with interfaces, MappedSuperclass entities and ready-made inner-API controllers. A provider is carved out as its own service with its own database and deployment.',
+  case3_res: 'A new provider plugs in without touching the core or its neighbours. One provider was extracted from the monolith into a microservice following this pattern.',
+
+  card_link: 'Details',
+
   // ── Experience
   sec_stack: 'Stack',
 
@@ -123,8 +147,6 @@ export default {
   proj_shushu_desc: 'Social gifting platform: real-time over <b>Centrifugo</b>, an installable <b>PWA</b> on Workbox, a Telegram bot, OAuth, gamification. 115 services, 36 entities.',
   proj_nesty_tag: 'Mobile-first',
   proj_nesty_desc: 'Rental marketplace with Leaflet maps and a hybrid mobile app: Angular + Ionic packaged for iOS and Android via <b>Capacitor</b>.',
-  proj_travel_tag: 'Polyglot · PHP + Go',
-  proj_travel_desc: 'Travel marketplace: <b>Go microservices</b> (Echo) for price search with rate limiting, multi-vendor integrations, a Next.js web app and a React Native mobile app.',
   proj_mentor_name: 'Mentorship',
   proj_mentor_tag: 'mid → senior',
   proj_mentor_desc: 'I take PHP developers from mid to <b>senior</b> on a structured programme: concept map, code review, mock interviews, weak-spot tracking. AI-assisted spec → code → QA loops are part of the process.',
@@ -137,5 +159,4 @@ export default {
 
   contact_lead: 'Open to senior roles with real ownership, remote.',
   contact_status: 'Open to opportunities',
-  footer_note: 'Hand-built with Vite, Tailwind and a little vanilla JS. Same content as the PDF.',
 };

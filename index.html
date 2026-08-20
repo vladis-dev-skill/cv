@@ -14,7 +14,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <script type="module" src="./src/js/main.js"></script>
 </head>
@@ -44,10 +44,10 @@
 
     <nav class="nav-links" id="nav-links" aria-label="Sections">
       <a href="#profile" data-i18n="nav_profile">Профиль</a>
+      <a href="#cases" data-i18n="sec_cases">Ключевые кейсы</a>
       <a href="#experience" data-i18n="nav_experience">Опыт</a>
       <a href="#skills" data-i18n="nav_skills">Навыки</a>
       <a href="#projects" data-i18n="nav_projects">Проекты</a>
-      <a href="#education" data-i18n="nav_education">Образование</a>
       <a href="#contact" data-i18n="nav_contact">Контакты</a>
     </nav>
 
@@ -87,8 +87,8 @@
         </ul>
 
         <div class="cta-row">
-          <a class="btn btn-primary" href="./cv.pdf" download><svg class="ico"><use href="#i-doc"></use></svg><span data-i18n="hero_cta_ru">Резюме PDF · RU</span></a>
-          <a class="btn" href="./cv-en.pdf" download><svg class="ico"><use href="#i-doc"></use></svg><span data-i18n="hero_cta_en">Резюме PDF · EN</span></a>
+          <a class="btn btn-primary" href="./Laikov-Vladislav-Senior-PHP.pdf" download="Laikov-Vladislav-Senior-PHP.pdf"><svg class="ico"><use href="#i-doc"></use></svg><span data-i18n="hero_cta_ru">Резюме PDF · RU</span></a>
+          <a class="btn" href="./Laikov-Vladislav-Senior-PHP-en.pdf" download="Laikov-Vladislav-Senior-PHP-en.pdf"><svg class="ico"><use href="#i-doc"></use></svg><span data-i18n="hero_cta_en">Резюме PDF · EN</span></a>
           <a class="btn btn-ghost" href="#contact" data-i18n="hero_cta_contact">Написать</a>
         </div>
       </div>
@@ -130,6 +130,43 @@
           <dt data-i18n="prof_dom_k">Домены</dt>
           <dd data-i18n="prof_dom_v"></dd>
         </dl>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════ КЛЮЧЕВЫЕ КЕЙСЫ ══════════ -->
+  <section class="band band-alt" id="cases">
+    <div class="wrap rail">
+      <p class="rail-label" data-i18n="sec_cases">Ключевые кейсы</p>
+      <div class="rail-body">
+        <p class="section-lead reveal" data-i18n="cases_lead"></p>
+        <div class="cases">
+          <article class="case reveal">
+            <h3 class="case-t" data-i18n="case1_t"></h3>
+            <dl class="case-b">
+              <dt data-i18n="case_k_task">Задача</dt><dd data-i18n="case1_task"></dd>
+              <dt data-i18n="case_k_sol">Решение</dt><dd data-i18n="case1_sol"></dd>
+              <dt class="k-res" data-i18n="case_k_res">Итог</dt><dd class="d-res" data-i18n="case1_res"></dd>
+            </dl>
+          </article>
+          <article class="case reveal">
+            <h3 class="case-t" data-i18n="case2_t"></h3>
+            <dl class="case-b">
+              <dt data-i18n="case_k_task">Задача</dt><dd data-i18n="case2_task"></dd>
+              <dt data-i18n="case_k_sol">Решение</dt><dd data-i18n="case2_sol"></dd>
+              <dt class="k-res" data-i18n="case_k_res">Итог</dt><dd class="d-res" data-i18n="case2_res"></dd>
+            </dl>
+          </article>
+          <article class="case reveal">
+            <h3 class="case-t" data-i18n="case3_t"></h3>
+            <dl class="case-b">
+              <dt data-i18n="case_k_task">Задача</dt><dd data-i18n="case3_task"></dd>
+              <dt data-i18n="case_k_sol">Решение</dt><dd data-i18n="case3_sol"></dd>
+              <dt class="k-res" data-i18n="case_k_res">Итог</dt><dd class="d-res" data-i18n="case3_res"></dd>
+            </dl>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -228,31 +265,36 @@
             <div class="card-top"><h3>GraceYouth</h3><span class="tag" data-i18n="proj_grace_tag"></span></div>
             <p data-i18n="proj_grace_desc"></p>
             <p class="card-stack">Symfony · PHP 8 · Vue 3 (FSD) · PostgreSQL · deptrac</p>
+            <!-- когда придёт URL: <span> → <a href="…" target="_blank" rel="noopener"> -->
+            <span class="card-link" aria-disabled="true"><span data-i18n="card_link">Подробнее</span> →</span>
           </li>
           <li class="card reveal">
             <div class="card-top"><h3>CodeArena</h3><span class="tag" data-i18n="proj_arena_tag"></span></div>
             <p data-i18n="proj_arena_desc"></p>
             <p class="card-stack">Symfony 7.4 · Vue 3 + Vike · Monaco · xterm · WebSocket</p>
+            <!-- когда придёт URL: <span> → <a href="…" target="_blank" rel="noopener"> -->
+            <span class="card-link" aria-disabled="true"><span data-i18n="card_link">Подробнее</span> →</span>
           </li>
           <li class="card reveal">
             <div class="card-top"><h3>ShuShu.by</h3><span class="tag" data-i18n="proj_shushu_tag"></span></div>
             <p data-i18n="proj_shushu_desc"></p>
             <p class="card-stack">Symfony 7.4 · Vue 3 PWA · Centrifugo · Telegram · Playwright</p>
+            <!-- когда придёт URL: <span> → <a href="…" target="_blank" rel="noopener"> -->
+            <span class="card-link" aria-disabled="true"><span data-i18n="card_link">Подробнее</span> →</span>
           </li>
           <li class="card reveal">
             <div class="card-top"><h3>Nesty.by</h3><span class="tag" data-i18n="proj_nesty_tag"></span></div>
             <p data-i18n="proj_nesty_desc"></p>
             <p class="card-stack">Symfony 7.1 · Angular 19 · Ionic · Capacitor · Leaflet</p>
-          </li>
-          <li class="card reveal">
-            <div class="card-top"><h3>travelgo</h3><span class="tag" data-i18n="proj_travel_tag"></span></div>
-            <p data-i18n="proj_travel_desc"></p>
-            <p class="card-stack">Laravel 10 · Go (Echo) · Next.js · React Native · Traefik</p>
+            <!-- когда придёт URL: <span> → <a href="…" target="_blank" rel="noopener"> -->
+            <span class="card-link" aria-disabled="true"><span data-i18n="card_link">Подробнее</span> →</span>
           </li>
           <li class="card reveal">
             <div class="card-top"><h3 data-i18n="proj_mentor_name">Менторство</h3><span class="tag" data-i18n="proj_mentor_tag"></span></div>
             <p data-i18n="proj_mentor_desc"></p>
             <p class="card-stack">DDD · CQRS · System Design · Interview prep</p>
+            <!-- когда придёт URL: <span> → <a href="…" target="_blank" rel="noopener"> -->
+            <span class="card-link" aria-disabled="true"><span data-i18n="card_link">Подробнее</span> →</span>
           </li>
         </ul>
       </div>
@@ -289,7 +331,6 @@
         <li><a href="tel:+375255055712"><svg class="ico"><use href="#i-phone"></use></svg>+375 25 505 57 12</a></li>
         <li><a href="https://linkedin.com/in/vlad-laikov-php" target="_blank" rel="noopener"><svg class="ico"><use href="#i-in"></use></svg>linkedin.com/in/vlad-laikov-php</a></li>
       </ul>
-      <p class="footer-note" data-i18n="footer_note"></p>
     </div>
   </div>
 </footer>

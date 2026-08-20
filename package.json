@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "pdf": "node cv-pdf/build-pdf.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },

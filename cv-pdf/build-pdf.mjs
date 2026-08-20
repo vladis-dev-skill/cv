@@ -1,13 +1,16 @@
 import { chromium } from '/Users/vladis/.claude/skills/gstack/node_modules/playwright/index.mjs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
+import { copyFile, mkdir } from 'node:fs/promises';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // [source HTML, output PDF] — bilingual: RU (cv.html) + EN (cv-en.html).
+// Имя файла — часть первого впечатления: у рекрутёра в папке лежит
+// «Laikov-Vladislav-Senior-PHP.pdf», а не безликое «cv.pdf».
 const TARGETS = [
-  ['cv.html', 'cv.pdf'],
-  ['cv-en.html', 'cv-en.pdf'],
+  ['cv.html', 'Laikov-Vladislav-Senior-PHP.pdf'],
+  ['cv-en.html', 'Laikov-Vladislav-Senior-PHP-en.pdf'],
 ];
 
 const browser = await chromium.launch();
@@ -37,7 +40,14 @@ for (const [srcName, outName] of TARGETS) {
   });
 
   await page.close();
-  console.log(`PDF written: ${OUT}`);
+
+  // Вторая копия — в public/: сайт отдаёт PDF по кнопкам «Резюме PDF · RU / EN».
+  // Пишем здесь, а не руками, иначе версии на сайте и в репозитории разъезжаются.
+  const PUB = path.join(__dirname, '..', 'public', outName);
+  await mkdir(path.dirname(PUB), { recursive: true });
+  await copyFile(OUT, PUB);
+
+  console.log(`PDF written: ${OUT}\n         → ${PUB}`);
 }
 
 await browser.close();
