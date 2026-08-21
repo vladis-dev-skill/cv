@@ -21,7 +21,7 @@ Senior PHP Developer / Backend Engineer
 ## 2. О себе
 
 ```text
-CV — https://vladis-dev-skill.github.io/cv
+CV — https://drive.google.com/file/d/16yN_UJdu04ojLSaLmUrKoR1JHfldK9rW/view?usp=sharing
 
 Senior backend-инженер, 7+ лет на PHP / Symfony. Последние 3,5 года профильная зона — денежный контур продукта: платежи, балансы, интеграции; за плечами 10+ платёжных провайдеров в проде.
 
