@@ -72,9 +72,10 @@
   <section class="hero wrap" aria-labelledby="hero-name">
     <div class="hero-grid">
       <div class="hero-main">
+        <p class="hero-avail"><span class="dot" aria-hidden="true"></span><span data-i18n="hero_avail">Открыт к предложениям · удалённо</span></p>
         <h1 class="hero-name" id="hero-name">Владислав Лайков</h1>
         <p class="hero-role" data-i18n="hero_role">Senior PHP Developer</p>
-        <p class="hero-spec" data-i18n="hero_spec">Symfony / Laravel · распределённые системы и высокие нагрузки</p>
+        <p class="hero-spec" data-i18n="hero_spec">High-load · распределённые системы · Symfony / Laravel · PostgreSQL · микросервисы</p>
 
         <p class="hero-lead" data-i18n="hero_lead">Senior backend-инженер, <b>7+ лет на PHP / Symfony</b>.</p>
 
@@ -97,7 +98,7 @@
     </div>
 
     <ul class="metrics" aria-label="Key numbers">
-        <li><span class="metric-n" data-count="7" data-suffix="+">7+</span><span class="metric-l" data-i18n="m1_label">лет на PHP</span></li>
+        <li><span class="metric-n" data-count="7" data-suffix="+">7+</span><span class="metric-l" data-i18n="m1_label">лет опыта</span></li>
         <li><span class="metric-n" data-count="50" data-prefix="~" data-unit="m2_unit">~50</span><span class="metric-l" data-i18n="m2_label">данных под управлением</span></li>
         <li><span class="metric-n" data-count="10" data-suffix="+">10+</span><span class="metric-l" data-i18n="m3_label">платёжных провайдеров</span></li>
     </ul>
@@ -109,24 +110,10 @@
       <p class="rail-label" data-i18n="sec_profile">Профиль</p>
       <div class="rail-body">
         <h2 class="sr-only" data-i18n="strengths_title">Сильные стороны</h2>
-        <ol class="strengths">
-          <li class="reveal">
-            <h3 data-i18n="str1_t">Идемпотентность платежей</h3>
-            <p data-i18n="str1_d"></p>
-          </li>
-          <li class="reveal">
-            <h3 data-i18n="str2_t">Изменения на живом проде без окна простоя</h3>
-            <p data-i18n="str2_d"></p>
-          </li>
-          <li class="reveal">
-            <h3 data-i18n="str3_t">Инфраструктуру не перекладываю</h3>
-            <p data-i18n="str3_d"></p>
-          </li>
-          <li class="reveal">
-            <h3 data-i18n="str4_t">Тяжёлое — в очередь, ответ — событием</h3>
-            <p data-i18n="str4_d"></p>
-          </li>
-        </ol>
+        <div class="about-prose">
+          <p class="reveal" data-i18n="about_p1"></p>
+          <p class="reveal" data-i18n="about_p2"></p>
+        </div>
 
         <dl class="facts reveal">
           <dt data-i18n="prof_comp_k">Компетенции</dt>
@@ -268,35 +255,30 @@
             <p data-i18n="proj_grace_desc"></p>
             <p class="card-stack">Symfony · PHP 8 · Vue 3 (FSD) · PostgreSQL · deptrac</p>
             <!-- когда придёт URL: <span> → <a href="…" target="_blank" rel="noopener"> -->
-            <span class="card-link" aria-disabled="true"><span data-i18n="card_link">Подробнее</span> →</span>
           </li>
           <li class="card reveal">
             <div class="card-top"><h3>CodeArena</h3><span class="tag" data-i18n="proj_arena_tag"></span></div>
             <p data-i18n="proj_arena_desc"></p>
             <p class="card-stack">Symfony 7.4 · Vue 3 + Vike · Monaco · xterm · WebSocket</p>
             <!-- когда придёт URL: <span> → <a href="…" target="_blank" rel="noopener"> -->
-            <span class="card-link" aria-disabled="true"><span data-i18n="card_link">Подробнее</span> →</span>
           </li>
           <li class="card reveal">
             <div class="card-top"><h3>ShuShu.by</h3><span class="tag" data-i18n="proj_shushu_tag"></span></div>
             <p data-i18n="proj_shushu_desc"></p>
             <p class="card-stack">Symfony 7.4 · Vue 3 PWA · Centrifugo · Telegram · Playwright</p>
             <!-- когда придёт URL: <span> → <a href="…" target="_blank" rel="noopener"> -->
-            <span class="card-link" aria-disabled="true"><span data-i18n="card_link">Подробнее</span> →</span>
           </li>
           <li class="card reveal">
             <div class="card-top"><h3>Nesty.by</h3><span class="tag" data-i18n="proj_nesty_tag"></span></div>
             <p data-i18n="proj_nesty_desc"></p>
             <p class="card-stack">Symfony 7.1 · Angular 19 · Ionic · Capacitor · Leaflet</p>
             <!-- когда придёт URL: <span> → <a href="…" target="_blank" rel="noopener"> -->
-            <span class="card-link" aria-disabled="true"><span data-i18n="card_link">Подробнее</span> →</span>
           </li>
           <li class="card reveal">
             <div class="card-top"><h3 data-i18n="proj_mentor_name">Менторство</h3><span class="tag" data-i18n="proj_mentor_tag"></span></div>
             <p data-i18n="proj_mentor_desc"></p>
             <p class="card-stack">DDD · CQRS · System Design · Interview prep</p>
             <!-- когда придёт URL: <span> → <a href="…" target="_blank" rel="noopener"> -->
-            <span class="card-link" aria-disabled="true"><span data-i18n="card_link">Подробнее</span> →</span>
           </li>
         </ul>
       </div>

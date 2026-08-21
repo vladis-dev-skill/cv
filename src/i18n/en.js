@@ -15,15 +15,16 @@ export default {
   nav_contact: 'Contact',
 
   // ── Hero
+  hero_avail: 'Open to offers · remote',
   hero_role: 'Senior PHP Developer',
-  hero_spec: 'Symfony / Laravel · distributed systems &amp; high load',
+  hero_spec: 'High-load · distributed systems · Symfony / Laravel · PostgreSQL · microservices',
   hero_lead: 'Senior backend engineer, <b>7+ years on PHP / Symfony</b>. For the last <b>3.5 years</b> my home ground has been the <b>money path of a product</b>: payments, balances and integrations; <b>10+ payment providers</b> shipped to production.',
   hero_cta_ru: 'Résumé PDF · RU',
   hero_cta_en: 'Résumé PDF · EN',
   hero_cta_contact: 'Get in touch',
   hero_location: 'Remote · UTC+3',
 
-  m1_label: 'years on PHP',
+  m1_label: 'years of experience',
   m2_unit: ' TB',
   m2_label: 'of data under my hands',
   m3_label: 'payment providers',
@@ -38,14 +39,8 @@ export default {
 
   // ── Profile
   strengths_title: 'Strengths',
-  str1_t: 'Payment idempotency',
-  str1_d: 'I design so a payment cannot be lost, duplicated or spent twice: uniqueness enforced by the database, lock ordering instead of retries layered over the symptom, internal and external states that never diverge.',
-  str2_t: 'Change on live production without a maintenance window',
-  str2_d: 'Major database and framework upgrades, a dialect switch, carving services out of a monolith — staged and reversible, on a ~<b>50 TB</b> cluster.',
-  str3_t: 'Infrastructure is not someone else\'s job',
-  str3_d: 'Docker and Kubernetes, RabbitMQ and Kafka, replication and sharding, GitLab CI / GitHub Actions pipelines, alerting in Grafana — I carry an epic from the architectural decision to the graphs in production.',
-  str4_t: 'Heavy work goes to a queue, the answer arrives as an event',
-  str4_d: 'Heavy operations move out of the synchronous cycle into queues, with the result pushed to the interface as an event over <b>Mercure (SSE)</b> — the user is not left waiting on the request, but gets the answer once the work is genuinely done.',
+  about_p1: 'I design the money path so a payment cannot be lost, duplicated or spent twice: uniqueness is enforced by the database itself rather than by application code, lock ordering removes deadlocks instead of retries layered over the symptom, and internal and external states never diverge. Heavy operations move out of the synchronous cycle into queues, with the result pushed to the interface as an event over <b>Mercure (SSE)</b> — the user is not left waiting on the request, but gets the answer once the work is genuinely done.',
+  about_p2: 'I change live production without a maintenance window: major database and framework upgrades, a dialect switch and carving services out of a monolith are staged and reversible, on a ~<b>50 TB</b> cluster. Infrastructure is not someone else\'s job — <b>Docker</b> and <b>Kubernetes</b>, <b>RabbitMQ</b> and <b>Kafka</b>, replication and sharding, <b>GitLab CI</b> / <b>GitHub Actions</b> pipelines, alerting in <b>Grafana</b>: I carry an epic from the architectural decision to the graphs in production.',
 
   prof_comp_k: 'Core competencies',
   prof_comp_v: 'payment integrations and billing · PHP / Symfony · Laravel · PostgreSQL · high-load and distributed systems',

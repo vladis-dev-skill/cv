@@ -3,13 +3,15 @@
    Swiss-минимализм: модульная сетка, один акцент, крупный воздух.
    Токены и ритм совпадают со статическим PDF (cv-pdf/cv.html),
    чтобы сайт и резюме читались как один документ.
-   Никаких фреймворков: ~10 КБ CSS, ноль внешних иконочных шрифтов.
+   Никаких фреймворков: ~12 КБ CSS, ноль внешних иконочных шрифтов.
    ===================================================================== */
 
 /* ───────── ТОКЕНЫ ───────── */
 :root {
   --paper:   #ffffff;
   --band:    #f7f9f8;
+  --surface: #ffffff;
+  --raise:   #fbfcfb;   /* поверхность поверх тонированной плашки */
   --ink:     #16181d;
   --ink-2:   #2f343b;
   --mute:    #585e68;   /* 6.53:1 */
@@ -17,12 +19,19 @@
   --accent:  #059669;
   --accent-2:#10b981;
   --accent-ink: #047857;  /* 5.48:1 — акцент для мелкого текста */
+  --accent-wash: rgba(5, 150, 105, .08);
+  --accent-line: rgba(5, 150, 105, .28);
   --btn-bg:  #047857;
   --btn-fg:  #ffffff;   /* 4.77:1 */
   --cyan:    #0e7490;
   --rule:    #e2e7e3;
   --rule-2:  #cfd6d1;
-  --shadow:  0 1px 2px rgba(16, 24, 20, .04), 0 8px 24px rgba(16, 24, 20, .05);
+
+  /* Тени — три ступени вместо одной: покой, наведение, «оторвался от листа». */
+  --sh-1: 0 1px 2px rgba(16, 24, 20, .05);
+  --sh-2: 0 1px 2px rgba(16, 24, 20, .05), 0 6px 16px -6px rgba(16, 24, 20, .12);
+  --sh-3: 0 2px 4px rgba(16, 24, 20, .06), 0 14px 32px -10px rgba(16, 24, 20, .16);
+  --shadow: var(--sh-2);
 
   --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
@@ -31,12 +40,19 @@
   --rail-w: 150px;
   --nav-h: 60px;
 
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+
   --t: 200ms cubic-bezier(.4, 0, .2, 1);
+  --t-slow: 380ms cubic-bezier(.22, 1, .36, 1);
 }
 
 [data-theme='dark'] {
   --paper:   #0b0d0c;
   --band:    #111413;
+  --surface: #121615;
+  --raise:   #171b1a;
   --ink:     #e9ece9;
   --ink-2:   #c3c9c5;
   --mute:    #9aa39d;   /* 7.52:1 */
@@ -44,12 +60,17 @@
   --accent:  #10b981;
   --accent-2:#34d399;
   --accent-ink: #34d399;
+  --accent-wash: rgba(52, 211, 153, .10);
+  --accent-line: rgba(52, 211, 153, .32);
   --btn-bg:  #10b981;
   --btn-fg:  #0b0d0c;   /* 8.75:1 — тёмный текст на ярком, а не белый на белёсом */
   --cyan:    #22d3ee;
   --rule:    rgba(255, 255, 255, .09);
-  --rule-2:  rgba(255, 255, 255, .16);
-  --shadow:  0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
+  --rule-2:  rgba(255, 255, 255, .17);
+
+  --sh-1: 0 1px 2px rgba(0, 0, 0, .5);
+  --sh-2: 0 1px 2px rgba(0, 0, 0, .5), 0 6px 16px -6px rgba(0, 0, 0, .6);
+  --sh-3: 0 2px 4px rgba(0, 0, 0, .5), 0 14px 32px -10px rgba(0, 0, 0, .7);
 }
 
 /* ───────── БАЗА ───────── */
@@ -67,15 +88,24 @@ body {
   color: var(--ink-2);
   background: var(--paper);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
 img        { display: block; max-width: 100%; height: auto; }
-h1, h2, h3 { color: var(--ink); font-weight: 700; line-height: 1.2; }
+h1, h2, h3 { color: var(--ink); font-weight: 700; line-height: 1.2; text-wrap: balance; }
+p          { text-wrap: pretty; }
 b, strong  { color: var(--ink); font-weight: 700; }
 a          { color: inherit; text-decoration: none; }
 ul, ol     { list-style: none; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+::selection { background: var(--accent-wash); color: var(--ink); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
 
 .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 .ico { width: 1em; height: 1em; fill: currentColor; flex: none; }
@@ -90,7 +120,7 @@ ul, ol     { list-style: none; }
 
 .skip {
   position: fixed; top: -100px; left: 1rem; z-index: 100;
-  padding: .6rem 1rem; border-radius: 6px;
+  padding: .6rem 1rem; border-radius: var(--r-sm);
   background: var(--accent); color: #fff; font-weight: 600;
   transition: top var(--t);
 }
@@ -103,9 +133,17 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
 /* ───────── НАВИГАЦИЯ ───────── */
 .nav {
   position: sticky; top: 0; z-index: 50;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+/* Пока страницу не тронули, шапка ничем не отделена: линия и тень
+   появляются только когда под ней реально что-то проехало. */
+.nav.stuck {
+  border-bottom-color: var(--rule);
+  box-shadow: var(--sh-1);
 }
 .nav-in { display: flex; align-items: center; gap: 1rem; height: var(--nav-h); }
 
@@ -114,14 +152,23 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
   letter-spacing: -.01em; margin-right: auto;
 }
 
-.nav-links { display: flex; gap: 1.5rem; }
+.nav-links { display: flex; gap: .15rem; }
 .nav-links a {
+  position: relative;
   font-size: .875rem; color: var(--mute);
-  padding: .25rem 0; border-bottom: 1.5px solid transparent;
-  transition: color var(--t), border-color var(--t);
+  padding: .4rem .6rem; border-radius: var(--r-sm);
+  transition: color var(--t), background-color var(--t);
 }
-.nav-links a:hover { color: var(--ink); }
-.nav-links a.on { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
+.nav-links a::after {
+  content: ''; position: absolute;
+  left: .6rem; right: .6rem; bottom: .12rem; height: 1.5px;
+  background: var(--accent-ink);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--t);
+}
+.nav-links a:hover { color: var(--ink); background: var(--accent-wash); }
+.nav-links a.on { color: var(--accent-ink); }
+.nav-links a.on::after { transform: scaleX(1); }
 
 .nav-tools { display: flex; align-items: center; gap: .4rem; }
 
@@ -133,7 +180,10 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
   cursor: pointer;
   transition: color var(--t), border-color var(--t), background-color var(--t);
 }
-.btn-icon:hover { color: var(--accent-ink); border-color: var(--accent-ink); }
+.btn-icon:hover {
+  color: var(--accent-ink); border-color: var(--accent-line);
+  background: var(--accent-wash);
+}
 .btn-icon .ico { font-size: 1.05rem; }
 .btn-lang { width: auto; padding-inline: .6rem; letter-spacing: .06em; }
 
@@ -146,33 +196,62 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
 .nav-burger[aria-expanded='true'] .ico-shut { display: block; }
 
 .nav-progress {
-  height: 2px; width: 0; background: var(--accent);
+  height: 2px; width: 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
   transition: width 90ms linear;
 }
 
 /* ───────── HERO ───────── */
-.hero { padding-block: clamp(3rem, 8vw, 6rem) clamp(2.5rem, 6vw, 4.5rem); }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(1.75rem, 5vw, 3.5rem); align-items: center; }
+.hero {
+  position: relative; isolation: isolate;
+  padding-block: clamp(2.5rem, 7vw, 5rem) clamp(2.5rem, 6vw, 4.5rem);
+}
+/* Единственный градиент на всём сайте, почти неразличимый: он обозначает
+   «верх страницы», а не украшает её. */
+.hero::before {
+  content: ''; position: absolute; z-index: -1; pointer-events: none;
+  /* Уходит под шапку: иначе верхняя кромка пятна читается швом ровно
+     по нижней границе навигации. */
+  inset: calc(-1 * var(--nav-h)) 0 0;
+  background: radial-gradient(64ch 34ch at 8% 6%, var(--accent-wash), transparent 72%);
+}
+
+.hero-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.75rem, 5vw, 3.5rem); align-items: center;
+}
 
 .hero-photo {
   width: clamp(112px, 26vw, 172px); aspect-ratio: 1; justify-self: start;
   border-radius: 50%; object-fit: cover; object-position: center 18%;
-  border: 1px solid var(--rule); order: -1;
+  border: 1px solid var(--rule);
+  box-shadow: 0 0 0 6px var(--accent-wash), var(--sh-2);
+  order: -1;
 }
+
+.hero-avail {
+  display: inline-flex; align-items: center; gap: .5rem;
+  margin-bottom: 1.1rem; padding: .3rem .75rem .3rem .6rem;
+  border: 1px solid var(--accent-line); border-radius: 100px;
+  background: var(--accent-wash);
+  font-size: .78rem; font-weight: 600; letter-spacing: .02em;
+  color: var(--accent-ink);
+}
+.hero-avail .dot { width: 7px; height: 7px; }
 
 .hero-name {
   font-size: clamp(2.1rem, 6vw, 3.4rem);
-  letter-spacing: -.025em; line-height: 1.04;
+  letter-spacing: -.03em; line-height: 1.02;
 }
 .hero-role {
-  margin-top: .5rem;
-  font-size: clamp(1.25rem, 3vw, 1.7rem);
-  font-weight: 700; color: var(--accent); letter-spacing: -.01em;
+  margin-top: .35rem;
+  font-size: clamp(1.7rem, 4.6vw, 2.7rem);
+  font-weight: 700; color: var(--accent); letter-spacing: -.025em; line-height: 1.06;
 }
 .hero-spec {
-  margin-top: .2rem;
-  font-size: clamp(.95rem, 2vw, 1.05rem);
-  color: var(--mute); letter-spacing: .015em;
+  margin-top: .55rem; max-width: 54ch;
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  color: var(--ink-2); letter-spacing: .01em;
 }
 .hero-lead {
   margin-top: 1.5rem; max-width: 62ch;
@@ -189,39 +268,64 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
   transition: color var(--t);
 }
 .contact-row .ico { color: var(--accent-2); }
+.contact-row a { position: relative; }
+.contact-row a::after {
+  content: ''; position: absolute; left: 1.45em; right: 0; bottom: 1px; height: 1px;
+  background: currentColor; opacity: 0;
+  transform: scaleX(.5); transform-origin: left;
+  transition: opacity var(--t), transform var(--t);
+}
 .contact-row a:hover { color: var(--accent-ink); }
+.contact-row a:hover::after { opacity: .45; transform: scaleX(1); }
 .contact-row.big { font-size: 1rem; gap: .75rem 2rem; margin-top: 1.75rem; margin-bottom: .5rem; }
 
 .cta-row { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }
 .btn {
   display: inline-flex; align-items: center; gap: .5rem;
-  padding: .62rem 1.15rem; border-radius: 8px;
-  border: 1px solid var(--rule-2); background: transparent;
+  padding: .68rem 1.2rem; border-radius: var(--r-md);
+  border: 1px solid var(--rule-2); background: var(--surface);
   color: var(--ink); font-size: .9rem; font-weight: 600; cursor: pointer;
-  transition: color var(--t), border-color var(--t), background-color var(--t);
+  box-shadow: var(--sh-1);
+  transition: color var(--t), border-color var(--t), background-color var(--t), box-shadow var(--t);
 }
-.btn:hover { border-color: var(--accent-ink); color: var(--accent-ink); }
+.btn .ico { transition: transform var(--t); }
+.btn:hover {
+  border-color: var(--accent-line); color: var(--accent-ink);
+  box-shadow: var(--sh-2);
+}
+.btn[download]:hover .ico { transform: translateY(2px); }
 .btn-primary {
   background: var(--btn-bg); border-color: var(--btn-bg); color: var(--btn-fg);
+  box-shadow: 0 1px 2px rgba(4, 120, 87, .28), 0 8px 20px -8px rgba(4, 120, 87, .45);
 }
-.btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--btn-fg); }
-.btn-ghost { border-color: transparent; color: var(--mute); }
-.btn-ghost:hover { color: var(--accent-ink); border-color: var(--rule-2); }
+.btn-primary:hover {
+  background: var(--accent); border-color: var(--accent); color: var(--btn-fg);
+  box-shadow: 0 2px 4px rgba(4, 120, 87, .3), 0 14px 28px -10px rgba(4, 120, 87, .55);
+}
+.btn-ghost { border-color: transparent; background: transparent; box-shadow: none; color: var(--mute); }
+.btn-ghost:hover { color: var(--accent-ink); border-color: var(--rule-2); box-shadow: none; }
 
-/* Без разделителя: единственная линия по ширине контента спорила бы с
-   полноширинными границами секций, а её правый конец повисал под фото.
-   Разделяет воздух — это и есть швейцарский приём. */
+/* Метрики — строка «цифра + подпись» с волосяными разделителями:
+   компактнее колонок и не оставляет пустого поля справа. */
 .metrics {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1.5rem; padding-top: 2.75rem;
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: .9rem 2rem; margin-top: 2.5rem; padding-top: 1.4rem;
+  border-top: 1px solid var(--rule);
 }
+.metrics > li { display: flex; align-items: baseline; gap: .5rem; }
+.metrics > li + li { padding-left: 2rem; border-left: 1px solid var(--rule); }
 .metric-n {
-  display: block;
-  font-size: clamp(1.7rem, 4vw, 2.2rem); font-weight: 700;
-  color: var(--ink); letter-spacing: -.02em; line-height: 1.1;
+  font-size: clamp(1.35rem, 2.6vw, 1.65rem); font-weight: 700;
+  color: var(--ink); letter-spacing: -.02em; line-height: 1.15;
   font-variant-numeric: tabular-nums;
 }
-.metric-l { display: block; margin-top: .2rem; font-size: .84rem; color: var(--mute); }
+.metric-l { font-size: .84rem; color: var(--mute); }
+
+@media (max-width: 560px) {
+  .metrics { gap: .55rem 1.25rem; }
+  .metrics > li + li { padding-left: 0; border-left: 0; }
+  .metrics > li { flex-basis: 100%; }
+}
 
 /* ───────── СЕКЦИИ И «РЕЛЬС» ───────── */
 .band { padding-block: clamp(2.75rem, 7vw, 5rem); border-top: 1px solid var(--rule); }
@@ -229,25 +333,24 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
 
 .rail { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
 .rail-label {
+  position: relative; padding-top: .6rem;
   font-size: .72rem; font-weight: 700; letter-spacing: .14em;
   text-transform: uppercase; color: var(--ink);
+}
+/* Короткая засечка над подписью: отмечает начало раздела, не добавляя
+   ещё одну горизонтальную линию к границам секций. */
+.rail-label::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 22px; height: 2px; background: var(--accent);
 }
 .rail-body { min-width: 0; }
 
 .section-lead { color: var(--mute); max-width: 62ch; margin-bottom: 1.75rem; }
 
 /* ───────── ПРОФИЛЬ ───────── */
-.strengths { display: grid; gap: 1.5rem; }
-.strengths h3 {
-  font-size: 1.02rem;
-  display: flex; gap: .6rem; align-items: baseline;
-}
-.strengths h3::before {
-  content: '';
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--accent); flex: none; translate: 0 -2px;
-}
-.strengths p { margin-top: .35rem; padding-left: 1.3rem; max-width: 68ch; }
+.about-prose { display: grid; gap: 1.1rem; max-width: 78ch; }
+.about-prose p { line-height: 1.66; }
+.about-prose b { color: var(--ink); font-weight: 600; }
 
 .facts {
   margin-top: 2.25rem; padding-top: 1.5rem; border-top: 1px solid var(--rule);
@@ -264,7 +367,8 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
 .track { position: relative; }
 .track::before {
   content: ''; position: absolute; left: 3px; top: .55rem; bottom: .4rem;
-  width: 1px; background: var(--rule);
+  width: 1px;
+  background: linear-gradient(var(--accent-line), var(--rule) 14%, var(--rule));
 }
 .job { position: relative; padding-left: 1.85rem; }
 .job + .job { margin-top: 2.5rem; }
@@ -273,11 +377,17 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
   width: 7px; height: 7px; border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 3px var(--paper);
+  transition: box-shadow var(--t);
 }
 .band-alt .job::before { box-shadow: 0 0 0 3px var(--band); }
+.job:hover::before { box-shadow: 0 0 0 3px var(--paper), 0 0 0 7px var(--accent-wash); }
+.band-alt .job:hover::before { box-shadow: 0 0 0 3px var(--band), 0 0 0 7px var(--accent-wash); }
 
-.job-dates { font-size: .8rem; color: var(--mute); letter-spacing: .02em; }
-.job-role { margin-top: .15rem; font-size: 1.12rem; }
+.job-dates {
+  font-size: .8rem; color: var(--mute); letter-spacing: .02em;
+  font-variant-numeric: tabular-nums;
+}
+.job-role { margin-top: .15rem; font-size: 1.12rem; letter-spacing: -.01em; }
 .job-co { margin-top: .1rem; font-size: .95rem; font-weight: 600; color: var(--accent-ink); letter-spacing: .04em; }
 .job-about { margin-top: .6rem; font-size: .92rem; color: var(--mute); max-width: 68ch; }
 .job-about b { color: var(--ink-2); }
@@ -298,6 +408,11 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
 
 /* ───────── НАВЫКИ ───────── */
 .skills { display: grid; gap: 1.35rem; }
+.skill {
+  padding-left: 1rem; border-left: 2px solid var(--rule);
+  transition: border-color var(--t);
+}
+.skill:hover { border-left-color: var(--accent-line); }
 .skill dt {
   font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .2rem;
 }
@@ -307,12 +422,19 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
 /* ───────── КЛЮЧЕВЫЕ КЕЙСЫ ─────────
    Слой доказательств: задача → решение → итог. Нумерация — счётчиком CSS,
    чтобы порядок нельзя было рассинхронизировать с разметкой. */
-.cases { display: grid; gap: 2.25rem; counter-reset: kase; }
+.cases { display: grid; gap: 1rem; counter-reset: kase; }
 
-.case { counter-increment: kase; }
+.case {
+  counter-increment: kase;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--rule); border-radius: var(--r-lg);
+  background: var(--raise);
+  transition: border-color var(--t), box-shadow var(--t);
+}
+.case:hover { border-color: var(--accent-line); box-shadow: var(--sh-2); }
 .case-t {
   font-size: 1.06rem; line-height: 1.35;
-  display: grid; grid-template-columns: 2.1rem minmax(0, 1fr); align-items: baseline;
+  display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); align-items: baseline;
 }
 .case-t::before {
   content: counter(kase, decimal-leading-zero);
@@ -321,7 +443,7 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
   font-variant-numeric: tabular-nums;
 }
 
-.case-b { margin-top: .8rem; margin-left: 2.1rem; display: grid; gap: .5rem; }
+.case-b { margin-top: .8rem; margin-left: 2.4rem; display: grid; gap: .5rem; }
 .case-b dt {
   font-size: .68rem; font-weight: 700; letter-spacing: .12em;
   text-transform: uppercase; color: var(--mute); padding-top: .22rem;
@@ -330,11 +452,13 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
 .case-b .k-res { color: var(--accent-ink); }
 .case-b .d-res { color: var(--ink); font-weight: 600; }
 
-/* ───────── ЗАГЛУШКА-ССЫЛКА В КАРТОЧКЕ ───────── */
+/* ───────── ПОДПИСЬ В КАРТОЧКЕ ─────────
+   Не ссылка и не притворяется ею: стрелку убрал, чтобы карточка не
+   обещала перехода, которого нет. */
 .card-link {
   display: inline-block; margin-top: .7rem;
-  font-size: .8rem; font-weight: 600; color: var(--faint);
-  letter-spacing: .01em;
+  font-size: .78rem; font-weight: 600; color: var(--faint);
+  letter-spacing: .02em;
 }
 a.card-link { color: var(--accent-ink); transition: opacity var(--t); }
 a.card-link:hover { opacity: .7; }
@@ -345,17 +469,26 @@ a.card-link:hover { opacity: .7; }
   grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
 }
 .card {
-  padding: 1.35rem; border: 1px solid var(--rule); border-radius: 10px;
-  background: var(--paper);
+  display: flex; flex-direction: column;
+  padding: 1.4rem; border: 1px solid var(--rule); border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--sh-1);
+  transition: border-color var(--t), box-shadow var(--t);
 }
-.card-top { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; }
-.card h3 { font-size: 1rem; }
+.card:hover { border-color: var(--accent-line); box-shadow: var(--sh-2); }
+.card-top { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.card h3 { font-size: 1rem; letter-spacing: -.01em; }
 .tag {
-  font-size: .68rem; font-weight: 700; letter-spacing: .05em;
+  padding: .16rem .5rem; border-radius: 100px;
+  background: var(--accent-wash); border: 1px solid var(--accent-line);
+  font-size: .66rem; font-weight: 700; letter-spacing: .05em;
   color: var(--accent-ink); white-space: nowrap;
 }
-.card p { margin-top: .55rem; font-size: .89rem; }
-.card-stack { margin-top: .8rem; font-size: .77rem; color: var(--faint); letter-spacing: .01em; }
+.card p { margin-top: .6rem; font-size: .89rem; }
+.card-stack {
+  margin-top: auto; padding-top: .85rem;
+  font-size: .76rem; color: var(--faint); letter-spacing: .01em;
+}
 
 /* ───────── ОБРАЗОВАНИЕ ───────── */
 .edu h3 { font-size: 1.05rem; max-width: 40ch; }
@@ -369,26 +502,43 @@ a.card-link:hover { opacity: .7; }
   display: inline-flex; align-items: center; gap: .5rem;
   margin-top: .9rem; font-size: .88rem; color: var(--mute);
 }
-.status .dot {
+.status .dot, .hero-avail .dot {
+  position: relative;
   width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+}
+/* Пульс — единственное непрерывное движение на сайте, и только у индикатора
+   доступности: он несёт смысл «сейчас открыт», а не украшает. */
+.status .dot::after, .hero-avail .dot::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background: var(--accent);
+  animation: ping 2.6s cubic-bezier(0, 0, .2, 1) infinite;
+}
+@keyframes ping {
+  0%   { transform: scale(1);   opacity: .5; }
+  70%  { transform: scale(2.4); opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
 }
 
 .to-top {
   position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 40;
   display: flex; align-items: center; justify-content: center;
-  width: 40px; height: 40px; border-radius: 10px;
-  border: 1px solid var(--rule); background: var(--paper); color: var(--mute);
-  font-size: 1.1rem; opacity: 0; visibility: hidden;
-  transition: opacity var(--t), visibility var(--t), color var(--t), border-color var(--t);
+  width: 42px; height: 42px; border-radius: var(--r-md);
+  border: 1px solid var(--rule); background: var(--surface); color: var(--mute);
+  font-size: 1.1rem; cursor: pointer;
+  box-shadow: var(--sh-2);
+  opacity: 0; visibility: hidden; transform: translateY(6px);
+  transition: opacity var(--t), visibility var(--t), transform var(--t),
+              color var(--t), border-color var(--t);
 }
-.to-top.on { opacity: 1; visibility: visible; }
-.to-top:hover { color: var(--accent-ink); border-color: var(--accent-ink); }
+.to-top.on { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { color: var(--accent-ink); border-color: var(--accent-line); }
 
 /* ───────── ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ (однократное) ───────── */
-.reveal { opacity: 0; transform: translateY(10px); }
+.reveal { opacity: 0; transform: translateY(12px); }
 .reveal.in {
   opacity: 1; transform: none;
-  transition: opacity 420ms ease-out, transform 420ms ease-out;
+  transition: opacity var(--t-slow), transform var(--t-slow);
+  transition-delay: calc(var(--i, 0) * 70ms);
 }
 
 /* ───────── АДАПТИВ ───────── */
@@ -399,6 +549,8 @@ a.card-link:hover { opacity: .7; }
   .facts { grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; }
   .case-b { grid-template-columns: 5.5rem minmax(0, 1fr); gap: .45rem 1.25rem; }
   .facts dd { margin-bottom: .25rem; }
+  .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2.5rem; }
+  .skill:nth-child(-n+2) { grid-column: 1 / -1; }
 }
 
 @media (min-width: 940px) {
@@ -413,11 +565,16 @@ a.card-link:hover { opacity: .7; }
     flex-direction: column; gap: 0;
     padding: .5rem var(--gutter) 1rem;
     background: var(--paper); border-bottom: 1px solid var(--rule);
+    box-shadow: var(--sh-2);
     display: none;
   }
   .nav-links.open { display: flex; }
-  .nav-links a { padding: .7rem 0; border-bottom: 1px solid var(--rule); }
-  .nav-links a.on { border-bottom-color: var(--rule); }
+  .nav-links a { padding: .7rem 0; border-radius: 0; border-bottom: 1px solid var(--rule); }
+  .nav-links a:hover { background: transparent; }
+  .nav-links a::after { display: none; }
+  .case { padding: 1.15rem; }
+  .case-t { grid-template-columns: 1.9rem minmax(0, 1fr); }
+  .case-b { margin-left: 1.9rem; }
 }
 
 /* ───────── ДОСТУПНОСТЬ ───────── */
@@ -429,10 +586,12 @@ a.card-link:hover { opacity: .7; }
     transition-duration: .01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+  .status .dot::after, .hero-avail .dot::after { display: none; }
 }
 
 @media print {
-  .nav, .to-top, .cta-row, .skip { display: none; }
+  .nav, .to-top, .cta-row, .skip, .hero-avail { display: none; }
   body { background: #fff; color: #000; }
   .band { border: 0; padding-block: 1rem; }
+  .case, .card { border: 0; box-shadow: none; padding: 0; background: none; }
 }

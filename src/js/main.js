@@ -117,6 +117,13 @@ function countUp(el) {
 }
 
 function initReveal() {
+  // Соседи по списку въезжают лесенкой, а не одним полотном: задержку
+  // задаём разметке один раз, само смещение считает CSS.
+  for (const group of $$('.cases, .cards, .track, .skills, .about-prose')) {
+    let i = 0;
+    for (const el of $$('.reveal', group)) el.style.setProperty('--i', Math.min(i++, 5));
+  }
+
   const io = new IntersectionObserver((entries, obs) => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
@@ -145,6 +152,7 @@ function initReveal() {
 function initScroll() {
   const bar = $('#nav-progress');
   const top = $('#to-top');
+  const nav = $('.nav');
   let ticking = false;
 
   const update = () => {
@@ -152,6 +160,7 @@ function initScroll() {
     const progress = max > 0 ? scrollY / max : 0;
     bar.style.width = (progress * 100).toFixed(2) + '%';
     top.classList.toggle('on', scrollY > innerHeight * 0.8);
+    nav.classList.toggle('stuck', scrollY > 4);   // линия под шапкой — только когда есть что отделять
     ticking = false;
   };
 
