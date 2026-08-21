@@ -96,7 +96,7 @@
     display: block;
     margin-top: 0.7mm;
     font-size: 12.2px;
-    color: var(--mute);
+    color: var(--ink-2);
     font-weight: 400;
     letter-spacing: 0.025em;
   }
@@ -117,18 +117,15 @@
   /* Без плашки: разворот держится одной непрерывной линией, которая
      складывается в V ровно там, где начинается вертикальный рельс.
      Стыковать нечего — значит, нечему и разъехаться. */
-  .intro { padding: 3.4mm 0 0; }
+  .intro { padding: 2.8mm 0 0; }
   .intro-lead { font-size: 11.3px; line-height: 1.48; }
-  .intro-sub { margin-top: 2.6mm; font-size: 11.1px; font-weight: 700; color: var(--ink); }
-  .intro ul { margin-top: 1.4mm; padding-left: 4.4mm; }
-  .intro li { font-size: 10.6px; line-height: 1.46; margin-top: 1mm; }
-  .intro li::marker { color: var(--accent); }
+  .intro-body { margin-top: 1.9mm; font-size: 10.7px; line-height: 1.47; }
 
   .fold {
     display: block;
     width: 184mm;              /* ровно ширина контента: 210 − 13 − 13 */
     height: 4mm;
-    margin-top: 3.4mm;
+    margin-top: 2.2mm;
     overflow: visible;
   }
   .fold path {
@@ -167,7 +164,7 @@
   }
   .dt {
     font-size: 10px;
-    color: var(--mute);
+    color: var(--ink-2);
     white-space: nowrap;
   }
   .lbl + .dt { margin-top: 2.4mm; }
@@ -175,7 +172,7 @@
     flex: 1;
     min-width: 0;
     padding-left: var(--gap);
-    padding-bottom: 4.4mm;
+    padding-bottom: 3.0mm;
     position: relative;
   }
   .dot {
@@ -191,13 +188,13 @@
   /* ───────────── КОМПЕТЕНЦИИ / НАВЫКИ ───────────── */
   .core { font-size: 10.7px; color: var(--ink); font-weight: 600; }
   .core + .core { margin-top: 1.6mm; }
-  .core .k { color: var(--mute); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; font-size: 9px; }
-  .core .dom { font-weight: 400; color: var(--mute); }
+  .core .k { color: var(--ink); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-size: 9px; }
+  .core .dom { font-weight: 400; color: var(--ink-2); }
   .core .dom b { color: var(--accent); font-weight: 700; }
   .skill { font-size: 10.3px; line-height: 1.46; }
-  .skill + .skill { margin-top: 1.8mm; }
+  .skill + .skill { margin-top: 1.1mm; }
   .skill .k { font-weight: 700; color: var(--ink); }
-  .skill .soft { color: #8b9299; font-size: 9.7px; }
+  .skill .soft { color: var(--ink-2); font-size: 10.3px; }
 
   /* ───────────── ОПЫТ ───────────── */
   .j-role { font-size: 12.6px; font-weight: 700; color: var(--ink); }
@@ -208,13 +205,13 @@
     color: var(--accent);
     letter-spacing: 0.07em;
   }
-  .j-about { margin-top: 1.6mm; font-size: 10.4px; line-height: 1.44; color: var(--mute); }
-  .j-about b { color: var(--ink-2); }
-  .stack { margin-top: 1.8mm; font-size: 10.3px; line-height: 1.44; }
+  .j-about { margin-top: 1.6mm; font-size: 10.4px; line-height: 1.44; color: var(--ink-2); }
+  .j-about b { color: var(--ink); }
+  .stack { margin-top: 1.5mm; font-size: 10.3px; line-height: 1.44; }
   .stack .k { font-weight: 700; color: var(--ink); letter-spacing: 0.02em; }
-  ul.b { margin-top: 2.2mm; padding-left: 4.4mm; }
+  ul.b { margin-top: 1.9mm; padding-left: 4.4mm; }
   ul.b li { font-size: 10.35px; line-height: 1.45; }
-  ul.b li + li { margin-top: 1.4mm; }
+  ul.b li + li { margin-top: 0.9mm; }
   ul.b li::marker { color: #b5bcb7; }
   ul.b li.key::marker { color: var(--accent); }
 
@@ -231,7 +228,7 @@
     left: 14mm; right: 14mm; bottom: 5.5mm;
     display: flex; justify-content: space-between;
     font-size: 8.6px;
-    color: var(--faint);
+    color: var(--mute);
     letter-spacing: 0.04em;
   }
 
@@ -260,9 +257,9 @@
       <h1 class="name">Vladislav Laikov</h1>
       <div class="role"><span class="big">Senior PHP Developer</span><span class="thin">Symfony / Laravel · distributed systems &amp; high load</span></div>
       <div class="contacts">
-        <span class="ct"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 2.9 11.6c-1 .4-1 1.8.1 2.1l4.7 1.5 1.8 5.5c.3.8 1.3 1 1.9.4l2.6-2.5 4.7 3.4c.7.5 1.7.1 1.9-.7l3.1-15.1c.2-1-.8-1.8-1.8-1.9zM9.6 14.6l-.4 3.7-1.3-4 9.6-6-7.9 6.3z"/></svg>t.me/vladis_like</span>
-        <span class="ct"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .5 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.5-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>+375 25 505 57 12</span>
-        <span class="ct"><svg viewBox="0 0 24 24"><path d="M3 5h18c.6 0 1 .5 1 1v12c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V6c0-.5.4-1 1-1zm17 3.2L12 13 4 8.2V17h16V8.2zM19.2 7H4.8L12 11.3 19.2 7z"/></svg>vladislikedev@gmail.com</span>
+        <span class="ct"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 2.9 11.6c-1 .4-1 1.8.1 2.1l4.7 1.5 1.8 5.5c.3.8 1.3 1 1.9.4l2.6-2.5 4.7 3.4c.7.5 1.7.1 1.9-.7l3.1-15.1c.2-1-.8-1.8-1.8-1.9zM9.6 14.6l-.4 3.7-1.3-4 9.6-6-7.9 6.3z"/></svg>t.me/vladisdev</span>
+        <span class="ct"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .5 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.5-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>+375 29 163 36 69</span>
+        <span class="ct"><svg viewBox="0 0 24 24"><path d="M3 5h18c.6 0 1 .5 1 1v12c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V6c0-.5.4-1 1-1zm17 3.2L12 13 4 8.2V17h16V8.2zM19.2 7H4.8L12 11.3 19.2 7z"/></svg>vladlikedev@gmail.com</span>
         <span class="ct"><svg viewBox="0 0 24 24"><path d="M5 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9.5h4V21H3V9.5zm6.2 0H13v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.5 4.7 5.8V21h-4v-5.4c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21h-4V9.5z"/></svg>linkedin.com/in/vlad-laikov-php</span>
         <span class="ct"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>Remote · UTC+3</span>
       </div>
@@ -272,14 +269,14 @@
 
   <div class="intro">
     <p class="intro-lead">
-      Senior backend engineer, <b>7+ years on PHP / Symfony</b>. For the last <b>3.5 years</b> my home ground has been the <b>money path of a product</b>: payments, balances and integrations; <b>12+ payment providers</b> shipped to production.
+      Senior backend engineer, <b>7+ years on PHP / Symfony</b>. For the last <b>3.5 years</b> my home ground has been the <b>money path of a product</b>: payments, balances and integrations; <b>10+ payment providers</b> shipped to production.
     </p>
-    <div class="intro-sub">My strengths are:</div>
-    <ul>
-      <li><b>Payment idempotency.</b> I design so a payment cannot be lost, duplicated or spent twice: uniqueness enforced by the database, lock ordering instead of retries layered over the symptom, internal and external states that never diverge</li>
-      <li><b>Change on live production without a maintenance window.</b> Major database and framework upgrades, a dialect switch, carving services out of a monolith — staged and reversible, on a ~<b>50 TB</b> cluster and a <b>2 TB+</b> production database</li>
-      <li><b>Infrastructure is not someone else's job.</b> <b>Docker</b> and <b>Kubernetes</b>, <b>RabbitMQ</b> and <b>Kafka</b>, replication and sharding, <b>GitLab CI</b> / <b>GitHub Actions</b> pipelines, alerting in <b>Grafana</b> — I carry an epic from the architectural decision to the graphs in production</li>
-    </ul>
+    <p class="intro-body">
+      I design the money path so a payment cannot be lost, duplicated or spent twice: uniqueness is enforced by the database itself rather than by application code, lock ordering removes deadlocks instead of retries layered over the symptom, and internal and external states never diverge. Heavy operations move out of the synchronous cycle into queues, with the result pushed to the interface as an event over <b>Mercure (SSE)</b> — the user is not left waiting on the request, but gets the answer once the work is genuinely done.
+    </p>
+    <p class="intro-body">
+      I change live production without a maintenance window: major database and framework upgrades, a dialect switch and carving services out of a monolith are staged and reversible, on a ~<b>50 TB</b> cluster. Infrastructure is not someone else's job — <b>Docker</b> and <b>Kubernetes</b>, <b>RabbitMQ</b> and <b>Kafka</b>, replication and sharding, <b>GitLab CI</b> / <b>GitHub Actions</b> pipelines, alerting in <b>Grafana</b>: I carry an epic from the architectural decision to the graphs in production.
+    </p>
   </div>
 
   <svg class="fold" viewBox="0 0 184 4" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0.6 H31.2 L34 4 L36.8 0.6 H184"/></svg>
@@ -317,14 +314,13 @@
         <span class="dot"></span>
         <div class="j-role">Senior PHP Developer · payments team</div>
         <div class="j-co">systeme.io — international SaaS platform · Remote</div>
-        <p class="j-about">Funnels, courses, email marketing, payment acceptance. <b>Payments team</b> — the domain where a mistake costs money directly: ~<b>50 TB</b> of data, <b>12+ providers</b>, microservices around a monolith.</p>
-        <p class="stack"><span class="k">Stack:</span> <b>PHP 8.3—8.5</b>, <b>Symfony 6.4—7.4</b>, <b>Doctrine</b>, <b>PostgreSQL 14—18</b>, <b>MongoDB</b>, <b>Redis</b>, <b>RabbitMQ</b>, <b>Kafka</b>, <b>Docker</b>, <b>AWS</b>, <b>Grafana / Loki</b>, PHPStan level 9, GrumPHP</p>
+        <p class="j-about">An international all-in-one SaaS platform for online business (email marketing, sales funnels, online courses, payment acceptance): <b>15M+</b> registered accounts and <b>500K+</b> active businesses across <b>170+ countries</b>. A high-load system: around <b>1B</b> email sends a month (<b>12B+</b> a year), ~<b>2B</b> contact records in the database, millions of published pages and funnels drawing hundreds of millions of views a month. Carving pieces of the monolith out into services — staged and reversible.</p>
+        <p class="stack"><span class="k">Stack:</span> <b>PHP 8.3—8.5</b>, <b>Symfony 6.4—7.4</b>, <b>Doctrine</b>, <b>PostgreSQL 14—18</b>, <b>MongoDB</b>, <b>Redis</b>, <b>RabbitMQ</b>, <b>Kafka</b>, <b>Mercure</b>, <b>Docker</b>, <b>AWS</b>, <b>Grafana / Loki</b>, PHPStan level 9, GrumPHP</p>
         <ul class="b">
-          <li class="key">Ran a major <b>PostgreSQL 14 → 18</b> upgrade on a ~<b>50 TB</b> cluster without pausing payment acceptance: logical replication, drift driven to zero before cut-over, one contour switched at a time with the option to step back at any point.</li>
-          <li class="key">Owned <b>all 12+ payment integrations</b> on the platform. Delivered <b>Apple Pay via Stripe</b> end-to-end and extracted one provider <b>from the monolith into a standalone microservice</b> — its own database, its own deployment, a shared contract bundle: a new provider plugs in without touching the core.</li>
+          <li class="key">Replaced client-side polling with push over <b>Mercure (SSE)</b>: heavy operations left the synchronous request for queues, and the interface receives an event the moment the result is ready instead of polling on a timer. Designed an observer registry for it: a new polling site plugs in as a single class, with no edits to business handlers, and an event fires only when the response actually changes. Result: <b>~200K redundant requests an hour</b> gone — <b>~1.5B a year</b>, about <b>90% of polling traffic</b>; the busiest route went from <b>~70K requests an hour to ~4K</b>.</li>
+          <li class="key">Owned <b>all 10+ payment integrations</b> on the platform. Delivered <b>Apple Pay via Stripe</b> end-to-end and extracted one provider <b>from the monolith into a standalone microservice</b> — its own database, its own deployment, a shared contract bundle: a new provider plugs in without touching the core.</li>
           <li class="key">Designed a <b>partial-refund engine</b>: the business gave a one-line requirement — I defined the granularity (order-item level), four webhook routing scenarios, a guarded status machine and over-refund protection.</li>
-          <li>Built payment webhook intake so that <b>no money event is ever dropped or applied twice</b>: the raw payload is stored before processing, a guard on the event key, signature verification, retries over 30 days, and a bypass path during database maintenance.</li>
-          <li>With the team, <b>cut hot-path query latency 3×</b>: profiling, indexing strategies, batch processing in <b>Doctrine</b>. Owned the epic end-to-end — design, splitting work across two developers, acceptance.</li>
+          <li class="key">Ran a major <b>PostgreSQL 14 → 18</b> upgrade on a ~<b>50 TB</b> cluster without pausing payment acceptance: logical replication, drift driven to zero before cut-over, one contour switched at a time with the option to step back at any point.</li>
           <li>Ran <b>PHP 8.3 → 8.5</b> and <b>Symfony 6.4 → 7.4 LTS</b> migrations on live production. Discipline through tooling: <b>PHPStan level 9</b>, a hard CI gate on every PR, real PostgreSQL and Redis in tests instead of mocks.</li>
         </ul>
       </div>
@@ -345,14 +341,13 @@
         <span class="dot"></span>
         <div class="j-role">PHP Developer · CORE team</div>
         <div class="j-co">Octopays (Mservis) — fintech platform · Remote</div>
-        <p class="j-about">Payment transaction processing and card payouts. Core team, <b>2 TB+</b> production database, real-time transaction processing, event-driven architecture.</p>
+        <p class="j-about">An international payment provider (PSP aggregator) for the high-risk segment: payment acceptance and payouts to cards and wallets across <b>10+ countries</b>. A high-load system: ~<b>5M</b> transactions a month (<b>60M+</b> a year), <b>40+</b> payment methods and providers, <b>200+</b> active merchants. Core team, a <b>2 TB+</b> production database, real-time transaction processing, event-driven architecture (<b>Kafka</b>, millions of events a day).</p>
         <p class="stack"><span class="k">Stack:</span> <b>PHP 7.4—8.2</b>, <b>Laravel 9—10</b>, <b>PostgreSQL</b>, MySQL, <b>Redis</b>, <b>Kafka</b>, <b>Docker</b>, ELK, <b>PHPUnit</b>, <b>PHPStan</b></p>
         <ul class="b">
-          <li class="key">Balances with an <b>in-flight reserve</b>: money promised to pending operations cannot be spent twice under parallel requests. Payout idempotency enforced by a <b>unique database index</b> — the database rejects the duplicate, not the application code.</li>
-          <li class="key">Eliminated <b>deadlocks</b> on parallel balance recalculation through <b>lock ordering and targeted FOR UPDATE</b> under READ COMMITTED — prevention at the access-pattern level, not a retry wrapper over the symptom.</li>
-          <li>Financial module: a transaction moves through about ten internal statuses while the merchant sees a simple pending / success / fail — built so that internal and external state never diverge.</li>
-          <li>Took part in the <b>MySQL → PostgreSQL</b> switch on a critical contour: reworking the schema for PG-specific types and indexes, staged data migration with no loss of integrity, aligning legacy code with the new dialect, and validation in production.</li>
-          <li><b>Laravel 9 → 10</b> migration, refactoring of critical payment pipelines, test coverage (<b>PHPUnit</b>), static analysis (<b>PHPStan</b>), observability on <b>ELK</b>.</li>
+          <li class="key"><b>Balances with held funds:</b> while an operation is still in flight its amount stays frozen on the balance, so the same money cannot be spent twice under concurrent requests — at ~<b>150–200K operations a day</b>. Payout idempotency is enforced by a <b>unique index in the database</b>: a duplicate is rejected by the database itself, not by application code; <b>not a single double payout since rollout</b>.</li>
+          <li class="key"><b>Deadlocks</b> on concurrent balance recalculation were removed by <b>lock ordering and targeted FOR UPDATE</b> under READ COMMITTED — prevention at the access-pattern level, not a retry wrapper over the symptom. Concurrency errors at peak hours dropped to <b>almost none</b>, and manual investigations of “stuck” operations all but disappeared.</li>
+          <li>Financial module: a transaction moves through about ten internal statuses while the merchant sees a simple pending / success / fail; internal and external state never diverge. The result — predictable callbacks across <b>40+ integrations</b> and a <b>30–40% drop</b> in merchant queries about “unclear” statuses.</li>
+          <li><b>Laravel 9 → 10</b> migration and refactoring of critical payment pipelines: <b>PHPUnit</b> tests over financial scenarios (up to ~<b>80%</b> coverage), <b>PHPStan level 6+</b>, observability on <b>ELK</b> — diagnosing payment incidents went <b>from hours to minutes</b>. Took part in the <b>MySQL → PostgreSQL</b> switch on a critical contour (<b>2 TB+</b>): schema reworked for PG-specific types and indexes, staged migration with no loss of integrity and no pause in payment acceptance, legacy code synchronised with the new dialect; p95 on key transaction queries <b>2–3× faster</b>.</li>
         </ul>
       </div>
     </div>
@@ -363,12 +358,12 @@
         <span class="dot"></span>
         <div class="j-role">PHP Developer</div>
         <div class="j-co">Basis33 — outsourcing for EU clients · Remote</div>
-        <p class="j-about">A team of <b>25 engineers</b>. I ran two products in unrelated domains, both shipped to production: a <b>German medical platform</b> — two years, strict compliance, appointment booking and calendars — and a <b>video consultation service</b> integrated with the Zoom API.</p>
+        <p class="j-about">Full-cycle custom development for EU clients, a team of <b>25 engineers</b>: high-load services with large codebases, business-process automation, a <b>medical SaaS platform</b>. I ran two products in unrelated domains, both shipped to production.</p>
         <p class="stack"><span class="k">Stack:</span> <b>PHP 7.4</b>, <b>Symfony 5.3</b>, API Platform, <b>MySQL</b>, <b>RabbitMQ</b>, Redis, Docker, GitLab CI/CD</p>
         <ul class="b">
-          <li>Sped up the heavy screens of the medical platform: pulled query plans, unfolded <b>N+1</b> into explicit joins, picked composite indexes matching the real filters, moved hot result sets into <b>Redis</b> with invalidation driven by domain events. The production cluster ran with <b>replication and partitioning</b> — read paths went to the replica.</li>
-          <li>Kept contracts aligned between Frontend, Backend and DevOps: on a medical platform a mismatched contract costs more than a bug in the code.</li>
-          <li>Two unfamiliar domains back to back, both taken to production: stepping into someone else's problem space is routine for me, not an exception.</li>
+          <li>Grew the core of the medical platform and shipped new features. Closed the remote-appointment request with a <b>Zoom API integration</b>: doctor and patient enter the consultation straight from the booking calendar, with no links sent by hand.</li>
+          <li>Sped up the heavy screens: query plans, <b>N+1</b> unfolded into explicit joins, composite indexes matching the real filters, schema normalisation and targeted denormalisation of hot result sets, <b>Redis</b> caching with invalidation driven by domain events. The production cluster ran with <b>replication and partitioning</b> — read paths went to the replica.</li>
+          <li>Covered what mattered with tests: <b>unit tests</b> over domain rules and <b>functional tests</b> over API scenarios — regressions in booking and calendars were caught before release, not in production.</li>
         </ul>
       </div>
     </div>
@@ -380,10 +375,10 @@
         <div class="j-role">PHP Developer</div>
         <div class="j-co">Sollento Group — classifieds and data collection · Remote</div>
         <p class="j-about">Search-driven SPA classifieds platform and an automated data collection service.</p>
-        <p class="stack"><span class="k">Stack:</span> <b>PHP</b>, <b>Symfony</b>, Doctrine, <b>PostgreSQL</b>, Docker, Swagger, GitLab CI</p>
+        <p class="stack"><span class="k">Stack:</span> <b>PHP 7.1—7.4</b>, <b>Symfony 3.4 → 4.4 LTS</b>, Doctrine, <b>PostgreSQL</b>, Docker, Swagger, GitLab CI</p>
         <ul class="b">
-          <li>Built the backend of a classifieds platform: a domain model shaped for search and filtering in <b>PostgreSQL</b>, a versioned <b>REST contract</b> documented in Swagger, automated builds and deployment through <b>GitLab CI</b>. The first place where I owned a system rather than individual tickets.</li>
-          <li>Wrote a collector pulling listings from external sources to keep the catalogue populated; laid out the codebase as <b>SOA</b> following SOLID and GRASP.</li>
+          <li>Took part in moving the platform off its legacy stack: <b>PHP 7.1 → 7.4</b>, <b>Symfony 3.4 → 4.4 LTS</b> — modules ported piece by piece, with no service downtime.</li>
+          <li>Built the backend of a classifieds platform: a domain model shaped for search and filtering in <b>PostgreSQL</b>, a versioned <b>REST contract</b> in Swagger, automated builds and deployment through <b>GitLab CI</b>, and a collector pulling listings from external sources. The first place where I owned a system rather than individual tickets.</li>
         </ul>
       </div>
     </div>
@@ -393,8 +388,8 @@
       <div class="cell">
         <span class="dot"></span>
         <ul class="b" style="margin-top:0">
-          <li>I run my own products from idea and architecture through to production deployment, with no team behind me: a community platform on <b>DDD / CQRS</b> with context boundaries enforced by <b>deptrac</b>, an EdTech platform executing code in the browser with real-time collaboration, and a social platform with real-time over <b>Centrifugo</b> and an installable PWA. Frontend and mobile — Vue 3, Angular + Ionic, Capacitor.</li>
-          <li><b>I mentor PHP developers from mid to senior</b>: concept maps, code review, mock interviews, weak-spot tracking; AI-assisted spec → code → QA loops are part of the process.</li>
+          <li>I run my own products from idea to production, with no team behind me: <b>DDD / CQRS</b>, real-time over <b>Centrifugo</b>, an installable PWA.</li>
+          <li><b>Development with AI agents.</b> I prefer <b>Claude Code</b> and keep it on a short leash: together we built the flow from documentation and spec through to backend, frontend and deployment.</li>
         </ul>
       </div>
     </div>

@@ -13,7 +13,7 @@
 ## ⚠️ Два сквозных фикса (применить ко ВСЕМ форматам)
 
 1. **Единая цифра масштаба данных — `~50 TB` (зафиксировано).** Сейчас в `en.js`/`ru.js` рассинхрон: `about_text` говорит **«500 TB+»**, а `job1_*` и `str1_desc` — **«~50 TB»**. Это ловится на интервью. **Ставим `~50 TB` ВЕЗДЕ** (`about_text`, `job1_summary`, `job1_a1`, `str1_desc`, hero-стат `Data Processed`) — `500 TB+` в About заменить на `~50 TB`. Никаких «500» нигде. В текстах ниже цифра уже проставлена.
-2. **Единый email:** `vladislikedev@gmail.com` (уже стоит в `index.html` и `cv.html` — просто не давать ему разъезжаться).
+2. **Единый email:** `vladlikedev@gmail.com` (уже стоит в `index.html` и `cv.html` — просто не давать ему разъезжаться).
 
 ---
 
@@ -79,7 +79,7 @@ Senior backend-инженер, который строит, масштабиру
 
 - `contact_status` (EN): ~~`Open to opportunities`~~ → **`Open to remote opportunities — any domain`**
 - `contact_status` (RU): ~~`Открыт для предложений`~~ → **`Открыт к remote-предложениям — любой домен`**
-- Email везде: **`vladislikedev@gmail.com`**.
+- Email везде: **`vladlikedev@gmail.com`**.
 
 ---
 
@@ -103,7 +103,7 @@ Senior backend-инженер, который строит, масштабиру
 - [ ] Единая цифра данных во всех местах (about, job1, strengths, hero-стат)
 - [ ] typing_phrases без «Payment Systems Specialist»
 - [ ] Strengths: Adaptability первой
-- [ ] Email `vladislikedev@gmail.com` везде
+- [ ] Email `vladlikedev@gmail.com` везде
 - [ ] contact_status с «any domain / любой домен»
 - [ ] meta/title обновлены
 - [ ] EN и RU синхронны по смыслу

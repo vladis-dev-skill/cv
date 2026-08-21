@@ -14,7 +14,7 @@
 ШАГ 0 — Контекст (прочитай перед правками):
 1. Прочитай `CV-content-fixes.md` в корне — это источник правды по контенту (EN+RU, все «было→стало»).
 2. Прочитай `src/i18n/en.js`, `src/i18n/ru.js`, `index.html`, `cv-pdf/cv.html`, `cv-pdf/build-pdf.mjs`.
-3. Зафиксируй два сквозных правила: (а) ЕДИНАЯ цифра масштаба данных везде = **`~50 TB`** (в живом CV `about_text` сейчас «500 TB+» — заменить на `~50 TB`; никаких «500» нигде); (б) email везде `vladislikedev@gmail.com`.
+3. Зафиксируй два сквозных правила: (а) ЕДИНАЯ цифра масштаба данных везде = **`~50 TB`** (в живом CV `about_text` сейчас «500 TB+» — заменить на `~50 TB`; никаких «500» нигде); (б) email везде `vladlikedev@gmail.com`.
 
 ШАГ 1 — Интерактивный сайт (контент в i18n):
 В `src/i18n/en.js` и `src/i18n/ru.js` примени из `CV-content-fixes.md`:
@@ -29,7 +29,7 @@
 
 ШАГ 2 — Meta/SEO в `index.html`:
 - `<title>` и og:title → `Vladislav Laikov — Senior Backend Engineer (PHP/Symfony)`.
-- Убедись, что email в контактах = `vladislikedev@gmail.com` (уже так — не сломать).
+- Убедись, что email в контактах = `vladlikedev@gmail.com` (уже так — не сломать).
 
 ШАГ 3 — Статический PDF, билингва (главное новое):
 Сейчас `cv-pdf/cv.html` — только RU. Нужны ДВА PDF: RU и EN.
@@ -42,7 +42,7 @@
 2. Проверь, что оба PDF созданы и непустые (`ls -la cv-pdf/*.pdf`).
 3. Прогони dev-сборку сайта на ошибки: `npm run build` — убедись, что билд проходит без ошибок.
 4. Grep-проверки консистентности (выведи результат):
-   - один email: `grep -rin "gmail" src/ index.html cv-pdf/*.html` → только `vladislikedev@gmail.com`.
+   - один email: `grep -rin "gmail" src/ index.html cv-pdf/*.html` → только `vladlikedev@gmail.com`.
    - одна цифра данных: `grep -rin "TB" src/ index.html cv-pdf/*.html` → одно и то же число, без «500».
    - нет старого ярлыка: `grep -rin "Payment Systems Specialist\|Специалист по платежным" src/` → пусто.
 
