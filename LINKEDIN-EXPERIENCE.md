@@ -14,7 +14,7 @@ What I actually do:
 
 • Design money flows that cannot lose, duplicate or double-spend a payment: uniqueness enforced by the database rather than application code, lock ordering instead of retries layered over the symptom, internal and external states that never diverge.
 • Change live production without a maintenance window — major database and framework upgrades (PostgreSQL 14 → 18 on a ~50 TB cluster, PHP 8.3 → 8.5, Symfony 6.4 → 7.4 LTS), dialect switches and carving services out of a monolith, all staged and reversible.
-• Take heavy work out of the synchronous request: queues, Mercure (SSE) push instead of client-side polling, idempotent handlers, retries and DLQ.
+• Take heavy work out of the synchronous request: queues, Mercure (SSE) push instead of client-side polling, idempotent handlers, retries on failure.
 • Own the infrastructure side too — Docker, Kubernetes, RabbitMQ, Kafka, replication and sharding, GitLab CI / GitHub Actions, alerting in Grafana. I carry an epic from the architectural decision to the graphs in production.
 
 Domain-agnostic by choice: SaaS, fintech core, MedTech, classifieds. The constant is not the industry, it is how I work — ownership end-to-end.

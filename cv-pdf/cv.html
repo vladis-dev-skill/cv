@@ -285,7 +285,7 @@
       Senior backend-инженер, <b>7+ лет на PHP / Symfony</b>. Последние <b>3,5 года</b> профильная зона — <b>денежный контур продукта</b>: платежи, балансы, интеграции; за плечами <b>10+ платёжных провайдеров</b> в проде.
     </p>
     <p class="intro-body">
-      Проектирую денежный контур так, чтобы платёж нельзя было потерять, задвоить или списать дважды: уникальность гарантирует сама база, а не код приложения, порядок блокировок снимает дедлоки вместо ретраев поверх симптома, а внутренние и внешние статусы никогда не расходятся. Тяжёлые операции выношу из синхронного цикла в очереди и отдаю результат в интерфейс событием через <b>Mercure (SSE)</b> — пользователь не ждёт ответа запроса, а получает его, когда работа действительно закончена.
+      Проектирую денежный контур так, чтобы платёж нельзя было потерять, задвоить или списать дважды: уникальность гарантирует сама база, а не код приложения, порядок блокировок снимает дедлоки вместо ретраев поверх симптома, а внутренние и внешние статусы никогда не расходятся. Тяжёлые операции выношу из синхронного цикла в очереди, а способ доставки результата подбираю под задачу.
     </p>
     <p class="intro-body">
       Меняю живой прод без окна простоя: мажорные апгрейды СУБД и фреймворков, смену диалекта и вынос кусков монолита в сервисы веду поэтапно и обратимо, на кластере ~<b>50 ТБ</b>. Инфраструктуру при этом не перекладываю на других — <b>Docker</b> и <b>Kubernetes</b>, <b>RabbitMQ</b> и <b>Kafka</b>, репликация и шардирование, пайплайны <b>GitLab CI</b> / <b>GitHub Actions</b>, алерты в <b>Grafana</b>: эпик веду от архитектурного решения до графиков в проде.
@@ -312,8 +312,8 @@
         <div class="skill"><span class="k">Языки и фреймворки:</span> <b>PHP 5.6—8.4</b>, <b>Symfony 3.4—7.4</b>, <b>Laravel 6—13</b>, Doctrine, API Platform, Symfony Messenger, <b>Go</b>, Composer / PSR, <b>ООП</b>, <b>SOLID</b> <span class="soft">· GRASP, паттерны GoF, DDD, CQRS, Hexagonal</span></div>
         <div class="skill"><span class="k">Данные и производительность БД:</span> <b>PostgreSQL 14—18</b>, MySQL 5.7—8, <b>Redis</b>, <b>MongoDB</b>, <b>ClickHouse</b>, Elasticsearch, PgBouncer <span class="soft">· планы запросов и составные индексы, партиционирование растущих таблиц, шардирование, логическая репликация, апгрейды под нагрузкой</span></div>
         <div class="skill"><span class="k">Инфраструктура и эксплуатация:</span> <b>Docker</b>, <b>Kubernetes</b>, <b>Linux</b>, <b>AWS</b> (ECS, EC2, S3), Nginx, <b>GitLab CI</b>, GitHub Actions, <b>Grafana / Loki</b>, Prometheus, Sentry, ELK <span class="soft">· метрики, логи, алерты, разбор инцидентов до первопричины</span></div>
-        <div class="skill"><span class="k">Распределённые системы и real-time:</span> <b>Kafka</b>, <b>RabbitMQ</b>, Symfony Messenger, <b>Mercure</b>, <b>Centrifugo</b>, WebSocket, микросервисы, REST API / OpenAPI <span class="soft">· приём и оркестрация вебхуков, идемпотентные обработчики, ретраи и DLQ, outbox, saga</span></div>
-        <div class="skill"><span class="k">Качество и тестирование:</span> <b>PHPUnit</b>, <b>PHPStan</b> (level 9), Rector, CS Fixer, GrumPHP, deptrac <span class="soft">· code review, поэтапный рефакторинг легаси без переписывания, тесты на реальных БД</span></div>
+        <div class="skill"><span class="k">Распределённые системы и real-time:</span> <b>Kafka</b>, <b>RabbitMQ</b>, Symfony Messenger, <b>Mercure</b>, <b>Centrifugo</b>, WebSocket, микросервисы, REST API / OpenAPI <span class="soft">· приём и оркестрация вебхуков, идемпотентные обработчики, ретраи при сбоях</span></div>
+        <div class="skill"><span class="k">Качество и тестирование:</span> <b>PHPUnit</b>, <b>Codeception</b>, <b>Selenium</b>, <b>PHPStan</b> (level 9), Rector, CS Fixer, GrumPHP <span class="soft">· code review, поэтапный рефакторинг легаси без переписывания, тесты на реальных БД</span></div>
       </div>
     </div>
 

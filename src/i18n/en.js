@@ -39,7 +39,7 @@ export default {
 
   // ── Profile
   strengths_title: 'Strengths',
-  about_p1: 'I design the money path so a payment cannot be lost, duplicated or spent twice: uniqueness is enforced by the database itself rather than by application code, lock ordering removes deadlocks instead of retries layered over the symptom, and internal and external states never diverge. Heavy operations move out of the synchronous cycle into queues, with the result pushed to the interface as an event over <b>Mercure (SSE)</b> — the user is not left waiting on the request, but gets the answer once the work is genuinely done.',
+  about_p1: 'I design the money path so a payment cannot be lost, duplicated or spent twice: uniqueness is enforced by the database itself rather than by application code, lock ordering removes deadlocks instead of retries layered over the symptom, and internal and external states never diverge. Heavy operations move out of the synchronous cycle into queues, and the way the result comes back is chosen to fit the task.',
   about_p2: 'I change live production without a maintenance window: major database and framework upgrades, a dialect switch and carving services out of a monolith are staged and reversible, on a ~<b>50 TB</b> cluster. Infrastructure is not someone else\'s job — <b>Docker</b> and <b>Kubernetes</b>, <b>RabbitMQ</b> and <b>Kafka</b>, replication and sharding, <b>GitLab CI</b> / <b>GitHub Actions</b> pipelines, alerting in <b>Grafana</b>: I carry an epic from the architectural decision to the graphs in production.',
 
   prof_comp_k: 'Core competencies',
@@ -108,9 +108,9 @@ export default {
   sk3_s: 'metrics, logs, alerting, incident analysis down to root cause',
   sk4_k: 'Distributed systems &amp; real-time',
   sk4_v: '<b>Kafka</b>, <b>RabbitMQ</b>, Symfony Messenger, <b>Mercure</b>, <b>Centrifugo</b>, WebSocket, microservices, REST API / OpenAPI',
-  sk4_s: 'webhook intake and orchestration, idempotent handlers, retries and DLQ, outbox, saga',
+  sk4_s: 'webhook intake and orchestration, idempotent handlers, retries on failure',
   sk5_k: 'Quality &amp; testing',
-  sk5_v: '<b>PHPUnit</b>, <b>PHPStan</b> (level 9), Rector, CS Fixer, GrumPHP, deptrac',
+  sk5_v: '<b>PHPUnit</b>, <b>Codeception</b>, <b>Selenium</b>, <b>PHPStan</b> (level 9), Rector, CS Fixer, GrumPHP',
   sk5_s: 'code review, staged legacy refactoring without rewrites, tests against real databases',
   sk6_k: 'Frontend &amp; mobile',
   sk6_v: 'TypeScript, <b>Vue 3</b>, Next.js / React, Angular + Ionic, React Native, Capacitor, Tailwind, PWA',
