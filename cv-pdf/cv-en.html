@@ -332,7 +332,7 @@
           <li class="key">Replaced client-side polling with push over <b>Mercure (SSE)</b>: heavy operations left the synchronous request for queues, and the interface receives an event the moment the result is ready instead of polling on a timer. Designed an observer registry for it: a new polling site plugs in as a single class, with no edits to business handlers, and an event fires only when the response actually changes. Result: <b>~200K redundant requests an hour</b> gone — <b>~1.5B a year</b>, about <b>90% of polling traffic</b>; the busiest route went from <b>~70K requests an hour to ~4K</b>.</li>
           <li class="key">Owned <b>all 10+ payment integrations</b> on the platform. Delivered <b>Apple Pay via Stripe</b> end-to-end and extracted one provider <b>from the monolith into a standalone microservice</b> — its own database, its own deployment, a shared contract bundle: a new provider plugs in without touching the core.</li>
           <li class="key">Designed a <b>partial-refund engine</b>: the business gave a one-line requirement — I defined the granularity (order-item level), four webhook routing scenarios, a guarded status machine and over-refund protection.</li>
-          <li class="key">Ran a major <b>PostgreSQL 14 → 18</b> upgrade on a ~<b>50 TB</b> cluster without pausing payment acceptance: logical replication, drift driven to zero before cut-over, one contour switched at a time with the option to step back at any point.</li>
+          <li class="key">Ran a major <b>PostgreSQL 14 → 18</b> upgrade on a ~<b>50 TB</b> cluster without pausing payment acceptance: the new database ran alongside the old one and stayed in sync through logical replication, we switched over in parts and could roll back at any step.</li>
           <li>Ran <b>PHP 8.3 → 8.5</b> and <b>Symfony 6.4 → 7.4 LTS</b> migrations on live production. Discipline through tooling: <b>PHPStan level 9</b>, a hard CI gate on every PR, real PostgreSQL and Redis in tests instead of mocks.</li>
         </ul>
       </div>
@@ -375,7 +375,7 @@
         <ul class="b">
           <li>Grew the core of the medical platform and shipped new features. Closed the remote-appointment request with a <b>Zoom API integration</b>: doctor and patient enter the consultation straight from the booking calendar, with no links sent by hand.</li>
           <li>Sped up the heavy screens: query plans, <b>N+1</b> unfolded into explicit joins, composite indexes matching the real filters, schema normalisation and targeted denormalisation of hot result sets, <b>Redis</b> caching with invalidation driven by domain events. The production cluster ran with <b>replication and partitioning</b> — read paths went to the replica.</li>
-          <li>Covered what mattered with tests: <b>unit tests</b> over domain rules and <b>functional tests</b> over API scenarios — regressions in booking and calendars were caught before release, not in production.</li>
+          <li>Covered what mattered with tests: <b>unit tests</b> over domain rules, <b>integration tests</b> across the database and external services, and <b>functional tests</b> over API scenarios — regressions in booking and calendars were caught before release, not in production.</li>
         </ul>
       </div>
     </div>
@@ -390,7 +390,7 @@
         <p class="stack"><span class="k">Stack:</span> <b>PHP 7.1—7.4</b>, <b>Symfony 3.4 → 4.4 LTS</b>, Doctrine, <b>PostgreSQL</b>, Docker, Swagger, GitLab CI</p>
         <ul class="b">
           <li>Took part in moving the platform off its legacy stack: <b>PHP 7.1 → 7.4</b>, <b>Symfony 3.4 → 4.4 LTS</b> — modules ported piece by piece, with no service downtime.</li>
-          <li>Built the backend of a classifieds platform: a domain model shaped for search and filtering in <b>PostgreSQL</b>, a versioned <b>REST contract</b> in Swagger, automated builds and deployment through <b>GitLab CI</b>, and a collector pulling listings from external sources. The first place where I owned a system rather than individual tickets.</li>
+          <li>Built the backend of a classifieds platform: a domain model shaped for search and filtering in <b>PostgreSQL</b>, a versioned <b>REST contract</b> in Swagger, automated builds and deployment through <b>GitLab CI</b>, and a collector pulling listings from external sources.</li>
         </ul>
       </div>
     </div>
