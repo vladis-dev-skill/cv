@@ -111,7 +111,7 @@ export default {
 
   job4_dates: 'Фев 2019 — Мар 2020',
   job4_role: 'PHP Developer',
-  job4_co: 'Sollento Group — классифайды и сбор данных · удалённо',
+  job4_co: 'Like Systems — классифайды и сбор данных · удалённо',
   job4_about: 'Поисковая SPA-платформа объявлений и сервис автоматического сбора данных.',
   job4_stack: '<b>PHP 7.1—7.4</b>, <b>Symfony 3.4 → 4.4 LTS</b>, Doctrine, <b>PostgreSQL</b>, Docker, Swagger, GitLab CI',
   job4_b1: 'Участвовал в переводе платформы с легаси-стека на актуальный: <b>PHP 7.1 → 7.4</b>, <b>Symfony 3.4 → 4.4 LTS</b> — модули переносили по частям, без остановки сервиса.',

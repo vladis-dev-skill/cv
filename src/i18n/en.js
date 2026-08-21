@@ -111,7 +111,7 @@ export default {
 
   job4_dates: 'Feb 2019 — Mar 2020',
   job4_role: 'PHP Developer',
-  job4_co: 'Sollento Group — classifieds and data collection · Remote',
+  job4_co: 'Like Systems — classifieds and data collection · Remote',
   job4_about: 'Search-driven SPA classifieds platform and an automated data collection service.',
   job4_stack: '<b>PHP 7.1—7.4</b>, <b>Symfony 3.4 → 4.4 LTS</b>, Doctrine, <b>PostgreSQL</b>, Docker, Swagger, GitLab CI',
   job4_b1: 'Took part in moving the platform off its legacy stack: <b>PHP 7.1 → 7.4</b>, <b>Symfony 3.4 → 4.4 LTS</b> — modules ported piece by piece, with no service downtime.',
