@@ -18,7 +18,7 @@ export default {
   hero_avail: 'Open to offers · remote',
   hero_role: 'Senior PHP Developer',
   hero_spec: 'High-load · distributed systems · Symfony / Laravel · PostgreSQL · microservices',
-  hero_lead: 'Senior backend engineer, <b>7+ years on PHP / Symfony</b>. For the last <b>3.5 years</b> my home ground has been the <b>money path of a product</b>: payments, balances and integrations; <b>10+ payment providers</b> shipped to production.',
+  hero_lead: 'Senior backend engineer, <b>7+ years on PHP / Symfony</b>. I build and keep in production systems where a mistake costs money and downtime: high load, distributed architecture, ~<b>50 TB</b> of data under my hands. For the last <b>3.5 years</b> my home ground has been the <b>money path of a product</b>: payments, balances and integrations, with <b>10+ payment providers</b> shipped to production. Before that — fintech core, a medical SaaS platform and classifieds: stepping into an unfamiliar domain is routine for me, not an exception. I carry an epic end-to-end, from the architectural decision to the graphs in production.',
   hero_cta_ru: 'Résumé PDF · RU',
   hero_cta_en: 'Résumé PDF · EN',
   hero_cta_contact: 'Get in touch',
@@ -43,31 +43,15 @@ export default {
   about_p2: 'I change live production without a maintenance window: major database and framework upgrades, a dialect switch and carving services out of a monolith are staged and reversible, on a ~<b>50 TB</b> cluster. Infrastructure is not someone else\'s job — <b>Docker</b> and <b>Kubernetes</b>, <b>RabbitMQ</b> and <b>Kafka</b>, replication and sharding, <b>GitLab CI</b> / <b>GitHub Actions</b> pipelines, alerting in <b>Grafana</b>: I carry an epic from the architectural decision to the graphs in production.',
 
   prof_comp_k: 'Core competencies',
-  prof_comp_v: 'payment integrations and billing · PHP / Symfony · Laravel · PostgreSQL · high-load and distributed systems',
+  prof_comp_v: 'payment integrations and billing · idempotency and consistency of money operations · <b>PHP 8 / Symfony 6—7</b> · Laravel · <b>PostgreSQL</b> and query tuning · queues and events (Kafka, RabbitMQ, Mercure) · carving services out of a monolith · Docker / Kubernetes, CI/CD, observability',
   prof_dom_k: 'Domains',
-  prof_dom_v: '<b>payments &amp; billing</b> · <b>fintech core</b> · SaaS · MedTech · classifieds · outsourcing',
+  prof_dom_v: '<b>payments &amp; billing</b> · <b>fintech core</b> · all-in-one SaaS · MedTech · classifieds · outsourcing for EU clients',
+  prof_scale_k: 'Scale',
+  prof_scale_v: '~<b>50 TB</b> of data and a PostgreSQL cluster under load · ~<b>1B</b> emails a month · ~<b>5M</b> payment transactions a month · <b>10+</b> providers and <b>40+</b> payment methods',
 
-  // ── Key cases
-  sec_cases: 'Key cases',
-  cases_lead: 'Three epics where the shape of the solution was mine to define, not the ticket\'s.',
-  case_k_task: 'Problem',
-  case_k_sol: 'Approach',
-  case_k_res: 'Outcome',
 
-  case1_t: 'PostgreSQL 14 → 18 on a ~50 TB cluster with no maintenance window',
-  case1_task: 'The database major version was out of date, and the monolith cluster serves payment acceptance — it cannot be stopped, not even at night.',
-  case1_sol: 'Logical replication into the new cluster, drift driven to zero before cut-over, one contour switched at a time with the way back preserved.',
-  case1_res: 'Zero minutes of downtime, payment acceptance never paused, rollback available at every step.',
 
-  case2_t: 'A partial-refund engine on top of a composite payment',
-  case2_task: 'The business gave a one-line requirement — “we need partial refunds”. Granularity, routing and protection against a repeated refund were all absent from the brief.',
-  case2_sol: 'I defined the shape myself: refunds at order-item level, four routing scenarios for a single webhook, a guarded status machine, and cumulative over-refund protection that accounts for refunds still in flight.',
-  case2_res: 'Refunds stopped being all-or-nothing. I marked the boundary explicitly: refunding a whole payment was left as an open TODO rather than quietly half-built.',
 
-  case3_t: '10+ payment providers behind a single contract',
-  case3_task: 'Every new integration required edits to the monolith core — and therefore risked regressions in providers that already worked.',
-  case3_sol: 'A shared bundle with interfaces, MappedSuperclass entities and ready-made inner-API controllers. A provider is carved out as its own service with its own database and deployment.',
-  case3_res: 'A new provider plugs in without touching the core or its neighbours. One provider was extracted from the monolith into a microservice following this pattern.',
 
   card_link: 'Details',
 
@@ -93,7 +77,7 @@ export default {
   job2_b1: '<b>Balances with held funds:</b> while an operation is still in flight its amount stays frozen on the balance, so the same money cannot be spent twice under concurrent requests — at ~<b>150–200K operations a day</b>. Payout idempotency is enforced by a <b>unique index in the database</b>: a duplicate is rejected by the database itself, not by application code; <b>not a single double payout since rollout</b>.',
   job2_b2: '<b>Deadlocks</b> on concurrent balance recalculation were removed by <b>lock ordering and targeted FOR UPDATE</b> under READ COMMITTED — prevention at the access-pattern level, not a retry wrapper over the symptom. Concurrency errors at peak hours dropped to <b>almost none</b>, and manual investigations of “stuck” operations all but disappeared.',
   job2_b3: 'Financial module: a transaction moves through about ten internal statuses while the merchant sees a simple pending / success / fail; internal and external state never diverge. The result — predictable callbacks across <b>40+ integrations</b> and a <b>30–40% drop</b> in merchant queries about “unclear” statuses.',
-  job2_b4: '<b>Laravel 9 → 10</b> migration and refactoring of critical payment pipelines: <b>PHPUnit</b> tests over financial scenarios (up to ~<b>80%</b> coverage), <b>PHPStan level 6+</b>, observability on <b>ELK</b> — diagnosing payment incidents went <b>from hours to minutes</b>. Took part in the <b>MySQL → PostgreSQL</b> switch on a critical contour (<b>2 TB+</b>): schema reworked for PG-specific types and indexes, staged migration with no loss of integrity and no pause in payment acceptance, legacy code synchronised with the new dialect; p95 on key transaction queries <b>2–3× faster</b>.',
+  job2_b4: '<b>Laravel 9 → 10</b> migration and refactoring of critical payment pipelines: <b>PHPUnit</b> tests over financial scenarios (up to ~<b>80%</b> coverage), <b>PHPStan level 6+</b>, observability on <b>ELK</b> — diagnosing payment incidents went <b>from hours to minutes</b>. Took part in the <b>MySQL → PostgreSQL</b> switch on a critical contour (<b>2 TB+</b>): schema reworked for PG-specific types and indexes, staged migration with no loss of integrity and no pause in payment acceptance, legacy code synchronised with the new dialect; key transaction queries became <b>2–3× faster</b>, the slowest ones included.',
 
   job3_dates: 'Apr 2020 — Mar 2023',
   job3_role: 'PHP Developer',
@@ -136,21 +120,14 @@ export default {
   proj_sub: 'My own products — from idea and architecture through to production deployment, with no team behind me.',
   proj_grace_tag: 'DDD · CQRS · FSD',
   proj_grace_desc: 'Community platform: <b>4 bounded contexts</b>, command and query buses on Symfony Messenger, a Feature-Sliced frontend. Context boundaries are enforced by <b>deptrac</b>, not by agreement.',
-  proj_arena_tag: 'EdTech · real-time',
-  proj_arena_desc: 'Learn-to-code platform that runs code <b>in the browser</b>: Monaco editor, xterm terminal emulation, live collaboration over WebSocket.',
   proj_shushu_tag: 'Real-time PWA',
   proj_shushu_desc: 'Social gifting platform: real-time over <b>Centrifugo</b>, an installable <b>PWA</b> on Workbox, a Telegram bot, OAuth, gamification. 115 services, 36 entities.',
-  proj_nesty_tag: 'Mobile-first',
-  proj_nesty_desc: 'Rental marketplace with Leaflet maps and a hybrid mobile app: Angular + Ionic packaged for iOS and Android via <b>Capacitor</b>.',
-  proj_mentor_name: 'Mentorship',
-  proj_mentor_tag: 'mid → senior',
-  proj_mentor_desc: 'I take PHP developers from mid to <b>senior</b> on a structured programme: concept map, code review, mock interviews, weak-spot tracking. AI-assisted spec → code → QA loops are part of the process.',
 
   // ── Education and contact
   edu_uni: 'Belarusian State University of Informatics and Radioelectronics',
   edu_fac: 'Faculty of Computer Systems and Networks — Computer Science',
   edu_place: 'Minsk, Belarus',
-  edu_lang: 'English — <b>B1</b>: I read and write documentation freely, hold working calls, and keep pushing the spoken side.',
+  edu_lang: 'English — <b>B1</b>: I read and write documentation freely and keep pushing the spoken side.',
 
   contact_lead: 'Open to senior roles with real ownership, remote.',
   contact_status: 'Open to opportunities',

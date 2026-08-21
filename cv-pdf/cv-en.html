@@ -117,9 +117,9 @@
   /* Без плашки: разворот держится одной непрерывной линией, которая
      складывается в V ровно там, где начинается вертикальный рельс.
      Стыковать нечего — значит, нечему и разъехаться. */
-  .intro { padding: 2.8mm 0 0; }
+  .intro { padding: 3.0mm 0 0; }
   .intro-lead { font-size: 11.3px; line-height: 1.48; }
-  .intro-body { margin-top: 1.9mm; font-size: 10.7px; line-height: 1.47; }
+  .intro-body { margin-top: 2.0mm; font-size: 10.7px; line-height: 1.48; }
 
   .fold {
     display: block;
@@ -192,7 +192,7 @@
   .core .dom { font-weight: 400; color: var(--ink-2); }
   .core .dom b { color: var(--accent); font-weight: 700; }
   .skill { font-size: 10.3px; line-height: 1.46; }
-  .skill + .skill { margin-top: 1.1mm; }
+  .skill + .skill { margin-top: 1.25mm; }
   .skill .k { font-weight: 700; color: var(--ink); }
   .skill .soft { color: var(--ink-2); font-size: 10.3px; }
 
@@ -209,9 +209,9 @@
   .j-about b { color: var(--ink); }
   .stack { margin-top: 1.5mm; font-size: 10.3px; line-height: 1.44; }
   .stack .k { font-weight: 700; color: var(--ink); letter-spacing: 0.02em; }
-  ul.b { margin-top: 1.9mm; padding-left: 4.4mm; }
+  ul.b { margin-top: 2.1mm; padding-left: 4.4mm; }
   ul.b li { font-size: 10.35px; line-height: 1.45; }
-  ul.b li + li { margin-top: 0.9mm; }
+  ul.b li + li { margin-top: 0.95mm; }
   ul.b li::marker { color: #b5bcb7; }
   ul.b li.key::marker { color: var(--accent); }
 
@@ -230,6 +230,18 @@
     font-size: 8.6px;
     color: var(--mute);
     letter-spacing: 0.04em;
+  }
+
+
+  /* ───────── ВЫКЛЮЧКА ПО ФОРМАТУ ─────────
+     Текст по обе стороны колонки: плотнее набор и меньше рваного правого
+     края. Переносы обязательны — без них выключка рвёт строку пробелами. */
+  .intro-lead, .intro-body, .j-about, .stack, ul.b li, .skill, .core, .meta {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphenate-limit-chars: 6 3 3;
   }
 
   @page { size: A4; margin: 0; }
@@ -347,7 +359,7 @@
           <li class="key"><b>Balances with held funds:</b> while an operation is still in flight its amount stays frozen on the balance, so the same money cannot be spent twice under concurrent requests — at ~<b>150–200K operations a day</b>. Payout idempotency is enforced by a <b>unique index in the database</b>: a duplicate is rejected by the database itself, not by application code; <b>not a single double payout since rollout</b>.</li>
           <li class="key"><b>Deadlocks</b> on concurrent balance recalculation were removed by <b>lock ordering and targeted FOR UPDATE</b> under READ COMMITTED — prevention at the access-pattern level, not a retry wrapper over the symptom. Concurrency errors at peak hours dropped to <b>almost none</b>, and manual investigations of “stuck” operations all but disappeared.</li>
           <li>Financial module: a transaction moves through about ten internal statuses while the merchant sees a simple pending / success / fail; internal and external state never diverge. The result — predictable callbacks across <b>40+ integrations</b> and a <b>30–40% drop</b> in merchant queries about “unclear” statuses.</li>
-          <li><b>Laravel 9 → 10</b> migration and refactoring of critical payment pipelines: <b>PHPUnit</b> tests over financial scenarios (up to ~<b>80%</b> coverage), <b>PHPStan level 6+</b>, observability on <b>ELK</b> — diagnosing payment incidents went <b>from hours to minutes</b>. Took part in the <b>MySQL → PostgreSQL</b> switch on a critical contour (<b>2 TB+</b>): schema reworked for PG-specific types and indexes, staged migration with no loss of integrity and no pause in payment acceptance, legacy code synchronised with the new dialect; p95 on key transaction queries <b>2–3× faster</b>.</li>
+          <li><b>Laravel 9 → 10</b> migration and refactoring of critical payment pipelines: <b>PHPUnit</b> tests over financial scenarios (up to ~<b>80%</b> coverage), <b>PHPStan level 6+</b>, observability on <b>ELK</b> — diagnosing payment incidents went <b>from hours to minutes</b>. Took part in the <b>MySQL → PostgreSQL</b> switch on a critical contour (<b>2 TB+</b>): schema reworked for PG-specific types and indexes, staged migration with no loss of integrity and no pause in payment acceptance, legacy code synchronised with the new dialect; key transaction queries became <b>2–3× faster</b>, the slowest ones included.</li>
         </ul>
       </div>
     </div>

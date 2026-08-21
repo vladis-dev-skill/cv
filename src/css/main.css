@@ -38,6 +38,7 @@
   --wrap: 1080px;
   --gutter: clamp(1.15rem, 4vw, 3rem);
   --rail-w: 150px;
+  --measure: 46rem;   /* единая ширина колонки текста во всех разделах */
   --nav-h: 60px;
 
   --r-sm: 6px;
@@ -343,12 +344,12 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
   content: ''; position: absolute; top: 0; left: 0;
   width: 22px; height: 2px; background: var(--accent);
 }
-.rail-body { min-width: 0; }
+.rail-body { min-width: 0; max-width: var(--measure); }
 
-.section-lead { color: var(--mute); max-width: 62ch; margin-bottom: 1.75rem; }
+.section-lead { color: var(--mute); margin-bottom: 1.75rem; }
 
 /* ───────── ПРОФИЛЬ ───────── */
-.about-prose { display: grid; gap: 1.1rem; max-width: 78ch; }
+.about-prose { display: grid; gap: 1.1rem; }
 .about-prose p { line-height: 1.66; }
 .about-prose b { color: var(--ink); font-weight: 600; }
 
@@ -389,16 +390,16 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
 }
 .job-role { margin-top: .15rem; font-size: 1.12rem; letter-spacing: -.01em; }
 .job-co { margin-top: .1rem; font-size: .95rem; font-weight: 600; color: var(--accent-ink); letter-spacing: .04em; }
-.job-about { margin-top: .6rem; font-size: .92rem; color: var(--mute); max-width: 68ch; }
+.job-about { margin-top: .6rem; font-size: .92rem; color: var(--mute); }
 .job-about b { color: var(--ink-2); }
 
-.stack { margin-top: .7rem; font-size: .88rem; max-width: 72ch; }
+.stack { margin-top: .7rem; font-size: .88rem; }
 .stack-k {
   font-size: .68rem; font-weight: 700; letter-spacing: .11em;
   text-transform: uppercase; color: var(--mute); margin-right: .5rem;
 }
 
-.bullets { margin-top: .9rem; display: grid; gap: .6rem; max-width: 72ch; }
+.bullets { margin-top: .9rem; display: grid; gap: .6rem; }
 .bullets li { position: relative; padding-left: 1.05rem; font-size: .94rem; }
 .bullets li::before {
   content: ''; position: absolute; left: 0; top: .62em;
@@ -416,7 +417,7 @@ section[id], footer[id] { scroll-margin-top: calc(var(--nav-h) + 14px); }
 .skill dt {
   font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .2rem;
 }
-.skill dd { font-size: .93rem; max-width: 76ch; }
+.skill dd { font-size: .93rem; }
 .skill .soft::before { content: '· '; }
 
 /* ───────── КЛЮЧЕВЫЕ КЕЙСЫ ─────────
@@ -491,13 +492,13 @@ a.card-link:hover { opacity: .7; }
 }
 
 /* ───────── ОБРАЗОВАНИЕ ───────── */
-.edu h3 { font-size: 1.05rem; max-width: 40ch; }
+.edu h3 { font-size: 1.05rem; }
 .edu-fac { margin-top: .2rem; font-size: .95rem; font-weight: 600; color: var(--accent-ink); letter-spacing: .04em; }
 .edu .muted { margin-top: .35rem; font-size: .88rem; }
-.edu-lang { margin-top: 1rem; font-size: .93rem; max-width: 62ch; }
+.edu-lang { margin-top: 1rem; font-size: .93rem; }
 
 /* ───────── КОНТАКТЫ ───────── */
-.contact-lead { font-size: 1.05rem; color: var(--ink); font-weight: 600; max-width: 46ch; }
+.contact-lead { font-size: 1.05rem; color: var(--ink); font-weight: 600; }
 .status {
   display: inline-flex; align-items: center; gap: .5rem;
   margin-top: .9rem; font-size: .88rem; color: var(--mute);
@@ -539,6 +540,31 @@ a.card-link:hover { opacity: .7; }
   opacity: 1; transform: none;
   transition: opacity var(--t-slow), transform var(--t-slow);
   transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* ───────── ВЫКЛЮЧКА ПО ФОРМАТУ ─────────
+   Текст ровный по обеим сторонам колонки, как в наборе документа.
+   Переносы обязательны: без них выключка растягивает строку пробелами. */
+.hero-lead,
+.section-lead,
+.about-prose p,
+.facts dd,
+.job-about,
+.stack,
+.bullets li,
+.skill dd,
+.card p,
+.edu-lang {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+}
+/* В узкой колонке выключка даёт дыры между словами — там флаговый набор. */
+@media (max-width: 620px) {
+  .hero-lead, .section-lead, .about-prose p, .facts dd, .job-about,
+  .stack, .bullets li, .skill dd, .card p, .edu-lang { text-align: left; }
 }
 
 /* ───────── АДАПТИВ ───────── */
