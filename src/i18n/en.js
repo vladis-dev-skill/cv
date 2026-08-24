@@ -58,7 +58,7 @@ export default {
   // ── Experience
   sec_stack: 'Stack',
 
-  job1_dates: 'Apr 2024 — Jun 2026',
+  job1_dates: 'Apr 2024 — Present',
   job1_role: 'Senior PHP Developer · payments team',
   job1_co: 'systeme.io — international SaaS platform · Remote',
   job1_about: 'An international all-in-one SaaS platform for online business (email marketing, sales funnels, online courses, payment acceptance): <b>15M+</b> registered accounts and <b>500K+</b> active businesses across <b>170+ countries</b>. A high-load system: around <b>1B</b> email sends a month (<b>12B+</b> a year), ~<b>2B</b> contact records in the database, millions of published pages and funnels drawing hundreds of millions of views a month. Carving pieces of the monolith out into services — staged and reversible.',

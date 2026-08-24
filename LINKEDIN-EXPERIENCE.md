@@ -31,7 +31,7 @@ Open to senior backend roles with real ownership, remote.
 ---
 
 ## 1. Senior PHP Backend Engineer · systeme.io
-`апр. 2024 — май 2026 · Дублин, Ирландия · Удалённая работа`
+`апр. 2024 — по настоящее время · Дублин, Ирландия · Удалённая работа`
 
 ```text
 • Replaced client-side polling with push over Mercure (SSE): heavy operations moved out of the synchronous request into queues, results delivered to the UI as events — ~200K fewer requests per hour (~1.5B a year, ~90% of polling traffic); the busiest route dropped from ~70K to ~4K req/h.
